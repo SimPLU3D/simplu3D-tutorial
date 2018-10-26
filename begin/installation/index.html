@@ -8,7 +8,7 @@
   
   <meta name="author" content="MBrasebin">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Installation - SimPLU3D tutorial</title>
+  <title>Premiers pas - Installation - SimPLU3D tutorial</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Installation";
+    var mkdocs_page_name = "Premiers pas - Installation";
     var mkdocs_page_input_path = "begin/installation.md";
     var mkdocs_page_url = "/simplu3D-tutorial/begin/installation/";
   </script>
@@ -133,7 +133,7 @@
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">Définition des règles</span>
+    <span class="caption-text">Définition des contraintes morphologiques</span>
     <ul class="subnav">
                 <li class="">
                     
@@ -201,7 +201,7 @@
     
       
     
-    <li>Installation</li>
+    <li>Premiers pas - Installation</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/SimPLU3D/simplu3D-tutorial?query=root/path/docs/begin/installation.md"
@@ -214,8 +214,68 @@
           <div role="main">
             <div class="section">
               
-                <p>Installation :
-- Comment installer SimPLU3D ? et le code du tutoriel ?</p>
+                <h1 id="installer-simplu3d">Installer SimPLU3D<a class="headerlink" href="#installer-simplu3d" title="Permanent link"></a></h1>
+<p>Les bibliothèques de SimPLU3D sont construites avec Maven et codées en Java (la version 8 de la JDK est requise) et sont régulièrement déployées sur le serveur Maven de l'IGN. Si vous voulez essayer les codes décrits dans cette documentation, vous pouvez installer le projet <a href="https://github.com/SimPLU3D/simplu3D-tutorial">SimPLU3D-tutorial</a> ou sinon vous pouvez directement l'installer dans votre projet.</p>
+<blockquote>
+<p><img alt="#f03c15" src="https://placehold.it/15/f03c15/000000?text=+" /> <strong>Attention</strong>: il se peut que la compilation du projet ne se fasse pas à cause de problèmes liées à la vérification du certificat ssh de la forge IGN. Pour cela deux solutions :</p>
+<ul>
+<li>
+<p>Installer localement le certificat comme décrit dans le lien suivant <a href="http://ignf.github.io/geoxygene/documentation/developer/install.html">http://ignf.github.io/geoxygene/documentation/developer/install.html</a></p>
+</li>
+<li>
+<p>Faire une installation sécurisée lorsqu'il faudra construire le projet : <strong>mvn clean install -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true</strong></p>
+</li>
+</ul>
+</blockquote>
+<h2 id="installer-le-code-simplu3d-tutorial">Installer le code SimPLU3D-tutorial<a class="headerlink" href="#installer-le-code-simplu3d-tutorial" title="Permanent link"></a></h2>
+<p>Les étapes suivantes sont nécessaires :</p>
+<p>1 - Installer un environnement de développement compatible avec Maven, nous recommandons de suivre ces étapes : <a href="http://ignf.github.io/geoxygene/documentation/developer/install.html">http://ignf.github.io/geoxygene/documentation/developer/install.html</a></p>
+<p>2 - Cloner avec Git le projet https://github.com/SimPLU3D/simplu3D-tutorial</p>
+<p>3 - Importer le projet dans l'environnement de développement. Dans Eclipse "Fichier &gt; Importer un projet &gt; Importer un projet Maven"</p>
+<p>4 - Lancer une installation avec Maven :</p>
+<ul>
+<li>Click droit sur le projet et "<strong>Run as Maven Install</strong>"</li>
+<li>ou directement en ligne de commande : <strong>mvn clean install</strong></li>
+</ul>
+<p>5 - Lancer une construction du projet avec Eclipse : <strong>Project &gt; Build project</strong>
+Vous pouvez désormais exécuter la <a href="../first_simulation/">première simulation</a>.</p>
+<h2 id="installer-simplu3d-dans-un-autre-projet">Installer SimPLU3D dans un autre projet<a class="headerlink" href="#installer-simplu3d-dans-un-autre-projet" title="Permanent link"></a></h2>
+<p>L'installation s'effectue simplement en créant un projet qui pointe vers les dépendances de SimPLU3D. Les étapes sont les suivantes :</p>
+<p>1 - Création d'un projet Maven</p>
+<p>2 - Ajout de la dépendance à SimPLU3D dans le pom.xml dans les balises <strong>dependencies</strong>, en pensant à vérifier la version actuelle de SimPLU3D.</p>
+<pre><code class="XML">&lt;dependency&gt;
+  &lt;groupId&gt;fr.ign.cogit&lt;/groupId&gt;
+  &lt;artifactId&gt;simplu3d&lt;/artifactId&gt;
+  &lt;version&gt;1.2-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<p>3 - Ajouter les dépôts sur lesquels est déployé SimPLU3D et les bibliothèques dans le pom.xml dans les balises <strong>repositories</strong></p>
+<pre><code class="XML">&lt;repository&gt;
+  &lt;id&gt;ign-snapshots&lt;/id&gt;
+  &lt;name&gt;Cogit Snapshots Repository&lt;/name&gt;
+  &lt;url&gt;https://forge-cogit.ign.fr/nexus/content/repositories/snapshots/&lt;/url&gt;
+  &lt;snapshots&gt;
+    &lt;enabled&gt;true&lt;/enabled&gt;
+  &lt;/snapshots&gt;
+  &lt;releases&gt;
+    &lt;enabled&gt;false&lt;/enabled&gt;
+  &lt;/releases&gt;
+&lt;/repository&gt;
+&lt;repository&gt;
+  &lt;id&gt;ign-releases&lt;/id&gt;
+  &lt;name&gt;Cogit Releases Repository&lt;/name&gt;
+  &lt;url&gt;https://forge-cogit.ign.fr/nexus/content/repositories/releases/&lt;/url&gt;
+  &lt;snapshots&gt;
+    &lt;enabled&gt;false&lt;/enabled&gt;
+  &lt;/snapshots&gt;
+  &lt;releases&gt;
+    &lt;enabled&gt;true&lt;/enabled&gt;
+  &lt;/releases&gt;
+&lt;/repository&gt;
+</code></pre>
+
+<p>4 - Faire un build du projet en utilisant par exemple : <strong>maven install</strong>.</p>
               
             </div>
           </div>
