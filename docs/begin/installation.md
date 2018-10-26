@@ -23,12 +23,14 @@ Les étapes suivantes sont nécessaires :
 
 2 - Cloner avec Git le projet https://github.com/SimPLU3D/simplu3D-tutorial
 
-3 - Lancer une installation avec Maven :
+3 - Importer le projet dans l'environnement de développement. Dans Eclipse "Fichier > Importer un projet > Importer un projet Maven"
+
+4 - Lancer une installation avec Maven :
 
 - Click droit sur le projet et "**Run as Maven Install**"
 - ou directement en ligne de commande : **mvn clean install**
 
-4 - Lancer une construction du projet avec Eclipse : **Project > Build project**
+5 - Lancer une construction du projet avec Eclipse : **Project > Build project**
 Vous pouvez désormais exécuter la [première simulation](first_simulation.md).
 
 ## Installer SimPLU3D dans un autre projet
