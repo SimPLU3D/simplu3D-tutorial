@@ -1,0 +1,43 @@
+nav:
+- Accueil: 'index.md'
+- 'Premiers pas': 
+    - 'Introduction': 'begin/intro'
+    - 'Installation': 'begin/installation'
+    - 'Première simulation': 'begin/first_simulation'
+- Principe: 'principe/intro'
+- 'Environnement géographique':
+    - 'Introduction': 'envgeo/intro'
+    - 'Modèle géographique détaillé': 'envgeo/modelgeo'
+    - "Processus d'intégration": 'envgeo/integration'
+    - "Tester l'intégration": 'envgeo/integration-test'
+    - "Personnaliser le processus d'intégration": 'envgeo/integration-test'
+- 'Générateur de formes':
+    - 'Introduction': 'generator/intro'
+    - 'Principe de fonctionnement du générateur': 'generator/principe'
+    - 'Paramétrer la génération de cuboids': 'generator/custom-generator'
+    - "Personnaliser la fonction d'optimisation": 'generator/custom-generator'
+    - 'Personnaliser les formes utilisées': 'generator/custom-shape'
+- 'Définition des règles':
+    - 'Introduction': 'rules/intro'
+    - 'Principe de fonctionnement du vérificateur': 'rules/predicate/'
+    - 'Formats de règles': 'rules/formats'
+    - 'Définition de contraintes topologiques': 'rules/topologique'
+- "Suivre l'évolution d'une simulation": 'visitor/intro'
+- 'Distribuer avec OpenMole': 'openmole/intro'
+- 'Futurs développements': 'development.md'
+- 'À propos': 'about.md'
+- 'Réalisations et bibliographie' : 'bibliographie.md'
+theme: readthedocs
+site_name: SimPLU3D tutorial
+site_url: https://simplu3D.github.io/simplu3D-tutorial
+repo_url: https://github.com/SimPLU3D/simplu3D-tutorial
+repo_name: GitHub
+edit_uri: '?query=root/path/docs/'
+site_description: 'Tutorial for SimPLU3D application'
+site_author: 'MBrasebin'
+copyright: 'IGNF 2018-2019'
+lang: fr
+
+markdown_extensions:
+    - toc:
+        permalink: 

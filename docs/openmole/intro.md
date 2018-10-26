@@ -1,0 +1,3 @@
+- 1 présentation d'OpenMole
+- 2 création d'un plugin avec osgi bundle
+- 3 lancer la distribution avec le script ....
