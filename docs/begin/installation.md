@@ -15,8 +15,13 @@ Vous pouvez soit installer SimPLU3D en utilisant les dépendances ou en installa
 ## Installation par utilisation des dépendances
 
 Les étapes sont les suivantes :
-1/ Création d'un projet Maven
-2/ 
+
+1. Création d'un projet Maven
+2. Ajout de la dépendance à SimPLU3D
+
+```XML
+
+```
 
 Vous pouvez également vous référerer à la documentation de GeOxygene (http://ignf.github.io/geoxygene/documentation/developer/install.html)
 
