@@ -1,6 +1,6 @@
 nav:
 - Accueil: 'index.md'
-- 'Premiers pas': 
+- 'Premiers pas':
     - 'Introduction': 'begin/intro'
     - 'Installation': 'begin/installation'
     - 'Première simulation': 'begin/first_simulation'
@@ -22,6 +22,7 @@ nav:
     - 'Principe de fonctionnement du vérificateur': 'rules/predicate/'
     - 'Formats de règles': 'rules/formats'
     - 'Définition de contraintes topologiques': 'rules/topologique'
+- "Exporter les résultats d'une simulation": 'export.md'
 - "Suivre l'évolution d'une simulation": 'visitor/intro'
 - 'Distribuer avec OpenMole': 'openmole/intro'
 - 'Futurs développements': 'development.md'
