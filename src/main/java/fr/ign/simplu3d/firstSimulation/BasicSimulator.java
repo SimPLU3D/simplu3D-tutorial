@@ -79,7 +79,6 @@ public class BasicSimulator {
 		OptimisedBuildingsCuboidFinalDirectRejection oCB = new OptimisedBuildingsCuboidFinalDirectRejection();
 
 
-
 		// Loading the parameters for the building shape generation
 		String folderName = BasicSimulator.class.getClassLoader().getResource("firstSimulation/scenario/").getPath();
 		String fileName = "params.json";
