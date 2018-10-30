@@ -26,3 +26,6 @@ SimPLU3D a déjà fait l'objet de plusieurs applications et publications, n'hés
 SimPLU3D est développé et maintenu par le laboratoire [LASTIG](http://lastig.ign.fr/) de l'[Institut National de l'Information Géographique et Forestière](https://fr.ign.com/). N'hésitez pas à [nous contacter](about.md) pour nous fait un retour sur SimPLU3D ou pour utiliser le code.
 
 Cette documentation a pour but de montrer comment utiliser SimPLU3D et de paramétrer l'approche en fonction de vos besoins. Pour commencer, la première étape est d'installer les bibliothèques et de lancer une première simulation [(par ici)](./begin/intro.md).
+
+La conception et le développement de SimPLU3D ont été initiés dans le cadre de la thèse :
+> Brasebin, M. (2014) Les données géographiques 3D pour simuler l'impact de la réglementation urbaine sur la morphologie du bâti, Thèse de doctorat, spécialité Sciences et Technologies de l'Information Géographique, Université Paris-Est, apr 2014 [Mémoire](https://tel.archives-ouvertes.fr/tel-01124257), [Présentation](http://recherche.ign.fr/labos/util_basilic/publicDownload.php?id=3011)
