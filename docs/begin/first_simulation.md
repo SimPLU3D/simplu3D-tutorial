@@ -23,7 +23,7 @@ Les données en entrée se trouvent dans le répertoire de ressources *resources
 
 # Code de simulation
 
-Le code à exécuter est repris ci-dessous commenté. On notte qu'il y a 4 étapes nécessaires pour exécuter la simulation :
+Le code à exécuter est repris ci-dessous commenté. On note qu'il y a 4 étapes nécessaires pour exécuter la simulation :
 
 1. la création d'un [environnement géographique](/../envgeo/intro.md) ;
 2. la définition de [contraintes morphologiques](/../rules/intro.md), à partir d'une classe de vérification de règles déjà implémentée ;
