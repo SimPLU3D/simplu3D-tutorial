@@ -8,7 +8,7 @@
   
   <meta name="author" content="MBrasebin">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Modelgeo - SimPLU3D tutorial</title>
+  <title>Environnement géographique - Modèle géographique - SimPLU3D tutorial</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Modelgeo";
+    var mkdocs_page_name = "Environnement g\u00e9ographique - Mod\u00e8le g\u00e9ographique";
     var mkdocs_page_input_path = "envgeo/modelgeo.md";
     var mkdocs_page_url = "/simplu3D-tutorial/envgeo/modelgeo/";
   </script>
@@ -99,7 +99,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../integration-test">Personnaliser le processus d'intégration</a>
+    <a class="" href="../custom-integration">Personnaliser le processus d'intégration</a>
                 </li>
     </ul>
 	    </li>
@@ -156,6 +156,11 @@
           
             <li class="toctree-l1">
 		
+    <a class="" href="../../export/">Exporter les résultats d'une simulation</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
     <a class="" href="../../visitor/intro">Suivre l'évolution d'une simulation</a>
 	    </li>
           
@@ -201,7 +206,7 @@
     
       
     
-    <li>Modelgeo</li>
+    <li>Environnement géographique - Modèle géographique</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/SimPLU3D/simplu3D-tutorial?query=root/path/docs/envgeo/modelgeo.md"
@@ -214,7 +219,41 @@
           <div role="main">
             <div class="section">
               
-                <p>La présentation du modèle géographique détaillé comme en chapitre 2 de la thèse</p>
+                <h1 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h1>
+<p>Le modèle géographique a pour objet de décrire les objets à partir desquels on peut appliquer des contraintes morphologiques et décrire la réglementation urbaine. Le modèle proposé dans SimPLU3D a été établi pour modéliser les contraintes spécifiquement issues des <a href="https://fr.wikipedia.org/wiki/Plan_local_d%27urbanisme">Plans Locaux d'Urbanisme</a>. Ainsi, le modèle contient les concepts que l'on retrouve dans ces documents à partir d'un état de l'art. Par exemple, si l'on considère la règle suivante :</p>
+<p><img alt="Exemple de règle issu du PLU" src="../img/ex-regle.png" /></p>
+<p>le modèle permet de représenter les objets géographiques (en rouge), les propriétés (en bleu) et les relations (en vert). Ensuite, ces informations seront utilisées pendant la simulation pour vérifier si une configuration bâtie respecte ou non cette règle et cela est décrit dans la section <a href="/../rules/intro.md">définition de contraintes morphologiques</a>.</p>
+<p>Pour en savoir plus, le modèle a fait l'objet d'une publication scientifique :</p>
+<blockquote>
+<p>Brasebin, M., J. Perret, S. Mustière and C. Weber (2016) A Generic Model to Exploit Urban Regulation Knowledge, ISPRS International Journal of Geo-Information, vol. 5, n. 2, pp. 14, <a href="https://www.mdpi.com/2220-9964/5/2/14">doi:10.3390/ijgi5020014</a></p>
+</blockquote>
+<h1 id="vue-global-du-modele">Vue global du modèle<a class="headerlink" href="#vue-global-du-modele" title="Permanent link"></a></h1>
+<p>Le modèle géographique est instancié dans le package <em>fr.ign.cogit.simplu3d.model</em> du projet <a href="https://github.com/SimPLU3D/simplu3D-rules">SimPLU3D-rules</a>.</p>
+<p><img alt="Image présentant le diagramme de classe de SimPLU3D" src="../img/generaldiagramAnnoted.png" /></p>
+<p>La figure précédente présente l'ensemble des classes (sans leurs attributs) composant le modèle géographique de SimPLU3D. Quatre ensembles de classes seront présentées :</p>
+<ul>
+<li><a href="#classes-de-reglementation">les classes représentant la réglementation</a>, c'est à dire les documents, les règles et les plans de zonage issus du PLU (ou d'autres réglementations locales) ;</li>
+<li><a href="#classes-du-parcellaire">les classes modélisant le parcellaire</a> ;</li>
+<li><a href="#classes-des-batiments">les classes concernant la modélisation 3D des bâtiments</a> ;</li>
+<li><a href="#classes-de-lespace-publique">les classes concernant les espaces publiques</a>.</li>
+</ul>
+<p>Avant de présenter les classes, la classe <a href="#classe-environnement">parent <em>Environnement</em></a> sera décrite, elle permet d'accéder aux différents objets du modèle.</p>
+<p>Le modèle est certes complexe dans l'absolu, mais il n'est néanmoins (comme présenté dans l'<a href="../being/first_simulation.md">exemple de la simulation basique</a>) pas nécessaire de renseigner toutes les classes pour permettre l'exécution du modèle. Seules les classes relatives aux parcelles doivent absolument être instanciées. Le fait de ne pas instancier une des classes du modèle rend impossible la capacité d'évaluer des contraintes s'appuyant sur les éléments non instanciés.</p>
+<p>Les diagrammes de classes sont générées avec le plugin <a href="http://www.objectaid.com/">ObjectAID d'Eclipse</a> et les fichiers sont disponibles dans le dossier <a href="https://github.com/SimPLU3D/simplu3D-rules/tree/master/diagram/"><em>diagram</em> de SimPLU3D-rules</a></p>
+<h1 id="classe-environnement">Classe Environnement<a class="headerlink" href="#classe-environnement" title="Permanent link"></a></h1>
+<p>La classe <em>Environnement</em> est une classe central dans le modèle de SimPLU3D car elle le point d'entrée pour accéder à l'ensemble des objets nécessaires pour vérifier le respect des règles morphologiques.</p>
+<p><img alt="Image présentant la classe Environneemnt de SimPLU3D" src="../img/environnementdiagram.png" /></p>
+<p>Elle est composée d'une série d'accesseurs qui permettent d'accéder aux objets présentés dans ce modèle (cf image ci dessus) et également au terrain qui servira de référence.</p>
+<p>L'instanciation d'un environnement s'effectue :</p>
+<ul>
+<li>soit lors du chargement de données grâce à l'un des processus d'intégration existant (voir section sur <a href="../integration/">les processus d'intégration</a>) ;</li>
+<li>soit par le biais de la méthode statique <em>Environnement.createEnvironnement()</em> qui créé un environnement complètement vide.</li>
+</ul>
+<p>Dans tous les cas, l'objet environnement est unique, il s'agit d'un singleton que l'on peut récupérer par la méthode statique <em>Environnement.getInstance()</em>.</p>
+<h1 id="classes-de-reglementation">Classes de réglementation<a class="headerlink" href="#classes-de-reglementation" title="Permanent link"></a></h1>
+<h1 id="classes-du-parcellaire">Classes du parcellaire<a class="headerlink" href="#classes-du-parcellaire" title="Permanent link"></a></h1>
+<h1 id="classes-des-batiments">Classes des bâtiments<a class="headerlink" href="#classes-des-batiments" title="Permanent link"></a></h1>
+<h1 id="classes-de-lespace-publique">Classes de l'espace publique<a class="headerlink" href="#classes-de-lespace-publique" title="Permanent link"></a></h1>
               
             </div>
           </div>
