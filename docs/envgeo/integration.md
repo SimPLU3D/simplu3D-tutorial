@@ -1,8 +1,8 @@
 ---
-title:  Environnement géographique - Processus d'intégration
+title: Environnement géographique - Processus d'intégration
 authors:
     - Mickaël Brasebin
-date: 2018-10-39
+date: 2018-10-26
 
 ---
 

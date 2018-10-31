@@ -1,10 +1,10 @@
 ---
-title:  Environnement géographique - Introduction
+title: Environnement géographique - Introduction
 authors:
     - Mickaël Brasebin
-date: 2018-10-39
----
+date: 2018-10-26
 
+---
 
 L'environnement géographique de SimPLU3D permet de décrire l'ensemble des objets géographiques nécessaires à la génération de formes bâties et notamment à la vérification des contraintes morphologiques. Ces objets géographiques peuvent concerner d'autres objets de la ville qui seront utilisés pour vérifier le respect des contraintes morphologiques (Par exemple, les routes, les types de limites séparatives) ou en lien avec l'application de règlements d'urbanisme d'un territoire (Par exemple, les plans de zonage ou les servitudes d'utilité publique).
 

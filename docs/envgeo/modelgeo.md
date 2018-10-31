@@ -1,8 +1,8 @@
 ---
-title:  Environnement géographique - Modèle géogrpahique
+title: Environnement géographique - Modèle géographique
 authors:
     - Mickaël Brasebin
-date: 2018-10-39
+date: 2018-10-26
 
 ---
 
@@ -28,15 +28,35 @@ Le modèle géographique est instancié dans le package *fr.ign.cogit.simplu3d.m
 
 
  La figure précédente présente l'ensemble des classes (sans leurs attributs) composant le modèle géographique de SimPLU3D. Quatre ensembles de classes seront présentées :
- -  les classes représentant la réglementation, c'est à dire les documents, les règles et les plans de zonage issus du PLU (ou d'autres réglementations locales) ;
- - les classes modélisant le parcellaire ;
- - les classes concernant la modélisation 3D des bâtiments ;
- - les classes concernant les espaces publiques.
- Avant de présenter les classes, la classe parent *Environnement* sera décrite, elle permet d'accéder aux différents objets du modèle.
+
+ - [les classes représentant la réglementation](#classes-de-reglementation), c'est à dire les documents, les règles et les plans de zonage issus du PLU (ou d'autres réglementations locales) ;
+ - [les classes modélisant le parcellaire](#classes-du-parcellaire) ;
+ - [les classes concernant la modélisation 3D des bâtiments](#classes-des-batiments) ;
+ - [les classes concernant les espaces publiques](#classes-de-lespace-publique).
+
+ Avant de présenter les classes, la classe [parent *Environnement*](#classe-environnement) sera décrite, elle permet d'accéder aux différents objets du modèle.
+
+
 
 Le modèle est certes complexe dans l'absolu, mais il n'est néanmoins (comme présenté dans l'[exemple de la simulation basique](../being/first_simulation.md)) pas nécessaire de renseigner toutes les classes pour permettre l'exécution du modèle. Seules les classes relatives aux parcelles doivent absolument être instanciées. Le fait de ne pas instancier une des classes du modèle rend impossible la capacité d'évaluer des contraintes s'appuyant sur les éléments non instanciés.
 
+Les diagrammes de classes sont générées avec le plugin [ObjectAID d'Eclipse](http://www.objectaid.com/) et les fichiers sont disponibles dans le dossier [*diagram* de SimPLU3D-rules](https://github.com/SimPLU3D/simplu3D-rules/tree/master/diagram/)
+
 # Classe Environnement
+
+La classe *Environnement* est une classe central dans le modèle de SimPLU3D car elle le point d'entrée pour accéder à l'ensemble des objets nécessaires pour vérifier le respect des règles morphologiques.
+
+
+![Image présentant la classe Environneemnt de SimPLU3D](./img/environnementdiagram.png)
+
+Elle est composée d'une série d'accesseurs qui permettent d'accéder aux objets présentés dans ce modèle (cf image ci dessus) et également au terrain qui servira de référence.
+
+L'instanciation d'un environnement s'effectue :
+
+- soit lors du chargement de données grâce à l'un des processus d'intégration existant (voir section sur [les processus d'intégration](integration.md)) ;
+- soit par le biais de la méthode statique *Environnement.createEnvironnement()* qui créé un environnement complètement vide.
+
+Dans tous les cas, l'objet environnement est unique, il s'agit d'un singleton que l'on peut récupérer par la méthode statique *Environnement.getInstance()*.
 
 # Classes de réglementation
 
@@ -44,4 +64,4 @@ Le modèle est certes complexe dans l'absolu, mais il n'est néanmoins (comme pr
 
 # Classes des bâtiments
 
-# Classe de l'espace publique
+# Classes de l'espace publique
