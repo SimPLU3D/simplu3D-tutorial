@@ -10,7 +10,6 @@ nav:
     - 'Modèle géographique détaillé': 'envgeo/modelgeo'
     - "Processus d'intégration": 'envgeo/integration'
     - "Tester l'intégration": 'envgeo/integration-test'
-    - "Personnaliser le processus d'intégration": 'envgeo/custom-integration'
 - 'Générateur de formes':
     - 'Introduction': 'generator/intro'
     - 'Principe de fonctionnement du générateur': 'generator/principe'

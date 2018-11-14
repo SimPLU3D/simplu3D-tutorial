@@ -6,6 +6,10 @@ date: 2018-10-26
 
 ---
 
-Comment vérifier que le processus d'intégration s'est bien déroulée ?
+L'objectif de cette page est de proposer deux méthodes pour vérifier la bonne intégration des données à partir d'un jeu de données complet.
 
-+ Future work : persistancy
+# Présentation du jeu de données
+
+# Export des informations du modèle sous forme de Shapefile
+
+# Visualisation 3D des informations du modèle

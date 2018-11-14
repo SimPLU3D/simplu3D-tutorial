@@ -144,13 +144,17 @@ Pas d'attribut utilisé.
 | Valeur de recul            | ATT_RECOIL            | RECOIL            | String |
 
 
-/**
- * Valeur de l'attribut de recul s'il existe
- */
-private static String ATT_RECOIL = "RECUL";
+
+# Code d'intégration
 
 
-# Description du code d'intégration
+Le code d'intégration se trouve si dessous, il est composé de 12 étapes. La première étape vise à changer de référentiel les sources de données pour éviter des erreurs numériques dues à la grande taille de coordonnées utilisée. Ainsi, il est possible de fixer à vrai le boolean *Environnement.TRANSLATE_TO_ZERO* pour activer cette transformation et d'assigner un jeu de coordonnées (classe *DirectPosition* de GeOxygene) à la variable *Environnement.dpTranslate*.
+
+Afin de produire un référentiel 3D, les données 2D  : parcelles, prescriptions, zonage et éventuellement voirie (si les données n'ont pas de Z) sont modifiées lors de la dernière étape dans la classe fr.ign.cogit.geoxygene.api.feature.IFeatureCollection.AssignZ. Deux types de transformations sont possibles :
+- Si le MNT set défini, les objets sont projetés à la surface de ce MNT ;
+- S'il n'est pas défini, un plan Z constant est utilisé (et fixé à travers la variable statique AssignZ.DEFAULT_Z ayant 0 comme valeur par défaut).
+
+
 
 ```JAVA
 public static Environnement load(IFeature featPLU, IFeatureCollection<IFeature> zoneColl,
@@ -281,3 +285,5 @@ public static Environnement load(IFeature featPLU, IFeatureCollection<IFeature> 
   return env;
 }
 ```
+
+Dans cette page, nous avons décrit les sources de données et les attributs nécessaires pour utiliser le processus d'intégration actuellement implémenté dans SimPLU3D. Dans l'étape suivante, nous présenterons deux méthodes pour visualiser et contrôler le processus d'intégration (pour rappel, il n'y a pour l'instant pas la possibilité de rendre persistant les instances du modèle).

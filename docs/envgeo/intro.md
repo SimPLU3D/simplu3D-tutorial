@@ -11,6 +11,5 @@ L'environnement géographique de SimPLU3D permet de décrire l'ensemble des obje
 L'ensemble des codes gérant cet aspect se trouve dans le dépôt [SimPLU3D-rules](https://github.com/SimPLU3D/simplu3D-rules). Il contient :
 
 - [un modèle géographique](modelgeo.md) ;
-- des [méthodes automatiques d'intégration](integration.md), pour renseigner automatiquement les classes, les attributs et les relations nécessaires au modèle à partir de données géographiques usuelles ;
-- un [exporteur](integration-test.md) pour visualiser dans un SIG les éléments créés ;
-- des possibilités de [paramétrer le processus d'intégration](custom-integration) afin de l'adapter à différents types de données.
+- des [méthodes automatiques d'intégration](integration.md), pour renseigner automatiquement les classes, les attributs et les relations nécessaires au modèle à partir de données géographiques usuelles à partir de sources de données Shapefile ou PostGIS ;
+- un [exporteur](integration-test.md) pour visualiser dans un SIG les éléments créé.
