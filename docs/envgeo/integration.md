@@ -19,19 +19,136 @@ Dans cette page, nous allons décrire tout d'abord les pré-requis en [fonction 
 
 # Sources de données utilisées
 
-La source de données peut intégrer des données [ShapeFile](#source-de-donnees-shapefile) ou [PostGIS](#source-de-donnees-postgis).
+La données utilisées pendant le processus d'intégration peuvent provenir de Shapefiles ou de PostGIS. Les classes permettant de lancer le processus et les constantes stockant le nom des sources de données utilisées  dépendent du choix de la source de données  [ShapeFiles](#source-de-donnees-shapefile) ou [PostGIS](#source-de-donnees-postgis). Dans tous les cas, seules les données parcellaires sont obligatoires.  Cependant, [les noms des attributs utilisés](#nom-des-attributs) sont les mêmes quelque soit la source et sont stockés au même endroit dans le code.
 
 ## Source de données ShapeFile
 
-### Nom des fichiers
+La classe permettant de charger les données provenant de ShapeFiles et contenant le nom des fichiers est fr.ign.cogit.simplu3d.io.nonStructDatabase.shp.LoaderSHP.
 
-### Nom d'attribut pour les données de  : 
-
-
+| Source de données         | Nom de la variable           | Valeur par défaut     | Type de géométrie                        |
+|:--------------------------|:-----------------------------|:----------------------|:-----------------------------------------|
+| Document d'Urbanisme      | NOM_FICHIER_PLU              | doc_urba.shp          | Non utilisées                            |
+| Zonage réglementaire      | NOM_FICHIER_ZONAGE           | zone_urba.shp         | (Multi-) Polygone 2D (sans intersection) |
+| Parcelles                 | NOM_FICHIER_PARCELLE         | parcelle.shp          | Polygones 2D (sans intersection)         |
+| Bâtiments                 | NOM_FICHIER_BATIMENTS        | batiment.shp"         | Multi-Polygone 3D                        |
+| Route                     | NOM_FICHIER_VOIRIE           | route.shp             | (Multi-) Linéaire 2D ou 3D               |
+| MNT                       | NOM_FICHIER_TERRAIN          | mnt.asc               | MNT grille maillé                        |
+| Prescriptions ponctuelles | NOM_FICHIER_PRESC_PONCTUELLE | prescription_pct.shp  | (Multi -) Ponctuelle 2D                  |
+| Prescriptions linéaires   | NOM_FICHIER_PRESC_LINEAIRE   | prescription_lin.shp  | (Multi-) Linéaire 2D                     |
+| Prescriptions surfaciques | NOM_FICHIER_PRESC_SURFACIQUE | prescription_surf.shp | (Multi-) Surfacique 2D                   |
 
 ## Source de données PostGIS
 
-### Nom des tables
+La classe permettant de charger les données provenant de PostGIS et contenant le nom des tabmes est fr.ign.cogit.simplu3d.io.nonStructDatabase.postgis.LoaderPostGIS. Le MNT est stocké comme un raster dans PostGIS.
+
+| Source de données         | Nom de la variable       | Valeur par défaut | Type de géométrie                        |
+|:--------------------------|:-------------------------|:------------------|:-----------------------------------------|
+| Document d'Urbanisme      | NOM_TABLE_PLU            | plu               | Non utilisées                            |
+| Zonage réglementaire      | NOM_TABLE_ZONAGE         | zonage            | (Multi-) Polygone 2D (sans intersection) |
+| Parcelles                 | NOM_FICHIER_PARCELLE     | parcelle          | Polygones 2D (sans intersection)         |
+| Bâtiments                 | NOM_TABLE_BATIMENTS      | batiment          | Multi-Polygone 3D                        |
+| Route                     | NOM_TABLE_VOIRIE         | route             | (Multi-) Linéaire 2D ou 3D               |
+| MNT                       | NOM_FICHIER_TERRAIN      | mnt               | MNT grille maillé                        |
+| Prescriptions ponctuelles | NOM_TABLE_PRESC_PCT      | prescriptionpct   | (Multi -) Ponctuelle 2D                  |
+| Prescriptions linéaires   | NOM_TABLE_PRESC_LINEAIRE | prescriptionlin   | (Multi-) Linéaire 2D                     |
+| Prescriptions surfaciques | NOM_TABLE_PRESC_SURF     | prescriptionsurf  | (Multi-) Surfacique 2D                   |
+
+
+
+## Nom des attributs
+
+Pour les différentes sources de données, les noms des attributs utilisés dans le processus d'intégration sont stockées dans la classe : fr.ign.cogit.simplu3d.io.feature.AttribNames.  
+
+### Document d'urbanisme
+
+Les attributs utilisés ont été établis en accord avec la norme CNIG - COVADIS sur la dématérisalisation des documents d'urbanisme.
+
+| Attribut          | Nom de la variable | Valeur par défaut | Type            |
+|:------------------|:-------------------|:------------------|:----------------|
+| Identifiant       | ATT_ID_URBA        | IDURBA            | String          |
+| Type de document  | ATT_TYPE_DOC       | TYPEDOC           | String          |
+| Date Approbation  | ATT_DATE_APPRO     | DATAPPRO          | Date (yyyyMMdd) |
+| Date Fin          | ATT_DATE_FIN       | DATEFIN           | Date (yyyyMMdd) |
+| Intercommunalité  | ATT_INTER_CO       | INTERCO           | String          |
+| Numéro SIREN      | ATT_SIREN          | SIREN             | String          |
+| État du document  | ATT_ETAT           | ETAT              | String          |
+| Nom de la région  | ATT_NOM_REG        | NOMREG            | String          |
+| URL de la région  | ATT_URL_REG        | URLREG            | String          |
+| Nom du plan       | ATT_NOM_PLAN       | NOMPLAN           | String          |
+| URL du plan       | ATT_URL_PLAN       | URLPLAN           | String          |
+| Site web          | ATT_SITE_WEB       | SITEWEB           | String          |
+| Type ref          | ATT_TYPE_REF       | TYPEREF           | String          |
+| Date de référence | ATT_DATE_REF       | DATEREF           | Date (yyyy)     |
+
+
+
+### Zonage réglementaire
+
+Les attributs utilisés ont été établis en accord avec la norme CNIG - COVADIS sur la dématérisalisation des documents d'urbanisme.
+
+| Attribut               | Nom de la variable  | Valeur par défaut | Type            |
+|:-----------------------|:--------------------|:------------------|:----------------|
+| Libellé                | ATT_LIBELLE         | LIBELLE           | String          |
+| Libellé long           | ATT_LIBELONG        | LIBELONG          | String          |
+| Type de zone           | ATT_TYPE_ZONE       | TYPEZONE          | String          |
+| Destination dominante  | ATT_DESTDOMI        | DESTDOMI          | String          |
+| Nom de fichier associé | ATT_NOMFIC          | NOMFIC            | String          |
+| URL du fichier associé | ATT_URLFIC          | URLFIC            | String          |
+| INSEE                  | ATT_INSEE           | INSEE             | String          |
+| Date d'approbation     | VALIDITY_DATE_APPRO | DATAPPRO          | Date (yyyyMMdd) |
+| Date de validation     | VALIDITY_DATE_VALID | DATVALID          | Date (yyyyMMdd) |
+| Commentaires éventuels | ATT_TEXT            | TEXT              | String          |
+
+### Parcelles
+
+Chaque parcelle a un identifiant, il est soit encodé directement avec l'attribut *ATT_CODE_PARC* ou il construit par la concaténation des attributs valeurs des *ATT_BDP_CODE_DEP + ATT_BDP_CODE_COM + ATT_BDP_COM_ABS + ATT_BDP_SECTION + ATT_BDP_NUMERO* et accessible par la méthode *getCode* de la classe *CadastralParcel*.
+
+L'attribut *ATT_HAS_TO_BE_SIMULATED* est facultatif et peut être utilisé pour indiquer s'il faut simuler ou non un parcelle. Il peut être boolean, entier (0 pour false et 1 pour true) ou même une chaîne de caractère (true ou false).
+
+
+| Attribut                                 | Nom de la variable      | Valeur par défaut | Type                     |
+|:-----------------------------------------|:------------------------|:------------------|:-------------------------|
+| Identifiant de la parcelle               | ATT_CODE_PARC           | CODE              | String                   |
+| Code du département                      | ATT_BDP_CODE_DEP        | CODE_DEP          | String                   |
+| Code de la commune                       | ATT_BDP_CODE_COM        | CODE_COM          | String                   |
+| Complément pour code INSEE               | ATT_BDP_COM_ABS         | COM_ABS           | String                   |
+| Section cadastrale                       | ATT_BDP_SECTION         | SECTION           | String                   |
+| Numéro de parcelle                       | ATT_BDP_NUMERO          | NUMERO            | String                   |
+| Indique si la parcelle doit être simulée | ATT_HAS_TO_BE_SIMULATED | SIMUL             | Boolean, Integer, String |
+
+
+### Bâtiments
+
+Pas d'attribut utilisé.
+
+
+### Route
+
+| Attribut       | Nom de la variable | Valeur par défaut | Type   |
+|:---------------|:-------------------|:------------------|:-------|
+| Nom de la rue  | ATT_NOM_RUE        | NOM_RUE_G         | String |
+| Largeur en m   | ATT_LARGEUR        | LARGEUR           | Double |
+| Type de la rue | ATT_TYPE_ROAD      | NATURE            | String |
+
+
+###  MNT
+
+Pas d'attribut utilisé.
+
+###  Prescriptions ponctuelles, linéaires et surfaciques
+
+| Attribut                   | Nom de la variable    | Valeur par défaut | Type   |
+|:---------------------------|:----------------------|:------------------|:-------|
+| Type de prescription       | ATT_TYPE_PRESCRIPTION | TYPEPSC           | String |
+| Libellé de la prescription | ATT_LABEL             | LIBELLE           | Double |
+| Valeur de recul            | ATT_RECOIL            | RECOIL            | String |
+
+
+/**
+ * Valeur de l'attribut de recul s'il existe
+ */
+private static String ATT_RECOIL = "RECUL";
+
 
 # Description du code d'intégration
 
