@@ -97,10 +97,6 @@
                     
     <a class="" href="../integration-test">Tester l'intégration</a>
                 </li>
-                <li class="">
-                    
-    <a class="" href="../custom-integration">Personnaliser le processus d'intégration</a>
-                </li>
     </ul>
 	    </li>
           
@@ -219,7 +215,583 @@
           <div role="main">
             <div class="section">
               
-                <p>Données en entrée et la présentation du modèle géographique détaillé comme en chapitre 3 de la thèse</p>
+                <h1 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h1>
+<p>Un processus d'intégration est déjà défini dans SimPLU3D. Il permet de créer un objet de la classe <em>Environnement</em> en renseignant un certain nombre d'attributs.</p>
+<p>Le processus d'intégration peut prendre en entrée des données au format ShapeFile (avec la classe <em>fr.ign.cogit.simplu3d.io.nonStructDatabase.shp.LoaderSHP</em>)  ou des données dans une base de données PostGIS (avec la classe <em>fr.ign.cogit.simplu3d.io.nonStructDatabase.postgis.loadPostGIS</em>). Quelque soit la classe choisie, les deux classes ont une méthode <em>load</em>, qui va traduire les entités provenant de ces sources de données en collection de <em>IFeature</em> de GeOxygene et faire appelle à la méthode <em>load</em> de la classe <em>fr.ign.cogit.simplu3d.io.LoadFromCollection</em>.</p>
+<p>Dans cette page, nous allons décrire tout d'abord les pré-requis en <a href="#sources-de-donnees-utilisees">fonction de la source de données utilisée</a>, puis décrire dans le détail <a href="#description-du-code-dintegration">le processus d'intégration</a>.</p>
+<blockquote>
+<p><img alt="#f03c15" src="https://placehold.it/15/f03c15/000000?text=+" /> <strong>Attention</strong>: actuellement la persistance n'est pas gérée, donc le processus d'intégration automatique est pour le moment le seul moyen d'utiliser le modèle géographique convenablement.</p>
+</blockquote>
+<h1 id="sources-de-donnees-utilisees">Sources de données utilisées<a class="headerlink" href="#sources-de-donnees-utilisees" title="Permanent link"></a></h1>
+<p>La données utilisées pendant le processus d'intégration peuvent provenir de Shapefiles ou de PostGIS. Les classes permettant de lancer le processus et les constantes stockant le nom des sources de données utilisées  dépendent du choix de la source de données  <a href="#source-de-donnees-shapefile">ShapeFiles</a> ou <a href="#source-de-donnees-postgis">PostGIS</a>. Dans tous les cas, seules les données parcellaires sont obligatoires.  Cependant, <a href="#nom-des-attributs">les noms des attributs utilisés</a> sont les mêmes quelque soit la source et sont stockés au même endroit dans le code.</p>
+<h2 id="source-de-donnees-shapefile">Source de données ShapeFile<a class="headerlink" href="#source-de-donnees-shapefile" title="Permanent link"></a></h2>
+<p>La classe permettant de charger les données provenant de ShapeFiles et contenant le nom des fichiers est fr.ign.cogit.simplu3d.io.nonStructDatabase.shp.LoaderSHP.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Source de données</th>
+<th align="left">Nom de la variable</th>
+<th align="left">Valeur par défaut</th>
+<th align="left">Type de géométrie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Document d'Urbanisme</td>
+<td align="left">NOM_FICHIER_PLU</td>
+<td align="left">doc_urba.shp</td>
+<td align="left">Non utilisées</td>
+</tr>
+<tr>
+<td align="left">Zonage réglementaire</td>
+<td align="left">NOM_FICHIER_ZONAGE</td>
+<td align="left">zone_urba.shp</td>
+<td align="left">(Multi-) Polygone 2D (sans intersection)</td>
+</tr>
+<tr>
+<td align="left">Parcelles</td>
+<td align="left">NOM_FICHIER_PARCELLE</td>
+<td align="left">parcelle.shp</td>
+<td align="left">Polygones 2D (sans intersection)</td>
+</tr>
+<tr>
+<td align="left">Bâtiments</td>
+<td align="left">NOM_FICHIER_BATIMENTS</td>
+<td align="left">batiment.shp"</td>
+<td align="left">Multi-Polygone 3D</td>
+</tr>
+<tr>
+<td align="left">Route</td>
+<td align="left">NOM_FICHIER_VOIRIE</td>
+<td align="left">route.shp</td>
+<td align="left">(Multi-) Linéaire 2D ou 3D</td>
+</tr>
+<tr>
+<td align="left">MNT</td>
+<td align="left">NOM_FICHIER_TERRAIN</td>
+<td align="left">mnt.asc</td>
+<td align="left">MNT grille maillé</td>
+</tr>
+<tr>
+<td align="left">Prescriptions ponctuelles</td>
+<td align="left">NOM_FICHIER_PRESC_PONCTUELLE</td>
+<td align="left">prescription_pct.shp</td>
+<td align="left">(Multi -) Ponctuelle 2D</td>
+</tr>
+<tr>
+<td align="left">Prescriptions linéaires</td>
+<td align="left">NOM_FICHIER_PRESC_LINEAIRE</td>
+<td align="left">prescription_lin.shp</td>
+<td align="left">(Multi-) Linéaire 2D</td>
+</tr>
+<tr>
+<td align="left">Prescriptions surfaciques</td>
+<td align="left">NOM_FICHIER_PRESC_SURFACIQUE</td>
+<td align="left">prescription_surf.shp</td>
+<td align="left">(Multi-) Surfacique 2D</td>
+</tr>
+</tbody>
+</table>
+<h2 id="source-de-donnees-postgis">Source de données PostGIS<a class="headerlink" href="#source-de-donnees-postgis" title="Permanent link"></a></h2>
+<p>La classe permettant de charger les données provenant de PostGIS et contenant le nom des tabmes est fr.ign.cogit.simplu3d.io.nonStructDatabase.postgis.LoaderPostGIS. Le MNT est stocké comme un raster dans PostGIS.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Source de données</th>
+<th align="left">Nom de la variable</th>
+<th align="left">Valeur par défaut</th>
+<th align="left">Type de géométrie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Document d'Urbanisme</td>
+<td align="left">NOM_TABLE_PLU</td>
+<td align="left">plu</td>
+<td align="left">Non utilisées</td>
+</tr>
+<tr>
+<td align="left">Zonage réglementaire</td>
+<td align="left">NOM_TABLE_ZONAGE</td>
+<td align="left">zonage</td>
+<td align="left">(Multi-) Polygone 2D (sans intersection)</td>
+</tr>
+<tr>
+<td align="left">Parcelles</td>
+<td align="left">NOM_FICHIER_PARCELLE</td>
+<td align="left">parcelle</td>
+<td align="left">Polygones 2D (sans intersection)</td>
+</tr>
+<tr>
+<td align="left">Bâtiments</td>
+<td align="left">NOM_TABLE_BATIMENTS</td>
+<td align="left">batiment</td>
+<td align="left">Multi-Polygone 3D</td>
+</tr>
+<tr>
+<td align="left">Route</td>
+<td align="left">NOM_TABLE_VOIRIE</td>
+<td align="left">route</td>
+<td align="left">(Multi-) Linéaire 2D ou 3D</td>
+</tr>
+<tr>
+<td align="left">MNT</td>
+<td align="left">NOM_FICHIER_TERRAIN</td>
+<td align="left">mnt</td>
+<td align="left">MNT grille maillé</td>
+</tr>
+<tr>
+<td align="left">Prescriptions ponctuelles</td>
+<td align="left">NOM_TABLE_PRESC_PCT</td>
+<td align="left">prescriptionpct</td>
+<td align="left">(Multi -) Ponctuelle 2D</td>
+</tr>
+<tr>
+<td align="left">Prescriptions linéaires</td>
+<td align="left">NOM_TABLE_PRESC_LINEAIRE</td>
+<td align="left">prescriptionlin</td>
+<td align="left">(Multi-) Linéaire 2D</td>
+</tr>
+<tr>
+<td align="left">Prescriptions surfaciques</td>
+<td align="left">NOM_TABLE_PRESC_SURF</td>
+<td align="left">prescriptionsurf</td>
+<td align="left">(Multi-) Surfacique 2D</td>
+</tr>
+</tbody>
+</table>
+<h2 id="nom-des-attributs">Nom des attributs<a class="headerlink" href="#nom-des-attributs" title="Permanent link"></a></h2>
+<p>Pour les différentes sources de données, les noms des attributs utilisés dans le processus d'intégration sont stockées dans la classe : fr.ign.cogit.simplu3d.io.feature.AttribNames.  </p>
+<h3 id="document-durbanisme">Document d'urbanisme<a class="headerlink" href="#document-durbanisme" title="Permanent link"></a></h3>
+<p>Les attributs utilisés ont été établis en accord avec la norme CNIG - COVADIS sur la dématérisalisation des documents d'urbanisme.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Attribut</th>
+<th align="left">Nom de la variable</th>
+<th align="left">Valeur par défaut</th>
+<th align="left">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Identifiant</td>
+<td align="left">ATT_ID_URBA</td>
+<td align="left">IDURBA</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">Type de document</td>
+<td align="left">ATT_TYPE_DOC</td>
+<td align="left">TYPEDOC</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">Date Approbation</td>
+<td align="left">ATT_DATE_APPRO</td>
+<td align="left">DATAPPRO</td>
+<td align="left">Date (yyyyMMdd)</td>
+</tr>
+<tr>
+<td align="left">Date Fin</td>
+<td align="left">ATT_DATE_FIN</td>
+<td align="left">DATEFIN</td>
+<td align="left">Date (yyyyMMdd)</td>
+</tr>
+<tr>
+<td align="left">Intercommunalité</td>
+<td align="left">ATT_INTER_CO</td>
+<td align="left">INTERCO</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">Numéro SIREN</td>
+<td align="left">ATT_SIREN</td>
+<td align="left">SIREN</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">État du document</td>
+<td align="left">ATT_ETAT</td>
+<td align="left">ETAT</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">Nom de la région</td>
+<td align="left">ATT_NOM_REG</td>
+<td align="left">NOMREG</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">URL de la région</td>
+<td align="left">ATT_URL_REG</td>
+<td align="left">URLREG</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">Nom du plan</td>
+<td align="left">ATT_NOM_PLAN</td>
+<td align="left">NOMPLAN</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">URL du plan</td>
+<td align="left">ATT_URL_PLAN</td>
+<td align="left">URLPLAN</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">Site web</td>
+<td align="left">ATT_SITE_WEB</td>
+<td align="left">SITEWEB</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">Type ref</td>
+<td align="left">ATT_TYPE_REF</td>
+<td align="left">TYPEREF</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">Date de référence</td>
+<td align="left">ATT_DATE_REF</td>
+<td align="left">DATEREF</td>
+<td align="left">Date (yyyy)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="zonage-reglementaire">Zonage réglementaire<a class="headerlink" href="#zonage-reglementaire" title="Permanent link"></a></h3>
+<p>Les attributs utilisés ont été établis en accord avec la norme CNIG - COVADIS sur la dématérisalisation des documents d'urbanisme.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Attribut</th>
+<th align="left">Nom de la variable</th>
+<th align="left">Valeur par défaut</th>
+<th align="left">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Libellé</td>
+<td align="left">ATT_LIBELLE</td>
+<td align="left">LIBELLE</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">Libellé long</td>
+<td align="left">ATT_LIBELONG</td>
+<td align="left">LIBELONG</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">Type de zone</td>
+<td align="left">ATT_TYPE_ZONE</td>
+<td align="left">TYPEZONE</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">Destination dominante</td>
+<td align="left">ATT_DESTDOMI</td>
+<td align="left">DESTDOMI</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">Nom de fichier associé</td>
+<td align="left">ATT_NOMFIC</td>
+<td align="left">NOMFIC</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">URL du fichier associé</td>
+<td align="left">ATT_URLFIC</td>
+<td align="left">URLFIC</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">INSEE</td>
+<td align="left">ATT_INSEE</td>
+<td align="left">INSEE</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">Date d'approbation</td>
+<td align="left">VALIDITY_DATE_APPRO</td>
+<td align="left">DATAPPRO</td>
+<td align="left">Date (yyyyMMdd)</td>
+</tr>
+<tr>
+<td align="left">Date de validation</td>
+<td align="left">VALIDITY_DATE_VALID</td>
+<td align="left">DATVALID</td>
+<td align="left">Date (yyyyMMdd)</td>
+</tr>
+<tr>
+<td align="left">Commentaires éventuels</td>
+<td align="left">ATT_TEXT</td>
+<td align="left">TEXT</td>
+<td align="left">String</td>
+</tr>
+</tbody>
+</table>
+<h3 id="parcelles">Parcelles<a class="headerlink" href="#parcelles" title="Permanent link"></a></h3>
+<p>Chaque parcelle a un identifiant, il est soit encodé directement avec l'attribut <em>ATT_CODE_PARC</em> ou il construit par la concaténation des attributs valeurs des <em>ATT_BDP_CODE_DEP + ATT_BDP_CODE_COM + ATT_BDP_COM_ABS + ATT_BDP_SECTION + ATT_BDP_NUMERO</em> et accessible par la méthode <em>getCode</em> de la classe <em>CadastralParcel</em>.</p>
+<p>L'attribut <em>ATT_HAS_TO_BE_SIMULATED</em> est facultatif et peut être utilisé pour indiquer s'il faut simuler ou non un parcelle. Il peut être boolean, entier (0 pour false et 1 pour true) ou même une chaîne de caractère (true ou false).</p>
+<table>
+<thead>
+<tr>
+<th align="left">Attribut</th>
+<th align="left">Nom de la variable</th>
+<th align="left">Valeur par défaut</th>
+<th align="left">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Identifiant de la parcelle</td>
+<td align="left">ATT_CODE_PARC</td>
+<td align="left">CODE</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">Code du département</td>
+<td align="left">ATT_BDP_CODE_DEP</td>
+<td align="left">CODE_DEP</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">Code de la commune</td>
+<td align="left">ATT_BDP_CODE_COM</td>
+<td align="left">CODE_COM</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">Complément pour code INSEE</td>
+<td align="left">ATT_BDP_COM_ABS</td>
+<td align="left">COM_ABS</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">Section cadastrale</td>
+<td align="left">ATT_BDP_SECTION</td>
+<td align="left">SECTION</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">Numéro de parcelle</td>
+<td align="left">ATT_BDP_NUMERO</td>
+<td align="left">NUMERO</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">Indique si la parcelle doit être simulée</td>
+<td align="left">ATT_HAS_TO_BE_SIMULATED</td>
+<td align="left">SIMUL</td>
+<td align="left">Boolean, Integer, String</td>
+</tr>
+</tbody>
+</table>
+<h3 id="batiments">Bâtiments<a class="headerlink" href="#batiments" title="Permanent link"></a></h3>
+<p>Pas d'attribut utilisé.</p>
+<h3 id="route">Route<a class="headerlink" href="#route" title="Permanent link"></a></h3>
+<table>
+<thead>
+<tr>
+<th align="left">Attribut</th>
+<th align="left">Nom de la variable</th>
+<th align="left">Valeur par défaut</th>
+<th align="left">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Nom de la rue</td>
+<td align="left">ATT_NOM_RUE</td>
+<td align="left">NOM_RUE_G</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">Largeur en m</td>
+<td align="left">ATT_LARGEUR</td>
+<td align="left">LARGEUR</td>
+<td align="left">Double</td>
+</tr>
+<tr>
+<td align="left">Type de la rue</td>
+<td align="left">ATT_TYPE_ROAD</td>
+<td align="left">NATURE</td>
+<td align="left">String</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mnt">MNT<a class="headerlink" href="#mnt" title="Permanent link"></a></h3>
+<p>Pas d'attribut utilisé.</p>
+<h3 id="prescriptions-ponctuelles-lineaires-et-surfaciques">Prescriptions ponctuelles, linéaires et surfaciques<a class="headerlink" href="#prescriptions-ponctuelles-lineaires-et-surfaciques" title="Permanent link"></a></h3>
+<table>
+<thead>
+<tr>
+<th align="left">Attribut</th>
+<th align="left">Nom de la variable</th>
+<th align="left">Valeur par défaut</th>
+<th align="left">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Type de prescription</td>
+<td align="left">ATT_TYPE_PRESCRIPTION</td>
+<td align="left">TYPEPSC</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">Libellé de la prescription</td>
+<td align="left">ATT_LABEL</td>
+<td align="left">LIBELLE</td>
+<td align="left">Double</td>
+</tr>
+<tr>
+<td align="left">Valeur de recul</td>
+<td align="left">ATT_RECOIL</td>
+<td align="left">RECOIL</td>
+<td align="left">String</td>
+</tr>
+</tbody>
+</table>
+<h1 id="code-dintegration">Code d'intégration<a class="headerlink" href="#code-dintegration" title="Permanent link"></a></h1>
+<p>Le code d'intégration se trouve si dessous, il est composé de 12 étapes. La première étape vise à changer de référentiel les sources de données pour éviter des erreurs numériques dues à la grande taille de coordonnées utilisée. Ainsi, il est possible de fixer à vrai le boolean <em>Environnement.TRANSLATE_TO_ZERO</em> pour activer cette transformation et d'assigner un jeu de coordonnées (classe <em>DirectPosition</em> de GeOxygene) à la variable <em>Environnement.dpTranslate</em>.</p>
+<p>Afin de produire un référentiel 3D, les données 2D  : parcelles, prescriptions, zonage et éventuellement voirie (si les données n'ont pas de Z) sont modifiées lors de la dernière étape dans la classe fr.ign.cogit.geoxygene.api.feature.IFeatureCollection.AssignZ. Deux types de transformations sont possibles :
+- Si le MNT set défini, les objets sont projetés à la surface de ce MNT ;
+- S'il n'est pas défini, un plan Z constant est utilisé (et fixé à travers la variable statique AssignZ.DEFAULT_Z ayant 0 comme valeur par défaut).</p>
+<pre><code class="JAVA">public static Environnement load(IFeature featPLU, IFeatureCollection&lt;IFeature&gt; zoneColl,
+    IFeatureCollection&lt;IFeature&gt; parcelleColl, IFeatureCollection&lt;IFeature&gt; voirieColl,
+    IFeatureCollection&lt;IFeature&gt; batiColl, IFeatureCollection&lt;IFeature&gt; prescriptions,
+    AbstractDTM dtm, Environnement env) throws Exception {
+
+  // Etape 0 : doit on translater tous les objets ?
+
+  if (Environnement.TRANSLATE_TO_ZERO) {
+    Environnement.dpTranslate = zoneColl.envelope().center();
+    for (IFeature feat : zoneColl) {
+      feat.setGeom(feat.getGeom().translate(-Environnement.dpTranslate.getX(),
+          -Environnement.dpTranslate.getY(), 0));
+    }
+    for (IFeature feat : parcelleColl) {
+      feat.setGeom(feat.getGeom().translate(-Environnement.dpTranslate.getX(),
+          -Environnement.dpTranslate.getY(), 0));
+    }
+    for (IFeature feat : voirieColl) {
+      feat.setGeom(feat.getGeom().translate(-Environnement.dpTranslate.getX(),
+          -Environnement.dpTranslate.getY(), 0));
+    }
+    for (IFeature feat : batiColl) {
+      feat.setGeom(feat.getGeom().translate(-Environnement.dpTranslate.getX(),
+          -Environnement.dpTranslate.getY(), 0));
+    }
+    for (IFeature feat : prescriptions) {
+      feat.setGeom(feat.getGeom().translate(-Environnement.dpTranslate.getX(),
+          -Environnement.dpTranslate.getY(), 0));
+    }
+  }
+
+  // Etape 1 : création de l'objet PLU
+  logger.info(&quot;Read UrbaDocument...&quot;);
+  UrbaDocument plu;
+  if (featPLU == null) {
+    plu = new UrbaDocument();
+  } else {
+    UrbaDocumentReader urbaDocumentReader = new UrbaDocumentReader();
+    plu = urbaDocumentReader.read(featPLU);
+  }
+  env.setUrbaDocument(plu);
+
+  // Etape 2 : création des zones et assignation des règles aux zones
+  logger.info(&quot;Loading UrbaZone...&quot;);
+  UrbaZoneReader urbaZoneReader = new UrbaZoneReader();
+  IFeatureCollection&lt;UrbaZone&gt; zones = new FT_FeatureCollection&lt;&gt;();
+  zones.addAll(urbaZoneReader.readAll(zoneColl));
+
+  // Etape 3 : assignement des zonages au PLU
+  env.setUrbaZones(zones);
+
+  logger.info(&quot;Loading CadastralParcel and compute ParcelBoundary...&quot;);
+  // Etape 4 : chargement des parcelles et créations des bordures
+  IFeatureCollection&lt;CadastralParcel&gt; parcelles = CadastralParcelLoader
+      .assignBordureToParcelleWithOrientation(parcelleColl);
+  env.setCadastralParcels(parcelles);
+
+  // Etape 5 : import des sous parcelles
+  logger.info(&quot;Loading SubParcels...&quot;);
+  {
+    IFeatureCollection&lt;SubParcel&gt; sousParcelles = new FT_FeatureCollection&lt;&gt;();
+    SubParcelGenerator subParcelGenerator = new SubParcelGenerator(zones);
+    for (CadastralParcel cadastralParcel : parcelles) {
+      sousParcelles.addAll(subParcelGenerator.createSubParcels(cadastralParcel));
+    }
+    env.setSubParcels(sousParcelles);
+  }
+
+  // Etape 6 : création des unités foncirèes
+  logger.info(&quot;Loading BasicPropertyUnits...&quot;);
+  BasicPropertyUnitGenerator bpuBuilder = new BasicPropertyUnitGenerator(parcelles);
+  IFeatureCollection&lt;BasicPropertyUnit&gt; collBPU = bpuBuilder.createPropertyUnits();
+  env.setBpU(collBPU);
+
+  // Etape 7 : import des bâtiments
+  logger.info(&quot;Loading Buildings...&quot;);
+  BuildingReader buildingReader = new BuildingReader();
+  Collection&lt;Building&gt; buildings = buildingReader.readAll(batiColl);
+  env.getBuildings().addAll(buildings);
+
+  // Etape 7.1 : assignation des batiments aux BpU
+  logger.info(&quot;Assigning building to SubParcels...&quot;);
+  AssignBuildingPartToSubParcel.assign(buildings, collBPU);
+
+  // Etape 8 : chargement des voiries
+  logger.info(&quot;Loading Roads...&quot;);
+  RoadReader roadReader = new RoadReader();
+  IFeatureCollection&lt;Road&gt; roads = new FT_FeatureCollection&lt;&gt;();
+  roads.addAll(roadReader.readAll(voirieColl));
+  env.setRoads(roads);
+
+  // Etape 9 : on affecte les liens entres une bordure et ses objets
+  // adjacents (bordure sur route =&gt; route + relation entre les limites de
+  // parcelles)
+  logger.info(&quot;Assigning Roads to ParcelBoundaries...&quot;);
+  AssignRoadToParcelBoundary.process(parcelles, roads);
+
+  // Etape 10 : on détecte les limites séparatives opposées
+  logger.info(&quot;Assigning opposite boundaries to parcel boundaries...&quot;);
+  AssignOppositeToBoundary.process(parcelles);
+
+  // Etape 11 : on importe les alignements
+  logger.info(&quot;Loading Prescriptions...&quot;);
+  {
+    PrescriptionReader prescriptionReader = new PrescriptionReader();
+    Collection&lt;Prescription&gt; prescriptionsRead = prescriptionReader.readAll(prescriptions);
+    env.getPrescriptions().addAll(prescriptionsRead);
+  }
+
+  logger.info(&quot;Assign Z to features...&quot;);
+  // Etape 12 : on affecte des z à tout ce bon monde // - parcelles,
+  // sous-parcelles route sans z, zonage, les bordures etc...
+  env.setTerrain(dtm);
+  try {
+    AssignZ.toParcelle(env.getCadastralParcels(), dtm, SURSAMPLED);
+    AssignZ.toSousParcelle(env.getSubParcels(), dtm, SURSAMPLED);
+    AssignZ.toVoirie(env.getRoads(), dtm, SURSAMPLED);
+    AssignZ.toPrescriptions(env.getPrescriptions(), dtm, SURSAMPLED);
+    AssignZ.toZone(env.getUrbaZones(), dtm, false);
+  } catch (Exception e) {
+    e.printStackTrace();
+  }
+
+  logger.info(&quot;Loading complete&quot;);
+
+  return env;
+}
+</code></pre>
+
+<p>Dans cette page, nous avons décrit les sources de données et les attributs nécessaires pour utiliser le processus d'intégration actuellement implémenté dans SimPLU3D. Dans l'étape suivante, nous présenterons deux méthodes pour visualiser et contrôler le processus d'intégration (pour rappel, il n'y a pour l'instant pas la possibilité de rendre persistant les instances du modèle).</p>
               
             </div>
           </div>
