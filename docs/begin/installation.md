@@ -33,6 +33,9 @@ Les étapes suivantes sont nécessaires :
 5 - Lancer une construction du projet avec Eclipse : **Project > Build project**
 Vous pouvez désormais exécuter la [première simulation](first_simulation.md).
 
+
+Néanmoins, pour avoir accès au code source pendant le tutoriel, il est recommandé d'installer en local les codes issus de [SimPLU3D](https://github.com/SimPLU3D/simplu3D) et [SimPLU3D-rules](https://github.com/SimPLU3D/simplu3D-tutorial).
+
 ## Installer SimPLU3D dans un autre projet
 
 L'installation s'effectue simplement en créant un projet qui pointe vers les dépendances de SimPLU3D. Les étapes sont les suivantes :
