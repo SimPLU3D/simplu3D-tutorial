@@ -37,19 +37,26 @@ L'exécution du code génère une série de ShapeFiles qui permet la production 
 
 Les géométries en sortie sont triangulées car plaquées sur le MNT (s'il est utilisé). On retrouve les fichiers suivantes :
 
-| Nom du fichier          | Contenu                                    | Attributs intéressants                                                                                                              |
-|:------------------------|:-------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|
-| bpu.shp                 | Unités foncières                           |                                                                                                                                     |
-| parcelles.shp           | Parcelles                                  | **ID** : Code <br /> **BounNum** : Nombre de limites séparatives <br /> **BuildNum** : Nombre de bâtiments                          |
-| subParcels.shp          | Sous-parcelles                             | **NB Bat** : Nombre de parties de bâtiments                                                                                         |
-| bordures.shp            | Limites séparatives des parcelles          | **Type** : type de la limite <br /> **IDPAR** : identifiant de la parcelle ** <br /> **Adj** : Identifiant de la parcelle adjacente |
-| bordures_translated.shp | Limites séparatives translatée             | **Type** : type de la limite <br/> **SIDE** : côté de la limite (droite ou gauche)                                                  |
-| opposites.shp           | Lien entre une limite et la limite opposée |                                                                                                                                     |
-| footprints.shp          | Emprise des bâtiments 3D                   |                                                                                                                                     |
-| faitage.shp             | Faîtage des bâtiments                      |                                                                                                                                     |
-| pignon.shp              | Pignons des bâtiments                      |                                                                                                                                     |
-| roads.shp               | Surface des routes                         | **Nom** : nom des routes                                                                                                            |
+| Nom du fichier          | Contenu                                    | Attributs intéressants                                                                                                                                                                   |
+|:------------------------|:-------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| bpu.shp                 | Unités foncières                           |                                                                                                                                                                                          |
+| parcelles.shp           | Parcelles                                  | **ID** : Code <br /> **BounNum** : Nombre de limites séparatives <br /> **BuildNum** : Nombre de bâtiments                                                                               |
+| subParcels.shp          | Sous-parcelles                             | **NB Bat** : Nombre de parties de bâtiments                                                                                                                                              |
+| bordures.shp            | Limites séparatives des parcelles          | **Type** : type de la limite <br /> **IDPAR** : identifiant de la parcelle <br /> **Adj** : Identifiant de la parcelle adjacente <br />  **SIDE** : côté de la limite (droite ou gauche) |
+| bordures_translated.shp | Limites séparatives translatée             | **Type** : type de la limite <br/> **SIDE** : côté de la limite (droite ou gauche)                                                                                                       |
+| opposites.shp           | Lien entre une limite et la limite opposée |                                                                                                                                                                                          |
+| footprints.shp          | Emprise des bâtiments 3D                   |                                                                                                                                                                                          |
+| faitage.shp             | Faîtage des bâtiments                      |                                                                                                                                                                                          |
+| pignon.shp              | Pignons des bâtiments                      |                                                                                                                                                                                          |
+| roads.shp               | Surface des routes                         | **Nom** : nom des routes                                                                                                                                                                 |
 
 Les limites du fichier **bordures_translatedù.shp** sont translatées vers l'intérieur des parcelles auxquelles ils appartiennent pour des raison de lisibilité.
+Pour les valeurs des énumération **SIDE** et **Type** des limites séparatives, vous pouvez vous référer aux énumérations *ParcelBoundaryType* et *ParcelBoundarySide*.
 
 # Visualisation 3D des informations du modèle
+
+La classe *Integration3DViewer* permet une visualisation 3D d'un environnement. Il est possible de déterminer via une liste de thème, les informations à afficher dans la vue 3D. La liste des thèmes disponibles est consultable via l'énumération *RepEnvironnement.Theme*. Pour chaque thème, un rendu est prédéfini afin de visualiser les informations correspondantes.
+
+Le visualisateur 3D utilisé est celui de GeOxygene3D vous trouverez plus de documentation sur comment représenter des données et sur comment naviguer sur [le site de GeOxygene](http://ignf.github.io/geoxygene/documentation/application/3d.html).
+
+![Fenêtre 3D représentant une visualisation de l'environnement](./img/viewer3D.png)
