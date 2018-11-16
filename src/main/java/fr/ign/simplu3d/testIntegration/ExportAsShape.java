@@ -53,8 +53,7 @@ public class ExportAsShape {
 		Environnement env = LoaderSHP
 				.load(new File(BasicSimulator.class.getClassLoader().getResource("completeDataSet/data/").getPath()));
 
-		
-		//Export the environnement into a set of shapefile in the folder outputFolder
+		// Export the environnement into a set of shapefile in the folder outputFolder
 		ExportInstance.export(env, outputFolder);
 
 	}
