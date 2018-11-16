@@ -20,15 +20,15 @@ import fr.ign.mpp.configuration.GraphConfiguration;
  * 
  * see LICENSE.TXT
  * 
- * see <http://www.cecill.info/ http://www.cecill.info/
+ * see <http://www.cecill.info/
  * 
  * 
  * 
- * @copyright IGN
+ * copyright IGN
  * 
  * @author Brasebin Mickaël
  * 
- * @version 1.0
+ * @version 1.2
  * 
  *          Very simple and first simulator using SimPLU3D
  * 
