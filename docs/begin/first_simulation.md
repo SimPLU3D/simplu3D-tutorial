@@ -10,7 +10,7 @@ date: 2018-10-26
 
 L'objectif de cette page est de lancer une première simulation très simple afin de voir comment se déroule une simulation de SimPLU3D. Cette simulation consiste à générer une forme composé de boites qui s'intersectent à partir d'un code exemple qui sera enrichi au fur et à mesure de cette documentation. Pour commencer, il est nécessaire  d'installer les codes de tutoriel comme précisé dans la [page d'installation](installation.md).
 
-Le code utilisé dans cette page est dans la classe :  fr.ign.simplu3d.firstSimulation.BasicSimulator.
+Le code utilisé dans cette page est dans la classe :  *fr.ign.simplu3d.firstSimulation.BasicSimulator*.
 
 # Données d'entrée
 
