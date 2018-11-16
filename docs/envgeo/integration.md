@@ -148,12 +148,25 @@ Pas d'attribut utilisé.
 # Code d'intégration
 
 
-Le code d'intégration se trouve si dessous, il est composé de 12 étapes. La première étape vise à changer de référentiel les sources de données pour éviter des erreurs numériques dues à la grande taille de coordonnées utilisée. Ainsi, il est possible de fixer à vrai le boolean *Environnement.TRANSLATE_TO_ZERO* pour activer cette transformation et d'assigner un jeu de coordonnées (classe *DirectPosition* de GeOxygene) à la variable *Environnement.dpTranslate*.
+Le code d'intégration se trouve si dessous, il est composé de 12 étapes.
+
+Quelques étapes sont paramétrables :
+
+La première étape vise à changer de référentiel les sources de données pour éviter des erreurs numériques dues à la grande taille de coordonnées utilisée. Ainsi, il est possible de fixer à vrai le boolean *Environnement.TRANSLATE_TO_ZERO* pour activer cette transformation et d'assigner un jeu de coordonnées (classe *DirectPosition* de GeOxygene) à la variable *Environnement.dpTranslate*.
+
+Pendant l'étape d'annotation des limites séparatives en limites de fond, latéral et de voirie (étape
+  4), le processus détermine automatiquement ces types suivant une évaluation du dépassement de la limite séparative par rapport au point d'intersection avec la voirie (cf image suivante). Par défaut, la valeur de dépassement jusqu'à laquelle les limites sont affectées comme latérales est de 3 m, mais elle peut être fixée en modifiant la valeur  *AbstractBoundaryAnalyzer.setThresholdIni(double)*. Pour les parcelles plus petite, le seuil est automatiquement ajusté pour atteindre 1/3 de la largeur de la boîte englobante orientée.
+
+  Pour une parcelle n'ayant pas d'accès à la voirie, toutes les limites sont de type "Fond". Le côté (GAUCHE ou DROITE) des limites latérales est déterminée en regardant la parcelle depuis la voirie, si une parcelle donne sur plusieurs voiries, les côtés DROITE et GAUCHE sont déterminés aléatoirement.
+
+![Image montrant le processus d'annotation des parcelles](./img/parcelborderannotation.png)
+
+Pour les étapes qui recherchent des objets à proximité comme les étapes 9 et 10, il est possible de fixer la distance maximale de recherche en fixant les valeurs : *NearestRoadFinder.setMaximumDistance()* pour la recherche de la voirie la plus proche d'une limite cadastrale et  *OppositeBoundaryFinder.setMaximalValue()* pour la recherche de la limite opposée à une limite cadastrale.
+
 
 Afin de produire un référentiel 3D, les données 2D  : parcelles, prescriptions, zonage et éventuellement voirie (si les données n'ont pas de Z) sont modifiées lors de la dernière étape dans la classe fr.ign.cogit.geoxygene.api.feature.IFeatureCollection.AssignZ. Deux types de transformations sont possibles :
 - Si le MNT set défini, les objets sont projetés à la surface de ce MNT ;
 - S'il n'est pas défini, un plan Z constant est utilisé (et fixé à travers la variable statique AssignZ.DEFAULT_Z ayant 0 comme valeur par défaut).
-
 
 
 ```JAVA
