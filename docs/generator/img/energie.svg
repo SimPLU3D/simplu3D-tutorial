@@ -1,0 +1,1041 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="energie.svg">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="EmptyTriangleOutL"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker9926"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path9928"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         style="fill-rule:evenodd;fill:#ffffff;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="scale(0.8) translate(-6,0)" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker9862"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="EmptyTriangleOutL"
+       inkscape:collect="always">
+      <path
+         transform="scale(0.8) translate(-6,0)"
+         style="fill-rule:evenodd;fill:#ffffff;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         id="path9864" />
+    </marker>
+    <marker
+       inkscape:stockid="EmptyTriangleOutL"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="EmptyTriangleOutL"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path8572"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         style="fill-rule:evenodd;fill:#ffffff;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="scale(0.8) translate(-6,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="EmptyTriangleOutL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="EmptyTriangleOutL-2"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path8572-3"
+         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,-4.8,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="EmptyTriangleOutL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="EmptyTriangleOutL-2-7"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path8572-3-3"
+         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,-4.8,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="EmptyTriangleOutL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="EmptyTriangleOutL-1"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path8572-2"
+         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,-4.8,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="EmptyTriangleOutL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="EmptyTriangleOutL-2-78"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path8572-3-4"
+         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,-4.8,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="EmptyTriangleOutL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="EmptyTriangleOutL-5"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path8572-0"
+         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,-4.8,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="EmptyTriangleOutL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="EmptyTriangleOutL-1-3"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path8572-2-7"
+         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,-4.8,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="EmptyTriangleOutL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="EmptyTriangleOutL-1-3-4"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path8572-2-7-3"
+         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,-4.8,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="EmptyTriangleOutL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="EmptyTriangleOutL-2-786"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path8572-3-8"
+         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,-4.8,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="EmptyTriangleOutL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker9926-3"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path9928-6"
+         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,-4.8,0)" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker9862-6"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="EmptyTriangleOutL"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(0.8,0,0,0.8,-4.8,0)"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
+         id="path9864-1" />
+    </marker>
+    <marker
+       inkscape:stockid="EmptyTriangleOutL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker9926-7"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path9928-9"
+         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,-4.8,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="EmptyTriangleOutL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="EmptyTriangleOutL-2-786-0"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path8572-3-8-2"
+         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,-4.8,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="EmptyTriangleOutL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="EmptyTriangleOutL-2-786-2"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path8572-3-8-8"
+         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,-4.8,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="-102.87551"
+     inkscape:cy="1441.9474"
+     inkscape:document-units="px"
+     inkscape:current-layer="g9408"
+     showgrid="false"
+     showguides="false"
+     inkscape:window-width="1855"
+     inkscape:window-height="1056"
+     inkscape:window-x="65"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-704.28577"
+       y="-1143.3521"
+       id="text8079"
+       sodipodi:linespacing="125%"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan8081"
+         x="-704.28577"
+         y="-1143.3521"
+         style="font-size:25px">Énergie<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan8130">unaire</tspan>(b)         = </tspan><tspan
+         sodipodi:role="line"
+         x="-704.28577"
+         y="-1112.1021"
+         style="font-size:25px"
+         id="tspan8120" /><tspan
+         sodipodi:role="line"
+         x="-704.28577"
+         y="-1080.8521"
+         style="font-size:25px"
+         id="tspan8087">Énergie<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan8128">binaire</tspan>(b1, b2) =</tspan><tspan
+         sodipodi:role="line"
+         x="-704.28577"
+         y="-1049.6021"
+         style="font-size:25px"
+         id="tspan8122" /><tspan
+         sodipodi:role="line"
+         x="-704.28577"
+         y="-1018.3521"
+         style="font-size:25px"
+         id="tspan8124">Énergie<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan8126"> totale </tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-365.71429"
+       y="-1141.9235"
+       id="text8089"
+       sodipodi:linespacing="125%"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan8091"
+         x="-365.71429"
+         y="-1141.9235"
+         style="font-size:27.5px">E<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan8132">creation</tspan> - volume(b) X ponderation<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan8138">volume</tspan> + ponderation<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan8140">dIference</tspan> X  volume<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan8142">difference</tspan>(bPU, b)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-362.73715"
+       y="-1081.8624"
+       id="text8089-3"
+       sodipodi:linespacing="125%"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan8091-6"
+         x="-362.73715"
+         y="-1081.8624"
+         style="font-size:27.5px">volume<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan8134">intersection</tspan>(b<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan8220">1</tspan>, b<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan8218">2</tspan>) X ponderation<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan8136">volume_inter</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-508.57144"
+       y="500.93362"
+       id="text8144"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan8146"
+         x="-508.57144"
+         y="500.93362"
+         style="font-size:27.5px" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-450.41843"
+       y="-1011.9235"
+       id="text8148"
+       sodipodi:linespacing="125%"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan8150"
+         x="-450.41843"
+         y="-1011.9235"
+         style="font-size:27.5px">=</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-360.84756"
+       y="-1010.2541"
+       id="text8089-7"
+       sodipodi:linespacing="125%"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan8091-5"
+         x="-360.84756"
+         y="-1010.2541"
+         style="font-size:27.5px">Σ Énergie<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan8184">unaire</tspan>(b)  + Σ Énergie<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan8182">binaire</tspan>(b<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan8212">i</tspan>,b<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan8210">j</tspan>)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-357.72891"
+       y="-989.48926"
+       id="text8186"
+       sodipodi:linespacing="125%"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan8188"
+         x="-357.72891"
+         y="-989.48926">b</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-73.341957"
+       y="-990.72321"
+       id="text8186-9"
+       sodipodi:linespacing="125%"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan8188-1"
+         x="-73.341957"
+         y="-990.72321"
+         style="text-align:center;text-anchor:middle">(b<tspan
+   style="font-size:64.99999762%;text-align:center;baseline-shift:sub;text-anchor:middle"
+   id="tspan8214">i</tspan> , b<tspan
+   style="font-size:64.99999762%;text-align:center;baseline-shift:sub;text-anchor:middle"
+   id="tspan8216">j)</tspan></tspan><tspan
+         sodipodi:role="line"
+         x="-73.341957"
+         y="-971.97321"
+         id="tspan8208"
+         style="text-align:center;text-anchor:middle">i &lt; j</tspan></text>
+    <circle
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.93999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#00af93;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="path8222"
+       cx="-23.571438"
+       cy="-652.63776"
+       r="55"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-71.428612"
+       y="-647.48932"
+       id="text8228"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan8230"
+         x="-71.428612"
+         y="-647.48932"
+         style="font-size:20px">E<tspan
+   style="font-size:20px;baseline-shift:sub"
+   id="tspan8232">creation</tspan></tspan></text>
+    <g
+       id="g9403"
+       transform="translate(509.11688,-70.710678)"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <circle
+         r="55"
+         cy="-744.78064"
+         cx="-917.33081"
+         id="path8222-2"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.93999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#00af93;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text8228-7"
+         y="-739.43884"
+         x="-849.02484"
+         style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-size:20px"
+           y="-739.43884"
+           x="-849.02484"
+           id="tspan8230-0"
+           sodipodi:role="line">Énergie constante</tspan></text>
+    </g>
+    <circle
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.93999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#00af93;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="path8222-2-3"
+       cx="98.571434"
+       cy="-767.63782"
+       r="55"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="51.428593"
+       y="-761.92352"
+       id="text8295"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan8297"
+         x="51.428593"
+         y="-761.92352"
+         style="font-size:20px">P.<tspan
+   style="font-size:20px;baseline-shift:sub"
+   id="tspan8299">volume</tspan></tspan></text>
+    <circle
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.93999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#de87cd;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="path8222-2-3-6"
+       cx="292.85715"
+       cy="-764.78064"
+       r="55"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="257.14288"
+       y="-756.20923"
+       id="text8295-0"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan8297-6"
+         x="257.14288"
+         y="-756.20923"
+         style="font-size:20px">Volume</tspan></text>
+    <g
+       id="g9408"
+       transform="translate(509.11688,-47.00499)"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <circle
+         r="55"
+         cy="-588.59015"
+         cx="-917.33081"
+         id="path8222-2-3-6-6"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.92;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#de87cd;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         inkscape:export-xdpi="150"
+         inkscape:export-ydpi="150" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text8228-7-1"
+         y="-580.25061"
+         x="-849.02484"
+         style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"
+         inkscape:export-xdpi="150"
+         inkscape:export-ydpi="150"><tspan
+           style="font-size:20px"
+           y="-580.25061"
+           x="-849.02484"
+           id="tspan8230-0-8"
+           sodipodi:role="line">Énergie dynamique</tspan></text>
+    </g>
+    <g
+       id="g9418"
+       transform="translate(509.11688,-94.416489)"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <circle
+         r="55"
+         cy="-181.38647"
+         cx="-917.33081"
+         id="path8222-2-3-6-6-7"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.93999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ff6600;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text8228-7-1-9"
+         y="-171.32349"
+         x="-849.02484"
+         style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-size:20px"
+           y="-171.32349"
+           x="-849.02484"
+           id="tspan8230-0-8-2"
+           sodipodi:role="line">Multiplication d'énergies</tspan></text>
+    </g>
+    <circle
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.93999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ff6600;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="path8222-2-3-6-6-7-0"
+       cx="192.85716"
+       cy="-627.63782"
+       r="55"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#EmptyTriangleOutL)"
+       d="m 120,-714.78066 28.57143,45.71429"
+       id="path8406"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#EmptyTriangleOutL-2)"
+       d="m 263.12159,-715.63308 -28.57143,45.71429"
+       id="path8406-7"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="144.69516"
+       y="-621.61035"
+       id="text8295-0-5"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan8297-6-9"
+         x="144.69516"
+         y="-621.61035"
+         style="font-size:17.5px">E<tspan
+   style="font-size:17.5px;baseline-shift:sub"
+   id="tspan8953">Vol.P.ond.</tspan></tspan></text>
+    <g
+       id="g9423"
+       transform="translate(509.11688,-70.710678)"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <circle
+         r="55"
+         cy="-25.196106"
+         cx="-917.33081"
+         id="path8222-2-3-6-6-7-2"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.93999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ff5555;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text8228-7-1-9-2"
+         y="-12.135284"
+         x="-849.02484"
+         style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-size:20px"
+           y="-12.135284"
+           x="-849.02484"
+           id="tspan8230-0-8-2-8"
+           sodipodi:role="line">Différence d'énergies</tspan></text>
+    </g>
+    <circle
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.93999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ff5555;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="path8222-2-3-6-6-7-2-9"
+       cx="71.428551"
+       cy="-514.78064"
+       r="55"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#EmptyTriangleOutL-2-7)"
+       d="m 144.55016,-599.91881 -28.57143,45.71429"
+       id="path8406-7-6"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#EmptyTriangleOutL-1)"
+       d="m -1.6930127,-599.9188 28.5714297,45.71429"
+       id="path8406-9"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="56.976139"
+       y="-511.06076"
+       id="text8228-3"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan8230-1"
+         x="56.976139"
+         y="-511.06076"
+         style="font-size:25px"><tspan
+           style="font-size:25px;baseline-shift:sub"
+           id="tspan9734">U</tspan><tspan
+           style="font-size:64.99999762%;baseline-shift:sub"
+           id="tspan9738">3</tspan></tspan></text>
+    <circle
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.93999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#00af93;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="path8222-2-3-3"
+       cx="353.97964"
+       cy="-631.62878"
+       r="55"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="306.83682"
+       y="-625.91449"
+       id="text8295-6"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan8297-1"
+         x="306.83682"
+         y="-625.91449"
+         style="font-size:20px">P.<tspan
+   style="font-size:20px;baseline-shift:sub"
+   id="tspan8299-0">voldiff</tspan></tspan></text>
+    <circle
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.93999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#de87cd;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="path8222-2-3-6-63"
+       cx="548.26538"
+       cy="-628.77161"
+       r="55"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="525.07574"
+       y="-620.91449"
+       id="text8295-0-2"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan8297-6-0"
+         x="525.07574"
+         y="-620.91449"
+         style="font-size:20px">Vol<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan9854">diff</tspan></tspan></text>
+    <circle
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.93999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ff6600;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="path8222-2-3-6-6-7-0-6"
+       cx="448.26541"
+       cy="-491.62875"
+       r="55"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker9862)"
+       d="m 375.40824,-578.7716 28.57143,45.71429"
+       id="path8406-1"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker9926)"
+       d="m 518.52983,-579.62402 -28.57143,45.71429"
+       id="path8406-7-5"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="427.79065"
+       y="-486.26462"
+       id="text8228-3-6"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan8230-1-5"
+         x="427.79065"
+         y="-486.26462"
+         style="font-size:25px"><tspan
+           style="font-size:25px;baseline-shift:sub"
+           id="tspan9734-6">U</tspan><tspan
+           style="font-size:64.99999762%;baseline-shift:sub"
+           id="tspan10016">5</tspan></tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#EmptyTriangleOutL-1-3)"
+       d="m 112.36692,-481.64114 87.25023,61.09488"
+       id="path8406-9-4"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <g
+       id="g9413"
+       transform="translate(509.11688,-64.092636)"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <circle
+         r="55"
+         cy="-391.60641"
+         cx="-917.33081"
+         id="path8222-2-3-6-6-7-2-4"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.93999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#88aa00;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text8228-7-1-9-5"
+         y="-384.64041"
+         x="-848.38031"
+         style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-size:20px"
+           y="-384.64041"
+           x="-848.38031"
+           id="tspan8230-0-8-2-2"
+           sodipodi:role="line">Somme d'énergies</tspan></text>
+    </g>
+    <circle
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.93999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#88aa00;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="path8222-2-3-6-6-7-2-4-5"
+       cx="249.39365"
+       cy="-395.41672"
+       r="55"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="217.84734"
+       y="-387.02942"
+       id="text8295-6-4"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan8297-1-7"
+         x="217.84734"
+         y="-387.02942"
+         style="font-size:20px">U<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan10651">Energy</tspan></tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#EmptyTriangleOutL-1-3-4)"
+       d="m 394.48119,-463.32719 -90.88812,51.37824"
+       id="path8406-9-4-0"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#EmptyTriangleOutL-2-786)"
+       d="m 247.94031,-341.39318 0.19675,76.29277"
+       id="path8406-7-8"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot12777"
+       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="translate(37.247109,-12.955516)"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><flowRegion
+         id="flowRegion12779"><rect
+           id="rect12781"
+           width="220.24377"
+           height="92.308052"
+           x="127.93572"
+           y="-228.61444" /></flowRegion><flowPara
+         id="flowPara12783"
+         style="font-size:20px">Énergie unaire</flowPara></flowRoot>    <circle
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.93999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#00af93;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="path8222-2-3-3-3"
+       cx="720.59174"
+       cy="-534.70374"
+       r="55"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="680.5918"
+       y="-527.56085"
+       id="text8295-6-5"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan8297-1-6"
+         x="680.5918"
+         y="-527.56085"
+         style="font-size:20px">P.<tspan
+   style="font-size:20px;baseline-shift:sub"
+   id="tspan8299-0-2">volinter</tspan></tspan></text>
+    <circle
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.93999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#de87cd;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="path8222-2-3-6-63-9"
+       cx="907.73462"
+       cy="-528.98944"
+       r="55"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="877.4021"
+       y="-518.27515"
+       id="text8295-0-2-1"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan8297-6-0-2"
+         x="877.4021"
+         y="-518.27515"
+         style="font-size:20px">Vol<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan8451">inter</tspan></tspan></text>
+    <circle
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.93999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ff6600;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="path8222-2-3-6-6-7-0-6-0"
+       cx="810.5918"
+       cy="-396.13232"
+       r="55"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="772.97412"
+       y="-392.19675"
+       id="text8228-3-6-6"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan8230-1-5-0"
+         x="772.97412"
+         y="-392.19675"
+         style="font-size:25px"><tspan
+           style="font-size:25px;baseline-shift:sub"
+           id="tspan9734-6-6">U</tspan><tspan
+           style="font-size:64.99999762%;baseline-shift:sub"
+           id="tspan9311">binaire</tspan></tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker9862-6)"
+       d="m 753.18443,-488.41334 28.57143,45.71429"
+       id="path8406-1-8"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker9926-7)"
+       d="m 883.71332,-479.8419 -28.57143,45.71429"
+       id="path8406-7-5-2"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot12777-7"
+       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="translate(606.84664,-6.5776729)"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><flowRegion
+         id="flowRegion12779-5"><rect
+           id="rect12781-9"
+           width="220.24377"
+           height="92.308052"
+           x="127.93572"
+           y="-228.61444" /></flowRegion><flowPara
+         id="flowPara12783-2"
+         style="font-size:20px">Énergie binaire</flowPara></flowRoot>    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#EmptyTriangleOutL-2-786-2)"
+       d="m 809.28995,-344.55468 0.19675,76.29277"
+       id="path8406-7-8-9"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/docs/generator/img/graph.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+  </g>
+</svg>
