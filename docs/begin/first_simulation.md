@@ -115,4 +115,6 @@ La géométrie est une géométrie 3D stockée sous la forme d'un multipolygoneZ
 
 ![Image présentant le résultat d'une simulation](img/results-simu-0.png)
 
-Vous pouvez essayer de modifier le code pour tester les résultats sur différentes parcelles ou diffrentes variables de règles. [Dans la section suivante](../principe/intro.md), nous détaillons le principe de fonctionnement de la simulation.
+Vous pouvez essayer de modifier le code pour tester les résultats sur différentes parcelles ou différentes variables de règles. [Dans la section suivante](../principe/intro.md), nous détaillons le principe de fonctionnement de la simulation.
+
+Le résultat est visualisable dans un SIG 2D ou 3D classique.

@@ -7,7 +7,7 @@ date: 2018-10-26
 ---
 # Configuration bâtie
 
-Dans SimPLU3D, une configuration bâtie est composée d'un ensemble de géométries paramétriques. Une géométrie paramétrique peut être décrite à travers un vecteur de dimension constante. Dans la plupart des expérimentations de SimPLU3D, comme dans l'exemple de la première simulation, les géométries paramétriques manipulées sont composées de boîtes. Dans ce cas, s'agit d'une géométrie de 6 dimensions décrite par le vecteur **b** = (**x**, **y**, **l**, **w**, **h**, **θ**). Néanmoins, il est tout à fait possible d'utiliser d'autres types de géométries paramétriques comme nous le verrons dans la section sur la [personnalisation des formes générées](custom-shape.md).
+Dans SimPLU3D, une configuration bâtie est composée d'un ensemble de géométries paramétriques. Une géométrie paramétrique peut être décrite à travers un vecteur de dimension constante. Dans la plupart des expérimentations de SimPLU3D, comme dans l'exemple de la première simulation, les géométries paramétriques manipulées sont composées de boîtes. Dans ce cas, s'agit d'une géométrie de 6 dimensions décrite par le vecteur **b** = (**x**, **y**, **l**, **w**, **h**, **θ**). Néanmoins, il est tout à fait possible d'utiliser d'autres types de géométries paramétriques comme nous le verrons dans la section sur la [personnalisation des formes générées](custom-generator.md).
 
 ![Image représentant une boîte](img/boite.png)
 
@@ -24,8 +24,75 @@ Ainsi, si on considère une fonction d'optimisation **f**, comme le volume, le r
 
 ![Image montrant le principe](img/principe.png)
 
+L'algorithme est un algorithme interactif. À chaque itération, on considère une configuration bâtie courate. Le système choisit une modification parmi les noyaux de propositions de modifications disponibles (dans l'exemple, le noyau d'ajout est sélectionner pour ajouter une nouvelle boîte). Ensuite, une probabilité d'acception est déterminée, suivant la théorie du recuit simulée. Elle prend en compte les scores des configurations avant et après modification et la température courante (il s'agit d'une valeur qui décroit au fur et à mesure des itérations). Ainsi, il existe une certaine probabilité pour que cette modification soit rejetée (1 - α(t,s,s’)) et une certaine probabilité pour que la modification soit acceptée (α(t,s,s’)). Si la configuration est acceptée, on s'assure qu'elle respecte les règles morphologiques, si c'est le cas elle remplace la configuration courante sinon la modification est rejetée.
+
+# Implémentation de l'algorithme
+
+L'implémentation de l'algorithme est effectuée grace à la bibliothèque générique et OpenSource [librjmcmc4j](https://github.com/IGNF/librjmcmc4j). Pour en savoir plus, vous pouvez consulter l'article :
+> *Brédif, M., Tournaire, O.*, Aug. 2012. librjmcmc: An open-source generic c++ library for stochastic optimization. In: The XXII Congress of the International Society of Photogrammetry and Remote Sensing. ([https://www.int-arch-photogramm-remote-sens-spatial-inf-sci.net/XXXIX-B3/259/2012/isprsarchives-XXXIX-B3-259-2012.pdf](https://www.int-arch-photogramm-remote-sens-spatial-inf-sci.net/XXXIX-B3/259/2012/isprsarchives-XXXIX-B3-259-2012.pdf))
+
+Dans l'exemple de la [première simulation](../begin/first_simulation.md), les étapes de l'algorithme, présentées dans le schéma précédent, s'effectue dans la méthode *process()* de la classe *OptimisedBuildingsCuboidFinalDirectRejection*. L'algorithme peut se décomposer en 3 phases :
+
+- **Étape 1** : [la définition des configurations bâties et des modifications appliquées](custom-generator.md), ce qui correspond aux boîtes "Classe de géométrie paramétrique" et "Noyaux de propositions" du schéma ;
+- **Étape 2** : [la définition des paramètres de l'algorithme en lui-même](custom-optimisation.md), c'est à-dire la fonction d'optimisation et les confitions initiales et d'arrêt ;
+- **Étape 3** : [la mise en place de visiteurs](), c'est à dire d'objets qui produiront des sorties au fur et à mesure de la simulation (les visiteurs sont présentés dans une [autre partie](../visitor/intro.md), car ils n'influent pas sur le déroulement de la méthode d'optimisation) ;
+- **Étape 4** : l'exécution de la simulation.
 
 
-L'algorithme est un algorithme interactif. À chaque itération, on considère une configuration bâtie courate. Le système choisit une modification parmi les noyaux de propositions de modifications disponibles (dans l'exemple, le noyau d'ajout est sélectionner pour ajouter une nouvelle boîte). Ensuite, une probabilité d'acception est déterminée, suivant la théorie du recuit simulée. Elle prend en compte les scores des configurations avant et après modification et la température courante (il s'agit d'une valeur qui décroit au fur et à mesure des itérations). Ainsi, il existe une certaine probabilité pour que cette modification soit rejetée () et une certaine probabilité - α(t,s,s’) pour que la modification soit acceptée (α(t,s,s’)). Si la configuration est acceptée, on s'assure qu'elle respecte les règles morphologiques, si c'est le cas elle remplace la configuration courante sinon la modification est rejetée.
+```JAVA
+/**
+ * Process the generation of the optimization
+ * @param bpu                    Basic property unit
+ * @param geom                   The geometry in which the centroid of the
+ *                               cuboids will be generated
+ * @param p                      the parameters
+ * @param env                    the environement
+ * @param id                     the id of the experiments
+ * @param pred                   the rules to check
+ * @return a set of cuboid as a graph
+ */
+public GraphConfiguration<Cuboid> process(BasicPropertyUnit bpu, IGeometry geom, SimpluParameters p,
+    Environnement env, int id,
+    ConfigurationModificationPredicate<GraphConfiguration<Cuboid>, BirthDeathModification<Cuboid>> pred,
+    List<Visitor<GraphConfiguration<Cuboid>, BirthDeathModification<Cuboid>>> lSupplementaryVisitors) {
 
-Dans les prochaines sections, nous verrons comment paramétrer le dérouleemnt de l'algorithme à travers les paramètres qui concernent [la définition des configurations bâties et des modifications appliquées](custom-shape.md), puis [les paramètres de l'algorithme en lui-même](custom-optimisation.md).
+    //Step 1 :
+
+    // Sampler creation (definition of the class and of the kernel modifications)
+    // Création de l'échantilloneeur (définition de la classe et des noyaux de modifications)
+    Sampler<GraphConfiguration<Cuboid>, BirthDeathModification<Cuboid>> samp = create_sampler(Random.random(), p,
+    bpu, pred, geom);
+
+    //Step 2 : Preparation of the optimizer
+    //Étape 2 : Préparation de l'optimiseur
+
+    //Initializing the configuration (optimisation function + set of cuboid)
+    //Initizialization de la configuration (fonction d'optimisation + stock les cuboids de la configuration courante
+    GraphConfiguration<Cuboid> conf = null;
+    try {
+      conf = create_configuration(p, AdapterFactory.toGeometry(new GeometryFactory(), bpu.getGeom()), bpu);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
+    // Temperature initialization
+    //Initialization de la fonction de la température
+    Schedule<SimpleTemperature> sch = create_schedule(p);
+
+
+    //The end test condition
+    end = create_end_test(p);
+
+    //Step 3 : Visitor instanciation
+    //Étape 3 : Préparation des visiteurs
+
+    //The visitors initialisation
+    PrepareVisitors<Cuboid> pv = new PrepareVisitors<>(env, lSupplementaryVisitors);
+    CompositeVisitor<GraphConfiguration<Cuboid>, BirthDeathModification<Cuboid>> mVisitor = pv.prepare(p, id);
+
+    //Step 4 : Running the optimization process
+    //Étape 4 : Exécution de l'optimization
+    SimulatedAnnealing.optimize(Random.random(), conf, samp, sch, end, mVisitor);
+    return conf;
+}
+```
