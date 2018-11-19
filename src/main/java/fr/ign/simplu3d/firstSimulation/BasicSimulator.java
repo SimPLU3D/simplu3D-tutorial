@@ -72,7 +72,7 @@ public class BasicSimulator {
 		
 		
 		
-		//Step 3 : Defining the regulation that will be applied during the simulation
+		//Step 3 : Defining the sampler that will be applied during the simulation
 
 
 		// Instantiation of the sampler
@@ -88,7 +88,7 @@ public class BasicSimulator {
 		// Run of the optimisation on a parcel with the predicate
 		GraphConfiguration<Cuboid> cc = oCB.process(bPU, p, env, 1, pred);
 		
-		//4 - Writting the output
+		//4 - Writing the output
 		SaveGeneratedObjects.saveShapefile(outputFolder + "out.shp", cc, bPU.getId(), 0);
 
 	}
