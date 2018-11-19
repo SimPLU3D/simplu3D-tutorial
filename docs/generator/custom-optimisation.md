@@ -6,7 +6,7 @@ date: 2018-10-26
 
 ---
 
-Dans cette partie, nous présenterons comment est configuré l'algorithme d'optimisation à travers les conditions intitiales et d'arrêt, ainsi que la définition de la fonction d'optimisation.
+Dans cette partie, nous présenterons comment est configuré l'algorithme d'optimisation à travers les conditions initiales et d'arrêt, ainsi que la définition de la fonction d'optimisation.
 
 
 Les parties suivantes reprennent les principales étapes de création du sampler dont le code est repris dans [la dernière partie de la page sur l'implémentation](#implementation) (étape 2) , c'est à dire le code suivant :
@@ -120,3 +120,15 @@ public GraphConfiguration<Cuboid> create_configuration(SimpluParameters p, Geome
   return conf;
 }
 ```
+
+## Conditions initiales et condition d'arrêt
+
+La fonction de température est fixée dans la méthode *create_schedule* et vise à moduler la probabilité d'acceptation durant la simulation. Les différents types possibles de température sont ceux de la librjmcmc4j (package *fr.ign.simulatedannealing.schedule*). Dans le cadre de SimPLU3D, nous avons opté pour la température de Métropolis. Il s'agit d'une fonction géométrique décroissante qui nécessite deux paramètres : une température initiale (valeur *temp* du fichier de configuration) et un coefficient de décroissance (valeur *deccoef*). D'après les articles sur le recuit simulé, il est conseillé de fixer cette valeur comme étant la plus grande variation possible de la fonction d'optimisation entre deux états (par exemple, dans le cadre du volume il s'agit de l'écart entre une parcelle vide et une parcelle complètement bâtie par le bâtiment le plus haut possible). Le coefficient doit être fixé très proche de 1 (comme dans les fichiers exemples). Si vous souhaitez en savoir plus, vous pouvez consulter l'article suivant :
+
+> *Brédif, M., Tournaire, O.*, Aug. 2012. librjmcmc: An open-source generic c++ library for stochastic optimization. In: The XXII Congress of the International Society of Photogrammetry and Remote Sensing. ([https://www.int-arch-photogramm-remote-sens-spatial-inf-sci.net/XXXIX-B3/259/2012/isprsarchives-XXXIX-B3-259-2012.pdf](https://www.int-arch-photogramm-remote-sens-spatial-inf-sci.net/XXXIX-B3/259/2012/isprsarchives-XXXIX-B3-259-2012.pdf))
+
+Trois types de conditions d'arrêt sont définis à travers la méthode *create_end_test* et leur paramètres sont définis dans le fichier de configuration :
+- **absolute** : le simulateur s'arrête au bout de *absolute_nb_iter*) itérations, ce nombre est fixé dans le fichier de configuration ;
+- **relative** : le simulateur si la fonction énergétique ne s'améliore pas de la valeur *delta* pendant *relative_nb_iter* itérations ;
+- **composite** : le simulation s'arrête lorsque la première condition d'arrêt (entre absolute et relative) est atteinte.
+On peut choisir avec le fichier de configuration entre ces trois types grâce au paramètre **end_test_type** qui peut prendre comme valeur *absolute*, *relative* ou *composite*.
