@@ -8,7 +8,7 @@
   
   <meta name="author" content="MBrasebin">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Predicate - SimPLU3D tutorial</title>
+  <title>Vérificateurs de règles - Prédicats et vérification des règles - SimPLU3D tutorial</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Predicate";
+    var mkdocs_page_name = "V\u00e9rificateurs de r\u00e8gles - Pr\u00e9dicats et v\u00e9rification des r\u00e8gles";
     var mkdocs_page_input_path = "rules/predicate.md";
     var mkdocs_page_url = "/simplu3D-tutorial/rules/predicate/";
   </script>
@@ -202,7 +202,7 @@
     
       
     
-    <li>Predicate</li>
+    <li>Vérificateurs de règles - Prédicats et vérification des règles</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/SimPLU3D/simplu3D-tutorial?query=root/path/docs/rules/predicate.md"
@@ -215,7 +215,184 @@
           <div role="main">
             <div class="section">
               
-                <p>Principe du prédicate et comment en définir un (avec l'extension de la méthode qui va bien)</p>
+                <p>Pour vérifier les règles morphologiques, SimPLU3D utilise le concept de prédicat. Il s'agit d'un objet qui indique si une règle respecte ou non respecte une règle.</p>
+<h1 id="interface-de-predicat">Interface de predicat<a class="headerlink" href="#interface-de-predicat" title="Permanent link"></a></h1>
+<p>L'interface de la librjmcmc4j <em>fr.ign.rjmcmc.configuration. ConfigurationModificationPredicate<C extends Configuration<C, M>, M extends Modification<C, M>&gt;</em> implémente cette notion de prédicat est permet la définition à elle seule du respect des règles.</p>
+<p>Cette interface ne définit que la méthode <em>| check(C c, M m);</em>. Avec :</p>
+<ul>
+<li><strong>c</strong>, une instance de configuration, qui contient la liste des objets de la configuration courante  (c'est à dire avant application de la modification);</li>
+<li><strong>m</strong>, la modification qui serait appliquée à la configuration <strong>c</strong> ;</li>
+<li>la méthode renvoie un | qui indique si les règles sont respectées suite à l'application de la modification m sur la méthode <strong>c</strong>.</li>
+</ul>
+<h1 id="implementation-a-partir-de-linterface-de-predicat">Implémentation à partir de l'interface de prédicat<a class="headerlink" href="#implementation-a-partir-de-linterface-de-predicat" title="Permanent link"></a></h1>
+<p>Dans SimPLU3D, nous conseillons l'implémentation de cette interface à travers la définition suivante (et de regarder la-dite classe qui donne une idée de comment implémenter la méthode) :</p>
+<pre><code class="JAVA"> SamplePredicate&lt;O extends ISimPLU3DPrimitive, C extends AbstractGraphConfiguration&lt;O, C, M&gt;, M extends AbstractBirthDeathModification&lt;O, C, M&gt;&gt;
+        implements ConfigurationModificationPredicate&lt;C, M&gt;
+</code></pre>
+
+<p>Ainsi, à travers la classe abstraite <em>AbstractGraphConfiguration</em>, il est possible d'accéder à la liste des objets de la configuration courante à travers un itérateur (méthode <em>iterator</em>) et à travers la classe <em>AbstractBirthDeathModification</em> d'accéder aux modifications à travers la création <em>m.getBirth()</em> et la destruction d'objets <em>m.getDeath()</em> de la classe utilisée pendant la génération.
+Une modification est vue comme l'ajout et la suppression d'objet. Dans les modification usuellement utilisées dans SimPLU3D, ces listes contiennent soit 0 soit 1 objet.</p>
+<p>Il suffit ensuite de coder la vérification des règles pour les différents objets de la configurations après modification en utilisant les informations disponibles dans l'<a href="../../envgeo/intro/">environnement géographique</a>). Ainsi, pour avoir la liste des objets de la classe O après modification sur laquelle il faut porter les vérifications, on peut utiliser le code suivant :</p>
+<pre><code class="JAVA">List&lt;O&gt; listOfObjects = new ArrayList&lt;&gt;();
+  Iterator&lt;O&gt; iTBat = c.iterator();
+
+  while ( iTBat.hasNext()) {
+    listOfObjects.add(iTBat.next());
+  }
+
+  //La méthode equals() doit être définie pour la classe O
+  listOfObjects.removeAll(m.getDeath());
+  listOfObjects.addAll(m.getBirth());
+</code></pre>
+
+<blockquote>
+<p><img alt="#f03c15" src="https://placehold.it/15/f03c15/000000?text=+" /> <strong>Attention</strong>: comme l'évaluation de la méthode <em>check()</em> s'effectue à chaque itération et qu'une simulation peut compter des millions de simulation, optimiser le temps d'exécution de cette méthode permet de diminuer de beaucoup le temps de calcul, d'autant plus que cette méthode fait généralement à des opérateurs géométriques qui peuvent être coûteux en termes de temps. Voici quelques astuces pour diminuer ce temps de calcul :</p>
+<p>1/ Essayer de renvoyer fois dès qu'une règle n'est pas respectée ;</p>
+<p>2/ Privilégier les géométries JTS aux géométries GeOxygene (les opérateurs géométriques appliquées aux géométries GeOyegne nécessitent une conversion JTS qui augmente le temps de calcul) ;</p>
+<p>3/ Conserver des objets en cache lorsqu'ils sont fixes pour éviter de les re-générer à chaque étape.</p>
+<p>4/ Il n'est pas nécessaire de vérifier les règles pour tous les objets de la configuration après modification. En effet, les géométries dans la configuration avant modifications vérifient déjà ces règles. Cela est notamment vrai pour les règles de hauteur ou de distance 2D avec d'autres limites</p>
+</blockquote>
+<h1 id="implementation-a-partir-de-la-classe-abstraite-defaultabstractpredicate">Implémentation à partir de la classe abstraite DefaultAbstractPredicate<a class="headerlink" href="#implementation-a-partir-de-la-classe-abstraite-defaultabstractpredicate" title="Permanent link"></a></h1>
+<p>La classe <em>fr.ign.cogit.simplu3d.util.regulation.DefaultAbstractPredicate</em> contient un certain nombre de fonctions de base qui sont issues de règles souvent utilisées dans SimPLU3D et permettent d'effectuer des vérifications sur les règles d'urbanisme. Les méthodes de cette classe suivent les principes évoqués précédemment et permet de diminuer le temps de calcul. En étendant cette classe abstraite et en utilisant son constructeur, il est possible de définir plus facilement la méthode <em>check()</em> d'un prédicat en utilisant ces fonctions prédéfinies.</p>
+<p>On retrouve trois types de fonctions :</p>
+<ul>
+<li><strong>des accesseurs</strong>, pour accéder directement aux géométries JTS d'un certain nombre d'objets issus du modèle ;</li>
+<li>des <strong>vérificateurs portant sur l'ensemble des objets</strong> de la configurations courantes ;</li>
+<li>des <strong>vérificateurs qui peuvent ne porter que sur les nouveaux objets</strong> proposés par la modification (cf principe 4 évoqué précédemment).</li>
+</ul>
+<h2 id="accesseurs">Accesseurs<a class="headerlink" href="#accesseurs" title="Permanent link"></a></h2>
+<p>Ces méthodes permettent d'accéder directement à certaines géométriques JTS sans  avoir à parcourir l'ensemble du modèle</p>
+<table>
+<thead>
+<tr>
+<th align="left">Nom de la méthode</th>
+<th align="left">Commentaire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">getJtsCurveLimiteFondParcel</td>
+<td align="left">Géométrie des limites de fond de parcelle</td>
+</tr>
+<tr>
+<td align="left">getJtsCurveLimiteFrontParcel</td>
+<td align="left">Géométrie des limites donnant sur la voirie</td>
+</tr>
+<tr>
+<td align="left">getJtsCurveLimiteLatParcel</td>
+<td align="left">Géométrie des limites latérales</td>
+</tr>
+<tr>
+<td align="left">getJtsCurveLimiteLatParcelLeft</td>
+<td align="left">Géométrie des limites latérales  du côté gauche</td>
+</tr>
+<tr>
+<td align="left">getJtsCurveLimiteLatParcelRight</td>
+<td align="left">Géométrie des limites latérales  du côté droit</td>
+</tr>
+<tr>
+<td align="left">getJtsCurveOppositeLimit</td>
+<td align="left">Géométrie des limites du côté opposé à la parcelle</td>
+</tr>
+<tr>
+<td align="left">getbPUGeom</td>
+<td align="left">Géométrie de l'unité foncière</td>
+</tr>
+</tbody>
+</table>
+<p>Si une géométrie n'existe pas du fait de la configuration spatiale, elle aura null comme valeur.</p>
+<h2 id="verificateur-portant-sur-lensemble-des-objects">Vérificateur portant sur l'ensemble des objects<a class="headerlink" href="#verificateur-portant-sur-lensemble-des-objects" title="Permanent link"></a></h2>
+<p>Il s'agit de méthodes qui vérifient certaines règles portant sur l'ensemble des objets après modification. La méthode <em>getAllObjectsAfterModifcation(C c, M m)</em> permet d'obtenir cette liste et faire porter le test sur celle-ci. Par exemple, dans la méthode <em>check</em> cela revient à ajouter le code comme par exemple :</p>
+<pre><code class="JAVA">//On récupère la liste des objets après modification
+List&lt;O&gt; objects = this.getAllObjectsAfterModifcation(C c, M m);
+//Si le test qui vérifie le nombre d'objets est faux, on considère que les règles ne sont pas respectées, on renvoie faux au niveau de la méthode check().
+if(! checkNumberOfBuildings(objects, 8)){
+  return false;
+}
+</code></pre>
+
+<p>On retrouve les méthodes suivantes :</p>
+<table>
+<thead>
+<tr>
+<th align="left">Nom de la méthode</th>
+<th align="left">Commentaire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">checkNumberOfBuildings(allObjects, numberMaxOfObject)</td>
+<td align="left">Vérifie que le nombre d'objets de la configuration est inférieure à numberMaxOfObject</td>
+</tr>
+<tr>
+<td align="left">checkBuiltRatio(allObjects,  maxValue)</td>
+<td align="left">Vérifie que le ratio de surface couverte de l'unité foncière est inférieure à maxValue</td>
+</tr>
+<tr>
+<td align="left">checkDistanceBetweenObjectandBuildings(allObjects, distMinInterBati)</td>
+<td align="left">Vérifie que la distance entre chaque objet simulé et les bâtiments existants est supérieure à    distMinInterBati</td>
+</tr>
+<tr>
+<td align="left">checkDistanceBetweenObjects(allObjects, distMinInterBati)</td>
+<td align="left">Vérifie que la distance entre chaque paire d' objets simulés est supérieure à    distMinInterBati</td>
+</tr>
+</tbody>
+</table>
+<h2 id="verificateurs-portant-sur-lensemble-des-nouveaux-objets">Vérificateurs portant sur l'ensemble des nouveaux objets<a class="headerlink" href="#verificateurs-portant-sur-lensemble-des-nouveaux-objets" title="Permanent link"></a></h2>
+<p>Il s'agit de méthodes qui peuvent être vérifiés que les sur les nouveaux objets créés par la proposition de modification (dans le sens où l'ajout de nouveaux objets ne change pas le respect de la règles pour les objets déjà existants de la configuration). La liste des objets créés par la modification peut être obtenu avec la méthode <em>m.getBirth()</em>. Ainsi, utiliser ces méthodes dans la méthode <em>check</em> revient par exemple à ajouter le code suivant :</p>
+<pre><code class="JAVA">//On récupère la liste des objets ajoutés par la modification
+List&lt;O&gt; objects = m.getBirth();
+//Si le test qui vérifie si les nouveaux objets sont à l'intérieur de la géométrie de l'unité foncière est faux
+//On renvoie faux
+if(! checkIfInsideBPU(objects)){
+  return false;
+}
+</code></pre>
+
+<p>On retrouve les méthodes suivantes :</p>
+<table>
+<thead>
+<tr>
+<th align="left">Nom de la méthode</th>
+<th align="left">Commentaire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">checkDistanceToGeometry(objects, geom,  distMin)</td>
+<td align="left">Vérifie que la distance entre les objets et une géométrie est supérieure à distMin</td>
+</tr>
+<tr>
+<td align="left">checkDistanceToGeometry(objects, geom,  dist,  supOrInf)</td>
+<td align="left">Vérifie que la distance entre les objets et une géométrie est supérieure ou inférieure à distMin</td>
+</tr>
+<tr>
+<td align="left">checkDistanceToLimitBySide(objects,  distanceMin,lBoundaryType)</td>
+<td align="left">Vérifie que la distance entre les objets et les limites séparatives des types fournis est supérieure à distMin</td>
+</tr>
+<tr>
+<td align="left">checkDistanceToLimitByType(objects,  distanceMin, lBoundaryType)</td>
+<td align="left">Vérifie que la distance entre les objets et les limites séparatives des côtés fournis est supérieure à distMin</td>
+</tr>
+<tr>
+<td align="left">checkDistanceToOppositeLimit(objects,  distanceMin)</td>
+<td align="left">Vérifie que la distance entre les objets les limites séparatives des parcelles opposées est supérieure à distMin</td>
+</tr>
+<tr>
+<td align="left">checkIfContainedInGeometry(objects,geometry)</td>
+<td align="left">Vérifie que la distance entre les objets sont contenues dans une géométrie</td>
+</tr>
+<tr>
+<td align="left">checkIfInsideBPU(objects)</td>
+<td align="left">Vérifie que la distance entre les objets sont inclus dans la géométrie de l'unité foncière</td>
+</tr>
+<tr>
+<td align="left">checkIfIntersectsGeometry(objects, geometry)</td>
+<td align="left">Vérifie que la distance entre les objets intersectent dans une géométrie</td>
+</tr>
+</tbody>
+</table>
+<p>Les méthodes peuvent aussi être utilisées si on ne souhaite pas qu'une condition soit vérifiée. Par exemple, si on ne souhaite pas que les objets intersectent une géométrie, on peut utiliser la méthode <em>checkIfIntersectsGeometry</em> et renvoyer faux si la condition est vérifiée.</p>
               
             </div>
           </div>

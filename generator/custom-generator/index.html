@@ -8,7 +8,7 @@
   
   <meta name="author" content="MBrasebin">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Générateur de formes - Modifier les paramètres de génération - SimPLU3D tutorial</title>
+  <title>Générateur de formes - Définition de la classe de forme - SimPLU3D tutorial</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "G\u00e9n\u00e9rateur de formes - Modifier les param\u00e8tres de g\u00e9n\u00e9ration";
+    var mkdocs_page_name = "G\u00e9n\u00e9rateur de formes - D\u00e9finition de la classe de forme";
     var mkdocs_page_input_path = "generator/custom-generator.md";
     var mkdocs_page_url = "/simplu3D-tutorial/generator/custom-generator/";
   </script>
@@ -202,7 +202,7 @@
     
       
     
-    <li>Générateur de formes - Modifier les paramètres de génération</li>
+    <li>Générateur de formes - Définition de la classe de forme</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/SimPLU3D/simplu3D-tutorial?query=root/path/docs/generator/custom-generator.md"
@@ -215,7 +215,140 @@
           <div role="main">
             <div class="section">
               
-                <p>Comment customizer le générateur de formes en jouant sur les paramètres md.</p>
+                <p>Dans cette partie, nous décrirons comment le système définit la création de nouveaux objets paramétriques et les modifications qui leur seront apportées durant l'optimisation. Il s'agit de l'étape 1 du code décrit dans la section <a href="../principe/">principe de simulation</a>. Cet exemple s'appuie sur la génération de boîtes, mais il est possible de définir d'autres types de géométries (cela sera décrit dans la section <a href="./">Générer d'autres types de formes</a>).</p>
+<p>Les parties suivantes reprennent les principales étapes de création du sampler dont le code est repris dans <a href="#implementation">la dernière partie de la page sur l'implémentation</a> (étape 1) , c'est à dire le code suivant :</p>
+<pre><code class="JAVA">//Step 1 :
+
+// Sampler creation (definition of the class and of the kernel modifications)
+// Création de l'échantilloneeur (définition de la classe et des noyaux de modifications)
+Sampler&lt;GraphConfiguration&lt;Cuboid&gt;, BirthDeathModification&lt;Cuboid&gt;&gt; samp = create_sampler(Random.random(), p,
+bpu, pred, geom);
+</code></pre>
+
+<h1 id="definition-des-formes-generables">Définition des formes générables<a class="headerlink" href="#definition-des-formes-generables" title="Permanent link"></a></h1>
+<p>Pour rappel, le processus d'optimisation vise à générer une configuration composée de <em>n</em> boîtes chaque boîte pouvant être définie par un vecteur de dimension 6 :<br />
+<strong>b</strong> = (<strong>x</strong>, <strong>y</strong>, <strong>l</strong>, <strong>w</strong>, <strong>h</strong>, <strong>θ</strong>).</p>
+<p>Afin de pouvoir échantillonner, il est nécessaire de définir les intervalles dans lesquels le tirage des boîtes sera effectué :</p>
+<ul>
+<li><strong>xmin</strong> &lt; <strong>x</strong> &lt; <strong>xmax</strong></li>
+<li><strong>ymin</strong> &lt; <strong>y</strong> &lt; <strong>ymax</strong></li>
+<li><strong>minθ</strong> &lt; <strong>θ</strong> &lt; <strong>maxθ</strong></li>
+<li><strong>minwid</strong> &lt; <strong>w</strong> &lt; <strong>maxwid</strong></li>
+<li><strong>minlen</strong> &lt; <strong>l</strong> &lt; <strong>maxlen</strong></li>
+<li><strong>minheight</strong> &lt; <strong>h</strong> &lt; <strong>maxheight</strong></li>
+</ul>
+<p>Les deux premières valeurs sont contraintes par l'enveloppe contenant la géométrie dans laquelle les centres de boîtes seront échantillonnés.</p>
+<p>Dans l'exemple de la <a href="../begin/first_simulation">première simulation</a>, <strong>minθ</strong> et <strong>maxθ</strong> sont fixés dans l'exemple à <strong>0</strong> et <strong>π</strong> afin de permettre tout type d'orientation. Les autres paramètres sont fixés dans le fichier de configuration <strong>params.json</strong>.</p>
+<p>Afin que le système puisse générer des formes, il est nécessaire de définir une classe <strong>Builder</strong> qui permet d'instancier les objets à partir d'un tableau contenant les paramètres de la forme. Dans l'exemple, il s'agit de la classe <strong>CuboidBuilder</strong>.</p>
+<h1 id="definition-des-modifications">Définition des modifications<a class="headerlink" href="#definition-des-modifications" title="Permanent link"></a></h1>
+<p>Une modification aléatoire est est déterminée par le choix d’un des noyaux de proposition. Chaque noyau a la même probabilité d'être sélectionné. Dans le cadre de l'exemple, 6 noyaux sont utilisés :</p>
+<ul>
+<li>ajout/suppression d’une nouvelle boîte ;</li>
+<li>translation d’une boîte ;</li>
+<li>changement de la longueur d’une boîte ;</li>
+<li>changement de la largeur d’une boîte ;</li>
+<li>changement de la hauteur d’une boîte ;</li>
+<li>rotation d’une boîte.</li>
+</ul>
+<p>Excepté les modifications issues du premier noyau, toutes les modifications sont implémentées comme  la suppression et l'ajout d'une boîte. Par exemple, une modification de type changement de longueur d'une boîte <strong>b</strong> = (<strong>x</strong>, <strong>y</strong>, <strong>l</strong>, <strong>w</strong>, <strong>h</strong>, <strong>θ</strong>) est traduite comme la suppression de cette boîte et la création d'une nouvelle boîte avec une largeur différente définie comme : <strong>b'</strong> = (<strong>x</strong>, <strong>y</strong>, <strong>l</strong> + (<strong>1 - rand</strong>)  x <strong>ampli</strong>, <strong>w</strong>, <strong>h</strong>, <strong>θ</strong>) où <strong>rand</strong> est un nombre aléatoire pris dans [0,1] et <strong>ampli</strong> est un coefficient d'amplification du déplacement (réel strictement positif).
+Ainsi, dans la simulation exemple, les coefficients des amplifications (amplitudeMove, amplitudeMaxDim, amplitudeHeight, amplitudeRotate) sont stockées dans le fichier de paramétrage <strong>params.json</strong>.</p>
+<p>Les modifications sont implémentées à partir de la classe <strong>Kernel</strong> de la librjmcmc4j qui définit comment modifier un objet de la classe paramétrique utilisée à partir d'un tirage aléatoire.</p>
+<p># Création de l'échantillonneur de Green</p>
+<p>Les dernières étapes visent à définir l'objet qui va effectuer les tirages aléatoires des boîtes qui seront créées (classe <strong>DirectSampler</strong> de librjmcmc4j) et l'échantillonneur de Green qui va définir les modifications à appliquer pendant la simulation et notamment la probabilité d'acception durant le process.</p>
+<p># Implémentation</p>
+<p>```JAVA
+/*<em>
+     * Creation of the sampler
+     * @param rng  a random generator
+     * @param p    the parameters loaded from the json file
+     * @param bpU  the basic property unit on which the simulation will be proceeded
+     * @param pred a predicate that will check the respect of the rules
+     * @param geom a geometry that will contains all the cuboid
+     * @return a sampler that will be used during the simulation process
+     </em>/
+    public Sampler<GraphConfiguration<Cuboid>, BirthDeathModification<Cuboid>&gt; create_sampler(RandomGenerator rng,
+            SimpluParameters p, BasicPropertyUnit bpU,
+            ConfigurationModificationPredicate<GraphConfiguration<Cuboid>, BirthDeathModification<Cuboid>&gt; pred,
+            IGeometry geom) {</p>
+<pre><code>    //Step 1 : Creation of the object that will control the birth and death of cuboid
+
+    //Getting minimal and maximal dimension from the parameter file
+    double minlen = Double.isNaN(this.minLengthBox) ? p.getDouble("minlen") : this.minLengthBox;
+    double maxlen = Double.isNaN(this.maxLengthBox) ? p.getDouble("maxlen") : this.maxLengthBox;
+
+    double minwid = Double.isNaN(this.minWidthBox) ? p.getDouble("minwid") : this.minWidthBox;
+    double maxwid = Double.isNaN(this.maxWidthBox) ? p.getDouble("maxwid") : this.maxWidthBox;
+
+    double minheight = p.getDouble("minheight");
+    double maxheight = p.getDouble("maxheight");
+
+
+    //Builder class of the object
+    ObjectBuilder&lt;Cuboid&gt; builder = new CuboidBuilder();
+
+    //The geometry in which the sampler will be instanciated
+    if (geom != null) {
+        samplingSurface = geom;
+    }
+
+    if (samplingSurface == null) {
+        samplingSurface = bpU.getGeom();
+    }
+    IEnvelope env = samplingSurface.getEnvelope();
+
+    //Instanciation of the object dedicated for the creation of new cuboid during the process
+    //Passing the building, the class (TransformToSurface) that will make
+    // the transformation between random numbers and coordinates inside the samplingSurface
+    UniformBirth&lt;Cuboid&gt; birth = new UniformBirth&lt;Cuboid&gt;(rng,
+            new Cuboid(env.minX(), env.minY(), minlen, minwid, minheight, 0),
+            new Cuboid(env.maxX(), env.maxY(), maxlen, maxwid, maxheight, Math.PI), builder,
+            TransformToSurface.class, samplingSurface);
+
+
+
+    //Step 2  : Listing the modification kernel
+
+    //List of kernel for modification during the process
+    List&lt;Kernel&lt;GraphConfiguration&lt;Cuboid&gt;, BirthDeathModification&lt;Cuboid&gt;&gt;&gt; kernels = new ArrayList&lt;&gt;();
+
+    //A factory to create proper kernels
+    KernelFactory&lt;Cuboid, GraphConfiguration&lt;Cuboid&gt;, BirthDeathModification&lt;Cuboid&gt;&gt; factory = new KernelFactory&lt;&gt;();
+
+    //Adding the birth/death kernel
+    kernels.add(
+            factory.make_uniform_birth_death_kernel(rng, builder, birth, p.getDouble("pbirth"), 1.0, "BirthDeath"));
+    //Adding the other modification kernel
+    double amplitudeMove = p.getDouble("amplitudeMove");
+    kernels.add(factory.make_uniform_modification_kernel(rng, builder, new MoveCuboid(amplitudeMove), 0.2, "Move"));
+    double amplitudeRotate = p.getDouble("amplitudeRotate") * Math.PI / 180;
+    kernels.add(factory.make_uniform_modification_kernel(rng, builder, new RotateCuboid(amplitudeRotate), 0.2,
+            "Rotate"));
+    double amplitudeMaxDim = p.getDouble("amplitudeMaxDim");
+    kernels.add(factory.make_uniform_modification_kernel(rng, builder, new ChangeWidth(amplitudeMaxDim), 0.2,
+            "ChgWidth"));
+    kernels.add(factory.make_uniform_modification_kernel(rng, builder, new ChangeLength(amplitudeMaxDim), 0.2,
+            "ChgLength"));
+    double amplitudeHeight = p.getDouble("amplitudeHeight");
+    kernels.add(factory.make_uniform_modification_kernel(rng, builder, new ChangeHeight(amplitudeHeight), 0.2,
+            "ChgHeight"));
+
+    //Step 3  : Creation of the sampler for the brith/death of cuboid
+
+    // This distribution create a biais to make the system tends around a certain number of boxes
+    PoissonDistribution distribution = new PoissonDistribution(rng, p.getDouble("poisson"));
+    //Creation of the sampler with the modification in itself
+    DirectSampler&lt;Cuboid, GraphConfiguration&lt;Cuboid&gt;, BirthDeathModification&lt;Cuboid&gt;&gt; ds = new DirectRejectionSampler&lt;&gt;(
+            distribution, birth, pred);
+
+    //Step 4  : Creation of the GreenSampler that will be used during the optimization process
+    //It notably control the acception ratio and that the created objects and that the proposed configurations area generated
+    //According to the uniformbirth
+    Sampler&lt;GraphConfiguration&lt;Cuboid&gt;, BirthDeathModification&lt;Cuboid&gt;&gt; s = new GreenSamplerBlockTemperature&lt;&gt;(rng,
+            ds, new MetropolisAcceptance&lt;SimpleTemperature&gt;(), kernels);
+    return s;
+}
+</code></pre>
+<p>```</p>
               
             </div>
           </div>

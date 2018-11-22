@@ -8,7 +8,7 @@
   
   <meta name="author" content="MBrasebin">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Topologique - SimPLU3D tutorial</title>
+  <title>Vérificateurs de règles - Définition de règles topologiques - SimPLU3D tutorial</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Topologique";
+    var mkdocs_page_name = "V\u00e9rificateurs de r\u00e8gles - D\u00e9finition de r\u00e8gles topologiques";
     var mkdocs_page_input_path = "rules/topologique.md";
     var mkdocs_page_url = "/simplu3D-tutorial/rules/topologique/";
   </script>
@@ -202,7 +202,7 @@
     
       
     
-    <li>Topologique</li>
+    <li>Vérificateurs de règles - Définition de règles topologiques</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/SimPLU3D/simplu3D-tutorial?query=root/path/docs/rules/topologique.md"
@@ -215,7 +215,61 @@
           <div role="main">
             <div class="section">
               
-                <p>Comment définir une contrainte topologique en utilisant des formes spéciales ?</p>
+                <p>Le fonctionnement de base de SimPLU3D qui consiste à tirer des valeurs aléatoires dans un espace continu rend difficile l'application de contraintes topologiques. Si on prend l'exemple de l'alignement aux limites séparatives donnant sur une route (cf image ci-dessous), il est totalement improbable que SimPLU3D effectue le tirage d'une boîte respectant cet alignement (cela revient à tirer exactement le bonne valeur de x,y,w et θ).</p>
+<p><img alt="Illustration de la contrainte d'alignement" src="../img/alignement.png" /></p>
+<h1 id="strategie-1-transformation-en-contrainte-geometrique">Stratégie 1 : transformation en contrainte géométrique<a class="headerlink" href="#strategie-1-transformation-en-contrainte-geometrique" title="Permanent link"></a></h1>
+<p>La stratégie naïve consisterait à transformer la contrainte topologique en contrainte géométrique. Par exemple, de vérifier si l'un des côtés de la boîte est inclus dans un buffer de petite taille autour de la limite donnant sur la voirie.</p>
+<p>Cela rend probable la proposition de boîtes par le système, mais comme cette probabilité reste relativement faible, il peut être nécessaire d'augmenter le nombre d'itérations afin d'atteindre un résultat optimisé.</p>
+<h1 id="strategie-2-generation-de-boites-alignees">Stratégie 2 :  génération de boîtes alignées<a class="headerlink" href="#strategie-2-generation-de-boites-alignees" title="Permanent link"></a></h1>
+<p>La seconde stratégie consiste à non plus générer des boîtes libres, mais des boîtes directement alignées sur la limite considérée. Il s'agit ainsi de définir un nouveau générateur de forme (comme décrit dans la section <a href="../../generator/custom-shape/"><strong>Générateur de formes - Générer d'autres types de formes</strong></a>).</p>
+<p>Il s'agit non plus de générer des boîtes à 6 dimensions ( <strong>b</strong> = (<strong>x</strong>, <strong>y</strong>, <strong>l</strong>, <strong>w</strong>, <strong>h</strong>, <strong>θ</strong>)), mais des boîtes parallèles à 4 dimensions ( <strong>bp</strong> = (<strong>x</strong>, <strong>y</strong>, <strong>l</strong>, <strong>h</strong>), en considérant que l'orientation et la largeur sont imposées par les coordonnées.</p>
+<h2 id="executable-pour-la-generation-de-boites-alignees">Exécutable pour la génération de boîtes alignées<a class="headerlink" href="#executable-pour-la-generation-de-boites-alignees" title="Permanent link"></a></h2>
+<p>Dans le projet SimPLU3D-tutorial, une classe a été ajoutée sur la base de l'exemple de base pour effectuer des simulation avec des boîtes qui seraient alignées à la limite donnant sur la voirie. Il s'agit de la classe : <em>fr.ign.simplu3d.topologicRule.ParallelSimulator</em></p>
+<pre><code class="JAVA">  // NEW HERE THE PARALELLE OPTIMOIZER IS USED
+  ParallelCuboidOptimizer oCB = new ParallelCuboidOptimizer();
+
+  // IT REQUIRES AS INPUT THE GEOMETRY WHERE THE CUBOIDS HAVE TO BE ALIGNED
+  IGeometry[] limits = createRoadLimits(bPU);
+
+  // Run of the optimisation on a parcel with the predicate
+  GraphConfiguration&lt;Cuboid&gt; cc = oCB.process(Random.random(), bPU, p, env, 0, pred, limits, bPU.getGeom());
+
+</code></pre>
+
+<p>La différence avec le code d'exemple de base tient en deux lignes :</p>
+<ul>
+<li>la récupération des limites le long desquelles les boîtes seront alignées ;</li>
+<li>l'utilisation du simulateur spécifique aux boîtes alignées (classe * fr.ign.cogit.simplu3d.rjmcmc.cuboid.optimizer.paralellcuboid.ParallelCuboidOptimizer*)</li>
+</ul>
+<p>Le résultat est celui de la figure suivante. On visualise bien que la boîtes est alignée avec la limite séparative ce qui fait que le résultat
+optimisé n'occupe pas l'intérieur du L.</p>
+<p><img alt="Résult de la simulation d'une boîte alignée" src="../img/alignedBox.png" /></p>
+<h2 id="definition-de-loptimiseur">Définition de l'optimiseur<a class="headerlink" href="#definition-de-loptimiseur" title="Permanent link"></a></h2>
+<p>L'optimiseur est défini comme générant des objets de la classe  <em>fr.ign.cogit.simplu3d.rjmcmc.cuboid.geometry.simple.ParallelCuboid</em> du projet SimPLU3D composé de 4 dimensions. Néanmoins, cette classe possède les attributs orientation et width pour permettre de générer la forme de la boîte.</p>
+<p>La différence principale avec la simulation du bâtiment en L se situe au niveau du builder (classe <em>fr.ign.cogit.simplu3d.rjmcmc.cuboid.builder.ParallelCuboidBuilder</em> du projet SimPLU3D). Le builder est défini comme ayant 4 dimensions mais il va bien renseigner les 6 dimensions de l'objet  <em>ParallelCuboid</em>.</p>
+<p>Pour déterminer la largeur et l'orientation, une projection est effectuée depuis le point tiré aléatoirement vers la limite sur laquelle la forme est alignée. La longueur de la projection détermine la moitié de la largeur de la boîte et son azimut l'orientation de la boîte (cf code ci-dessous).</p>
+<pre><code class="JAVA">@Override
+public Cuboid build(double[] coordinates) {
+  Coordinate p = new Coordinate(coordinates[0], coordinates[1]);
+  DistanceOp op = new DistanceOp(this.limits, factory.createPoint(p));
+  Coordinate projected = op.nearestPoints()[0];
+  double distance = op.distance();
+  double orientation = Angle.angle(p, projected);
+  AbstractParallelCuboid result;
+  if (bandType == 1) {
+
+    result = new ParallelCuboid(coordinates[0], coordinates[1], coordinates[2], distance * 2,
+        coordinates[3], orientation + Math.PI / 2);
+
+  } else {
+    result = new ParallelCuboid2(coordinates[0], coordinates[1], coordinates[2], distance * 2,
+        coordinates[3], orientation + Math.PI / 2);
+  }
+  return result;
+}
+</code></pre>
+
+<p>Tous les autres aspects (définition des noyaux de proposition et du sampler) sont définis de la même manière que vu précédemment mais pour ces  objets à 4 dimensions.</p>
               
             </div>
           </div>
