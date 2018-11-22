@@ -10,9 +10,7 @@ L'objectif de cette partie est de présenter un code permettant de générer des
 
 L'exécution du code présenté ici se trouve dans la classe  *fr.ign.simplu3d.shapeGenerator.OptimisedLShapeDirectRejection* du projet SimPLU3D-tutorial.
 
-**
-(TODO : à dessiner le bâtiments et les paramètres)
-**
+![Vue du bâtiment en L](./img/lshape.png)
 
 La classe de formes simulées (présentée dans le schéma précédent) comporte 10 dimensions :
 
