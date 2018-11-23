@@ -215,8 +215,110 @@
           <div role="main">
             <div class="section">
               
-                <p>Comment utiliser des formats de fichiers de règles ?
-- Pas de formats définis pour le moment car il n'existe pas de normes et besoin souvent de changer les règles utilisées, mais on va prendre les exemples d'ArtiScales et de smartPLU pour montrer comment faire avec les zones</p>
+                <p>SimPLU3D ne possède pas un format pour stocker les règles morphologiques. En effet, les différentes expériences ont montré que suivant les besoins, l'échelle d'étude et les réglementations locales, les règles nécessaires à modéliser pouvaient beaucoup varier. Ainsi, pour rester générique, c'est à l'utilisateur de définir comment stocker ces règles et implémenter l'interface <em>Predicate</em> en fonction de ces règles.</p>
+<p>Cependant, dans cette partie nous présenterons d'abord un exemple de code avec une démarche conseillée pour intégrer des règles à partir d'un tableau. Puis, nous pointerons vers différentes expérimentations utilisant différents formats de règles.</p>
+<h1 id="integration-de-regles-sous-forme-dun-tableau">Intégration de règles sous forme d'un tableau<a class="headerlink" href="#integration-de-regles-sous-forme-dun-tableau" title="Permanent link"></a></h1>
+<p>Ici, nous présenterons un exemple pour charger des règles stockées dans un fichier .csv et pour appliquer ces règles aux différentes zones d'un plan de zonage via le <em>SamplerPredicat</em> . Le code est disponible dans la classe <em>fr.ign.simplu3d.simulRules.SimulWithRules</em> du projet SimPLU3D-tutorial. Les données utilisées sont stockées dans le dossier <em>resources/simulationWithRules</em>, il y a notamment un fichier <em>rules.csv</em> en plus (mis en tableau ci dessous). La jointure entre les zones urbaines  et les valeurs de ce tableau s'effectue via le champ <em>libelle</em>.</p>
+<table>
+<thead>
+<tr>
+<th align="left">libelle</th>
+<th align="left">distReculVoirie</th>
+<th align="left">distReculFond</th>
+<th align="left">distReculLat</th>
+<th align="left">distanceInterBati</th>
+<th align="left">maximalCES</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">ub1</td>
+<td align="left">2</td>
+<td align="left">3</td>
+<td align="left">4</td>
+<td align="left">8</td>
+<td align="left">0.5</td>
+</tr>
+<tr>
+<td align="left">ub2</td>
+<td align="left">4</td>
+<td align="left">5</td>
+<td align="left">4</td>
+<td align="left">8</td>
+<td align="left">1</td>
+</tr>
+</tbody>
+</table>
+<p>Le résultat de la simulation est visible ci dessous, seules 2 parcelles sont simulées (celles avec 1 comme valeur pour l'attribut SIMUL)</p>
+<p><img alt="Résultat de la simulation" src="../img/resultSimulation.png" /></p>
+<h2 id="code-de-reglementation">Code de réglementation<a class="headerlink" href="#code-de-reglementation" title="Permanent link"></a></h2>
+<p>Au préalable, une classe de réglementation a été créée (<em>fr.ign.simplu3d.simulRules.RegulationTuto</em>). Cette classe implémente l'interface <em>IZoneRegulation</em> qui permet de rattacher une réglementation à une zone (classe <em>UrbaZone</em>). Cette interface a déjà été vue dans la section présentant le <a href="./envgeo/modelgeo.md">modèle géographique</a>.</p>
+<p>Il s'agit d'une simple classe ayant des accesseurs aux différents paramètres du règlement ainsi qu'à son libellé.</p>
+<h2 id="code-de-simulation">Code de simulation<a class="headerlink" href="#code-de-simulation" title="Permanent link"></a></h2>
+<p>Le code de simulation ressemble à celui présenté dans la simulation de base avec quelques modifications. La plus importante différence concerne la méthode <em>readAndAssociateRules</em> qui parse le fichier rules.csv contenant les règles et créé le lien entre les différentes zones urbaines et les instances des différents règlements.</p>
+<pre><code class="JAVA">public static void readAndAssociateRules(String ruleFile, Environnement env) throws Exception {
+  // Creation of a map to create a link between id regulation and regulation
+  Map&lt;String, RegulationTuto&gt; mapLibelleRegulation = new HashMap&lt;&gt;();
+
+  ////////////////////
+  //// READING THE CSV FILE to complete the map
+  ////////////////////
+
+  BufferedReader in = new BufferedReader(new FileReader(new File(ruleFile)));
+
+  // The first line is the head
+  in.readLine();
+  String line = &quot;&quot;;
+  // For each line
+  while ((line = in.readLine()) != null) {
+
+    // We create a new regulation
+    RegulationTuto r = new RegulationTuto(line);
+    // We add it to the map with it is name
+    if (r != null) {
+      mapLibelleRegulation.put(r.getLibelle(), r);
+    }
+
+  }
+
+  in.close();
+
+  ////////////////////
+  //// ASSOCIATING UrbaZone and regulation
+  ////////////////////
+
+  for (UrbaZone zone : env.getUrbaZones()) {
+    // We use the libelle to make a join between regulation and zone
+    RegulationTuto regulation = mapLibelleRegulation.get(zone.getLibelle());
+
+    // We create the link in the two directions for convenience
+    zone.setZoneRegulation(regulation);
+    if (regulation != null) {
+      regulation.setUrbaZone(zone);
+
+    }
+
+  }
+
+}
+</code></pre>
+
+<p>On peut également noter par ailleurs l'utilisation de la méthode <strong>hasToBeSimulated</strong> pour ne simuler que les parcelles ayant 1 comme valeur dans le champs <strong>simul</strong> du fichier contenant les parcelles.</p>
+<pre><code class="JAVA">if (!currentCadastralParcel.hasToBeSimulated()) {
+ continue;
+}
+</code></pre>
+
+<h1 id="autres-exemples-dutilisation-de-fichier-de-regles">Autres exemples d'utilisation de fichier de règles<a class="headerlink" href="#autres-exemples-dutilisation-de-fichier-de-regles" title="Permanent link"></a></h1>
+<p>Deux types de formats de règles ont été utilisés :</p>
+<ul>
+<li>
+<p><strong>Format OCL</strong>(Object Constraint Language) : le format OCL permet de modéliser des contraintes à partir d'instances d'un modèle. Ainsi, l'utilisation de règles au format OCL permet une grande expressivité comme il peut utiliser et combiner tous les concepts du modèle géographique de SimPLU3D. Cependant, cette expressivité à un coût car le temps d'évaluation d'une contrainte formulée en OCL est beaucoup plus longue que son équivalent programmée en Java. Pour en savoir plus, vous pouvez consulter la page Github de <a href="https://github.com/SimPLU3D/simplu3D-ocl/blob/master/README.md">SimPLU3D-OCL</a> ;</p>
+</li>
+<li>
+<p><strong>Format CartoPLU+</strong> : le format CartoPLU+ stocke les règles sous format d'un tableau CSV à partir d'une sélection de contraintes effectuée par l'<a href="https://www.iau-idf.fr/">IAUIDF</a> et la <a href="http://www.driea.ile-de-france.developpement-durable.gouv.fr/">DRIEA</a>. Pour en savoir plus, vous pouvez consulter la page Github du projet <a href="https://github.com/SimPLU3D/simplu3D-iauidf">SimPLU3D-IAUIDF</a>.</p>
+</li>
+</ul>
               
             </div>
           </div>
