@@ -92,6 +92,10 @@ if (!currentCadastralParcel.hasToBeSimulated()) {
 }
 ```
 
+Dans cette exemple, il n'y a qu'une seule sous-parcelles par parcelle (c'est-à-dire que chaque parcelle est complètement incluse dans une seule zone urbaine). Néanmoins, il est possible de considérer plusieurs règlements au sein d'une parcelle et d'accéder à ces règlements via les sous-parcelles. Cela nécessite dans le prédicat de vérifier pour chacun des objets à quelle(s) sous-parcelle(s) ils appartiennent et à appliquer les vérifications en fonction de ces règlements. Une seconde complexité est de proposer une méthode pour réconcilier ces différents règlements (Par exemple, comme mesure-t-on une contrainte de distance entre 2 objets qui se trouvent dans 2 zones différentes ?). Cet aspect est compliqué à formaliser, mais un exemple est défini dans la classe [MultiplePredicateArtiScales du projet ArtiScales](https://github.com/ArtiScales/ArtiScales/blob/master/src/main/java/fr/ign/cogit/rules/predicate/MultiplePredicateArtiScales.java). 
+
+
+
 # Autres exemples d'utilisation de fichier de règles
 
 Deux types de formats de règles ont été utilisés :
