@@ -23,7 +23,7 @@ Cette bibliothèque a notamment été utilisée pour modéliser des formes bâti
 
 SimPLU3D a déjà fait l'objet de plusieurs applications et publications, n'hésitez pas consulter [la liste des réalisations et publications](bibliographie.md).
 
-SimPLU3D est développé et maintenu par le laboratoire [LASTIG](http://lastig.ign.fr/) de l'[Institut National de l'Information Géographique et Forestière](https://fr.ign.com/). N'hésitez pas à [nous contacter](about.md) pour nous fait un retour sur SimPLU3D ou pour utiliser le code.
+SimPLU3D est développé et maintenu par le laboratoire [LASTIG](http://recherche.ign.fr/) de l'[Institut National de l'Information Géographique et Forestière](https://fr.ign.com/). N'hésitez pas à [nous contacter](about.md) pour nous fait un retour sur SimPLU3D ou pour utiliser le code.
 
 Cette documentation a pour but de montrer comment utiliser SimPLU3D et de paramétrer l'approche en fonction de vos besoins. Pour commencer, la première étape est d'installer les bibliothèques et de lancer une première simulation [(par ici)](./begin/intro.md).
 
