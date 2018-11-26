@@ -14,7 +14,7 @@ Cela signifie que pour être capable d'utiliser SimPLU3D il est nécessaire d'av
 
 - dans le langage de programmation Java et notamment une bonne connaissance de l'héritage et des générics ;
 -  dans le gestionnaire de projet Maven afin de pouvoir utiliser les bibliothèques de SimPLU3D.
-
+- des connaissances sur le fonctionnement de [GeOxygene](http://ignf.github.io/geoxygene/) et notamment [de son module 3D](http://ignf.github.io/geoxygene/documentation/application/3d.html), peut être nécessaire étant donné que ce projet est utilisé pour les opérations SIG (néanmoins, si vous n'êtes pas familier avec ce projet, les classes et méthodes utilisées sont relativement classiques et parlantes).
 
 La documentation s'organise autour de trois parties présentant les trois aspects principaux du code de SimPLU3D :
 
