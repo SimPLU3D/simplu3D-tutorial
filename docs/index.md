@@ -6,6 +6,8 @@ date: 2018-10-26
 
 ---
 
+[Logo de SimPLU3D](./img/logo_small.png)
+
 # Documentation de SimPLU3D
 
 SimPLU3D est un ensemble de bibliothèques Java Open-Source qui permet de simuler des formes bâties en 3D optimisant une fonction à partir de contraintes morphologiques. Ces codes peuvent être utiliser pour questionner le rapport entre des contraintes morphologiques (par exemple issues de réglementation) et les formes produites à l'échelle du quartier ou de l'agglomération. L'approche de SimPLU3D est générique dans le sens où il est possible de définir ses propres contraintes, fonctions d'optimisations ou types de formes. L'ensemble de ces bibliothèque est disponible dans l'organisation Github [SimPLU3D](https://github.com/SimPLU3D).
