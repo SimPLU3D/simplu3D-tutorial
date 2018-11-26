@@ -65,8 +65,28 @@
 "folder":"",
 
 
-"visitorviewer":"false"
+"visitorviewer":"false",
+"showbackground":"true",
+"background_img":"/home/mbrasebin/Documents/Code/SimPLU3D/simplu3D-tutorial/src/main/resources/firstSimulation/img/background.png",
+"z":"0",
+"xminbg":"1051042.85",
+"yminbg":"6840539.08",
+"xmaxbg":"1051264.80",
+"ymaxbg":"6840679.27",
 
+"filmvisitor":"false",
+"filmvisitorvecty":"-15",
+"filmvisitorvectx":"-15",
+"filmvisitorvectz":"5",
+
+
+"filmvisitorx":"1051042.85",
+"filmvisitory":"6840539.08",
+"filmvisitorz":"45",
+
+"filmvisitorr":"180",
+"filmvisitorg":"180",
+"filmvisitorb":"180"
 
  
 
