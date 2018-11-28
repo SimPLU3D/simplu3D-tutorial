@@ -6,7 +6,7 @@ date: 2018-10-26
 
 ---
 
-L'objectif de cette partie est de présenter un code permettant de générer des bâtiments en forme de L avec un toit typifié et de décrire les étapes à suivre pour générer des configurations avec d'autres types de forme à partir du simulateur basique présenté dans la [première expérimentation](../begin/first_simulation/md).
+L'objectif de cette partie est de présenter un code permettant de générer des bâtiments en forme de L avec un toit typifié et de décrire les étapes à suivre pour générer des configurations avec d'autres types de forme à partir du simulateur basique présenté dans la [première expérimentation](../begin/first_simulation.md).
 
 L'exécution du code présenté ici se trouve dans la classe  *fr.ign.simplu3d.shapeGenerator.OptimisedLShapeDirectRejection* du projet SimPLU3D-tutorial.
 
