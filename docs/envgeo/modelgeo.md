@@ -68,25 +68,24 @@ Les classes de réglementation visent à déterminer quelle contraintes régleme
 
 La classe *UrbaDocument* est la classe parent qui décrit le document modélisé. Il possède un type défini parmi les possibilités offertes par l'énumération *UrbaDocumentType* comme les valeurs POS, PLU, etc. . La classe  *UrbaDocument* possède des zones d'urbanisme (UrbaZone) qui possèdent une géométrie surfacique (accessible avec la méthode *getGeom()*). Les contraintes réglementaires sont définies pour chaque *UrbaZone* et accessibles à travers une réglementation de zone (décrite dans l'interface *IZoneRegulation*). L'implémentation de cette interface permet de définir les valeurs des contraintes qui s'appliquent sur la zone (voir[l'exemple sur les formats de règles](https://simplu3d.github.io/simplu3D-tutorial/rules/formats/)). Il est seulement nécessaire de définir la zone réglementaire urbaine sur laquelle cette réglementation est définie (*getUrbaZone()*) et un convertisseur en texte pour consulter les informations contenues (*toText()*).
 
-
-La classe *Prescription* vise à définir des contraintes qui s'appliquent localement. Une prescription peut avoir une géométrie qui soit ponctuelle, surfacique ou linéaire et a un type qui set définie à travers l'énumartion *PrescriptionType*. Cette énumération provient de la norme CNIG-COVADIS et reroupe les différents types définis dans la norme.
+La classe *Prescription* vise à définir des contraintes qui s'appliquent localement. Une prescription peut avoir une géométrie qui soit ponctuelle, linéaire ou surfacique  et a un type qui est défini à travers l'énumération *PrescriptionType*. Cette énumération provient de la norme CNIG-COVADIS et reroupe les différents types définis dans cette norme.
 
 # Classes du parcellaire
 
-![Diagram schématisant les classes des parcelles dans SimPLU3D](./img/parcelDiagram.png)
+![Diagramme schématisant les classes des parcelles dans SimPLU3D](./img/parcelDiagram.png)
 
-Ces classes visent à organiser les parcelles et le objets reliés au parcellaire. Le schéma ci dessous vise à présenter (dans l'image a les différentes relations d'incluses entre *BasicPropertyUnit*, *CadastralParcel* et *SubPArcel*)les différentes relations entre les parcelles, leur limites séparatives (*ParcelBoundary*) et les objets environnants.
+Ces classes visent à organiser les parcelles et le objets reliés au parcellaire. Le schéma ci dessous vise à présenter (dans l'image, on trouve les différentes relations d'inclusion entre *BasicPropertyUnit*, *CadastralParcel* et *SubParcel*) les différentes relations entre les parcelles, leurs limites séparatives (*ParcelBoundary*) et les objets environnants.
 
 ![Image schématisant la modélisation des parcelles dans SimPLU3D](./img/parcelSchema.png)
 
-Les unités foncières (classe *BasicPropertyUnit*) sont l'unité de base en termes de propriété foncière, elles regroupent un ensemble de parcelles cadastral (classe *CadastralParcel*). L'unité foncière contient un certain nombre de bâtiments (*getBuildings()*) qui se trouvent, normalement, totalement inclus dans les unités foncières. Il est possible d'obtenir la géométrie 2D par la méthode *getPol2D()* et la géométrie 3D avec la méthode *generateGeom()*.
+Les unités foncières (classe *BasicPropertyUnit*) sont l'unité de base en termes de propriété foncière. Elles regroupent un ensemble de parcelles cadastrales (classe *CadastralParcel*). L'unité foncière contient un certain nombre de bâtiments (*getBuildings()*) qui se trouvent, normalement, totalement inclus dans les unités foncières. Il est possible d'obtenir la géométrie 2D par la méthode *getPol2D()* et la géométrie 3D avec la méthode *generateGeom()*.
 
 Les parcelles cadastrales sont composées d'un ensemble de sous-parcelles (*SubParcel*). Les sous-parcelles correspondent à la partition d'une parcelle en fonction du zonage réglementaire utilisé (*UrbaZone*). En effet, rien ne garantit qu'une parcelle ne soit pas incluse que dans une seule zone réglementaire. Une parcelle possède un identifiant unique accessible avec le méthode (*getCode()*) et il est possible de préciser si celle-ci est simulable ou non (méthode *hasToBeSimulated()*). Les limites séparatives des objets sont décrits comme des objets (*ParcelBoundary*) qui peuvent servir lors de la vérification de règles. Il est possible d'accéder directement à ces objets (méthode *getBoundaries()*) ou de les filtrer en fonction de leurs attributs (méthode *getBoundariesByType()* ou *getBoundariesBySide()*). La géométrie est accessible avec la méthode *getGeom()*.
 
 Les sous-parcelles (classe *SubParcel*) sont une décomposition des parcelles cadastrales par rapport aux zones de réglementation (classe *UrbaZone*). Ainsi, chaque sous parcelle est associé à une zone de réglementation urbaine accessible par la méthode *getUrbaZone()*. Elle permet de faire le lien pendant la simulation entre le parcellaire et les règles associées. Les limites séparatives sont également associées aux sous-parcelles et accessibles par la méthode (*getBoundaries()*).  La géométrie est accessible avec la méthode *getGeom()*.
 
 
-Les limites séparatives sont des objets modélisés par des segments (accessibles par *getGeom()*). Ils modélisent les limites des parcelles ou sous-parcelles. Ces parcelles sont caractérisées par un type (parmi les types de l'énumération *ParcelBoundaryType* et accessible par la méthode *getType()*) :
+Les limites séparatives sont des objets modélisés par des segments (accessibles par *getGeom()*). Ils modélisent les limites des parcelles ou des sous-parcelles. Ces parcelles sont caractérisées par un type (parmi les types de l'énumération *ParcelBoundaryType* et accessible par la méthode *getType()*) :
 
 - **BOT** : pour les limites de fond de parcelle ;
 - **LAT** :  pour les limites latérales parcelle ;
@@ -108,9 +107,9 @@ Les classes modélisant les bâtiments sont issues du standard [CityGML V2.0](ht
 ![Diagramme schématisant les classes de bâtiments dans SimPLU3D](./img/buildingDiagram.png)
 
 
-Il y a deux classes de bâtiments les bâtiments (classe *Building*) et les parties de bâtiments (classe *BuildingPart*) qui instancient toutes les deux la classe abstraite *AbstractBuilding*. Les bâtiments sont des objets bâtiments issues de base de données 3D  et associées à une unité foncière (accessible avec la méthode *getBPU()*). Ces bâtiments sont découpées en parties de bâtiment en fonction des sous-parcelles (accessible avec la classe *getSubParcel()*).  
+Il y a deux classes de bâtiments : les bâtiments (classe *Building*) et les parties de bâtiments (classe *BuildingPart*) qui instancient toutes les deux la classe abstraite *AbstractBuilding*. Les bâtiments sont des objets bâtiments issues de base de données 3D  et associées à une unité foncière (accessible avec la méthode *getBPU()*). Ces bâtiments sont découpés en parties de bâtiment en fonction des sous-parcelles (accessibles avec la méthode *getSubParcel()*).  
 
-La plupart des méthodes pour ces classes proviennent de la classe abstraite *AbstractBuilding*, parmi celles-ci les plus importante pour un usage de SimPLU3D sont :
+La plupart des méthodes pour ces classes proviennent de la classe abstraite *AbstractBuilding*, parmi celles-ci les plus importantes pour un usage de SimPLU3D sont :
 
 -  *isNew()* : qui indique si un bâtiment est simulé (valeur true) ou existant (valeur false) ;
 - *getLOD2MultiSurface()* : qui permet d'obtenir la géométrie de tout le bâtiment ;
@@ -140,17 +139,17 @@ Les bâtiments sont composés d'un objet de toit (classe *RoofSurface*) accessib
 
 ![Schéma schématisant les bâtiments et toit dans SimPLU3D](./img/wallRooofStructure.png)
 
-Le toit possède différentes informations concernant sa structure : une gouttière (méthode *getGutter()*) en vert  dans l'image, des arêtes de pignons (*getGable()*) en orange dans l'image et des arêtes sommets (*getRoofing()*) en bordeau sur l'image. Des angles minimaux (méthode *getAngleMin()*) et maximaux (méthode *getAngleMax()*) sont également disonibles.
+Le toit possède différentes informations concernant sa structure : une gouttière (méthode *getGutter()*) en vert dans l'image, des arêtes de pignons (*getGable()*) en orange dans l'image et des arêtes sommets (*getRoofing()*) en bordeau sur l'image. Des angles minimaux (méthode *getAngleMin()*) et maximaux (méthode *getAngleMax()*) sont également disponibles.
 
-Concernant les surfaces de murs, chaque objet de la classe *WallSurface* représente un ensemble de géométries coplanaires. Ces murs possèdes un type, similaire au type des limites séparatives (énumération *WallSurfaceType*) et un attribut indiquant s'ils possèdent des fenêtres (méthode *isWindowLess()*).
+Concernant les surfaces de mur, chaque objet de la classe *WallSurface* représente un ensemble de géométries coplanaires. Ces murs possèdes un type, similaire au type des limites séparatives (énumération *WallSurfaceType*) et un attribut indiquant s'ils possèdent des fenêtres (méthode *isWindowLess()*).
 
-Ces deux types de surface possèdes des matériaux (classe *Materiau*) qui possèdent un nom pour les discriminer et éventuellement des coordonnées de texture pour d'éventuelles représentations.
+Ces deux types de surface possèdent des matériaux (classe *Materiau*) qui ont un nom pour les discriminer et éventuellement des coordonnées de texture pour d'éventuels placage de textures.
 
 # Classes de l'espace publique
 
 ![Schéma schématisant l'espace public](./img/publicSpaceDiagram.png)
 
-Les classes servent à modéliser l'espace en dehors des parcelles qui peuvent imposer des contraintes sur les configurations bâties simulées. Ces objets seront accessibles via les limites séparatives (classe *ParcelBoundary*).
+Ces classes servent à modéliser l'espace en dehors des parcelles qui peuvent imposer des contraintes sur les formes bâties simulées. Ces objets sont accessibles via les limites séparatives (classe *ParcelBoundary*).
 
 La classe *PublicSpace* représente des objets surfaciques (parcs, places, etc.) qui sont définis par un type (méthode *getType()*).
 
