@@ -6,10 +6,9 @@ date: 2018-10-26
 
 ---
 
-Dans cette partie, nous présenterons comment est configuré l'algorithme d'optimisation à travers les conditions initiales et d'arrêt, ainsi que la définition de la fonction d'optimisation.
+Dans cette partie, nous présentons comment est configuré l'algorithme d'optimisation à travers les conditions initiales et d'arrêt, ainsi que la définition de la fonction d'optimisation.
 
-
-Les parties suivantes reprennent les principales étapes de création du sampler dont le code est repris dans [la dernière partie de la page sur l'implémentation](#implementation) (étape 2) , c'est à dire le code suivant :
+Les parties suivantes reprennent les principales étapes de création du sampler dont le code est repris dans [la dernière partie de la page sur l'implémentation](./custom-generator.md#implementation) (étape 2) , c'est à dire le code suivant :
 
 ```JAVA
 //Step 2 : Preparation of the optimizer
