@@ -21,7 +21,7 @@ Les données en entrée se trouvent dans le répertoire de ressources *resources
 ![Carte des données en entrée](img/data-in-simu0.png)
 
 
-# Code de simulation
+# Code de simulation
 
 Le code commenté à exécuter est repris ci-dessous. On note qu'il y a 4 étapes nécessaires pour exécuter la simulation :
 
