@@ -12,7 +12,7 @@ Le modèle géographique a pour objet de décrire les objets à partir desquels 
 
 ![Exemple de règle issu du PLU](./img/ex-regle.png)
 
-le modèle permet de représenter les objets géographiques (en rouge), les propriétés (en bleu) et les relations (en vert). Ensuite, ces informations seront utilisées pendant la simulation pour vérifier si une configuration bâtie respecte ou non la règle formée par cette phrase. La prise en cmopte de telles contraintes est décrite dans la section [définition de contraintes morphologiques](/../rules/intro.md).
+le modèle permet de représenter les objets géographiques (en rouge), les propriétés (en bleu) et les relations (en vert). Ensuite, ces informations seront utilisées pendant la simulation pour vérifier si une configuration bâtie respecte ou non la règle formée par cette phrase. La prise en cmopte de telles contraintes est décrite dans la section [définition de contraintes morphologiques](../rules/intro.md).
 
 Pour en savoir plus, le modèle a fait l'objet d'une publication scientifique :
 
