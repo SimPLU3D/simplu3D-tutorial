@@ -39,17 +39,17 @@ Le modèle géographique est instancié dans le package *fr.ign.cogit.simplu3d.m
 
 Le modèle est certes complexe dans l'absolu, mais il n'est néanmoins (comme présenté dans l'[exemple de la simulation basique](../begin/first_simulation.md)) pas nécessaire de renseigner toutes les classes pour permettre l'exécution du modèle. Seules les classes relatives aux parcelles doivent absolument être instanciées. Le fait de ne pas instancier une des classes du modèle rend impossible la capacité d'évaluer des contraintes s'appuyant sur les éléments non instanciés. Dans cette page, nous ne décrivons que le logique du modèle. Le processus d'intégration existant est décrit dans une [autre page](integration.md).
 
-Les diagrammes de classes sont générées avec le plugin [ObjectAID d'Eclipse](http://www.objectaid.com/) et les fichiers sont disponibles dans le dossier [*diagram* de SimPLU3D-rules](https://github.com/SimPLU3D/simplu3D-rules/tree/master/diagram/).
+Les diagrammes de classes sont générés avec le plugin [ObjectAID d'Eclipse](http://www.objectaid.com/) et les fichiers sont disponibles dans le dossier [*diagram* de SimPLU3D-rules](https://github.com/SimPLU3D/simplu3D-rules/tree/master/diagram/).
 
 
 # Classe Environnement
 
-La classe *Environnement* est une classe central dans le modèle de SimPLU3D car elle le point d'entrée pour accéder à l'ensemble des objets nécessaires pour vérifier le respect des règles morphologiques.
+La classe *Environnement* est une classe centrale dans le modèle de SimPLU3D car elle est le point d'entrée pour accéder à l'ensemble des objets nécessaires pour vérifier le respect des règles morphologiques.
 
 
 ![Image présentant la classe Environnement de SimPLU3D](./img/environnementdiagram.png)
 
-Elle est composée d'une série d'accesseurs qui permettent d'accéder aux objets présentés dans ce modèle (cf image ci dessus) et également au terrain qui servira de référence.
+Elle est composée d'une série d'accesseurs qui permettent d'accéder aux objets présentés dans ce modèle (cf image ci dessus) et s'il est défini au terrain qui servira de référence d'altitudes pour les données n'ayant pas de géométrie 3D.
 
 L'instanciation d'un environnement s'effectue :
 
@@ -58,17 +58,15 @@ L'instanciation d'un environnement s'effectue :
 
 Dans tous les cas, l'objet environnement est unique, il s'agit d'un singleton que l'on peut récupérer par la méthode statique *Environnement.getInstance()*.
 
-L'objet Environnement peut également contenir les informations relatives à une translation qui serait appliquée à l'ensemble de la scène. *TRANSLATE_TO_ZERO* indique si une translation a été appliquée et *dpTranslate* la valeur de cette translation.
+L'objet Environnement peut également contenir les informations relatives à une translation qui serait appliquée à l'ensemble de la scène. L'attribut statique *TRANSLATE_TO_ZERO* indique si une translation a été appliquée et *dpTranslate* la valeur de cette translation.
 
 # Classes de réglementation
 
-Les classes de réglementation visent à déterminer quelle contraintes réglementaires s'appliquent à quelle endroit de la zone. Les différentes classes de cette partie du modèle s'inspirent de la norme CNIG-COVADIS  sur la dématérialisation des documents d'urbanisme qui visent à modéliser les territoires sur lesquels s'appliquent les réglementations. Le modèle utilise la version 2014 de ce modèle ([disponible en ligne](http://cnig.gouv.fr/?page_id=2732)). Un certain nombre d'attributs provenant de ces spécifications et modélisées dans SimPLU3D ne sont pas décrits ici. Cela est le cas car ces attributs sont purement informatifs, mais n'ont, a priori, pas vraiment d'influence sur les simulations effectuées avec SimPLU3D. Cependant, ils pourraient être utilisées dans le cadre d'un système information de gestion réglementaire.
-
-
+Les classes de réglementation visent à déterminer quelle contraintes réglementaires s'appliquent et à quels endroits. Les différentes classes de cette partie du modèle s'inspirent de la norme CNIG-COVADIS concernant la dématérialisation des documents d'urbanisme. Cette norme vise à modéliser les territoires sur lesquels s'appliquent les réglementations. Le modèle utilise la version 2014 de ce standard ([disponible en ligne](http://cnig.gouv.fr/?page_id=2732)). Un certain nombre d'attributs provenant de ces spécifications et modélisés dans SimPLU3D ne sont pas décrits ici. Cela est le cas pour les attributs purement informatifs et qui n'ont, a priori, pas d'influence sur les simulations effectuées avec SimPLU3D. Cependant, ils pourraient être utilisées dans le cadre d'un système information de gestion réglementaire.
 
 ![Image présentant les classes de réglementation de SimPLU3D](./img/regulationdiagram.png)
 
-La classe *UrbaDocument* est la classe parent qui décrit le document modélisé. Il possède un type défini parmi les possibilités offertes par l'énumération *UrbaDocumentType* comme POS, PLU, etc. . La classe  *UrbaDocument* possède des zones d'urbanisme (UrbaZone) qui possèdent une géométrie surfacique (accessible avec la méthode *getGeom()*). Les contraintes réglementaires sont définies pour chaque UrbaZone et accessible à travers une réglementation de zone (décrite dans l'interface *IZoneRegulation*). L'implémentation de cette interface permet de définir les valeurs des contraintes qui s'appliquent sur la zone. Il est seulement nécessaire de définir la zone réglementaire urbaine sur laquelle cette réglementation est définie (*getUrbaZone()*) et un convertisseur en texte pour consulter les informations contenues (*toText()*).
+La classe *UrbaDocument* est la classe parent qui décrit le document modélisé. Il possède un type défini parmi les possibilités offertes par l'énumération *UrbaDocumentType* comme les valeurs POS, PLU, etc. . La classe  *UrbaDocument* possède des zones d'urbanisme (UrbaZone) qui possèdent une géométrie surfacique (accessible avec la méthode *getGeom()*). Les contraintes réglementaires sont définies pour chaque *UrbaZone* et accessibles à travers une réglementation de zone (décrite dans l'interface *IZoneRegulation*). L'implémentation de cette interface permet de définir les valeurs des contraintes qui s'appliquent sur la zone (voir[l'exemple sur les formats de règles](https://simplu3d.github.io/simplu3D-tutorial/rules/formats/)). Il est seulement nécessaire de définir la zone réglementaire urbaine sur laquelle cette réglementation est définie (*getUrbaZone()*) et un convertisseur en texte pour consulter les informations contenues (*toText()*).
 
 
 La classe *Prescription* vise à définir des contraintes qui s'appliquent localement. Une prescription peut avoir une géométrie qui soit ponctuelle, surfacique ou linéaire et a un type qui set définie à travers l'énumartion *PrescriptionType*. Cette énumération provient de la norme CNIG-COVADIS et reroupe les différents types définis dans la norme.
