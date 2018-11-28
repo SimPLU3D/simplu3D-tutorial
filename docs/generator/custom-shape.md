@@ -63,12 +63,12 @@ Il s'agit de la classe *fr.ign.cogit.simplu3d.rjmcmc.paramshp.builder.LBuildingW
 - *void setCoordinates(T t, double[] val);* : affecte les coordonnées d'un tableau de doubles à un objet de la classe paramétrée ;
 - *int size();* : la dimension de la taille des objets construits par le constructeur (ici 10).
 
-# Définition de l'optimiseur
+# Définition de l'optimiseur
 
 
-L'optimiseur est défini dans la classe *fr.ign.cogit.simplu3d.rjmcmc.paramshp.optimizer. OptimisedLShapeDirectRejection* dans le projet SimPLU3D. L'étape peut sembler complexe car le code résultant de la classe est très long, néanmoins, comme presque toutes les méthodes à définir sont les mêmes que celles de la classe utilisée pour simuler des formes composées de boîtes (*fr.ign.cogit.simplu3d.rjmcmc.cuboid.optimizer.cuboid.OptimisedBuildingsCuboidFinalDirectRejection*) mais paramétrée avec la classe *LBuildingWithRoof*.
+L'optimiseur est défini dans la classe *fr.ign.cogit.simplu3d.rjmcmc.paramshp.optimizer. OptimisedLShapeDirectRejection* dans le projet SimPLU3D. L'étape peut sembler complexe car le code de la classe est très long, néanmoins, comme presque toutes les méthodes à définir sont les mêmes que celles  utilisée pour simuler des formes composées de boîtes (*fr.ign.cogit.simplu3d.rjmcmc.cuboid.optimizer.cuboid.OptimisedBuildingsCuboidFinalDirectRejection*) mais paramétrées avec la classe *LBuildingWithRoof*.
 
-La seule véritable méthode à définir est la méthode **create_sampler** qui créé l'échantillonneur de bâtiments en L. L'implémentation de cette méthode est similaire à celle des boîtes avec la définition des intervalles de tirage, du constructeur d'objets et des noyaux de modifications. Le code de cette méthode est repris et commenté ci-dessous :
+La seule méthode significativement différente est **create_sampler** qui créé l'échantillonneur de bâtiments en L. L'implémentation de cette méthode est similaire à celle des boîtes avec la définition des intervalles de tirage, du constructeur d'objets et des noyaux de modification. Le code de cette méthode est repris et commenté ci-dessous :
 
 
 
@@ -202,7 +202,7 @@ La seule véritable méthode à définir est la méthode **create_sampler** qui 
 	}
 ```
 
-# Implémentation de l'exécution
+# Implémentation de l'exécution
 
 Le code exécuté se trouve dans la classe *fr.ign.simplu3d.shapeGenerator.OptimisedLShapeDirectRejection* du projet SimPLU3D-tutoriel. Les différences par rapport à la simulation basique de formes composées de boîtes sont :
 - l'utilisation du nouvel optimiseur ;
