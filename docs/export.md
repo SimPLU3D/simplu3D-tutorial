@@ -33,20 +33,20 @@ ShapefileWriter.write(featC,"tmp/result.shp");
 
 # Export de boîtes
 
-Comme les boîtes sont les objets actuellement les plus utilisées comme sorties de SimPLU3D, différentes méthodes pour les exportées avec différentes transformations ont été implémentées dans le projet SimPLU3D.
+Comme les boîtes sont les objets actuellement les plus utilisées comme sorties de SimPLU3D, différentes méthodes pour les exporter avec différentes transformations ont été implémentées dans le projet SimPLU3D.
 
-Chacune des classes mentionnées ci dessous possède un *main* pour voir comment les utiliser et l'image ci-dessous montre les différences entre ces résultats.
+Chacune des classes mentionnées ci-dessous possède un *main* permettant leur utilisation.
 
 
 ## Export simple des boîtes
 
-La classe *fr.ign.cogit.simplu3d.io.shapefile.SaveGeneratedObjects*  permet d'exporter les boîtes en shapefile (méthode saveShapefile) ou dans une base PostGIS (méthode save) sous forme de MultiPolygon 3D (issus de la méthode *generated3DGeom*).
+La classe *fr.ign.cogit.simplu3d.io.shapefile.SaveGeneratedObjects*  permet d'exporter les boîtes en shapefile (méthode saveShapefile) ou dans une base PostGIS (méthode save) sous forme de MultiPolygon 3D (issus de la méthode *generated3DGeom*). Dans les données en sortie, chaque ligne correspond à une boîte.
 
 ## Export découpé
 
-Comme les boîtes générer peuvent s'intersecter, ces intersections sont potentiellement des sources de problèmes pour calculer des indicateurs sur les formes résultantes ou pour les visualiser.
+Comme les boîtes générées peuvent s'intersecter, ces intersections sont potentiellement des sources de problème pour calculer des indicateurs sur les formes résultantes ou pour les visualiser.
 
-Ainsi, la classe *fr.ign.cogit.simplu3d.util.merge.SDPCalc* permet d'exporter avec la méthode *getGeometryPairByGroup* les boîtes sous la forme d'une partition des géométries résultats avec une hauteur affectée à chaque patch. Le résultat contient un polygone 2D et une hauteur pour regénérer la forme en 3D.
+Ainsi, la classe *fr.ign.cogit.simplu3d.util.merge.SDPCalc* permet d'exporter avec la méthode *getGeometryPairByGroup* les boîtes sous la forme d'une partition des géométries résultats avec une hauteur affectée à chaque patch. Le résultat contient pour chaque enregistrement un polygone 2D et une hauteur pour regénérer la forme en 3D.
 
 Cet export facilite le calcul de la surface de plancher et de la surface 2D de la construction (méthode *process* et méthode *processSurface*).
 
@@ -62,7 +62,7 @@ L'attribut statique de cette classe *zMIN* permet de fixer l'altitude minimale a
 
 ![Illustration des différents export](./img/exportTypes.png)
 
-L'image ci-dessus illustre les différents types d'exports. Si de base la vue 3D est la même pour les trois résultats les exports différents dans leur modélisation des entités et des géométries. La seconde partie de l'image montre dans une vue 2D la sélection d'une entité (en jaune) dans les trois types d'export :
+L'image ci-dessus illustre les différents types d'exports. Si de base la vue 3D est la même pour les trois résultats, les exports sont différents dans leur modélisation des entités et des géométries. La seconde partie de l'image montre dans une vue 2D la sélection d'une entité (en jaune) dans les trois types d'export :
 
 - **Export simple** : une entité = une boîte avec une hauteur. Il y a donc beaucoup d'intersections entre objets ;
 - **Export découpé** :  une entité = une géométrie découpée par l'intersection des autres géométries. Chaque composante géométrique peut être extrudée ce qui donne un dédoublement des faces verticales à l'intersection entre deux géométries découpées ;
