@@ -8,15 +8,16 @@ date: 2018-10-26
 
 # Installer SimPLU3D
 
-Les bibliothèques de SimPLU3D sont construites avec Maven et codées en Java (la version 8 de la JDK est requise) et sont régulièrement déployées sur le serveur Maven de l'IGN. Si vous voulez essayer les codes décrits dans cette documentation, vous pouvez installer le projet [SimPLU3D-tutorial](https://github.com/SimPLU3D/simplu3D-tutorial) ou sinon vous pouvez directement l'installer dans votre projet.
+Les bibliothèques de SimPLU3D sont construites avec Maven et codées en Java (la version 8 de la JDK est requise) et sont régulièrement déployées sur le serveur Maven de l'IGN (https://forge-cogit.ign.fr/nexus/#welcome). Si vous voulez essayer les codes décrits dans cette documentation, vous pouvez installer le projet [SimPLU3D-tutorial](https://github.com/SimPLU3D/simplu3D-tutorial) ou sinon vous pouvez directement installer les bibliothèques dans votre projet.
 
 > ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) **Attention**: il se peut que la compilation du projet ne se fasse pas à cause de problèmes liées à la vérification du certificat ssh de la forge IGN. Pour cela deux solutions :
 
 > - Installer localement le certificat comme décrit dans le lien suivant [http://ignf.github.io/geoxygene/documentation/developer/install.html](http://ignf.github.io/geoxygene/documentation/developer/install.html)
 
-> - Faire une installation sécurisée lorsqu'il faudra construire le projet : **mvn clean install -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true**
+> - Faire une installation non sécurisée lors du build du projet projet : **mvn clean install -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true**
 
 ## Installer le code SimPLU3D-tutorial
+
 Les étapes suivantes sont nécessaires :
 
 1 - Installer un environnement de développement compatible avec Maven, nous recommandons de suivre ces étapes : [http://ignf.github.io/geoxygene/documentation/developer/install.html](http://ignf.github.io/geoxygene/documentation/developer/install.html)
@@ -31,8 +32,8 @@ Les étapes suivantes sont nécessaires :
 - ou directement en ligne de commande : **mvn clean install**
 
 5 - Lancer une construction du projet avec Eclipse : **Project > Build project**
-Vous pouvez désormais exécuter la [première simulation](first_simulation.md).
 
+Vous pouvez désormais exécuter la [première simulation](first_simulation.md).
 
 Néanmoins, pour avoir accès au code source pendant le tutoriel, il est recommandé d'installer en local les codes issus de [SimPLU3D](https://github.com/SimPLU3D/simplu3D) et [SimPLU3D-rules](https://github.com/SimPLU3D/simplu3D-tutorial).
 
