@@ -12,7 +12,7 @@ L'exécution du code présenté ici se trouve dans la classe  *fr.ign.simplu3d.s
 
 ![Vue du bâtiment en L](./img/lshape.png)
 
-La classe de formes simulées (présentée dans le schéma précédent) comporte 10 dimensions :
+La classe de géométrie paramétrique utilisée (présentée dans le schéma précédent) comporte 10 dimensions :
 
 - **x** : coordonnée x du centre de la forme ;
 - **y** : coordonnée y du centre de la forme ;
@@ -30,21 +30,20 @@ La classe de formes simulées (présentée dans le schéma précédent) comporte
 
 # Définition de la classe représentant la forme
 
-La classe définissant la géométrie simulée est la classe *fr.ign.cogit.simplu3d.rjmcmc.paramshp.geometry.impl.LBuildingWithRoof* du projet SimPLU3D. Cette classe implémente la classe **AbstractSimpleBuilding** (comme nous simulons un objet de type bâtiment et tout comme la classe **Cubboid**). Cela implique l'instanciation de 3 niveaux de classes abstraites et d'interfaces :
+La classe définissant la géométrie simulée est la classe *fr.ign.cogit.simplu3d.rjmcmc.paramshp.geometry.impl.LBuildingWithRoof* du projet SimPLU3D. Cette classe implémente la classe **AbstractSimpleBuilding** (comme nous simulons un objet de type bâtiment, comme c'est le cas pour la classe **Cubboid**). Cela implique l'instanciation de 3 niveaux de classes abstraites et d'interfaces :
 -  la classe *fr.ign.cogit.simplu3d.rjmcmc.cuboid.geometry.impl.AbstractSimpleBuilding* de *SimPLU3D-rules*: qui contient les informations nécessaires pour modéliser un objet de type bâtiment de SimPLU3D ;
 - l'interface *fr.ign.cogit.simplu3d.rjmcmc.generic.objectISimPLU3DPrimitive* : qui contient les méthodes propres à SimPLU3D concernant l'optimisation de forme ;
 - l'interface  de la librjmcmc4j *fr.ign.geometry.Primitive* : qui contient les informations nécessaires pour simuler des objets géographiques avec la librjmcmc4j.
-Seule l'implémentation de la dernière interface est nécessaire pour générer des formes, les deux autres niveaux enrichissent les méthodes accessibles pour la vérification des règles et la définition de la fonction d'optimisation et facilitent l'utilisation du code de la première simulation.
+Seule l'implémentation de la dernière interface est nécessaire pour générer des formes, les deux autres niveaux enrichissent les méthodes accessibles pour la vérification des règles et la définition de la fonction d'optimisation. Elles facilitent également la ré-utilisation du code de la première simulation.
 
 
-
-L'implémentation de l'interface *Primitive*  nécessite l'implémentation des méthodes suivantes :
+L'implémentation de l'interface *Primitive*  nécessite la définition des méthodes suivantes :
 
 - *int size();* : renvoie la taille de la dimension de la forme (ici 10 pour le bâtiment en L) ;
 - *double[] toArray()* :  traduit les attributs de la classe en un tableau de double (il s'agit ici d'un tableau de dimension 10 contenant les valeurs des différentes dimensions de la forme) ;
-- *Object[] getArray();* : même méthode que précédemment, mais avec des valeurs sous forme d'objet ;
-- *void set(List<Double> list);* : affecte aux attributs de la classe les valeurs provenant d'un tableau de double (ici une liste de 10 chiffres qui correspondent aux 10 dimensions de la classe).
-- *double intersectionArea(Primitive p);* : évalue la surface de l'intersection 2D avec une autre primitive (ici avec d'autres bâtiments en L);
+- *Object[] getArray();* : même méthode que précédemment, mais avec des valeurs sous forme d'objets ;
+- *void set(List<Double> list);* : affecte aux attributs de la classe les valeurs provenant d'un tableau de double (ici une liste de 10 chiffres qui correspondent aux 10 dimensions de la classe) ;
+- *double intersectionArea(Primitive p);* : évalue la surface de l'intersection 2D avec une autre primitive (ici avec d'autres bâtiments en L) ;
 - *Geometry toGeometry();* : convertit la forme en géométrie 2D JTS (ici l'emprise 2D du bâtiment, la conversion JTS permet d'optimiser les temps de calcul par rapport à l'utilisation de géométries GeOxygene) ;
 - *double getArea();* : l'aire 2D de l'emprise de la forme.
 
