@@ -25,6 +25,15 @@ Quelques ressources pour aller plus loin :
 
 > Brasebin, M., P. Chapron, G. Chérel, M. Leclaire, I. Lokhat, J. Perret and R. Reuillon (2017) Apports des méthodes d’exploration et de distribution appliquées à la simulation des droits à bâtir, Actes du Colloque International de Géomatique et d'Analyse Spatiale (SAGEO 2017). [Article](https://mbrasebin.github.io/publications/2017-Sageo.pdf) , [Présentation](https://mbrasebin.github.io/presentations/2017-SAGEO.pdf)
 
+- Le recuit simulé et la librjmcmc (https://github.com/IGNF/librjmcmc4j) :
+
+> Brédif, M., Tournaire, O., Aug. 2012. librjmcmc: An open-source generic
+  c++ library for stochastic optimization. In: The XXII Congress of the
+  International Society of Photogrammetry and Remote Sensing.
+
+
+
+
 # Expérimentations et réalisations :
 
 - **Simulation de la constructibilité en Ile-de-France** (2015 - 2019) : il s'agit d'un projet en collaboration avec l'[IAUIDF](https://www.iau-idf.fr/) et la [DRIEA](http://www.driea.ile-de-france.developpement-durable.gouv.fr/) visant à évaluer le potentiel de l'approche SimPLU3D pour déterminer la constructibilité à l'échelle de l'IDF. (Pour en savoir plus,(Brasebin et al, 2017), [Code](https://github.com/SimPLU3D/simplu3D-iauidf)) ;
