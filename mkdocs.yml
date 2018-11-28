@@ -14,7 +14,7 @@ nav:
     - 'Introduction': 'generator/intro'
     - 'Principe de fonctionnement du générateur': 'generator/principe'
     - 'Paramétrer la génération de cuboids': 'generator/custom-generator'
-    - "Personnaliser la fonction d'optimisation": 'generator/custom-generator'
+    - "Personnaliser la fonction d'optimisation": 'custom-optimisation.md'
     - 'Personnaliser les formes utilisées': 'generator/custom-shape'
 - 'Définition des contraintes morphologiques':
     - 'Introduction': 'rules/intro'
