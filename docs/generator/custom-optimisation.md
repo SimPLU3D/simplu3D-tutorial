@@ -41,9 +41,10 @@ La fonction à optimiser est contenue dans un objet de la classe générique *Gr
 - **une énergie unaire** (interface *UnaryEnergy<?>*), qui évalue indépendant une énergie pour chacun des objets  ;
 - **une énergie binaire** (interface *BinaryEnergy<?>*), qui évalue une énergie pour chaque couple d'objet ;
 - **une énergie de collection** facultative  (interface *CollectionEnergy<?>*), qui évalue la somme pour l'ensemble de la collection.
-Les interfaces des classes ne définissent qu'une méthode *double getValue()* qui renvoie la valeur numériques associée
 
-La valeur de la fonction d'optimisation est la somme des contributions de ces trois types d'énergie. Pour produire ces contributions, il est possible, pour chaque type d'énergie, de combiner différentes opérateurs (addition, soustraction, multiplication, etc.) pour produire des énergies composites. La définition de ces opérateurs se trouve dans le package *fr.ign.rjmcmc.energy* de la librjmcmc4j.
+Les interfaces des classes ne définissent qu'une méthode *double getValue()* qui renvoie la valeur numérique associée
+
+La valeur de la fonction d'optimisation est la somme des contributions de ces trois types d'énergie. Pour produire ces contributions, il est possible, pour chaque type d'énergie, de combiner différents opérateurs (addition, soustraction, multiplication, etc.) pour produire des énergies composites. La définition de ces opérateurs se trouve dans le package *fr.ign.rjmcmc.energy* de la librjmcmc4j.
 
 > ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) **Attention**: la librjmcmc4j est une bibliothèque minimisant par convention la fonction énergétique, il est nécessaire d'adapter l'instanciation de la fonction d'énergie en accord avec ce principe. Dans l'exemple au début, il s'agit de minimiser - volume(configuration)).
 
@@ -54,20 +55,20 @@ La formule de l'énergie dans l'exemple est la suivante :
 ![Formule ](./img/energieformule.png)
 
 L'énergie unaire contient différents termes :
-- **Ecreation** a pour objectif de pénaliser les boîtes ne contribuant pas suffisamment à la configuration. La définition de ce paramètre est indispensable : en effet, rien n’empêche l’intersection de boîtes. Sans ce paramètre, que nous nommons énergie de création, le système pourrait très bien proposer des configurations contenant de très nombreuses boîte ;
+- **Ecreation** a pour objectif de pénaliser les boîtes ne contribuant pas suffisamment à la configuration. La définition de ce paramètre est indispensable : en effet, rien n’empêche l’intersection de boîtes. Sans ce paramètre, que nous nommons énergie de création, le système pourrait très bien proposer des configurations contenant de très nombreuses boîtes qui ne contribueraient pas à augmenter le volume global de la configuration ;
 - **volume(b)** qui définit le volume de chaque boîte indépendamment ;
-- **volumeDifference(bPU,b)** qui définit une énergie en fonction du dépassement en termes de volume de l'unité foncière simulée (bPU). Comme les règles n'imposent pas dans l'exemple que les boîtes se trouvent strictement à l'intérieur de l'unité foncière. L'objectif de ce terme est d'autoriser le dépassement que si celui-ci contribue significativement à l'amélioration du volume.
-Les deux derniers termes sont pondérés par **ponderationVolume** et **ponderationDifference**.
+- **volumeDifference(bPU,b)** qui définit une énergie en fonction du dépassement en termes de volume de l'unité foncière simulée (bPU). Cette contrainte est ajoutée comme les règles n'imposent pas dans l'exemple que les boîtes se trouvent strictement à l'intérieur de l'unité foncière. L'objectif de ce terme est d'autoriser le dépassement que si celui-ci contribue significativement à l'amélioration du volume.
+Les deux derniers termes sont pondérés par les **ponderationVolume** et **ponderationDifference**.
 
-L'énergie binaire contient **volumeintersection(b1, b2)** la différence des volumes entre chaque couple de boîte qui est pondéré par **ponderation_volume_inter**.
+L'énergie binaire est composé de l'opérateur **volumeintersection(b1, b2)** qui évalue la différence des volumes entre chaque couple de boîte qui est pondéré par **ponderation_volume_inter**.
 
-Les différentes pondérations et la valeur **Ecreation** sont paramétrables, pour l'exemple, dans le fichier **params.json**.
+Les différentes pondérations et la valeur **Ecreation** sont paramétrables, dans l'exemple, dans le fichier **params.json**.
 
 ![Graphe d'énergie ](./img/graph.png)
 
 La figure ci-dessus représente le graphe d'énergie tel que modélisé en accord avec le formalisme de la librjmcmc4j. Les énergies dynamiques sont évaluées à chaque itération et implémentent  *UnaryEnergy<?>* et  *BinaryEnergy<?>* en fonction de l'énergie modélisée.
 
-Il s'agit d'une représentation du code qui se situe ci-dessous et qui est utilisé dans le premier exemple de code.
+Il s'agit d'une représentation du code qui se situe ci-dessous et qui est utilisé dans le premier exemple de simulation.
 
 ```JAVA
 /**
@@ -122,11 +123,11 @@ public GraphConfiguration<Cuboid> create_configuration(SimpluParameters p, Geome
 
 ## Conditions initiales et condition d'arrêt
 
-La fonction de température est fixée dans la méthode *create_schedule* et vise à moduler la probabilité d'acceptation durant la simulation. Les différents types possibles de température sont ceux de la librjmcmc4j (package *fr.ign.simulatedannealing.schedule*). Dans le cadre de SimPLU3D, nous avons opté pour la température de Métropolis. Il s'agit d'une fonction géométrique décroissante qui nécessite deux paramètres : une température initiale (valeur *temp* du fichier de configuration) et un coefficient de décroissance (valeur *deccoef*). D'après les articles sur le recuit simulé, il est conseillé de fixer cette valeur comme étant la plus grande variation possible de la fonction d'optimisation entre deux états (par exemple, dans le cadre du volume il s'agit de l'écart entre une parcelle vide et une parcelle complètement bâtie par le bâtiment le plus haut possible). Le coefficient doit être fixé très proche de 1 (comme dans les fichiers exemples). Si vous souhaitez en savoir plus, vous pouvez consulter l'article suivant :
+La fonction de température est fixée dans la méthode *create_schedule* et vise à moduler la probabilité d'acceptation durant la simulation. Les différents types possibles de température sont ceux de la librjmcmc4j (package *fr.ign.simulatedannealing.schedule*). Dans le cadre de SimPLU3D, nous avons opté pour la température de Métropolis. Il s'agit d'une fonction géométrique décroissante qui nécessite deux paramètres : une température initiale (valeur *temp* du fichier de configuration) et un coefficient de décroissance (valeur *deccoef*). D'après les articles sur le recuit simulé, il est conseillé de fixer cette valeur comme étant la plus grande variation possible de la fonction d'optimisation entre deux états (par exemple, dans le cadre du volume, il s'agit de l'écart entre une parcelle vide et une parcelle complètement bâtie par le bâtiment le plus haut possible). Le coefficient doit être fixé très proche de 1 (comme dans les fichiers exemples). Si vous souhaitez en savoir plus, vous pouvez consulter l'article suivant :
 
 > *Brédif, M., Tournaire, O.*, Aug. 2012. librjmcmc: An open-source generic c++ library for stochastic optimization. In: The XXII Congress of the International Society of Photogrammetry and Remote Sensing. ([https://www.int-arch-photogramm-remote-sens-spatial-inf-sci.net/XXXIX-B3/259/2012/isprsarchives-XXXIX-B3-259-2012.pdf](https://www.int-arch-photogramm-remote-sens-spatial-inf-sci.net/XXXIX-B3/259/2012/isprsarchives-XXXIX-B3-259-2012.pdf))
 
-Trois types de conditions d'arrêt sont définis à travers la méthode *create_end_test* et leur paramètres sont définis dans le fichier de configuration :
+Trois types de condition d'arrêt sont utilisables à travers la méthode *create_end_test* et leurs paramètres sont définis dans le fichier de configuration :
 - **absolute** : le simulateur s'arrête au bout de *absolute_nb_iter*) itérations, ce nombre est fixé dans le fichier de configuration ;
 - **relative** : le simulateur si la fonction énergétique ne s'améliore pas de la valeur *delta* pendant *relative_nb_iter* itérations ;
 - **composite** : le simulation s'arrête lorsque la première condition d'arrêt (entre absolute et relative) est atteinte.
