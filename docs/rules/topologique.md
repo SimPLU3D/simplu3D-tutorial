@@ -78,4 +78,4 @@ public Cuboid build(double[] coordinates) {
 }
 ```
 
-Tous les autres aspects (implémentation des noyaux de proposition et du sampler) sont définis de la même manière que vu précédemment mais pour ces  objets à 4 dimensions.
+Tous les autres aspects (implémentation des noyaux de proposition et du sampler) sont définis de la même manière que vu précédemment mais adaptés pour ces objets à 4 dimensions.
