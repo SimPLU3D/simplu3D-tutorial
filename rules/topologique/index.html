@@ -118,7 +118,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../generator/custom-generator">Personnaliser la fonction d'optimisation</a>
+    <a class="" href="../../custom-optimisation.md">Personnaliser la fonction d'optimisation</a>
                 </li>
                 <li class="">
                     
@@ -215,14 +215,14 @@
           <div role="main">
             <div class="section">
               
-                <p>Le fonctionnement de base de SimPLU3D qui consiste à tirer des valeurs aléatoires dans un espace continu rend difficile l'application de contraintes topologiques. Si on prend l'exemple de l'alignement aux limites séparatives donnant sur une route (cf image ci-dessous), il est totalement improbable que SimPLU3D effectue le tirage d'une boîte respectant cet alignement (cela revient à tirer exactement le bonne valeur de x,y,w et θ).</p>
+                <p>Le fonctionnement de base de SimPLU3D qui consiste à tirer des valeurs aléatoires dans un espace continu rend difficile l'application de contraintes topologiques. Si on prend l'exemple de l'alignement aux limites séparatives donnant sur une route (cf image ci-dessous), il est totalement improbable que SimPLU3D effectue le tirage d'une boîte respectant cet alignement (cela revient à tirer exactement le bonne valeur de x,y,w et θ). Deux stratégies sont possibles pour utiliser de telles règles.</p>
 <p><img alt="Illustration de la contrainte d'alignement" src="../img/alignement.png" /></p>
 <h1 id="strategie-1-transformation-en-contrainte-geometrique">Stratégie 1 : transformation en contrainte géométrique<a class="headerlink" href="#strategie-1-transformation-en-contrainte-geometrique" title="Permanent link"></a></h1>
 <p>La stratégie naïve consisterait à transformer la contrainte topologique en contrainte géométrique. Par exemple, de vérifier si l'un des côtés de la boîte est inclus dans un buffer de petite taille autour de la limite donnant sur la voirie.</p>
-<p>Cela rend probable la proposition de boîtes par le système, mais comme cette probabilité reste relativement faible, il peut être nécessaire d'augmenter le nombre d'itérations afin d'atteindre un résultat optimisé.</p>
+<p>Cela rend probable la proposition de boîtes par le système respectant cette règle, mais comme cette probabilité reste relativement faible, il peut être nécessaire d'augmenter le nombre d'itérations afin d'atteindre un résultat optimisé.</p>
 <h1 id="strategie-2-generation-de-boites-alignees">Stratégie 2 :  génération de boîtes alignées<a class="headerlink" href="#strategie-2-generation-de-boites-alignees" title="Permanent link"></a></h1>
 <p>La seconde stratégie consiste à non plus générer des boîtes libres, mais des boîtes directement alignées sur la limite considérée. Il s'agit ainsi de définir un nouveau générateur de forme (comme décrit dans la section <a href="../../generator/custom-shape/"><strong>Générateur de formes - Générer d'autres types de formes</strong></a>).</p>
-<p>Il s'agit non plus de générer des boîtes à 6 dimensions ( <strong>b</strong> = (<strong>x</strong>, <strong>y</strong>, <strong>l</strong>, <strong>w</strong>, <strong>h</strong>, <strong>θ</strong>)), mais des boîtes parallèles à 4 dimensions ( <strong>bp</strong> = (<strong>x</strong>, <strong>y</strong>, <strong>l</strong>, <strong>h</strong>), en considérant que l'orientation et la largeur sont imposées par les coordonnées.</p>
+<p>Dans ce cas, la géométrie paramétrique utilisée est non plus une boîte à 6 dimensions ( <strong>b</strong> = (<strong>x</strong>, <strong>y</strong>, <strong>l</strong>, <strong>w</strong>, <strong>h</strong>, <strong>θ</strong>)), mais un boîte parallèle à 4 dimensions ( <strong>bp</strong> = (<strong>x</strong>, <strong>y</strong>, <strong>l</strong>, <strong>h</strong>), en considérant que l'orientation et la largeur sont imposées par les coordonnées du centre de l'objet.</p>
 <h2 id="executable-pour-la-generation-de-boites-alignees">Exécutable pour la génération de boîtes alignées<a class="headerlink" href="#executable-pour-la-generation-de-boites-alignees" title="Permanent link"></a></h2>
 <p>Dans le projet SimPLU3D-tutorial, une classe a été ajoutée sur la base de l'exemple de base pour effectuer des simulation avec des boîtes qui seraient alignées à la limite donnant sur la voirie. Il s'agit de la classe : <em>fr.ign.simplu3d.topologicRule.ParallelSimulator</em></p>
 <pre><code class="JAVA">  // NEW HERE THE PARALELLE OPTIMOIZER IS USED
@@ -239,10 +239,9 @@
 <p>La différence avec le code d'exemple de base tient en deux lignes :</p>
 <ul>
 <li>la récupération des limites le long desquelles les boîtes seront alignées ;</li>
-<li>l'utilisation du simulateur spécifique aux boîtes alignées (classe * fr.ign.cogit.simplu3d.rjmcmc.cuboid.optimizer.paralellcuboid.ParallelCuboidOptimizer*)</li>
+<li>l'utilisation du simulateur spécifique aux boîtes alignées (classe <em>fr.ign.cogit.simplu3d.rjmcmc.cuboid.optimizer.paralellcuboid.ParallelCuboidOptimizer</em>)</li>
 </ul>
-<p>Le résultat est celui de la figure suivante. On visualise bien que la boîtes est alignée avec la limite séparative ce qui fait que le résultat
-optimisé n'occupe pas l'intérieur du L.</p>
+<p>Le résultat est celui de la figure suivante. On visualise bien que la boîtes est alignée avec la limite séparative ce qui fait que le résultat optimisé n'occupe pas l'intérieur du L.</p>
 <p><img alt="Résult de la simulation d'une boîte alignée" src="../img/alignedBox.png" /></p>
 <h2 id="definition-de-loptimiseur">Définition de l'optimiseur<a class="headerlink" href="#definition-de-loptimiseur" title="Permanent link"></a></h2>
 <p>L'optimiseur est défini comme générant des objets de la classe  <em>fr.ign.cogit.simplu3d.rjmcmc.cuboid.geometry.simple.ParallelCuboid</em> du projet SimPLU3D composé de 4 dimensions. Néanmoins, cette classe possède les attributs orientation et width pour permettre de générer la forme de la boîte.</p>
@@ -269,7 +268,7 @@ public Cuboid build(double[] coordinates) {
 }
 </code></pre>
 
-<p>Tous les autres aspects (définition des noyaux de proposition et du sampler) sont définis de la même manière que vu précédemment mais pour ces  objets à 4 dimensions.</p>
+<p>Tous les autres aspects (implémentation des noyaux de proposition et du sampler) sont définis de la même manière que vu précédemment mais adaptés pour ces objets à 4 dimensions.</p>
               
             </div>
           </div>

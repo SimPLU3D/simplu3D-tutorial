@@ -118,7 +118,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../generator/custom-generator">Personnaliser la fonction d'optimisation</a>
+    <a class="" href="../custom-optimisation.md">Personnaliser la fonction d'optimisation</a>
                 </li>
                 <li class="">
                     
@@ -258,20 +258,20 @@ ShapefileWriter.write(featC,&quot;tmp/result.shp&quot;);
 </code></pre>
 
 <h1 id="export-de-boites">Export de boîtes<a class="headerlink" href="#export-de-boites" title="Permanent link"></a></h1>
-<p>Comme les boîtes sont les objets actuellement les plus utilisées comme sorties de SimPLU3D, différentes méthodes pour les exportées avec différentes transformations ont été implémentées dans le projet SimPLU3D.</p>
-<p>Chacune des classes mentionnées ci dessous possède un <em>main</em> pour voir comment les utiliser et l'image ci-dessous montre les différences entre ces résultats.</p>
+<p>Comme les boîtes sont les objets actuellement les plus utilisées comme sorties de SimPLU3D, différentes méthodes pour les exporter avec différentes transformations ont été implémentées dans le projet SimPLU3D.</p>
+<p>Chacune des classes mentionnées ci-dessous possède un <em>main</em> permettant leur utilisation.</p>
 <h2 id="export-simple-des-boites">Export simple des boîtes<a class="headerlink" href="#export-simple-des-boites" title="Permanent link"></a></h2>
-<p>La classe <em>fr.ign.cogit.simplu3d.io.shapefile.SaveGeneratedObjects</em>  permet d'exporter les boîtes en shapefile (méthode saveShapefile) ou dans une base PostGIS (méthode save) sous forme de MultiPolygon 3D (issus de la méthode <em>generated3DGeom</em>).</p>
+<p>La classe <em>fr.ign.cogit.simplu3d.io.shapefile.SaveGeneratedObjects</em>  permet d'exporter les boîtes en shapefile (méthode saveShapefile) ou dans une base PostGIS (méthode save) sous forme de MultiPolygon 3D (issus de la méthode <em>generated3DGeom</em>). Dans les données en sortie, chaque ligne correspond à une boîte.</p>
 <h2 id="export-decoupe">Export découpé<a class="headerlink" href="#export-decoupe" title="Permanent link"></a></h2>
-<p>Comme les boîtes générer peuvent s'intersecter, ces intersections sont potentiellement des sources de problèmes pour calculer des indicateurs sur les formes résultantes ou pour les visualiser.</p>
-<p>Ainsi, la classe <em>fr.ign.cogit.simplu3d.util.merge.SDPCalc</em> permet d'exporter avec la méthode <em>getGeometryPairByGroup</em> les boîtes sous la forme d'une partition des géométries résultats avec une hauteur affectée à chaque patch. Le résultat contient un polygone 2D et une hauteur pour regénérer la forme en 3D.</p>
+<p>Comme les boîtes générées peuvent s'intersecter, ces intersections sont potentiellement des sources de problème pour calculer des indicateurs sur les formes résultantes ou pour les visualiser.</p>
+<p>Ainsi, la classe <em>fr.ign.cogit.simplu3d.util.merge.SDPCalc</em> permet d'exporter avec la méthode <em>getGeometryPairByGroup</em> les boîtes sous la forme d'une partition des géométries résultats avec une hauteur affectée à chaque patch. Le résultat contient pour chaque enregistrement un polygone 2D et une hauteur pour regénérer la forme en 3D.</p>
 <p>Cet export facilite le calcul de la surface de plancher et de la surface 2D de la construction (méthode <em>process</em> et méthode <em>processSurface</em>).</p>
 <h2 id="export-fusionne">Export fusionné<a class="headerlink" href="#export-fusionne" title="Permanent link"></a></h2>
 <p>La classe <em>fr.ign.cogit.simplu3d.util.merge.MergeCuboid</em> propose une fusion 3D des boîtes résultantes via la méthode <em>mergeFromShapefile</em>. Les faces intérieures sont supprimées et les boîtes générées en 3D. Ce cas est très utile pour la visualisation et le calcul de la surface extérieure avec la méthode <em>getSurface</em>.</p>
 <p>L'attribut statique de cette classe <em>zMIN</em> permet de fixer l'altitude minimale au dessus de laquelle les boîtes seront extrudées.</p>
 <h2 id="synthese-des-exports">Synthèse des exports<a class="headerlink" href="#synthese-des-exports" title="Permanent link"></a></h2>
 <p><img alt="Illustration des différents export" src="../img/exportTypes.png" /></p>
-<p>L'image ci-dessus illustre les différents types d'exports. Si de base la vue 3D est la même pour les trois résultats les exports différents dans leur modélisation des entités et des géométries. La seconde partie de l'image montre dans une vue 2D la sélection d'une entité (en jaune) dans les trois types d'export :</p>
+<p>L'image ci-dessus illustre les différents types d'exports. Si de base la vue 3D est la même pour les trois résultats, les exports sont différents dans leur modélisation des entités et des géométries. La seconde partie de l'image montre dans une vue 2D la sélection d'une entité (en jaune) dans les trois types d'export :</p>
 <ul>
 <li><strong>Export simple</strong> : une entité = une boîte avec une hauteur. Il y a donc beaucoup d'intersections entre objets ;</li>
 <li><strong>Export découpé</strong> :  une entité = une géométrie découpée par l'intersection des autres géométries. Chaque composante géométrique peut être extrudée ce qui donne un dédoublement des faces verticales à l'intersection entre deux géométries découpées ;</li>

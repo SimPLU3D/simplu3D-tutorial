@@ -118,7 +118,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href=".">Personnaliser la fonction d'optimisation</a>
+    <a class="" href="../../custom-optimisation.md">Personnaliser la fonction d'optimisation</a>
                 </li>
                 <li class="">
                     
@@ -215,7 +215,7 @@
           <div role="main">
             <div class="section">
               
-                <p>Dans cette partie, nous décrirons comment le système définit la création de nouveaux objets paramétriques et les modifications qui leur seront apportées durant l'optimisation. Il s'agit de l'étape 1 du code décrit dans la section <a href="../principe/">principe de simulation</a>. Cet exemple s'appuie sur la génération de boîtes, mais il est possible de définir d'autres types de géométries (cela sera décrit dans la section <a href="./">Générer d'autres types de formes</a>).</p>
+                <p>Dans cette partie, nous décrivons comment le système définit la création de nouveaux objets paramétriques et les modifications qui leur seront apportées durant l'optimisation. Il s'agit de l'étape 1 du code décrit dans la section <a href="../principe/">principe de simulation</a>. Cet exemple s'appuie sur la génération de boîtes, mais il est possible de définir d'autres types de géométries (cela sera décrit dans la section <a href="../custom-shape/">Générer d'autres types de formes</a>).</p>
 <p>Les parties suivantes reprennent les principales étapes de création du sampler dont le code est repris dans <a href="#implementation">la dernière partie de la page sur l'implémentation</a> (étape 1) , c'est à dire le code suivant :</p>
 <pre><code class="JAVA">//Step 1 :
 
@@ -238,7 +238,7 @@ bpu, pred, geom);
 <li><strong>minheight</strong> &lt; <strong>h</strong> &lt; <strong>maxheight</strong></li>
 </ul>
 <p>Les deux premières valeurs sont contraintes par l'enveloppe contenant la géométrie dans laquelle les centres de boîtes seront échantillonnés.</p>
-<p>Dans l'exemple de la <a href="../begin/first_simulation">première simulation</a>, <strong>minθ</strong> et <strong>maxθ</strong> sont fixés dans l'exemple à <strong>0</strong> et <strong>π</strong> afin de permettre tout type d'orientation. Les autres paramètres sont fixés dans le fichier de configuration <strong>params.json</strong>.</p>
+<p>Dans l'exemple de la <a href="../begin/first_simulation">première simulation</a>, <strong>minθ</strong> et <strong>maxθ</strong> sont fixés e, dir à <strong>0</strong> et <strong>π</strong> afin de permettre tout type d'orientation. Les autres paramètres sont fixés dans le fichier de configuration <strong>params.json</strong>.</p>
 <p>Afin que le système puisse générer des formes, il est nécessaire de définir une classe <strong>Builder</strong> qui permet d'instancier les objets à partir d'un tableau contenant les paramètres de la forme. Dans l'exemple, il s'agit de la classe <strong>CuboidBuilder</strong>.</p>
 <h1 id="definition-des-modifications">Définition des modifications<a class="headerlink" href="#definition-des-modifications" title="Permanent link"></a></h1>
 <p>Une modification aléatoire est est déterminée par le choix d’un des noyaux de proposition. Chaque noyau a la même probabilité d'être sélectionné. Dans le cadre de l'exemple, 6 noyaux sont utilisés :</p>
@@ -250,27 +250,29 @@ bpu, pred, geom);
 <li>changement de la hauteur d’une boîte ;</li>
 <li>rotation d’une boîte.</li>
 </ul>
-<p>Excepté les modifications issues du premier noyau, toutes les modifications sont implémentées comme  la suppression et l'ajout d'une boîte. Par exemple, une modification de type changement de longueur d'une boîte <strong>b</strong> = (<strong>x</strong>, <strong>y</strong>, <strong>l</strong>, <strong>w</strong>, <strong>h</strong>, <strong>θ</strong>) est traduite comme la suppression de cette boîte et la création d'une nouvelle boîte avec une largeur différente définie comme : <strong>b'</strong> = (<strong>x</strong>, <strong>y</strong>, <strong>l</strong> + (<strong>1 - rand</strong>)  x <strong>ampli</strong>, <strong>w</strong>, <strong>h</strong>, <strong>θ</strong>) où <strong>rand</strong> est un nombre aléatoire pris dans [0,1] et <strong>ampli</strong> est un coefficient d'amplification du déplacement (réel strictement positif).
-Ainsi, dans la simulation exemple, les coefficients des amplifications (amplitudeMove, amplitudeMaxDim, amplitudeHeight, amplitudeRotate) sont stockées dans le fichier de paramétrage <strong>params.json</strong>.</p>
+<p>Exceptés les modifications issues du premier noyau, toutes les modifications sont implémentées comme la suppression et l'ajout d'une boîte. Par exemple, une modification de type changement de longueur d'une boîte <strong>b</strong> = (<strong>x</strong>, <strong>y</strong>, <strong>l</strong>, <strong>w</strong>, <strong>h</strong>, <strong>θ</strong>) est traduite comme la suppression de cette boîte et la création d'une nouvelle boîte avec une longueur différente, définie comme : <strong>b'</strong> = (<strong>x</strong>, <strong>y</strong>, <strong>l</strong> + (<strong>1 - rand</strong>)  x <strong>ampli</strong>, <strong>w</strong>, <strong>h</strong>, <strong>θ</strong>) où <strong>rand</strong> est un nombre aléatoire pris dans [0,1] et <strong>ampli</strong> est un coefficient d'amplification du déplacement (réel strictement positif).
+Ainsi, dans la simulation exemple, les coefficients des amplifications (<em>amplitudeMove</em>, <em>amplitudeMaxDim</em>, <em>amplitudeHeight</em>, <em>amplitudeRotate</em>) sont stockés dans le fichier de paramétrage <strong>params.json</strong>.</p>
 <p>Les modifications sont implémentées à partir de la classe <strong>Kernel</strong> de la librjmcmc4j qui définit comment modifier un objet de la classe paramétrique utilisée à partir d'un tirage aléatoire.</p>
 <p># Création de l'échantillonneur de Green</p>
 <p>Les dernières étapes visent à définir l'objet qui va effectuer les tirages aléatoires des boîtes qui seront créées (classe <strong>DirectSampler</strong> de librjmcmc4j) et l'échantillonneur de Green qui va définir les modifications à appliquer pendant la simulation et notamment la probabilité d'acception durant le process.</p>
 <p># Implémentation</p>
-<p>```JAVA
-/*<em>
-     * Creation of the sampler
-     * @param rng  a random generator
-     * @param p    the parameters loaded from the json file
-     * @param bpU  the basic property unit on which the simulation will be proceeded
-     * @param pred a predicate that will check the respect of the rules
-     * @param geom a geometry that will contains all the cuboid
-     * @return a sampler that will be used during the simulation process
-     </em>/
-    public Sampler<GraphConfiguration<Cuboid>, BirthDeathModification<Cuboid>&gt; create_sampler(RandomGenerator rng,
-            SimpluParameters p, BasicPropertyUnit bpU,
-            ConfigurationModificationPredicate<GraphConfiguration<Cuboid>, BirthDeathModification<Cuboid>&gt; pred,
-            IGeometry geom) {</p>
-<pre><code>    //Step 1 : Creation of the object that will control the birth and death of cuboid
+<p>```JAVA</p>
+<pre><code>/**
+ * Creation of the sampler
+ * @param rng  a random generator
+ * @param p    the parameters loaded from the json file
+ * @param bpU  the basic property unit on which the simulation will be proceeded
+ * @param pred a predicate that will check the respect of the rules
+ * @param geom a geometry that will contains all the cuboid
+ * @return a sampler that will be used during the simulation process
+ */
+public Sampler&lt;GraphConfiguration&lt;Cuboid&gt;, BirthDeathModification&lt;Cuboid&gt;&gt; create_sampler(RandomGenerator rng,
+        SimpluParameters p, BasicPropertyUnit bpU,
+        ConfigurationModificationPredicate&lt;GraphConfiguration&lt;Cuboid&gt;, BirthDeathModification&lt;Cuboid&gt;&gt; pred,
+        IGeometry geom) {
+
+
+    //Step 1 : Creation of the object that will control the birth and death of cuboid
 
     //Getting minimal and maximal dimension from the parameter file
     double minlen = Double.isNaN(this.minLengthBox) ? p.getDouble("minlen") : this.minLengthBox;

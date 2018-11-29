@@ -118,7 +118,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../generator/custom-generator">Personnaliser la fonction d'optimisation</a>
+    <a class="" href="../../custom-optimisation.md">Personnaliser la fonction d'optimisation</a>
                 </li>
                 <li class="">
                     
@@ -215,22 +215,22 @@
           <div role="main">
             <div class="section">
               
-                <p>L'objectif de cette page est de proposer deux méthodes pour vérifier la bonne intégration des données à partir d'un jeu de données complet. Il est soit :
-- d'exporter les instances du modèles sous formes de ShapeFiles ;
+                <p>L'objectif de cette page est de proposer deux méthodes pour vérifier la bonne intégration des données à partir d'un jeu de données complet. Il est possible soit :
+- d'exporter les instances du modèle sous forme de ShapeFiles ;
 - de visualisation en 3D les informations du modèle.</p>
 <p>Ces codes sont disponibles dans le projet du tutoriel dans le package <em>fr.ign.simplu3d.testIntegration</em>.</p>
 <blockquote>
-<p><img alt="#f03c15" src="https://placehold.it/15/f03c15/000000?text=+" /> <strong>Attention</strong>: : pour ces codes, la visualisation 3D et le chargement de MNT nécessitent l'utilisation de bibliothèques natives (qui se trouvent dans le projet). Il est nécessaire de passer à la VM l'argument suivant :</p>
+<p><img alt="#f03c15" src="https://placehold.it/15/f03c15/000000?text=+" /> <strong>Attention</strong>: : pour ces codes, la visualisation 3D et le chargement de MNT nécessitent l'utilisation de bibliothèques natives Java 3D (qui se trouvent dans le projet SimPLU3d-tutorial). Il est nécessaire de passer à la VM l'argument suivant :</p>
 <p><strong>-Djava.library.path=./lib/native_libraries/linux-amd64</strong>  </p>
 <p>La ligne précédente est définie pour Linux 64 bits, au besoin, il faut remplacer linux-amd64 par windows-i586 (windows 32bits), windows-amd64 (windows 64bits) ou linux-i386 (linux 32bits) en fonction de l'OS utilisé.</p>
 </blockquote>
 <h1 id="jeu-de-donnees">Jeu de données<a class="headerlink" href="#jeu-de-donnees" title="Permanent link"></a></h1>
-<p>Un jeu de données complet suivant les <a href="../integration/">spécifications du processus d'intégration</a> est disponible dans le dossier <em>resources/completeDataSet</em>. On peut voir ci-dessous une carte de données :</p>
+<p>Un jeu de données complet suivant les <a href="../integration/">spécifications du processus d'intégration</a> est disponible dans le dossier <em>resources/completeDataSet</em>. On peut voir ci-dessous une carte de ces données :</p>
 <p><img alt="Carte des données en entrée" src="../img/SituationBefore.png" /></p>
-<p>On peut noter dans ce jeu de données la présence d'un MNT et de bâtiments 3D avec un toit stylisé (ce qui explique les polygones internes aux polygones de bâtiments).</p>
+<p>On peut noter dans ce jeu de données la présence d'un MNT et de bâtiments 3D avec un toit typifié (ce qui explique les polygones internes aux polygones de bâtiments).</p>
 <h1 id="export-des-informations-du-modele-sous-forme-de-shapefile">Export des informations du modèle sous forme de Shapefile<a class="headerlink" href="#export-des-informations-du-modele-sous-forme-de-shapefile" title="Permanent link"></a></h1>
-<p>La classe <em>ExportAsShape</em> permet d'exporter un objet de la classe <em>Environnement</em> sous forme de Shapefiles. Le code nécessite de déterminer un dossier de sortie pour pouvoir être appliqué (et il utilise le dossier de ressource qui se trouve dans le projet).</p>
-<p>L'exécution du code génère une série de ShapeFiles qui permet la production de la carte suivante.</p>
+<p>La classe <em>ExportAsShape</em> permet d'exporter l'instance de la classe <em>Environnement</em> sous forme de Shapefiles. Le code nécessite de déterminer un dossier de sortie pour pouvoir être appliqué (et il utilise le dossier de ressource qui se trouve dans le projet).</p>
+<p>L'exécution du code génère une série de ShapeFiles représentés dans la carte suivante.</p>
 <p><img alt="Carte des données en entrée" src="../img/SituationAfter.png" /></p>
 <p>Les géométries en sortie sont triangulées car plaquées sur le MNT (s'il est utilisé). On retrouve les fichiers suivantes :</p>
 <table>
@@ -294,10 +294,10 @@
 </tr>
 </tbody>
 </table>
-<p>Les limites du fichier <strong>bordures_translatedù.shp</strong> sont translatées vers l'intérieur des parcelles auxquelles ils appartiennent pour des raison de lisibilité.
+<p>Les limites séparatives du fichier <strong>bordures_translate.shp</strong> sont translatées vers l'intérieur des parcelles auxquelles ils appartiennent pour des raison de lisibilité (afin d'éviter les superposition entre limites appartenant à des parcelles adjacentes).
 Pour les valeurs des énumération <strong>SIDE</strong> et <strong>Type</strong> des limites séparatives, vous pouvez vous référer aux énumérations <em>ParcelBoundaryType</em> et <em>ParcelBoundarySide</em>.</p>
 <h1 id="visualisation-3d-des-informations-du-modele">Visualisation 3D des informations du modèle<a class="headerlink" href="#visualisation-3d-des-informations-du-modele" title="Permanent link"></a></h1>
-<p>La classe <em>Integration3DViewer</em> permet une visualisation 3D d'un environnement. Il est possible de déterminer via une liste de thème, les informations à afficher dans la vue 3D. La liste des thèmes disponibles est consultable via l'énumération <em>RepEnvironnement.Theme</em>. Pour chaque thème, un rendu est prédéfini afin de visualiser les informations correspondantes.</p>
+<p>La classe <em>Integration3DViewer</em> permet une visualisation 3D d'un environnement. Il est possible de déterminer via une liste de thèmes, les informations à afficher dans la vue 3D. La liste des thèmes disponibles est consultable via l'énumération <em>RepEnvironnement.Theme</em>. Pour chaque thème, un rendu est prédéfini afin de visualiser les informations correspondantes.</p>
 <p>Le visualisateur 3D utilisé est celui de GeOxygene3D vous trouverez plus de documentation sur comment représenter des données et sur comment naviguer sur <a href="http://ignf.github.io/geoxygene/documentation/application/3d.html">le site de GeOxygene</a>.</p>
 <p><img alt="Fenêtre 3D représentant une visualisation de l'environnement" src="../img/viewer3D.png" /></p>
               

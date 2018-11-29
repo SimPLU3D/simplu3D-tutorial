@@ -118,7 +118,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../generator/custom-generator">Personnaliser la fonction d'optimisation</a>
+    <a class="" href="../../custom-optimisation.md">Personnaliser la fonction d'optimisation</a>
                 </li>
                 <li class="">
                     
@@ -216,15 +216,19 @@
             <div class="section">
               
                 <h1 id="principe-des-visiteurs">Principe des visiteurs<a class="headerlink" href="#principe-des-visiteurs" title="Permanent link"></a></h1>
-<p>Les visiteurs sont des objets qui permettent de suivre l'évolution d'une simulation en produisant régulièrement des sorties. Les visiteurs implémentent l'interface de la libjrmcmc4j <em>Visitor<C extends Configuration<C, M>, M extends Modification<C, M>&gt;</em>. Pour un visiteur, il est possible de définir deux types de sorties : <strong>les dumps</strong> (qui sont des sorties rapides en termes d'exécution qui sont effectuées fréquemment) et <strong>les saves</strong> (qui sont des sorties plus lentes en termes d'exécution et qui sont effectuées moins fréquemment).</p>
+<p>Les visiteurs sont des objets qui permettent de suivre l'évolution d'une simulation en produisant régulièrement des sorties. Les visiteurs implémentent l'interface de la libjrmcmc4j <em>Visitor<C extends Configuration<C, M>, M extends Modification<C, M>&gt;</em>. Pour un visiteur, il est possible de définir deux types de sorties :</p>
+<ul>
+<li><strong>les dumps</strong>, qui sont des sorties rapides en termes d'exécution qui sont effectuées fréquemment ;</li>
+<li><strong>les saves</strong>, qui sont des sorties plus lentes en termes d'exécution et qui sont effectuées moins fréquemment.</li>
+</ul>
 <p>L'interface impose l'implémentation de 4 méthodes :</p>
 <ul>
-<li><strong>init(int dump, int save)</strong> :  initialisation du visiteur avant la simulation (notamment avec ol'affectation des valeurs dump et save qui correspondent à la fréquence de production ds sorties dump et save);</li>
+<li><strong>init(int dump, int save)</strong> :  initialisation du visiteur avant la simulation (notamment avec l'affectation des valeurs dump et save qui correspondent à la fréquence de production ds sorties dump et save);</li>
 <li><strong>begin(C config, Sampler<C,M> sampler, Temperature t);</strong> : cette méthode qui est exécutée au début de la simulation ;</li>
 <li><strong>visit(C config, Sampler<C,M> sampler, Temperature t);</strong> : cette méthode est exécutée à chaque itération, c'est ici que l'on distinguera les opérations de save et de dump avec par exemple un test de ce type :  <em>if ((save &gt; 0) &amp;&amp; (iter % save == 0)) {</em>;</li>
-<li><strong>end(C config, Sampler<C,M> sampler, Temperature t);</strong> : Cette méthode est appliquée lors de la toute dernière itération de la simulation.</li>
+<li><strong>end(C config, Sampler<C,M> sampler, Temperature t);</strong> : cette méthode est appliquée lors de la toute dernière itération de la simulation.</li>
 </ul>
-<p>Dans le cadre de l'utilisation de SimPLU3D, un certain nombre de visiteurs ont été implémentées et sont activables et paramétrables via le fichier <em>params.json</em>. Les valeurs <strong>save</strong> et <strong>dump</strong> peuvent notamment y être définis pour tous les visiteurs. Vous pouvez tester ces visiteurs avec la simulation par défaut et pour toutes les autres, les paramètres ont été correctement fixés, il suffit seulement de les activer et de mettre à jour le paramètre <em>save</em> et <em>background_img</em>.</p>
+<p>Dans le cadre de l'utilisation de SimPLU3D, plusieurs visiteurs ont été implémentés et sont activables et paramétrables via le fichier <em>params.json</em>. Les valeurs <strong>save</strong> et <strong>dump</strong> peuvent notamment y être définis pour tous les visiteurs. Vous pouvez tester ces visiteurs avec la simulation de base et pour toutes les autres. Les paramètres ont été correctement fixés, il suffit seulement de les activer et de mettre à jour le paramètre <em>save</em> et <em>background_img</em>.</p>
 <h1 id="visiteurs-de-simplu3d">Visiteurs de SimPLU3D<a class="headerlink" href="#visiteurs-de-simplu3d" title="Permanent link"></a></h1>
 <h1 id="sortie-console-outputstreamvisitor">Sortie console : OutPutStreamVisitor<a class="headerlink" href="#sortie-console-outputstreamvisitor" title="Permanent link"></a></h1>
 <p>L'<strong>OutPutStreamVisitor</strong> est le visiteur qui affiche dans la console l'état d'avancement des simulations. Il est activable par la valeur <em>outputstreamvisitor</em>.</p>
@@ -242,7 +246,7 @@
 </tr>
 <tr>
 <td align="left">Objects</td>
-<td align="left">Nombre d'objets dans la simulation courante</td>
+<td align="left">Nombre d'objets dans la configuration courante</td>
 </tr>
 <tr>
 <td align="left">A - Nom de noyau</td>
@@ -250,7 +254,7 @@
 </tr>
 <tr>
 <td align="left">P - Nom du noyau</td>
-<td align="left">Probabilité moyenne (sur les <em>dump</em> dernière itérations) qu'une application du noyau soit acceptée</td>
+<td align="left">Probabilité moyenne (sur les <em>dump</em> dernière itérations) que l'application de la modification du noyau soit acceptée</td>
 </tr>
 <tr>
 <td align="left">Temp</td>
@@ -279,24 +283,24 @@
 </tbody>
 </table>
 <h1 id="sortie-shapefile-shapefilevisitor">Sortie shapefile : ShapefileVisitor<a class="headerlink" href="#sortie-shapefile-shapefilevisitor" title="Permanent link"></a></h1>
-<p>Le <strong>ShapefileVisitor</strong>  est le visiteur qui permet de sauvegarder des shapefiles toutes les <em>save</em> itérations. Il est activables par la valeur <em>shapefilewriter</em>.</p>
+<p>Le <strong>ShapefileVisitor</strong>  est le visiteur qui permet de sauvegarder des shapefiles toutes les <em>save</em> itération. Il est activables par la valeur <em>shapefilewriter</em>.</p>
 <p>Il est nécessaire également de paramétrer la valeur <em>result</em> qui indique le dossier dans lequel les shapefiles seront exportés. Ils portent comme nom le numéro de l'itération et les objets sauvegardés auront comme attributs la valeur d'énergie et de la méthode <em>toString()</em>.</p>
 <h1 id="sortie-sous-forme-de-graphique-statsvisitor">Sortie sous forme de graphique : StatsVisitor<a class="headerlink" href="#sortie-sous-forme-de-graphique-statsvisitor" title="Permanent link"></a></h1>
-<p>Le <strong>StatsVisitor</strong> permet la représentation de l'évolution de l'énergie au cours de la simulation sous forme de graphes. Il est activable par la valeur <em>statsvisitor</em>.</p>
+<p>Le <strong>StatsVisitor</strong> permet la représentation de l'évolution de l'énergie au cours de la simulation sous forme d'un graphique. Il est activable par la valeur <em>statsvisitor</em>.</p>
 <p>Plusieurs informations sont représentées comme l'énergie unaire, l'énergie binaire, l'énergie de la meilleure configuration rencontré et l'énergie de la configuration actuel. L'image ci-dessous présente le graphique qui peut être visualisé.</p>
 <p><img alt="Illustration du graphc de simulation" src="../img/Graphic.png" /></p>
-<p>Petite astuce : comme le résultat d'une simulation est la dernière configuration rencontrée, ce graphique est utile pour visualiser si le meilleur candidat rencontré est bien cette dernière configuration. Normalement les courbes "Meilleur candidat" et "Énergie de la configuration actuelle" doivent être confondus en fin de simulation.</p>
+<p><strong>Petite astuce</strong> : comme le résultat d'une simulation est la dernière configuration rencontrée, ce graphique est utile pour visualiser si le meilleur candidat rencontré est bien cette dernière configuration. Normalement, si le processus d'optimisation s'est bien déroulé, les courbes "Meilleur candidat" et "Énergie de la configuration actuelle" doivent être confondus en fin de simulation. Sinon, il peut s'avérer nécessaire  d'augmenter le nombre d'itérations, la température et le coefficient de décroissance.</p>
 <h1 id="sortie-csv-csvvisitor-et-csvendstats">Sortie CSV : CSVvisitor et CSVendStats<a class="headerlink" href="#sortie-csv-csvvisitor-et-csvendstats" title="Permanent link"></a></h1>
 <p>Deux visiteurs permettent l'export de sorties sous forme de CSV : <em>CSVvisitor</em> et <em>CSVendStats</em> activables respectivement avec les valeurs <em>csvvisitor</em> et <em>csvvisitorend</em>.</p>
 <p>Dans les deux cas, la valeur de <em>result</em> détermine le dossier de stockage des fichiers qui s'appelleront <em>csvfilename</em> et <em>csvfilenamend</em>.</p>
-<p>Le premier CSV contiendra une ligne par itération et stockera des informations sur la configuration courante : numéro de l'itération, taille de la configuration, énergie de la configuration courante et énergie moyenne sur les <em>dump</em> dernière itérations.</p>
-<p>Le second CSV contient les information de fin de simulation par parcelle (pratique lorsque l'on effectue des simulations sur plein de parcelles) et notamment, le nombre d'itérations, le temps d'exécution, la taille de la configuration et l'énergie.</p>
+<p>Le premier CSV contient une ligne par itération et stock des informations sur la configuration courante : numéro de l'itération, taille de la configuration, énergie de la configuration courante et énergie moyenne sur les <em>dump</em> dernières itérations.</p>
+<p>Le second CSV contient les information de fin de simulation par parcelle (pratique lorsque l'on effectue des simulations sur de nombreuses parcelles) et notamment, le nombre d'itérations, le temps d'exécution, la taille de la configuration et l'énergie finale.</p>
 <h1 id="visualisation-3d-a-la-volee-des-resultats-viewervisitor">Visualisation 3D à la volée des résultats : ViewerVisitor<a class="headerlink" href="#visualisation-3d-a-la-volee-des-resultats-viewervisitor" title="Permanent link"></a></h1>
 <p>Le <em>ViewerVisitor</em> permet de visualiser en 3D les évolutions de la simulation en cours. Il est activable par la valeur <em>visitorviewer</em> et permet de représenter les données chargées et la simulation avec une mise à jour toutes les <em>dump</em> itérations.</p>
-<p>Quelques options d'affichage sont disponibles, comme le fait d'activer un plan contenant une image fixe avec l'option <em>showbackground</em>. Il est nécessaire de fixer le chemin absolu vers l'image utilisée <em>background_img</em> (à mettre à jour si vous voulez activer ce visualiseur pour le première simulation) et l'altitude de ce plan (valeur <em>z</em>.). Les coordonnées de ce plan sont fixées par les valeurs <em>xminbg</em>, <em>yminbg</em>, <em>xmaxbg</em> et <em>ymaxbg</em>. Il est également possible de choisir la coulveur du fond de scène avec les options <em>filmvisitorr</em>, <em>filmvisitorg</em> et <em>filmvisitorb":"180</em>.</p>
+<p>Quelques options d'affichage sont disponibles, comme le fait d'activer un plan contenant une image fixe avec l'option <em>showbackground</em>. Il est nécessaire de fixer le chemin absolu vers l'image utilisée <em>background_img</em> (à mettre à jour comme le chemin est absolu) et l'altitude de ce plan (valeur <em>z</em>.). Les coordonnées de ce plan sont fixées par les valeurs <em>xminbg</em>, <em>yminbg</em>, <em>xmaxbg</em> et <em>ymaxbg</em>. Il est également possible de choisir la couleur du fond de scène avec les options <em>filmvisitorr</em>, <em>filmvisitorg</em> et <em>filmvisitorb":"180</em>.</p>
 <p>Lors de l'utilisation de ce visiteur, la caméra se positionnera au centre de la scène.</p>
 <blockquote>
-<p><img alt="#f03c15" src="https://placehold.it/15/f03c15/000000?text=+" /> <strong>Attention</strong>: : pour ce visiteur, la visualisation 3D e nécessitent l'utilisation de bibliothèques natives (qui se trouvent dans le projet). Il est nécessaire de passer à la VM l'argument suivant :</p>
+<p><img alt="#f03c15" src="https://placehold.it/15/f03c15/000000?text=+" /> <strong>Attention</strong>: : pour ce visiteur, la visualisation 3D nécessite l'utilisation de la bibliothèque native de Java 3D (qui se trouve dans le projet). Il est nécessaire de passer à la VM l'argument suivant :</p>
 <p><strong>-Djava.library.path=./lib/native_libraries/linux-amd64</strong>  </p>
 <p>La ligne précédente est définie pour Linux 64 bits, au besoin, il faut remplacer linux-amd64 par windows-i586 (windows 32bits), windows-amd64 (windows 64bits) ou linux-i386 (linux 32bits) en fonction de l'OS utilisé.</p>
 </blockquote>

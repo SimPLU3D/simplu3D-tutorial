@@ -118,7 +118,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../generator/custom-generator">Personnaliser la fonction d'optimisation</a>
+    <a class="" href="../../custom-optimisation.md">Personnaliser la fonction d'optimisation</a>
                 </li>
                 <li class="">
                     
@@ -216,14 +216,14 @@
             <div class="section">
               
                 <h1 id="principe-du-fonctionnement-de-simplu3d">Principe du fonctionnement de SimPLU3D<a class="headerlink" href="#principe-du-fonctionnement-de-simplu3d" title="Permanent link"></a></h1>
-<p>Le simulateur de base fait bien ressortir trois composants principaux de SimPLU3D :</p>
+<p>Le simulateur de base fait ressortir trois composants principaux de SimPLU3D :</p>
 <ol>
 <li>l'environnement géographique <a href="/../envgeo/intro.md">environnement géographique</a> qui contient les objets géographiques modélisés nécessaires à la simulation avec SimPLU3D ;</li>
 <li>la définition d'un <a href="/../generator/intro.md">générateur de formes</a>, qui définit à la fois la stratégie d'optimisation employé par le simulateur et la forme des configurations simulées ;</li>
-<li>la définition de <a href="/../rules/intro.md">contraintes morphologiques</a>, qui s'appuient sur les éléments du modèle de l'environnement géographique.</li>
+<li>la définition de <a href="/../rules/intro.md">contraintes morphologiques</a>, qui s'appuient sur les éléments du modèle de l'environnement géographique et contraignent la génération des formes bâties.</li>
 </ol>
 <h1 id="presentation-simple-de-lapproche">Présentation simple de l'approche<a class="headerlink" href="#presentation-simple-de-lapproche" title="Permanent link"></a></h1>
-<p>Pendant une simulation, SimPLU3D essaye itérativement différentes configurations générées en accord avec la générateur de formes. À chaque itération, une configuration est testée. Il faut tout d'abord que celle-ci respecte les règles morphologiques utilisées et définies relativement à l'environnement géographique (Par exemple, recul par rapport à la voirie, distance aux bâtiments existants, etc.). Ensuite, la configuration proposée est évaluée relativement à une fonction d'optimisation est la configuration est testée suivant des critères d'acceptation propres à la méthode employée (à savoir le <a href="https://fr.wikipedia.org/wiki/Recuit_simul%C3%A9">recuit simulé</a>).</p>
+<p>Pendant une simulation, SimPLU3D essaye itérativement différentes configurations générées en accord avec la générateur de formes. À chaque itération, une configuration est testée. Il faut tout d'abord que celle-ci respecte les règles morphologiques utilisées et définies relativement à l'environnement géographique (Par exemple, recul par rapport à la voirie, distance aux bâtiments existants, etc.). Ensuite, la configuration proposée est évaluée relativement à une fonction d'optimisation et la configuration est testée suivant des critères d'acceptation propres à la méthode employée (à savoir le <a href="https://fr.wikipedia.org/wiki/Recuit_simul%C3%A9">recuit simulé</a>).</p>
 <p>Dans les prochaines sections, ces différents points seront abordés ainsi que la présentation plus détaillée de l'algorithme.</p>
               
             </div>

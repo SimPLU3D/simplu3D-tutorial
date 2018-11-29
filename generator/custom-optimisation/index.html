@@ -118,7 +118,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../custom-generator">Personnaliser la fonction d'optimisation</a>
+    <a class="" href="../../custom-optimisation.md">Personnaliser la fonction d'optimisation</a>
                 </li>
                 <li class="">
                     
@@ -215,8 +215,8 @@
           <div role="main">
             <div class="section">
               
-                <p>Dans cette partie, nous présenterons comment est configuré l'algorithme d'optimisation à travers les conditions initiales et d'arrêt, ainsi que la définition de la fonction d'optimisation.</p>
-<p>Les parties suivantes reprennent les principales étapes de création du sampler dont le code est repris dans <a href="#implementation">la dernière partie de la page sur l'implémentation</a> (étape 2) , c'est à dire le code suivant :</p>
+                <p>Dans cette partie, nous présentons comment est configuré l'algorithme d'optimisation à travers les conditions initiales et d'arrêt, ainsi que la définition de la fonction d'optimisation.</p>
+<p>Les parties suivantes reprennent les principales étapes de création du sampler dont le code est repris dans <a href="../custom-generator/#implementation">la dernière partie de la page sur l'implémentation</a> (étape 2) , c'est à dire le code suivant :</p>
 <pre><code class="JAVA">//Step 2 : Preparation of the optimizer
 //Étape 2 : Préparation de l'optimiseur
 
@@ -244,10 +244,10 @@ end = create_end_test(p);
 <ul>
 <li><strong>une énergie unaire</strong> (interface <em>UnaryEnergy&lt;?&gt;</em>), qui évalue indépendant une énergie pour chacun des objets  ;</li>
 <li><strong>une énergie binaire</strong> (interface <em>BinaryEnergy&lt;?&gt;</em>), qui évalue une énergie pour chaque couple d'objet ;</li>
-<li><strong>une énergie de collection</strong> facultative  (interface <em>CollectionEnergy&lt;?&gt;</em>), qui évalue la somme pour l'ensemble de la collection.
-Les interfaces des classes ne définissent qu'une méthode <em>double getValue()</em> qui renvoie la valeur numériques associée</li>
+<li><strong>une énergie de collection</strong> facultative  (interface <em>CollectionEnergy&lt;?&gt;</em>), qui évalue la somme pour l'ensemble de la collection.</li>
 </ul>
-<p>La valeur de la fonction d'optimisation est la somme des contributions de ces trois types d'énergie. Pour produire ces contributions, il est possible, pour chaque type d'énergie, de combiner différentes opérateurs (addition, soustraction, multiplication, etc.) pour produire des énergies composites. La définition de ces opérateurs se trouve dans le package <em>fr.ign.rjmcmc.energy</em> de la librjmcmc4j.</p>
+<p>Les interfaces des classes ne définissent qu'une méthode <em>double getValue()</em> qui renvoie la valeur numérique associée</p>
+<p>La valeur de la fonction d'optimisation est la somme des contributions de ces trois types d'énergie. Pour produire ces contributions, il est possible, pour chaque type d'énergie, de combiner différents opérateurs (addition, soustraction, multiplication, etc.) pour produire des énergies composites. La définition de ces opérateurs se trouve dans le package <em>fr.ign.rjmcmc.energy</em> de la librjmcmc4j.</p>
 <blockquote>
 <p><img alt="#f03c15" src="https://placehold.it/15/f03c15/000000?text=+" /> <strong>Attention</strong>: la librjmcmc4j est une bibliothèque minimisant par convention la fonction énergétique, il est nécessaire d'adapter l'instanciation de la fonction d'énergie en accord avec ce principe. Dans l'exemple au début, il s'agit de minimiser - volume(configuration)).</p>
 </blockquote>
@@ -255,15 +255,15 @@ Les interfaces des classes ne définissent qu'une méthode <em>double getValue()
 <p>La formule de l'énergie dans l'exemple est la suivante :
 <img alt="Formule " src="../img/energieformule.png" /></p>
 <p>L'énergie unaire contient différents termes :
-- <strong>Ecreation</strong> a pour objectif de pénaliser les boîtes ne contribuant pas suffisamment à la configuration. La définition de ce paramètre est indispensable : en effet, rien n’empêche l’intersection de boîtes. Sans ce paramètre, que nous nommons énergie de création, le système pourrait très bien proposer des configurations contenant de très nombreuses boîte ;
+- <strong>Ecreation</strong> a pour objectif de pénaliser les boîtes ne contribuant pas suffisamment à la configuration. La définition de ce paramètre est indispensable : en effet, rien n’empêche l’intersection de boîtes. Sans ce paramètre, que nous nommons énergie de création, le système pourrait très bien proposer des configurations contenant de très nombreuses boîtes qui ne contribueraient pas à augmenter le volume global de la configuration ;
 - <strong>volume(b)</strong> qui définit le volume de chaque boîte indépendamment ;
-- <strong>volumeDifference(bPU,b)</strong> qui définit une énergie en fonction du dépassement en termes de volume de l'unité foncière simulée (bPU). Comme les règles n'imposent pas dans l'exemple que les boîtes se trouvent strictement à l'intérieur de l'unité foncière. L'objectif de ce terme est d'autoriser le dépassement que si celui-ci contribue significativement à l'amélioration du volume.
-Les deux derniers termes sont pondérés par <strong>ponderationVolume</strong> et <strong>ponderationDifference</strong>.</p>
-<p>L'énergie binaire contient <strong>volumeintersection(b1, b2)</strong> la différence des volumes entre chaque couple de boîte qui est pondéré par <strong>ponderation_volume_inter</strong>.</p>
-<p>Les différentes pondérations et la valeur <strong>Ecreation</strong> sont paramétrables, pour l'exemple, dans le fichier <strong>params.json</strong>.</p>
+- <strong>volumeDifference(bPU,b)</strong> qui définit une énergie en fonction du dépassement en termes de volume de l'unité foncière simulée (bPU). Cette contrainte est ajoutée comme les règles n'imposent pas dans l'exemple que les boîtes se trouvent strictement à l'intérieur de l'unité foncière. L'objectif de ce terme est d'autoriser le dépassement que si celui-ci contribue significativement à l'amélioration du volume.
+Les deux derniers termes sont pondérés par les <strong>ponderationVolume</strong> et <strong>ponderationDifference</strong>.</p>
+<p>L'énergie binaire est composé de l'opérateur <strong>volumeintersection(b1, b2)</strong> qui évalue la différence des volumes entre chaque couple de boîte qui est pondéré par <strong>ponderation_volume_inter</strong>.</p>
+<p>Les différentes pondérations et la valeur <strong>Ecreation</strong> sont paramétrables, dans l'exemple, dans le fichier <strong>params.json</strong>.</p>
 <p><img alt="Graphe d'énergie " src="../img/graph.png" /></p>
 <p>La figure ci-dessus représente le graphe d'énergie tel que modélisé en accord avec le formalisme de la librjmcmc4j. Les énergies dynamiques sont évaluées à chaque itération et implémentent  <em>UnaryEnergy&lt;?&gt;</em> et  <em>BinaryEnergy&lt;?&gt;</em> en fonction de l'énergie modélisée.</p>
-<p>Il s'agit d'une représentation du code qui se situe ci-dessous et qui est utilisé dans le premier exemple de code.</p>
+<p>Il s'agit d'une représentation du code qui se situe ci-dessous et qui est utilisé dans le premier exemple de simulation.</p>
 <pre><code class="JAVA">/**
  * Creation of a cuboid configuration
  * @param p    parameters from the json file
@@ -315,11 +315,11 @@ public GraphConfiguration&lt;Cuboid&gt; create_configuration(SimpluParameters p,
 </code></pre>
 
 <h2 id="conditions-initiales-et-condition-darret">Conditions initiales et condition d'arrêt<a class="headerlink" href="#conditions-initiales-et-condition-darret" title="Permanent link"></a></h2>
-<p>La fonction de température est fixée dans la méthode <em>create_schedule</em> et vise à moduler la probabilité d'acceptation durant la simulation. Les différents types possibles de température sont ceux de la librjmcmc4j (package <em>fr.ign.simulatedannealing.schedule</em>). Dans le cadre de SimPLU3D, nous avons opté pour la température de Métropolis. Il s'agit d'une fonction géométrique décroissante qui nécessite deux paramètres : une température initiale (valeur <em>temp</em> du fichier de configuration) et un coefficient de décroissance (valeur <em>deccoef</em>). D'après les articles sur le recuit simulé, il est conseillé de fixer cette valeur comme étant la plus grande variation possible de la fonction d'optimisation entre deux états (par exemple, dans le cadre du volume il s'agit de l'écart entre une parcelle vide et une parcelle complètement bâtie par le bâtiment le plus haut possible). Le coefficient doit être fixé très proche de 1 (comme dans les fichiers exemples). Si vous souhaitez en savoir plus, vous pouvez consulter l'article suivant :</p>
+<p>La fonction de température est fixée dans la méthode <em>create_schedule</em> et vise à moduler la probabilité d'acceptation durant la simulation. Les différents types possibles de température sont ceux de la librjmcmc4j (package <em>fr.ign.simulatedannealing.schedule</em>). Dans le cadre de SimPLU3D, nous avons opté pour la température de Métropolis. Il s'agit d'une fonction géométrique décroissante qui nécessite deux paramètres : une température initiale (valeur <em>temp</em> du fichier de configuration) et un coefficient de décroissance (valeur <em>deccoef</em>). D'après les articles sur le recuit simulé, il est conseillé de fixer cette valeur comme étant la plus grande variation possible de la fonction d'optimisation entre deux états (par exemple, dans le cadre du volume, il s'agit de l'écart entre une parcelle vide et une parcelle complètement bâtie par le bâtiment le plus haut possible). Le coefficient doit être fixé très proche de 1 (comme dans les fichiers exemples). Si vous souhaitez en savoir plus, vous pouvez consulter l'article suivant :</p>
 <blockquote>
 <p><em>Brédif, M., Tournaire, O.</em>, Aug. 2012. librjmcmc: An open-source generic c++ library for stochastic optimization. In: The XXII Congress of the International Society of Photogrammetry and Remote Sensing. (<a href="https://www.int-arch-photogramm-remote-sens-spatial-inf-sci.net/XXXIX-B3/259/2012/isprsarchives-XXXIX-B3-259-2012.pdf">https://www.int-arch-photogramm-remote-sens-spatial-inf-sci.net/XXXIX-B3/259/2012/isprsarchives-XXXIX-B3-259-2012.pdf</a>)</p>
 </blockquote>
-<p>Trois types de conditions d'arrêt sont définis à travers la méthode <em>create_end_test</em> et leur paramètres sont définis dans le fichier de configuration :
+<p>Trois types de condition d'arrêt sont utilisables à travers la méthode <em>create_end_test</em> et leurs paramètres sont définis dans le fichier de configuration :
 - <strong>absolute</strong> : le simulateur s'arrête au bout de <em>absolute_nb_iter</em>) itérations, ce nombre est fixé dans le fichier de configuration ;
 - <strong>relative</strong> : le simulateur si la fonction énergétique ne s'améliore pas de la valeur <em>delta</em> pendant <em>relative_nb_iter</em> itérations ;
 - <strong>composite</strong> : le simulation s'arrête lorsque la première condition d'arrêt (entre absolute et relative) est atteinte.

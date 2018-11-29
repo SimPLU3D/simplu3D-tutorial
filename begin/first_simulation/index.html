@@ -118,7 +118,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../generator/custom-generator">Personnaliser la fonction d'optimisation</a>
+    <a class="" href="../../custom-optimisation.md">Personnaliser la fonction d'optimisation</a>
                 </li>
                 <li class="">
                     
@@ -216,15 +216,15 @@
             <div class="section">
               
                 <h1 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h1>
-<p>L'objectif de cette page est de lancer une première simulation très simple afin de voir comment se déroule une simulation de SimPLU3D. Cette simulation consiste à générer une forme composé de boites qui s'intersectent à partir d'un code exemple qui sera enrichi au fur et à mesure de cette documentation. Pour commencer, il est nécessaire  d'installer les codes de tutoriel comme précisé dans la <a href="../installation/">page d'installation</a>.</p>
-<p>Le code utilisé dans cette page est dans la classe :  <em>fr.ign.simplu3d.firstSimulation.BasicSimulator</em>.</p>
+<p>L'objectif de cette page est de lancer une première simulation très simple afin de voir comment se déroule une simulation de SimPLU3D. Cette simulation consiste à générer une forme composée de boîtes qui s'intersectent à partir d'un code exemple qui sera enrichi et réutilisé dans cette documentation. Pour commencer, il est nécessaire  d'installer les codes de tutoriel comme précisé dans la <a href="../installation/">page d'installation</a>.</p>
+<p>Le code utilisé dans cette page se trouve dans la classe :  <em>fr.ign.simplu3d.firstSimulation.BasicSimulator</em>.</p>
 <h1 id="donnees-dentree">Données d'entrée<a class="headerlink" href="#donnees-dentree" title="Permanent link"></a></h1>
-<p>Les données en entrée se trouvent dans le répertoire de ressources <em>resources/firstSimulation/</em>. Il s'agit du plus petit ensemble de données possible nécessaire pour exécuter SimPLU3D. Il contient deux dossiers :
-- <strong>data</strong>: qui contient un fichier ShapeFile de parcelles (parcelle.shp) avec un attribut <strong>id</strong>. Ces parcelles définissent l'environnement géographique dans lequel se déroule la simulation, cet environnement géographique peut être enrichi d'autres objets déjà prévus dans SimPLU3D (vous trouverez plus d'informations dans <a href="/../envgeo/intro.md">la section consacré à l'environnement géographique</a>) ;
-- <strong>scenario</strong> : qui contient un fichier params.json qui contient la description des paramètres de la génération de forme (décrits dans la section dédiée aux <a href="../../generator/custom-generator/">paramètres de la génération de formes</a>) et des visiteurs qui seront exécutés pendant la simulation (<a href="../Visitor/intro.md">décrits dans la section dédiée aux visiteurs</a>).</p>
+<p>Les données en entrée se trouvent dans le répertoire de ressources <em>resources/firstSimulation/</em>. Il s'agit du plus petit ensemble de données nécessaire pour exécuter SimPLU3D. Il contient deux dossiers :
+- <strong>data</strong>: qui contient un fichier ShapeFile de parcelles (parcelle.shp). Chaque parcelle a une géométrie surfacique et un attribut <strong>id</strong>. Ces parcelles définissent l'environnement géographique dans lequel se déroule la simulation, cet environnement géographique peut être enrichi d'autres objets déjà prévus dans SimPLU3D (vous trouverez plus d'informations dans <a href="/../envgeo/intro.md">la section consacré à l'environnement géographique</a>) ;
+- <strong>scenario</strong> : qui contient un fichier params.json qui contient la description des paramètres de la génération de formes (décrits dans la section dédiée aux <a href="../../generator/custom-generator/">paramètres de la génération de formes</a>) et des visiteurs qui indiqueront l'état d'avancement pendant la simulation (<a href="../Visitor/intro.md">décrits dans la section dédiée aux visiteurs</a>).</p>
 <p><img alt="Carte des données en entrée" src="../img/data-in-simu0.png" /></p>
 <h1 id="code-de-simulation">Code de simulation<a class="headerlink" href="#code-de-simulation" title="Permanent link"></a></h1>
-<p>Le code à exécuter est repris ci-dessous commenté. On note qu'il y a 4 étapes nécessaires pour exécuter la simulation :</p>
+<p>Le code commenté à exécuter est repris ci-dessous. On note qu'il y a 4 étapes nécessaires pour exécuter la simulation :</p>
 <ol>
 <li>la création d'un <a href="/../envgeo/intro.md">environnement géographique</a> ;</li>
 <li>la définition de <a href="/../rules/intro.md">contraintes morphologiques</a>, à partir d'une classe de vérification de règles déjà implémentée ;</li>
@@ -288,15 +288,15 @@
 </code></pre>
 
 <h1 id="execution-du-code-de-simulation">Exécution du code de simulation<a class="headerlink" href="#execution-du-code-de-simulation" title="Permanent link"></a></h1>
-<p>Avant d'exécuter ce code, il est nécessaire de définir la variable outputFolder qui détermine le dossier dans lequel les résultats de la simulation seront exportés.</p>
+<p>Avant d'exécuter ce code, il est nécessaire de définir la variable <strong>outputFolder</strong> qui détermine le dossier dans lequel les résultats de la simulation seront exportés.</p>
 <p>Une fois cette valeur fixée, vous pouvez exécuter le code.</p>
-<p>Pendant le code, des informations sur l'avancement de la simulation seront affichées (pour en savoir plus la section <a href="../../visitor/intro/">suivre l'évolution d'une simulation</a>).
+<p>Pendant l'exécution, des informations sur l'avancement de la simulation seront affichées (pour en savoir plus la section <a href="../../visitor/intro/">suivre l'évolution d'une simulation</a>).
 Deux sorties sont visualisables pendant la simulation :
-- Dans la console, un tableau représente durant les itérations des informations relatives à la simulation et notamment le nombre d'objets et la valeur de la fonction d'optimisation ;
-- Dans une fenêtre, la valeur de la fonction d'optimisation (en rouge foncé) évolue au fur et à mesure des itérations. Dans ce cas, la valeur représentée est - le volume de la configuration (l'algorithme d'optimisation utilisé minimisant la valeur d'une fonction d'optimisation, c'est pour cela que la valeur évolue en diminuant).</p>
+- Dans la console, un tableau représente durant les itérations des informations relatives au nombre d'objets et à la valeur de la fonction d'optimisation ;
+- Dans une fenêtre, la valeur de la fonction d'optimisation (en rouge foncé) évolue au fur et à mesure des itérations. Dans ce cas, la valeur représentée est - le volume de la configuration courante (l'algorithme d'optimisation utilisé minimisant la valeur d'une fonction d'optimisation, c'est pour cela que la valeur évolue en diminuant).</p>
 <p><img alt="Image des visiteurs pendant la simulation" src="../img/duringsimulation.png" /></p>
 <h1 id="resultats-de-la-premiere-simulation">Résultats de la première simulation<a class="headerlink" href="#resultats-de-la-premiere-simulation" title="Permanent link"></a></h1>
-<p>La sortie est stockée sous la forme d'un ShapeFile <em>out.shp</em> qui contient les différentes boites avec des attributs :</p>
+<p>La sortie est stockée sous la forme du ShapeFile <strong>out.shp</strong> qui contient les différentes boites avec des attributs stocké dans le dossier  <strong>outputFolder</strong> :</p>
 <ul>
 <li><strong>id</strong> : l'identifiant de la parcelle simulée ;</li>
 <li><strong>hauteur</strong> : la hauteur de la boite ;</li>

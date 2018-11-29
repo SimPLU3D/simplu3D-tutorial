@@ -118,7 +118,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../custom-generator">Personnaliser la fonction d'optimisation</a>
+    <a class="" href="../../custom-optimisation.md">Personnaliser la fonction d'optimisation</a>
                 </li>
                 <li class="">
                     
@@ -215,10 +215,10 @@
           <div role="main">
             <div class="section">
               
-                <p>L'objectif de cette partie est de présenter un code permettant de générer des bâtiments en forme de L avec un toit typifié et de décrire les étapes à suivre pour générer des configurations avec d'autres types de formes à partir du simulateur basique présenté dans la première expérimentation.</p>
+                <p>L'objectif de cette partie est de présenter un code permettant de générer des bâtiments en forme de L avec un toit typifié et de décrire les étapes à suivre pour générer des configurations avec d'autres types de forme à partir du simulateur basique présenté dans la <a href="../../begin/first_simulation/">première expérimentation</a>.</p>
 <p>L'exécution du code présenté ici se trouve dans la classe  <em>fr.ign.simplu3d.shapeGenerator.OptimisedLShapeDirectRejection</em> du projet SimPLU3D-tutorial.</p>
 <p><img alt="Vue du bâtiment en L" src="../img/lshape.png" /></p>
-<p>La classe de formes simulées (présentée dans le schéma précédent) comporte 10 dimensions :</p>
+<p>La classe de géométrie paramétrique utilisée (présentée dans le schéma précédent) comporte 10 dimensions :</p>
 <ul>
 <li><strong>x</strong> : coordonnée x du centre de la forme ;</li>
 <li><strong>y</strong> : coordonnée y du centre de la forme ;</li>
@@ -232,18 +232,18 @@
 <li><strong>shift</strong> : pente du toit aux extrémités du L (entre 0 pas de pente et 1 pente jusqu'au milieu de la forme).</li>
 </ul>
 <h1 id="definition-de-la-classe-representant-la-forme">Définition de la classe représentant la forme<a class="headerlink" href="#definition-de-la-classe-representant-la-forme" title="Permanent link"></a></h1>
-<p>La classe définissant la géométrie simulée est la classe <em>fr.ign.cogit.simplu3d.rjmcmc.paramshp.geometry.impl.LBuildingWithRoof</em> du projet SimPLU3D. Cette classe implémente la classe <strong>AbstractSimpleBuilding</strong> (comme nous simulons un objet de type bâtiment et tout comme la classe <strong>Cubboid</strong>). Cela implique l'instanciation de 3 niveaux de classes abstraites et d'interfaces :
+<p>La classe définissant la géométrie simulée est la classe <em>fr.ign.cogit.simplu3d.rjmcmc.paramshp.geometry.impl.LBuildingWithRoof</em> du projet SimPLU3D. Cette classe implémente la classe <strong>AbstractSimpleBuilding</strong> (comme nous simulons un objet de type bâtiment, comme c'est le cas pour la classe <strong>Cubboid</strong>). Cela implique l'instanciation de 3 niveaux de classes abstraites et d'interfaces :
 -  la classe <em>fr.ign.cogit.simplu3d.rjmcmc.cuboid.geometry.impl.AbstractSimpleBuilding</em> de <em>SimPLU3D-rules</em>: qui contient les informations nécessaires pour modéliser un objet de type bâtiment de SimPLU3D ;
 - l'interface <em>fr.ign.cogit.simplu3d.rjmcmc.generic.objectISimPLU3DPrimitive</em> : qui contient les méthodes propres à SimPLU3D concernant l'optimisation de forme ;
 - l'interface  de la librjmcmc4j <em>fr.ign.geometry.Primitive</em> : qui contient les informations nécessaires pour simuler des objets géographiques avec la librjmcmc4j.
-Seule l'implémentation de la dernière interface est nécessaire pour générer des formes, les deux autres niveaux enrichissent les méthodes accessibles pour la vérification des règles et la définition de la fonction d'optimisation et facilitent l'utilisation du code de la première simulation.</p>
-<p>L'implémentation de l'interface <em>Primitive</em>  nécessite l'implémentation des méthodes suivantes :</p>
+Seule l'implémentation de la dernière interface est nécessaire pour générer des formes, les deux autres niveaux enrichissent les méthodes accessibles pour la vérification des règles et la définition de la fonction d'optimisation. Elles facilitent également la ré-utilisation du code de la première simulation.</p>
+<p>L'implémentation de l'interface <em>Primitive</em>  nécessite la définition des méthodes suivantes :</p>
 <ul>
 <li><em>int size();</em> : renvoie la taille de la dimension de la forme (ici 10 pour le bâtiment en L) ;</li>
 <li><em>double[] toArray()</em> :  traduit les attributs de la classe en un tableau de double (il s'agit ici d'un tableau de dimension 10 contenant les valeurs des différentes dimensions de la forme) ;</li>
-<li><em>Object[] getArray();</em> : même méthode que précédemment, mais avec des valeurs sous forme d'objet ;</li>
-<li><em>void set(List<Double> list);</em> : affecte aux attributs de la classe les valeurs provenant d'un tableau de double (ici une liste de 10 chiffres qui correspondent aux 10 dimensions de la classe).</li>
-<li><em>double intersectionArea(Primitive p);</em> : évalue la surface de l'intersection 2D avec une autre primitive (ici avec d'autres bâtiments en L);</li>
+<li><em>Object[] getArray();</em> : même méthode que précédemment, mais avec des valeurs sous forme d'objets ;</li>
+<li><em>void set(List<Double> list);</em> : affecte aux attributs de la classe les valeurs provenant d'un tableau de double (ici une liste de 10 chiffres qui correspondent aux 10 dimensions de la classe) ;</li>
+<li><em>double intersectionArea(Primitive p);</em> : évalue la surface de l'intersection 2D avec une autre primitive (ici avec d'autres bâtiments en L) ;</li>
 <li><em>Geometry toGeometry();</em> : convertit la forme en géométrie 2D JTS (ici l'emprise 2D du bâtiment, la conversion JTS permet d'optimiser les temps de calcul par rapport à l'utilisation de géométries GeOxygene) ;</li>
 <li><em>double getArea();</em> : l'aire 2D de l'emprise de la forme.</li>
 </ul>
@@ -261,8 +261,8 @@ Seule l'implémentation de la dernière interface est nécessaire pour générer
 <li><em>int size();</em> : la dimension de la taille des objets construits par le constructeur (ici 10).</li>
 </ul>
 <h1 id="definition-de-loptimiseur">Définition de l'optimiseur<a class="headerlink" href="#definition-de-loptimiseur" title="Permanent link"></a></h1>
-<p>L'optimiseur est défini dans la classe <em>fr.ign.cogit.simplu3d.rjmcmc.paramshp.optimizer. OptimisedLShapeDirectRejection</em> dans le projet SimPLU3D. L'étape peut sembler complexe car le code résultant de la classe est très long, néanmoins, comme presque toutes les méthodes à définir sont les mêmes que celles de la classe utilisée pour simuler des formes composées de boîtes (<em>fr.ign.cogit.simplu3d.rjmcmc.cuboid.optimizer.cuboid.OptimisedBuildingsCuboidFinalDirectRejection</em>) mais paramétrée avec la classe <em>LBuildingWithRoof</em>.</p>
-<p>La seule véritable méthode à définir est la méthode <strong>create_sampler</strong> qui créé l'échantillonneur de bâtiments en L. L'implémentation de cette méthode est similaire à celle des boîtes avec la définition des intervalles de tirage, du constructeur d'objets et des noyaux de modifications. Le code de cette méthode est repris et commenté ci-dessous :</p>
+<p>L'optimiseur est défini dans la classe <em>fr.ign.cogit.simplu3d.rjmcmc.paramshp.optimizer. OptimisedLShapeDirectRejection</em> dans le projet SimPLU3D. L'étape peut sembler complexe car le code de la classe est très long, néanmoins, comme presque toutes les méthodes à définir sont les mêmes que celles  utilisée pour simuler des formes composées de boîtes (<em>fr.ign.cogit.simplu3d.rjmcmc.cuboid.optimizer.cuboid.OptimisedBuildingsCuboidFinalDirectRejection</em>) mais paramétrées avec la classe <em>LBuildingWithRoof</em>.</p>
+<p>La seule méthode significativement différente est <strong>create_sampler</strong> qui créé l'échantillonneur de bâtiments en L. L'implémentation de cette méthode est similaire à celle des boîtes avec la définition des intervalles de tirage, du constructeur d'objets et des noyaux de modification. Le code de cette méthode est repris et commenté ci-dessous :</p>
 <pre><code class="JAVA">
     /**
      *
