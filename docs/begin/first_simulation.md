@@ -95,8 +95,10 @@ Une fois cette valeur fixée, vous pouvez exécuter le code.
 
 Pendant l'exécution, des informations sur l'avancement de la simulation seront affichées (pour en savoir plus la section [suivre l'évolution d'une simulation](../visitor/intro.md)).
 Deux sorties sont visualisables pendant la simulation :
+
 - Dans la console, un tableau représente durant les itérations des informations relatives au nombre d'objets et à la valeur de la fonction d'optimisation ;
-- Dans une fenêtre, la valeur de la fonction d'optimisation (en rouge foncé) évolue au fur et à mesure des itérations. Dans ce cas, la valeur représentée est - le volume de la configuration courante (l'algorithme d'optimisation utilisé minimisant la valeur d'une fonction d'optimisation, c'est pour cela que la valeur évolue en diminuant).
+
+- Dans une fenêtre, la valeur de la fonction d'optimisation (en rouge foncé) évolue au fur et à mesure des itérations. Dans ce cas, la valeur représentée est l'opposé du volume de la configuration courante (l'algorithme d'optimisation utilisé minimisant la valeur d'une fonction d'optimisation, c'est pour cela que la valeur évolue en diminuant).
 
 
 ![Image des visiteurs pendant la simulation](img/duringsimulation.png)
