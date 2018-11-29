@@ -17,6 +17,7 @@ SimPLU3D est un ensemble de bibliothèques Java Open-Source qui permet de simule
 # Principe de fonctionnement de SimPLU3D
 
 Cette bibliothèque a notamment été utilisée pour modéliser des formes bâties à partir de contraintes issues de [Plans Locaux d'Urbanisme (PLU)](https://fr.wikipedia.org/wiki/Plan_local_d%27urbanisme) et permet de répondre à ce type de questions :
+
 * Quelle est la quantité de logements que l'on peut bâtir sur une parcelle ?
 
 * Comment est-ce que la forme de mon quartier va évoluer si l'on change un PLU  ?

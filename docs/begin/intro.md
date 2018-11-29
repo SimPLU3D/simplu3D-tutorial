@@ -12,7 +12,7 @@ SimPLU3D est une bibliothèque de recherche ce qui signifie qu'il n'y a actuelle
 
 Cela signifie que pour être capable d'utiliser SimPLU3D, il est nécessaire d'avoir des compétences :
 
-- dans le langage de programmation Java et notamment une bonne connaissance de l'héritage et des générics ;
+- dans le langage de programmation Java et notamment une bonne connaissance de l'héritage et des generics ;
 - dans le gestionnaire de projet Maven afin de pouvoir importer les bibliothèques de SimPLU3D ;
 - si possible, sur le fonctionnement de [GeOxygene](http://ignf.github.io/geoxygene/) et notamment [de son module 3D](http://ignf.github.io/geoxygene/documentation/application/3d.html). Cela peut être nécessaire étant donné que cette bibliothèque est utilisée pour les opérations SIG (néanmoins, si vous n'êtes pas familier avec ce projet, les classes et méthodes utilisées sont relativement communes aux autres API de développement SIG).
 
