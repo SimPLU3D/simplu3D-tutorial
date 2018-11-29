@@ -6,7 +6,7 @@ date: 2018-10-26
 
 ---
 
-Le fonctionnement de base de SimPLU3D qui consiste à tirer des valeurs aléatoires dans un espace continu rend difficile l'application de contraintes topologiques. Si on prend l'exemple de l'alignement aux limites séparatives donnant sur une route (cf image ci-dessous), il est totalement improbable que SimPLU3D effectue le tirage d'une boîte respectant cet alignement (cela revient à tirer exactement le bonne valeur de x,y,w et θ).
+Le fonctionnement de base de SimPLU3D qui consiste à tirer des valeurs aléatoires dans un espace continu rend difficile l'application de contraintes topologiques. Si on prend l'exemple de l'alignement aux limites séparatives donnant sur une route (cf image ci-dessous), il est totalement improbable que SimPLU3D effectue le tirage d'une boîte respectant cet alignement (cela revient à tirer exactement le bonne valeur de x,y,w et θ). Deux stratégies sont possibles pour utiliser de telles règles.
 
 ![Illustration de la contrainte d'alignement](./img/alignement.png)
 
@@ -14,13 +14,13 @@ Le fonctionnement de base de SimPLU3D qui consiste à tirer des valeurs aléatoi
 
 La stratégie naïve consisterait à transformer la contrainte topologique en contrainte géométrique. Par exemple, de vérifier si l'un des côtés de la boîte est inclus dans un buffer de petite taille autour de la limite donnant sur la voirie.
 
-Cela rend probable la proposition de boîtes par le système, mais comme cette probabilité reste relativement faible, il peut être nécessaire d'augmenter le nombre d'itérations afin d'atteindre un résultat optimisé.
+Cela rend probable la proposition de boîtes par le système respectant cette règle, mais comme cette probabilité reste relativement faible, il peut être nécessaire d'augmenter le nombre d'itérations afin d'atteindre un résultat optimisé.
 
 # Stratégie 2 :  génération de boîtes alignées
 
 La seconde stratégie consiste à non plus générer des boîtes libres, mais des boîtes directement alignées sur la limite considérée. Il s'agit ainsi de définir un nouveau générateur de forme (comme décrit dans la section [**Générateur de formes - Générer d'autres types de formes**]( ../generator/custom-shape.md)).
 
-Il s'agit non plus de générer des boîtes à 6 dimensions ( **b** = (**x**, **y**, **l**, **w**, **h**, **θ**)), mais des boîtes parallèles à 4 dimensions ( **bp** = (**x**, **y**, **l**, **h**), en considérant que l'orientation et la largeur sont imposées par les coordonnées.
+Dans ce cas, la géométrie paramétrique utilisée est non plus une boîte à 6 dimensions ( **b** = (**x**, **y**, **l**, **w**, **h**, **θ**)), mais un boîte parallèle à 4 dimensions ( **bp** = (**x**, **y**, **l**, **h**), en considérant que l'orientation et la largeur sont imposées par les coordonnées du centre de l'objet.
 
 ## Exécutable pour la génération de boîtes alignées
 
@@ -41,10 +41,9 @@ Dans le projet SimPLU3D-tutorial, une classe a été ajoutée sur la base de l'e
 La différence avec le code d'exemple de base tient en deux lignes :
 
 - la récupération des limites le long desquelles les boîtes seront alignées ;
-- l'utilisation du simulateur spécifique aux boîtes alignées (classe * fr.ign.cogit.simplu3d.rjmcmc.cuboid.optimizer.paralellcuboid.ParallelCuboidOptimizer*)
+- l'utilisation du simulateur spécifique aux boîtes alignées (classe *fr.ign.cogit.simplu3d.rjmcmc.cuboid.optimizer.paralellcuboid.ParallelCuboidOptimizer*)
 
-Le résultat est celui de la figure suivante. On visualise bien que la boîtes est alignée avec la limite séparative ce qui fait que le résultat
-optimisé n'occupe pas l'intérieur du L.
+Le résultat est celui de la figure suivante. On visualise bien que la boîtes est alignée avec la limite séparative ce qui fait que le résultat optimisé n'occupe pas l'intérieur du L.
 
 ![Résult de la simulation d'une boîte alignée](./img/alignedBox.png)
 
@@ -79,4 +78,4 @@ public Cuboid build(double[] coordinates) {
 }
 ```
 
-Tous les autres aspects (définition des noyaux de proposition et du sampler) sont définis de la même manière que vu précédemment mais pour ces  objets à 4 dimensions.
+Tous les autres aspects (implémentation des noyaux de proposition et du sampler) sont définis de la même manière que vu précédemment mais adaptés pour ces objets à 4 dimensions.

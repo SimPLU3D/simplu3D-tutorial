@@ -8,14 +8,13 @@ date: 2018-10-26
 
 # Introduction
 
-Le modèle géographique a pour objet de décrire les objets à partir desquels on peut appliquer des contraintes morphologiques et décrire la réglementation urbaine. Le modèle proposé dans SimPLU3D a été établi pour modéliser les contraintes spécifiquement issues des [Plans Locaux d'Urbanisme](https://fr.wikipedia.org/wiki/Plan_local_d%27urbanisme). Ainsi, le modèle contient les concepts que l'on retrouve dans ces documents à partir d'un état de l'art. Par exemple, si l'on considère la règle suivante :
+Le modèle géographique a pour objet de décrire les objets à partir desquels il est possible de définir des contraintes morphologiques et notamment de décrire une réglementation urbaine. Le modèle proposé dans SimPLU3D a été établi pour modéliser les contraintes spécifiquement issues des [Plans Locaux d'Urbanisme](https://fr.wikipedia.org/wiki/Plan_local_d%27urbanisme). Ainsi, le modèle contient les concepts que l'on retrouve dans ces documents. Ce modèle a été produit à partir de la lecture de plusieurs PLU et des [fiches méthodologiques d'écriture des PLU du GRIDAUH](http://www.gridauh.fr/comptes-rendus-de-travaux/ecriture-des-plu/). Par exemple, si l'on considère la règle suivante :
 
 ![Exemple de règle issu du PLU](./img/ex-regle.png)
 
-le modèle permet de représenter les objets géographiques (en rouge), les propriétés (en bleu) et les relations (en vert). Ensuite, ces informations seront utilisées pendant la simulation pour vérifier si une configuration bâtie respecte ou non cette règle et cela est décrit dans la section [définition de contraintes morphologiques](/../rules/intro.md).
+le modèle permet de représenter les objets géographiques (en rouge), les propriétés (en bleu) et les relations (en vert). Ensuite, ces informations seront utilisées pendant la simulation pour vérifier si une configuration bâtie respecte ou non la règle formée par cette phrase. La prise en cmopte de telles contraintes est décrite dans la section [définition de contraintes morphologiques](../rules/intro.md).
 
 Pour en savoir plus, le modèle a fait l'objet d'une publication scientifique :
-
 
 > Brasebin, M., J. Perret, S. Mustière and C. Weber (2016) A Generic Model to Exploit Urban Regulation Knowledge, ISPRS International Journal of Geo-Information, vol. 5, n. 2, pp. 14, [doi:10.3390/ijgi5020014](https://www.mdpi.com/2220-9964/5/2/14)
 
@@ -40,17 +39,17 @@ Le modèle géographique est instancié dans le package *fr.ign.cogit.simplu3d.m
 
 Le modèle est certes complexe dans l'absolu, mais il n'est néanmoins (comme présenté dans l'[exemple de la simulation basique](../begin/first_simulation.md)) pas nécessaire de renseigner toutes les classes pour permettre l'exécution du modèle. Seules les classes relatives aux parcelles doivent absolument être instanciées. Le fait de ne pas instancier une des classes du modèle rend impossible la capacité d'évaluer des contraintes s'appuyant sur les éléments non instanciés. Dans cette page, nous ne décrivons que le logique du modèle. Le processus d'intégration existant est décrit dans une [autre page](integration.md).
 
-Les diagrammes de classes sont générées avec le plugin [ObjectAID d'Eclipse](http://www.objectaid.com/) et les fichiers sont disponibles dans le dossier [*diagram* de SimPLU3D-rules](https://github.com/SimPLU3D/simplu3D-rules/tree/master/diagram/).
+Les diagrammes de classes sont générés avec le plugin [ObjectAID d'Eclipse](http://www.objectaid.com/) et les fichiers sont disponibles dans le dossier [*diagram* de SimPLU3D-rules](https://github.com/SimPLU3D/simplu3D-rules/tree/master/diagram/).
 
 
 # Classe Environnement
 
-La classe *Environnement* est une classe central dans le modèle de SimPLU3D car elle le point d'entrée pour accéder à l'ensemble des objets nécessaires pour vérifier le respect des règles morphologiques.
+La classe *Environnement* est une classe centrale dans le modèle de SimPLU3D car elle est le point d'entrée pour accéder à l'ensemble des objets nécessaires pour vérifier le respect des règles morphologiques.
 
 
 ![Image présentant la classe Environnement de SimPLU3D](./img/environnementdiagram.png)
 
-Elle est composée d'une série d'accesseurs qui permettent d'accéder aux objets présentés dans ce modèle (cf image ci dessus) et également au terrain qui servira de référence.
+Elle est composée d'une série d'accesseurs qui permettent d'accéder aux objets présentés dans ce modèle (cf image ci dessus) et s'il est défini au terrain qui servira de référence d'altitudes pour les données n'ayant pas de géométrie 3D.
 
 L'instanciation d'un environnement s'effectue :
 
@@ -59,37 +58,34 @@ L'instanciation d'un environnement s'effectue :
 
 Dans tous les cas, l'objet environnement est unique, il s'agit d'un singleton que l'on peut récupérer par la méthode statique *Environnement.getInstance()*.
 
-L'objet Environnement peut également contenir les informations relatives à une translation qui serait appliquée à l'ensemble de la scène. *TRANSLATE_TO_ZERO* indique si une translation a été appliquée et *dpTranslate* la valeur de cette translation.
+L'objet Environnement peut également contenir les informations relatives à une translation qui serait appliquée à l'ensemble de la scène. L'attribut statique *TRANSLATE_TO_ZERO* indique si une translation a été appliquée et *dpTranslate* la valeur de cette translation.
 
 # Classes de réglementation
 
-Les classes de réglementation visent à déterminer quelle contraintes réglementaires s'appliquent à quelle endroit de la zone. Les différentes classes de cette partie du modèle s'inspirent de la norme CNIG-COVADIS  sur la dématérialisation des documents d'urbanisme qui visent à modéliser les territoires sur lesquels s'appliquent les réglementations. Le modèle utilise la version 2014 de ce modèle ([disponible en ligne](http://cnig.gouv.fr/?page_id=2732)). Un certain nombre d'attributs provenant de ces spécifications et modélisées dans SimPLU3D ne sont pas décrits ici. Cela est le cas car ces attributs sont purement informatifs, mais n'ont, a priori, pas vraiment d'influence sur les simulations effectuées avec SimPLU3D. Cependant, ils pourraient être utilisées dans le cadre d'un système information de gestion réglementaire.
-
-
+Les classes de réglementation visent à déterminer quelle contraintes réglementaires s'appliquent et à quels endroits. Les différentes classes de cette partie du modèle s'inspirent de la norme CNIG-COVADIS concernant la dématérialisation des documents d'urbanisme. Cette norme vise à modéliser les territoires sur lesquels s'appliquent les réglementations. Le modèle utilise la version 2014 de ce standard ([disponible en ligne](http://cnig.gouv.fr/?page_id=2732)). Un certain nombre d'attributs provenant de ces spécifications et modélisés dans SimPLU3D ne sont pas décrits ici. Cela est le cas pour les attributs purement informatifs et qui n'ont, a priori, pas d'influence sur les simulations effectuées avec SimPLU3D. Cependant, ils pourraient être utilisées dans le cadre d'un système information de gestion réglementaire.
 
 ![Image présentant les classes de réglementation de SimPLU3D](./img/regulationdiagram.png)
 
-La classe *UrbaDocument* est la classe parent qui décrit le document modélisé. Il possède un type défini parmi les possibilités offertes par l'énumération *UrbaDocumentType* comme POS, PLU, etc. . La classe  *UrbaDocument* possède des zones d'urbanisme (UrbaZone) qui possèdent une géométrie surfacique (accessible avec la méthode *getGeom()*). Les contraintes réglementaires sont définies pour chaque UrbaZone et accessible à travers une réglementation de zone (décrite dans l'interface *IZoneRegulation*). L'implémentation de cette interface permet de définir les valeurs des contraintes qui s'appliquent sur la zone. Il est seulement nécessaire de définir la zone réglementaire urbaine sur laquelle cette réglementation est définie (*getUrbaZone()*) et un convertisseur en texte pour consulter les informations contenues (*toText()*).
+La classe *UrbaDocument* est la classe parent qui décrit le document modélisé. Il possède un type défini parmi les possibilités offertes par l'énumération *UrbaDocumentType* comme les valeurs POS, PLU, etc. . La classe  *UrbaDocument* possède des zones d'urbanisme (UrbaZone) qui possèdent une géométrie surfacique (accessible avec la méthode *getGeom()*). Les contraintes réglementaires sont définies pour chaque *UrbaZone* et accessibles à travers une réglementation de zone (décrite dans l'interface *IZoneRegulation*). L'implémentation de cette interface permet de définir les valeurs des contraintes qui s'appliquent sur la zone (voir[l'exemple sur les formats de règles](https://simplu3d.github.io/simplu3D-tutorial/rules/formats/)). Il est seulement nécessaire de définir la zone réglementaire urbaine sur laquelle cette réglementation est définie (*getUrbaZone()*) et un convertisseur en texte pour consulter les informations contenues (*toText()*).
 
-
-La classe *Prescription* vise à définir des contraintes qui s'appliquent localement. Une prescription peut avoir une géométrie qui soit ponctuelle, surfacique ou linéaire et a un type qui set définie à travers l'énumartion *PrescriptionType*. Cette énumération provient de la norme CNIG-COVADIS et reroupe les différents types définis dans la norme.
+La classe *Prescription* vise à définir des contraintes qui s'appliquent localement. Une prescription peut avoir une géométrie qui soit ponctuelle, linéaire ou surfacique  et a un type qui est défini à travers l'énumération *PrescriptionType*. Cette énumération provient de la norme CNIG-COVADIS et reroupe les différents types définis dans cette norme.
 
 # Classes du parcellaire
 
-![Diagram schématisant les classes des parcelles dans SimPLU3D](./img/parcelDiagram.png)
+![Diagramme schématisant les classes des parcelles dans SimPLU3D](./img/parcelDiagram.png)
 
-Ces classes visent à organiser les parcelles et le objets reliés au parcellaire. Le schéma ci dessous vise à présenter (dans l'image a les différentes relations d'incluses entre *BasicPropertyUnit*, *CadastralParcel* et *SubPArcel*)les différentes relations entre les parcelles, leur limites séparatives (*ParcelBoundary*) et les objets environnants.
+Ces classes visent à organiser les parcelles et le objets reliés au parcellaire. Le schéma ci dessous vise à présenter (dans l'image, on trouve les différentes relations d'inclusion entre *BasicPropertyUnit*, *CadastralParcel* et *SubParcel*) les différentes relations entre les parcelles, leurs limites séparatives (*ParcelBoundary*) et les objets environnants.
 
 ![Image schématisant la modélisation des parcelles dans SimPLU3D](./img/parcelSchema.png)
 
-Les unités foncières (classe *BasicPropertyUnit*) sont l'unité de base en termes de propriété foncière, elles regroupent un ensemble de parcelles cadastral (classe *CadastralParcel*). L'unité foncière contient un certain nombre de bâtiments (*getBuildings()*) qui se trouvent, normalement, totalement inclus dans les unités foncières. Il est possible d'obtenir la géométrie 2D par la méthode *getPol2D()* et la géométrie 3D avec la méthode *generateGeom()*.
+Les unités foncières (classe *BasicPropertyUnit*) sont l'unité de base en termes de propriété foncière. Elles regroupent un ensemble de parcelles cadastrales (classe *CadastralParcel*). L'unité foncière contient un certain nombre de bâtiments (*getBuildings()*) qui se trouvent, normalement, totalement inclus dans les unités foncières. Il est possible d'obtenir la géométrie 2D par la méthode *getPol2D()* et la géométrie 3D avec la méthode *generateGeom()*.
 
 Les parcelles cadastrales sont composées d'un ensemble de sous-parcelles (*SubParcel*). Les sous-parcelles correspondent à la partition d'une parcelle en fonction du zonage réglementaire utilisé (*UrbaZone*). En effet, rien ne garantit qu'une parcelle ne soit pas incluse que dans une seule zone réglementaire. Une parcelle possède un identifiant unique accessible avec le méthode (*getCode()*) et il est possible de préciser si celle-ci est simulable ou non (méthode *hasToBeSimulated()*). Les limites séparatives des objets sont décrits comme des objets (*ParcelBoundary*) qui peuvent servir lors de la vérification de règles. Il est possible d'accéder directement à ces objets (méthode *getBoundaries()*) ou de les filtrer en fonction de leurs attributs (méthode *getBoundariesByType()* ou *getBoundariesBySide()*). La géométrie est accessible avec la méthode *getGeom()*.
 
 Les sous-parcelles (classe *SubParcel*) sont une décomposition des parcelles cadastrales par rapport aux zones de réglementation (classe *UrbaZone*). Ainsi, chaque sous parcelle est associé à une zone de réglementation urbaine accessible par la méthode *getUrbaZone()*. Elle permet de faire le lien pendant la simulation entre le parcellaire et les règles associées. Les limites séparatives sont également associées aux sous-parcelles et accessibles par la méthode (*getBoundaries()*).  La géométrie est accessible avec la méthode *getGeom()*.
 
 
-Les limites séparatives sont des objets modélisés par des segments (accessibles par *getGeom()*). Ils modélisent les limites des parcelles ou sous-parcelles. Ces parcelles sont caractérisées par un type (parmi les types de l'énumération *ParcelBoundaryType* et accessible par la méthode *getType()*) :
+Les limites séparatives sont des objets modélisés par des segments (accessibles par *getGeom()*). Ils modélisent les limites des parcelles ou des sous-parcelles. Ces parcelles sont caractérisées par un type (parmi les types de l'énumération *ParcelBoundaryType* et accessible par la méthode *getType()*) :
 
 - **BOT** : pour les limites de fond de parcelle ;
 - **LAT** :  pour les limites latérales parcelle ;
@@ -111,9 +107,9 @@ Les classes modélisant les bâtiments sont issues du standard [CityGML V2.0](ht
 ![Diagramme schématisant les classes de bâtiments dans SimPLU3D](./img/buildingDiagram.png)
 
 
-Il y a deux classes de bâtiments les bâtiments (classe *Building*) et les parties de bâtiments (classe *BuildingPart*) qui instancient toutes les deux la classe abstraite *AbstractBuilding*. Les bâtiments sont des objets bâtiments issues de base de données 3D  et associées à une unité foncière (accessible avec la méthode *getBPU()*). Ces bâtiments sont découpées en parties de bâtiment en fonction des sous-parcelles (accessible avec la classe *getSubParcel()*).  
+Il y a deux classes de bâtiments : les bâtiments (classe *Building*) et les parties de bâtiments (classe *BuildingPart*) qui instancient toutes les deux la classe abstraite *AbstractBuilding*. Les bâtiments sont des objets bâtiments issues de base de données 3D  et associées à une unité foncière (accessible avec la méthode *getBPU()*). Ces bâtiments sont découpés en parties de bâtiment en fonction des sous-parcelles (accessibles avec la méthode *getSubParcel()*).  
 
-La plupart des méthodes pour ces classes proviennent de la classe abstraite *AbstractBuilding*, parmi celles-ci les plus importante pour un usage de SimPLU3D sont :
+La plupart des méthodes pour ces classes proviennent de la classe abstraite *AbstractBuilding*, parmi celles-ci les plus importantes pour un usage de SimPLU3D sont :
 
 -  *isNew()* : qui indique si un bâtiment est simulé (valeur true) ou existant (valeur false) ;
 - *getLOD2MultiSurface()* : qui permet d'obtenir la géométrie de tout le bâtiment ;
@@ -143,17 +139,17 @@ Les bâtiments sont composés d'un objet de toit (classe *RoofSurface*) accessib
 
 ![Schéma schématisant les bâtiments et toit dans SimPLU3D](./img/wallRooofStructure.png)
 
-Le toit possède différentes informations concernant sa structure : une gouttière (méthode *getGutter()*) en vert  dans l'image, des arêtes de pignons (*getGable()*) en orange dans l'image et des arêtes sommets (*getRoofing()*) en bordeau sur l'image. Des angles minimaux (méthode *getAngleMin()*) et maximaux (méthode *getAngleMax()*) sont également disonibles.
+Le toit possède différentes informations concernant sa structure : une gouttière (méthode *getGutter()*) en vert dans l'image, des arêtes de pignons (*getGable()*) en orange dans l'image et des arêtes sommets (*getRoofing()*) en bordeau sur l'image. Des angles minimaux (méthode *getAngleMin()*) et maximaux (méthode *getAngleMax()*) sont également disponibles.
 
-Concernant les surfaces de murs, chaque objet de la classe *WallSurface* représente un ensemble de géométries coplanaires. Ces murs possèdes un type, similaire au type des limites séparatives (énumération *WallSurfaceType*) et un attribut indiquant s'ils possèdent des fenêtres (méthode *isWindowLess()*).
+Concernant les surfaces de mur, chaque objet de la classe *WallSurface* représente un ensemble de géométries coplanaires. Ces murs possèdes un type, similaire au type des limites séparatives (énumération *WallSurfaceType*) et un attribut indiquant s'ils possèdent des fenêtres (méthode *isWindowLess()*).
 
-Ces deux types de surface possèdes des matériaux (classe *Materiau*) qui possèdent un nom pour les discriminer et éventuellement des coordonnées de texture pour d'éventuelles représentations.
+Ces deux types de surface possèdent des matériaux (classe *Materiau*) qui ont un nom pour les discriminer et éventuellement des coordonnées de texture pour d'éventuels placage de textures.
 
 # Classes de l'espace publique
 
 ![Schéma schématisant l'espace public](./img/publicSpaceDiagram.png)
 
-Les classes servent à modéliser l'espace en dehors des parcelles qui peuvent imposer des contraintes sur les configurations bâties simulées. Ces objets seront accessibles via les limites séparatives (classe *ParcelBoundary*).
+Ces classes servent à modéliser l'espace en dehors des parcelles qui peuvent imposer des contraintes sur les formes bâties simulées. Ces objets sont accessibles via les limites séparatives (classe *ParcelBoundary*).
 
 La classe *PublicSpace* représente des objets surfaciques (parcs, places, etc.) qui sont définis par un type (méthode *getType()*).
 

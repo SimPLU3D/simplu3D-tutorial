@@ -5,7 +5,7 @@ authors:
 date: 2018-10-26
 
 ---
-# Contributeurs
+# Contributeurs
 
 - **Mickaël Brasebin** : chercheur LASTIG - IGN (https://mbrasebin.github.io/) ;
 - **Julien Perret** : chercheur LASTIG - IGN (http://recherche.ign.fr/labos/cogit/cv.php?nom=Perret) ;
@@ -19,7 +19,7 @@ date: 2018-10-26
 
 SimPLU3D est un projet développé par des chercheurs et ingénieurs du laboratoire [LASTIG](http://recherche.ign.fr) et financé majoritairement par l'[Institut National de l'Information Géographique et Forestière](http://www.ign.fr).
 
-Le projet a  également été financé par le fond FUI du projet TerraMagna et  la région Ile-de-France à travers le projet e-PLU.
+Le projet a également été financé par le fond FUI du projet TerraMagna et la région Ile-de-France à travers le projet FEDER e-PLU.
 
 # Contacts
 

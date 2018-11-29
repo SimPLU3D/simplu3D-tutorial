@@ -6,13 +6,13 @@ date: 2018-10-26
 
 ---
 
-L'objectif de cette partie est de présenter un code permettant de générer des bâtiments en forme de L avec un toit typifié et de décrire les étapes à suivre pour générer des configurations avec d'autres types de formes à partir du simulateur basique présenté dans la première expérimentation.
+L'objectif de cette partie est de présenter un code permettant de générer des bâtiments en forme de L avec un toit typifié et de décrire les étapes à suivre pour générer des configurations avec d'autres types de forme à partir du simulateur basique présenté dans la [première expérimentation](../begin/first_simulation.md).
 
 L'exécution du code présenté ici se trouve dans la classe  *fr.ign.simplu3d.shapeGenerator.OptimisedLShapeDirectRejection* du projet SimPLU3D-tutorial.
 
 ![Vue du bâtiment en L](./img/lshape.png)
 
-La classe de formes simulées (présentée dans le schéma précédent) comporte 10 dimensions :
+La classe de géométrie paramétrique utilisée (présentée dans le schéma précédent) comporte 10 dimensions :
 
 - **x** : coordonnée x du centre de la forme ;
 - **y** : coordonnée y du centre de la forme ;
@@ -30,21 +30,20 @@ La classe de formes simulées (présentée dans le schéma précédent) comporte
 
 # Définition de la classe représentant la forme
 
-La classe définissant la géométrie simulée est la classe *fr.ign.cogit.simplu3d.rjmcmc.paramshp.geometry.impl.LBuildingWithRoof* du projet SimPLU3D. Cette classe implémente la classe **AbstractSimpleBuilding** (comme nous simulons un objet de type bâtiment et tout comme la classe **Cubboid**). Cela implique l'instanciation de 3 niveaux de classes abstraites et d'interfaces :
+La classe définissant la géométrie simulée est la classe *fr.ign.cogit.simplu3d.rjmcmc.paramshp.geometry.impl.LBuildingWithRoof* du projet SimPLU3D. Cette classe implémente la classe **AbstractSimpleBuilding** (comme nous simulons un objet de type bâtiment, comme c'est le cas pour la classe **Cubboid**). Cela implique l'instanciation de 3 niveaux de classes abstraites et d'interfaces :
 -  la classe *fr.ign.cogit.simplu3d.rjmcmc.cuboid.geometry.impl.AbstractSimpleBuilding* de *SimPLU3D-rules*: qui contient les informations nécessaires pour modéliser un objet de type bâtiment de SimPLU3D ;
 - l'interface *fr.ign.cogit.simplu3d.rjmcmc.generic.objectISimPLU3DPrimitive* : qui contient les méthodes propres à SimPLU3D concernant l'optimisation de forme ;
 - l'interface  de la librjmcmc4j *fr.ign.geometry.Primitive* : qui contient les informations nécessaires pour simuler des objets géographiques avec la librjmcmc4j.
-Seule l'implémentation de la dernière interface est nécessaire pour générer des formes, les deux autres niveaux enrichissent les méthodes accessibles pour la vérification des règles et la définition de la fonction d'optimisation et facilitent l'utilisation du code de la première simulation.
+Seule l'implémentation de la dernière interface est nécessaire pour générer des formes, les deux autres niveaux enrichissent les méthodes accessibles pour la vérification des règles et la définition de la fonction d'optimisation. Elles facilitent également la ré-utilisation du code de la première simulation.
 
 
-
-L'implémentation de l'interface *Primitive*  nécessite l'implémentation des méthodes suivantes :
+L'implémentation de l'interface *Primitive*  nécessite la définition des méthodes suivantes :
 
 - *int size();* : renvoie la taille de la dimension de la forme (ici 10 pour le bâtiment en L) ;
 - *double[] toArray()* :  traduit les attributs de la classe en un tableau de double (il s'agit ici d'un tableau de dimension 10 contenant les valeurs des différentes dimensions de la forme) ;
-- *Object[] getArray();* : même méthode que précédemment, mais avec des valeurs sous forme d'objet ;
-- *void set(List<Double> list);* : affecte aux attributs de la classe les valeurs provenant d'un tableau de double (ici une liste de 10 chiffres qui correspondent aux 10 dimensions de la classe).
-- *double intersectionArea(Primitive p);* : évalue la surface de l'intersection 2D avec une autre primitive (ici avec d'autres bâtiments en L);
+- *Object[] getArray();* : même méthode que précédemment, mais avec des valeurs sous forme d'objets ;
+- *void set(List<Double> list);* : affecte aux attributs de la classe les valeurs provenant d'un tableau de double (ici une liste de 10 chiffres qui correspondent aux 10 dimensions de la classe) ;
+- *double intersectionArea(Primitive p);* : évalue la surface de l'intersection 2D avec une autre primitive (ici avec d'autres bâtiments en L) ;
 - *Geometry toGeometry();* : convertit la forme en géométrie 2D JTS (ici l'emprise 2D du bâtiment, la conversion JTS permet d'optimiser les temps de calcul par rapport à l'utilisation de géométries GeOxygene) ;
 - *double getArea();* : l'aire 2D de l'emprise de la forme.
 
@@ -64,12 +63,12 @@ Il s'agit de la classe *fr.ign.cogit.simplu3d.rjmcmc.paramshp.builder.LBuildingW
 - *void setCoordinates(T t, double[] val);* : affecte les coordonnées d'un tableau de doubles à un objet de la classe paramétrée ;
 - *int size();* : la dimension de la taille des objets construits par le constructeur (ici 10).
 
-# Définition de l'optimiseur
+# Définition de l'optimiseur
 
 
-L'optimiseur est défini dans la classe *fr.ign.cogit.simplu3d.rjmcmc.paramshp.optimizer. OptimisedLShapeDirectRejection* dans le projet SimPLU3D. L'étape peut sembler complexe car le code résultant de la classe est très long, néanmoins, comme presque toutes les méthodes à définir sont les mêmes que celles de la classe utilisée pour simuler des formes composées de boîtes (*fr.ign.cogit.simplu3d.rjmcmc.cuboid.optimizer.cuboid.OptimisedBuildingsCuboidFinalDirectRejection*) mais paramétrée avec la classe *LBuildingWithRoof*.
+L'optimiseur est défini dans la classe *fr.ign.cogit.simplu3d.rjmcmc.paramshp.optimizer. OptimisedLShapeDirectRejection* dans le projet SimPLU3D. L'étape peut sembler complexe car le code de la classe est très long, néanmoins, comme presque toutes les méthodes à définir sont les mêmes que celles  utilisée pour simuler des formes composées de boîtes (*fr.ign.cogit.simplu3d.rjmcmc.cuboid.optimizer.cuboid.OptimisedBuildingsCuboidFinalDirectRejection*) mais paramétrées avec la classe *LBuildingWithRoof*.
 
-La seule véritable méthode à définir est la méthode **create_sampler** qui créé l'échantillonneur de bâtiments en L. L'implémentation de cette méthode est similaire à celle des boîtes avec la définition des intervalles de tirage, du constructeur d'objets et des noyaux de modifications. Le code de cette méthode est repris et commenté ci-dessous :
+La seule méthode significativement différente est **create_sampler** qui créé l'échantillonneur de bâtiments en L. L'implémentation de cette méthode est similaire à celle des boîtes avec la définition des intervalles de tirage, du constructeur d'objets et des noyaux de modification. Le code de cette méthode est repris et commenté ci-dessous :
 
 
 
@@ -203,7 +202,7 @@ La seule véritable méthode à définir est la méthode **create_sampler** qui 
 	}
 ```
 
-# Implémentation de l'exécution
+# Implémentation de l'exécution
 
 Le code exécuté se trouve dans la classe *fr.ign.simplu3d.shapeGenerator.OptimisedLShapeDirectRejection* du projet SimPLU3D-tutoriel. Les différences par rapport à la simulation basique de formes composées de boîtes sont :
 - l'utilisation du nouvel optimiseur ;

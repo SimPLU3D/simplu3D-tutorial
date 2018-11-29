@@ -6,7 +6,7 @@ date: 2018-10-26
 
 ---
 
-Dans cette partie, nous décrirons comment le système définit la création de nouveaux objets paramétriques et les modifications qui leur seront apportées durant l'optimisation. Il s'agit de l'étape 1 du code décrit dans la section [principe de simulation](principe.md). Cet exemple s'appuie sur la génération de boîtes, mais il est possible de définir d'autres types de géométries (cela sera décrit dans la section [Générer d'autres types de formes](custom-generator.md)).
+Dans cette partie, nous décrivons comment le système définit la création de nouveaux objets paramétriques et les modifications qui leur seront apportées durant l'optimisation. Il s'agit de l'étape 1 du code décrit dans la section [principe de simulation](principe.md). Cet exemple s'appuie sur la génération de boîtes, mais il est possible de définir d'autres types de géométries (cela sera décrit dans la section [Générer d'autres types de formes](custom-shape.md)).
 
 Les parties suivantes reprennent les principales étapes de création du sampler dont le code est repris dans [la dernière partie de la page sur l'implémentation](#implementation) (étape 1) , c'est à dire le code suivant :
 
@@ -37,7 +37,7 @@ Afin de pouvoir échantillonner, il est nécessaire de définir les intervalles 
 
 Les deux premières valeurs sont contraintes par l'enveloppe contenant la géométrie dans laquelle les centres de boîtes seront échantillonnés.
 
-Dans l'exemple de la [première simulation](../begin/first_simulation), **minθ** et **maxθ** sont fixés dans l'exemple à **0** et **π** afin de permettre tout type d'orientation. Les autres paramètres sont fixés dans le fichier de configuration **params.json**.
+Dans l'exemple de la [première simulation](../begin/first_simulation), **minθ** et **maxθ** sont fixés e, dir à **0** et **π** afin de permettre tout type d'orientation. Les autres paramètres sont fixés dans le fichier de configuration **params.json**.
 
 Afin que le système puisse générer des formes, il est nécessaire de définir une classe **Builder** qui permet d'instancier les objets à partir d'un tableau contenant les paramètres de la forme. Dans l'exemple, il s'agit de la classe **CuboidBuilder**.
 
@@ -52,8 +52,8 @@ Une modification aléatoire est est déterminée par le choix d’un des noyaux 
 - changement de la hauteur d’une boîte ;
 - rotation d’une boîte.
 
-Excepté les modifications issues du premier noyau, toutes les modifications sont implémentées comme  la suppression et l'ajout d'une boîte. Par exemple, une modification de type changement de longueur d'une boîte **b** = (**x**, **y**, **l**, **w**, **h**, **θ**) est traduite comme la suppression de cette boîte et la création d'une nouvelle boîte avec une largeur différente définie comme : **b'** = (**x**, **y**, **l** + (**1 - rand**)  x **ampli**, **w**, **h**, **θ**) où **rand** est un nombre aléatoire pris dans [0,1] et **ampli** est un coefficient d'amplification du déplacement (réel strictement positif).
-Ainsi, dans la simulation exemple, les coefficients des amplifications (amplitudeMove, amplitudeMaxDim, amplitudeHeight, amplitudeRotate) sont stockées dans le fichier de paramétrage **params.json**.
+Exceptés les modifications issues du premier noyau, toutes les modifications sont implémentées comme la suppression et l'ajout d'une boîte. Par exemple, une modification de type changement de longueur d'une boîte **b** = (**x**, **y**, **l**, **w**, **h**, **θ**) est traduite comme la suppression de cette boîte et la création d'une nouvelle boîte avec une longueur différente, définie comme : **b'** = (**x**, **y**, **l** + (**1 - rand**)  x **ampli**, **w**, **h**, **θ**) où **rand** est un nombre aléatoire pris dans [0,1] et **ampli** est un coefficient d'amplification du déplacement (réel strictement positif).
+Ainsi, dans la simulation exemple, les coefficients des amplifications (*amplitudeMove*, *amplitudeMaxDim*, *amplitudeHeight*, *amplitudeRotate*) sont stockés dans le fichier de paramétrage **params.json**.
 
 Les modifications sont implémentées à partir de la classe **Kernel** de la librjmcmc4j qui définit comment modifier un objet de la classe paramétrique utilisée à partir d'un tirage aléatoire.
 
@@ -65,7 +65,8 @@ Les dernières étapes visent à définir l'objet qui va effectuer les tirages a
 
 
 ```JAVA
-/**
+
+	/**
 	 * Creation of the sampler
 	 * @param rng  a random generator
 	 * @param p    the parameters loaded from the json file

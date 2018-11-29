@@ -6,17 +6,17 @@ date: 2018-10-26
 
 ---
 
-Pour vérifier les règles morphologiques, SimPLU3D utilise le concept de prédicat. Il s'agit d'un objet qui indique si une règle respecte ou non respecte une règle.
+Pour vérifier les règles morphologiques, SimPLU3D utilise le concept de prédicat. Il s'agit d'un objet qui indique si une configuration respecte ou non respecte une règle.
 
 # Interface de predicat
 
- L'interface de la librjmcmc4j *fr.ign.rjmcmc.configuration. ConfigurationModificationPredicate<C extends Configuration<C, M>, M extends Modification<C, M>>* implémente cette notion de prédicat est permet la définition à elle seule du respect des règles.
+ L'interface de la librjmcmc4j *fr.ign.rjmcmc.configuration. ConfigurationModificationPredicate<C extends Configuration<C, M>, M extends Modification<C, M>>* implémente cette notion de prédicat et permet la définition à elle seule du respect des règles.
 
- Cette interface ne définit que la méthode *| check(C c, M m);*. Avec :
+ Cette interface ne définit que la méthode *boolean check(C c, M m);*. Avec :
 
-- **c**, une instance de configuration, qui contient la liste des objets de la configuration courante  (c'est à dire avant application de la modification);
+- **c**, une instance de configuration, qui contient la liste des objets de la configuration courante  (c'est à dire avant application de la modification) ;
 - **m**, la modification qui serait appliquée à la configuration **c** ;
-- la méthode renvoie un | qui indique si les règles sont respectées suite à l'application de la modification m sur la méthode **c**.
+- la méthode renvoie un *boolean* qui indique si les règles sont respectées suite à l'application de la modification **m** sur la méthode **c**.
 
 
 # Implémentation à partir de l'interface de prédicat
@@ -29,9 +29,9 @@ Dans SimPLU3D, nous conseillons l'implémentation de cette interface à travers 
 ```
 
 Ainsi, à travers la classe abstraite *AbstractGraphConfiguration*, il est possible d'accéder à la liste des objets de la configuration courante à travers un itérateur (méthode *iterator*) et à travers la classe *AbstractBirthDeathModification* d'accéder aux modifications à travers la création *m.getBirth()* et la destruction d'objets *m.getDeath()* de la classe utilisée pendant la génération.
-Une modification est vue comme l'ajout et la suppression d'objet. Dans les modification usuellement utilisées dans SimPLU3D, ces listes contiennent soit 0 soit 1 objet.
+Une modification est vue comme l'ajout et la suppression d'objet. Dans les modifications usuellement utilisées dans SimPLU3D, ces listes contiennent soit 0 soit 1 objet.
 
-Il suffit ensuite de coder la vérification des règles pour les différents objets de la configurations après modification en utilisant les informations disponibles dans l'[environnement géographique](../envgeo/intro.md)). Ainsi, pour avoir la liste des objets de la classe O après modification sur laquelle il faut porter les vérifications, on peut utiliser le code suivant :
+Il suffit ensuite de coder la vérification des règles pour les différents objets de la configuration après modification en utilisant les informations disponibles dans l'[environnement géographique](../envgeo/intro.md)). Ainsi, pour avoir la liste des objets de la classe O après modification, on peut utiliser le code suivant :
 
 ```JAVA
 List<O> listOfObjects = new ArrayList<>();
@@ -50,23 +50,23 @@ List<O> listOfObjects = new ArrayList<>();
 
 > ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) **Attention**: comme l'évaluation de la méthode *check()* s'effectue à chaque itération et qu'une simulation peut compter des millions de simulation, optimiser le temps d'exécution de cette méthode permet de diminuer de beaucoup le temps de calcul, d'autant plus que cette méthode fait généralement à des opérateurs géométriques qui peuvent être coûteux en termes de temps. Voici quelques astuces pour diminuer ce temps de calcul :
 
-> 1/ Essayer de renvoyer fois dès qu'une règle n'est pas respectée ;
+> 1/ Essayer de renvoyer false chaque fois dès qu'une règle n'est pas respectée ;
 
-> 2/ Privilégier les géométries JTS aux géométries GeOxygene (les opérateurs géométriques appliquées aux géométries GeOyegne nécessitent une conversion JTS qui augmente le temps de calcul) ;
+> 2/ Privilégier les géométries JTS aux géométries GeOxygene (les opérateurs géométriques appliquées aux géométries GeOxygene nécessitent une conversion JTS qui augmente le temps de calcul) ;
 
-> 3/ Conserver des objets en cache lorsqu'ils sont fixes pour éviter de les re-générer à chaque étape.
+> 3/ Conserver des objets en cache lorsqu'ils sont fixes pour éviter de les re-générer à chaque étape ;
 
-> 4/ Il n'est pas nécessaire de vérifier les règles pour tous les objets de la configuration après modification. En effet, les géométries dans la configuration avant modifications vérifient déjà ces règles. Cela est notamment vrai pour les règles de hauteur ou de distance 2D avec d'autres limites
+> 4/ Ne vérifier les règles que pour les objets nécessaires. En effet, les géométries dans la configuration avant modification vérifient déjà un certain nombre de règles, il n'est ainsi pas nécessaire de devoir les réévaluer pour ceux-ci. Cela est par exemple vrai pour les règles de hauteur ou de distance 2D avec les limites séparatives.
 
 
 # Implémentation à partir de la classe abstraite DefaultAbstractPredicate
 
-La classe *fr.ign.cogit.simplu3d.util.regulation.DefaultAbstractPredicate* contient un certain nombre de fonctions de base qui sont issues de règles souvent utilisées dans SimPLU3D et permettent d'effectuer des vérifications sur les règles d'urbanisme. Les méthodes de cette classe suivent les principes évoqués précédemment et permet de diminuer le temps de calcul. En étendant cette classe abstraite et en utilisant son constructeur, il est possible de définir plus facilement la méthode *check()* d'un prédicat en utilisant ces fonctions prédéfinies.
+La classe *fr.ign.cogit.simplu3d.util.regulation.DefaultAbstractPredicate* contient un certain nombre de fonctions de base qui sont issues de règles souvent utilisées dans SimPLU3D. Les méthodes de cette classe suivent les principes évoqués précédemment et permettent de diminuer le temps de calcul. En étendant cette classe abstraite et en utilisant son constructeur, il est possible de définir plus facilement la méthode *check()* d'un prédicat en utilisant les fonctions prédéfinies.
 
 On retrouve trois types de fonctions :
 
 - **des accesseurs**, pour accéder directement aux géométries JTS d'un certain nombre d'objets issus du modèle ;
-- des **vérificateurs portant sur l'ensemble des objets** de la configurations courantes ;
+- des **vérificateurs portant sur l'ensemble des objets** de la configuration courante ;
 - des **vérificateurs qui peuvent ne porter que sur les nouveaux objets** proposés par la modification (cf principe 4 évoqué précédemment).
 
 
@@ -79,8 +79,8 @@ Ces méthodes permettent d'accéder directement à certaines géométriques JTS 
 | getJtsCurveLimiteFondParcel     | Géométrie des limites de fond de parcelle          |
 | getJtsCurveLimiteFrontParcel    | Géométrie des limites donnant sur la voirie        |
 | getJtsCurveLimiteLatParcel      | Géométrie des limites latérales                    |
-| getJtsCurveLimiteLatParcelLeft  | Géométrie des limites latérales  du côté gauche    |
-| getJtsCurveLimiteLatParcelRight | Géométrie des limites latérales  du côté droit     |
+| getJtsCurveLimiteLatParcelLeft  | Géométrie des limites latérales du côté gauche    |
+| getJtsCurveLimiteLatParcelRight | Géométrie des limites latérales du côté droit     |
 | getJtsCurveOppositeLimit        | Géométrie des limites du côté opposé à la parcelle |
 | getbPUGeom                      | Géométrie de l'unité foncière                      |
 
@@ -90,7 +90,7 @@ Si une géométrie n'existe pas du fait de la configuration spatiale, elle aura 
 
 ## Vérificateur portant sur l'ensemble des objects
 
-Il s'agit de méthodes qui vérifient certaines règles portant sur l'ensemble des objets après modification. La méthode *getAllObjectsAfterModifcation(C c, M m)* permet d'obtenir cette liste et faire porter le test sur celle-ci. Par exemple, dans la méthode *check* cela revient à ajouter le code comme par exemple :
+Il s'agit de méthodes qui vérifient certaines règles portant sur l'ensemble des objets après modification. La méthode *getAllObjectsAfterModifcation(C c, M m)* permet d'obtenir cette liste et de faire porter le test sur celle-ci. Par exemple, dans la méthode *check* cela revient à ajouter, par exemple, le code suivant  :
 
 ```JAVA
 //On récupère la liste des objets après modification
@@ -113,7 +113,7 @@ On retrouve les méthodes suivantes :
 
 ## Vérificateurs portant sur l'ensemble des nouveaux objets
 
-Il s'agit de méthodes qui peuvent être vérifiés que les sur les nouveaux objets créés par la proposition de modification (dans le sens où l'ajout de nouveaux objets ne change pas le respect de la règles pour les objets déjà existants de la configuration). La liste des objets créés par la modification peut être obtenu avec la méthode *m.getBirth()*. Ainsi, utiliser ces méthodes dans la méthode *check* revient par exemple à ajouter le code suivant :
+Il s'agit de méthodes qui peuvent être vérifiés que sur les nouveaux objets créés par la modification appliquée (dans le sens où l'ajout de nouveaux objets ne change pas le respect de la règles pour les objets déjà existants de la configuration). La liste des objets créés par la modification peut être obtenue avec la méthode *m.getBirth()*. Ainsi, utiliser ces méthodes dans la méthode *check* revient par exemple à ajouter le code suivant :
 
 ```JAVA
 //On récupère la liste des objets ajoutés par la modification

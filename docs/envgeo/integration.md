@@ -10,16 +10,16 @@ date: 2018-10-26
 
 Un processus d'intégration est déjà défini dans SimPLU3D. Il permet de créer un objet de la classe *Environnement* en renseignant un certain nombre d'attributs.
 
-Le processus d'intégration peut prendre en entrée des données au format ShapeFile (avec la classe *fr.ign.cogit.simplu3d.io.nonStructDatabase.shp.LoaderSHP*)  ou des données dans une base de données PostGIS (avec la classe *fr.ign.cogit.simplu3d.io.nonStructDatabase.postgis.loadPostGIS*). Quelque soit la classe choisie, les deux classes ont une méthode *load*, qui va traduire les entités provenant de ces sources de données en collection de *IFeature* de GeOxygene et faire appelle à la méthode *load* de la classe *fr.ign.cogit.simplu3d.io.LoadFromCollection*.
+Le processus d'intégration peut prendre en entrée des données au format ShapeFile (avec la classe *fr.ign.cogit.simplu3d.io.nonStructDatabase.shp.LoaderSHP*)  ou des données dans une base de données PostGIS (avec la classe *fr.ign.cogit.simplu3d.io.nonStructDatabase.postgis.loadPostGIS*). Quelque soit l'approche choisie, les deux classes ont une méthode *load*, qui va traduire les entités provenant de ces sources de données en collection de *IFeature* de GeOxygene et faire appelle à la méthode *load* de la classe *fr.ign.cogit.simplu3d.io.LoadFromCollection* qui va instancier les entités du modèle.
 
-Dans cette page, nous allons décrire tout d'abord les pré-requis en [fonction de la source de données utilisée](#sources-de-donnees-utilisees), puis décrire dans le détail [le processus d'intégration](#description-du-code-dintegration).
+Dans cette page, nous allons décrire tout d'abord les pré-requis en [fonction de la source de données utilisée](#sources-de-donnees-utilisees), puis décrire dans le détail [le processus d'intégration](#code-dintegration).
 
-> ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) **Attention**: actuellement la persistance n'est pas gérée, donc le processus d'intégration automatique est pour le moment le seul moyen d'utiliser le modèle géographique convenablement.
+> ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) **Attention**: actuellement la persistance n'est pas gérée, donc le processus d'intégration automatique est pour le moment le seul moyen direct d'instancier le modèle géographique convenablement.
 
 
 # Sources de données utilisées
 
-La données utilisées pendant le processus d'intégration peuvent provenir de Shapefiles ou de PostGIS. Les classes permettant de lancer le processus et les constantes stockant le nom des sources de données utilisées  dépendent du choix de la source de données  [ShapeFiles](#source-de-donnees-shapefile) ou [PostGIS](#source-de-donnees-postgis). Dans tous les cas, seules les données parcellaires sont obligatoires.  Cependant, [les noms des attributs utilisés](#nom-des-attributs) sont les mêmes quelque soit la source et sont stockés au même endroit dans le code.
+La données utilisées pendant le processus d'intégration peuvent provenir de Shapefiles ou de PostGIS. Les classes permettant de lancer le processus et les constantes stockant le nom des sources de données utilisées  dépendent du choix de la source de données  [ShapeFiles](#source-de-donnees-shapefile) ou [PostGIS](#source-de-donnees-postgis). Dans tous les cas, seules les données parcellaires sont obligatoires.  Cependant, [les noms des attributs utilisés](#nom-des-attributs) sont les mêmes quelque soit la source utilisée et sont stockés au même endroit dans le code.
 
 ## Source de données ShapeFile
 
@@ -27,10 +27,10 @@ La classe permettant de charger les données provenant de ShapeFiles et contenan
 
 | Source de données         | Nom de la variable           | Valeur par défaut     | Type de géométrie                        |
 |:--------------------------|:-----------------------------|:----------------------|:-----------------------------------------|
-| Document d'Urbanisme      | NOM_FICHIER_PLU              | doc_urba.shp          | Non utilisées                            |
+| Document d'Urbanisme      | NOM_FICHIER_PLU              | doc_urba.shp          | Non utilisée                            |
 | Zonage réglementaire      | NOM_FICHIER_ZONAGE           | zone_urba.shp         | (Multi-) Polygone 2D (sans intersection) |
-| Parcelles                 | NOM_FICHIER_PARCELLE         | parcelle.shp          | Polygones 2D (sans intersection)         |
-| Bâtiments                 | NOM_FICHIER_BATIMENTS        | batiment.shp"         | Multi-Polygone 3D                        |
+| Parcelles                 | NOM_FICHIER_PARCELLE         | parcelle.shp          | Polygone 2D (sans intersection)         |
+| Bâtiments                 | NOM_FICHIER_BATIMENTS        | batiment.shp          | Multi-Polygone 3D                        |
 | Route                     | NOM_FICHIER_VOIRIE           | route.shp             | (Multi-) Linéaire 2D ou 3D               |
 | MNT                       | NOM_FICHIER_TERRAIN          | mnt.asc               | MNT grille maillé                        |
 | Prescriptions ponctuelles | NOM_FICHIER_PRESC_PONCTUELLE | prescription_pct.shp  | (Multi -) Ponctuelle 2D                  |
@@ -57,7 +57,7 @@ La classe permettant de charger les données provenant de PostGIS et contenant l
 
 ## Nom des attributs
 
-Pour les différentes sources de données, les noms des attributs utilisés dans le processus d'intégration sont stockées dans la classe : fr.ign.cogit.simplu3d.io.feature.AttribNames.  
+Pour les différentes sources de données, les noms des attributs utilisés dans le processus d'intégration sont stockées dans la classe : *fr.ign.cogit.simplu3d.io.feature.AttribNames*.  
 
 ### Document d'urbanisme
 
@@ -121,7 +121,6 @@ L'attribut *ATT_HAS_TO_BE_SIMULATED* est facultatif et peut être utilisé pour 
 
 Pas d'attribut utilisé.
 
-
 ### Route
 
 | Attribut       | Nom de la variable | Valeur par défaut | Type   |
@@ -148,24 +147,24 @@ Pas d'attribut utilisé.
 # Code d'intégration
 
 
-Le code d'intégration se trouve si dessous, il est composé de 12 étapes.
+Le code d'intégration se trouve ci-dessous, il est composé de 12 étapes.
 
 Quelques étapes sont paramétrables :
 
-La première étape vise à changer de référentiel les sources de données pour éviter des erreurs numériques dues à la grande taille de coordonnées utilisée. Ainsi, il est possible de fixer à vrai le boolean *Environnement.TRANSLATE_TO_ZERO* pour activer cette transformation et d'assigner un jeu de coordonnées (classe *DirectPosition* de GeOxygene) à la variable *Environnement.dpTranslate*.
+La première étape vise à changer de référentiel les sources de données pour éviter des erreurs numériques dues à la grande taille de coordonnées utilisée. Ainsi, il est possible d'activer la transformation avec le boolean *Environnement.TRANSLATE_TO_ZERO* et en assignant des coordonnées (classe *DirectPosition* de GeOxygene) à l'attribut statique *Environnement.dpTranslate*.
 
 Pendant l'étape d'annotation des limites séparatives en limites de fond, latéral et de voirie (étape
-  4), le processus détermine automatiquement ces types suivant une évaluation du dépassement de la limite séparative par rapport au point d'intersection avec la voirie (cf image suivante). Par défaut, la valeur de dépassement jusqu'à laquelle les limites sont affectées comme latérales est de 3 m, mais elle peut être fixée en modifiant la valeur  *AbstractBoundaryAnalyzer.setThresholdIni(double)*. Pour les parcelles plus petite, le seuil est automatiquement ajusté pour atteindre 1/3 de la largeur de la boîte englobante orientée.
+  4), le processus détermine automatiquement ces types suivant une évaluation du dépassement de la limite séparative par rapport au point d'intersection avec la voirie (cf image suivante). Par défaut, la valeur de dépassement jusqu'à laquelle les limites sont affectées comme latérales est de 3 m, mais elle peut être fixée en modifiant la valeur  *AbstractBoundaryAnalyzer.setThresholdIni(double)*. Pour les parcelles plus petites, le seuil est automatiquement ajusté pour atteindre 1/3 de la largeur de la boîte englobante orientée.
 
-  Pour une parcelle n'ayant pas d'accès à la voirie, toutes les limites sont de type "Fond". Le côté (GAUCHE ou DROITE) des limites latérales est déterminée en regardant la parcelle depuis la voirie, si une parcelle donne sur plusieurs voiries, les côtés DROITE et GAUCHE sont déterminés aléatoirement.
+  Pour une parcelle n'ayant pas d'accès à la voirie, toutes les limites sont de type "Fond". Le côté (GAUCHE ou DROITE) des limites latérales est déterminée en regardant la parcelle depuis la voirie. Si une parcelle donne sur plusieurs voiries, les côtés DROITE et GAUCHE sont déterminés aléatoirement.
 
 ![Image montrant le processus d'annotation des parcelles](./img/parcelborderannotation.png)
 
-Pour les étapes qui recherchent des objets à proximité comme les étapes 9 et 10, il est possible de fixer la distance maximale de recherche en fixant les valeurs : *NearestRoadFinder.setMaximumDistance()* pour la recherche de la voirie la plus proche d'une limite cadastrale et  *OppositeBoundaryFinder.setMaximalValue()* pour la recherche de la limite opposée à une limite cadastrale.
+Pour les étapes qui recherchent des objets à proximité des limites séparatives comme les étapes 9 et 10, il est possible de fixer la distance maximale de recherche en fixant les valeurs : *NearestRoadFinder.setMaximumDistance()* pour la recherche de la voirie la plus proche d'une limite cadastrale et  *OppositeBoundaryFinder.setMaximalValue()* pour la recherche de la limite opposée à une limite cadastrale.
 
 
-Afin de produire un référentiel 3D, les données 2D  : parcelles, prescriptions, zonage et éventuellement voirie (si les données n'ont pas de Z) sont modifiées lors de la dernière étape dans la classe fr.ign.cogit.geoxygene.api.feature.IFeatureCollection.AssignZ. Deux types de transformations sont possibles :
-- Si le MNT set défini, les objets sont projetés à la surface de ce MNT ;
+Afin de produire un référentiel 3D, les données 2D  parcelles, prescriptions, zonages et éventuellement voiries (si les données n'ont pas de Z) sont modifiées lors de la dernière étape dans la classe *fr.ign.cogit.geoxygene.api.feature.IFeatureCollection.AssignZ*. Deux types de transformation sont possibles :
+- Si le MNT est défini, les objets sont projetés à la surface de ce MNT ;
 - S'il n'est pas défini, un plan Z constant est utilisé (et fixé à travers la variable statique AssignZ.DEFAULT_Z ayant 0 comme valeur par défaut).
 
 
