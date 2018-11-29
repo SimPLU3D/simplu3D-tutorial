@@ -315,9 +315,15 @@
 <p>Avant d'exécuter ce code, il est nécessaire de définir la variable <strong>outputFolder</strong> qui détermine le dossier dans lequel les résultats de la simulation seront exportés.</p>
 <p>Une fois cette valeur fixée, vous pouvez exécuter le code.</p>
 <p>Pendant l'exécution, des informations sur l'avancement de la simulation seront affichées (pour en savoir plus la section <a href="../../visitor/intro/">suivre l'évolution d'une simulation</a>).
-Deux sorties sont visualisables pendant la simulation :
-- Dans la console, un tableau représente durant les itérations des informations relatives au nombre d'objets et à la valeur de la fonction d'optimisation ;
-- Dans une fenêtre, la valeur de la fonction d'optimisation (en rouge foncé) évolue au fur et à mesure des itérations. Dans ce cas, la valeur représentée est - le volume de la configuration courante (l'algorithme d'optimisation utilisé minimisant la valeur d'une fonction d'optimisation, c'est pour cela que la valeur évolue en diminuant).</p>
+Deux sorties sont visualisables pendant la simulation :</p>
+<ul>
+<li>
+<p>Dans la console, un tableau représente durant les itérations des informations relatives au nombre d'objets et à la valeur de la fonction d'optimisation ;</p>
+</li>
+<li>
+<p>Dans une fenêtre, la valeur de la fonction d'optimisation (en rouge foncé) évolue au fur et à mesure des itérations. Dans ce cas, la valeur représentée est l'opposé du volume de la configuration courante (l'algorithme d'optimisation utilisé minimisant la valeur d'une fonction d'optimisation, c'est pour cela que la valeur évolue en diminuant).</p>
+</li>
+</ul>
 <p><img alt="Image des visiteurs pendant la simulation" src="../img/duringsimulation.png" /></p>
 <h1 id="resultats-de-la-premiere-simulation">Résultats de la première simulation<a class="headerlink" href="#resultats-de-la-premiere-simulation" title="Permanent link"></a></h1>
 <p>La sortie est stockée sous la forme du ShapeFile <strong>out.shp</strong> qui contient les différentes boites avec des attributs stocké dans le dossier  <strong>outputFolder</strong> :</p>
