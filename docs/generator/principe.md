@@ -5,6 +5,11 @@ authors:
 date: 2018-10-26
 
 ---
+
+# Principe du fonctionnement du générateur de formes
+
+Dans cette partie nous introduirons les différents aspects concernant la génération de formes dans SimPLU3D et la manière avec laquelle l'algorithme du recuit-simulé est utilisé.
+
 # Configuration bâtie
 
 Dans SimPLU3D, une configuration bâtie est composée d'un ensemble de géométries paramétriques. Une géométrie est dite paramétrique quand on peut la décrire à travers un vecteur de dimension constante. Dans la plupart des expérimentations de SimPLU3D, comme dans l'exemple de la première simulation, les géométries paramétriques manipulées sont des boîtes. Dans ce cas, s'agit d'une géométrie de 6 dimensions décrite par le vecteur **b** = (**x**, **y**, **l**, **w**, **h**, **θ**). Néanmoins, il est tout à fait possible d'utiliser d'autres types de géométries paramétriques comme nous le verrons dans la section sur la [personnalisation des formes générées](custom-generator.md).

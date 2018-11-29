@@ -6,6 +6,7 @@ date: 2018-10-26
 
 ---
 
+# Introduction à la vérification de règles
 
 ![Principe du vérificateur de règles](./img/principe.png)
 

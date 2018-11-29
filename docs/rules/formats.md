@@ -6,6 +6,8 @@ date: 2018-10-26
 
 ---
 
+# Formats de stockage des règles
+
 SimPLU3D ne possède pas un format pour stocker les règles morphologiques. En effet, les différentes expériences ont montré que suivant les besoins, l'échelle d'étude et les réglementations locales, les règles nécessaires à modéliser pouvaient beaucoup varier. Ainsi, pour rester générique, c'est à l'utilisateur de définir comment stocker ces règles et implémenter l'interface *Predicate* en fonction de ces règles.
 
 Cependant, dans cette partie nous présenterons d'abord un exemple de code avec une démarche conseillée pour intégrer des règles à partir d'un tableau. Puis, nous pointerons vers différentes expérimentations utilisant différents formats de règles.
@@ -92,7 +94,7 @@ if (!currentCadastralParcel.hasToBeSimulated()) {
 }
 ```
 
-Dans cet exemple, il n'y a qu'une seule sous-parcelle par parcelle (c'est-à-dire que chaque parcelle est complètement incluse dans une seule zone urbaine). Néanmoins, il est possible de considérer plusieurs règlements au sein d'une parcelle et d'accéder à ces règlements via les sous-parcelles. Cela nécessite dans le prédicat de vérifier pour chacun des objets à quelle(s) sous-parcelle(s) il appartient et à appliquer les vérifications en fonction de ces règlements. Une seconde complexité est de proposer une méthode pour réconcilier ces différents règlements (Par exemple, comme mesure-t-on une contrainte de distance entre 2 objets qui se trouvent dans 2 zones différentes ?). Cet aspect est compliqué à formaliser, mais un exemple est défini dans la classe [MultiplePredicateArtiScales du projet ArtiScales](https://github.com/ArtiScales/ArtiScales/blob/master/src/main/java/fr/ign/cogit/rules/predicate/MultiplePredicateArtiScales.java). 
+Dans cet exemple, il n'y a qu'une seule sous-parcelle par parcelle (c'est-à-dire que chaque parcelle est complètement incluse dans une seule zone urbaine). Néanmoins, il est possible de considérer plusieurs règlements au sein d'une parcelle et d'accéder à ces règlements via les sous-parcelles. Cela nécessite dans le prédicat de vérifier pour chacun des objets à quelle(s) sous-parcelle(s) il appartient et à appliquer les vérifications en fonction de ces règlements. Une seconde complexité est de proposer une méthode pour réconcilier ces différents règlements (Par exemple, comme mesure-t-on une contrainte de distance entre 2 objets qui se trouvent dans 2 zones différentes ?). Cet aspect est compliqué à formaliser, mais un exemple est défini dans la classe [MultiplePredicateArtiScales du projet ArtiScales](https://github.com/ArtiScales/ArtiScales/blob/master/src/main/java/fr/ign/cogit/rules/predicate/MultiplePredicateArtiScales.java).
 
 # Autres exemples d'utilisation de fichier de règles
 

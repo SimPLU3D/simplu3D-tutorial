@@ -6,6 +6,8 @@ date: 2018-10-26
 
 ---
 
+# Futurs développements
+
 Cette page liste les futurs développements pour les projets de SimPLU3D :
 
 - **Persistance de l'environnement géographique** : pour l'instant, l'instanciation du modèle et les étapes d'intégration s'effectuent lors de chaque chargement. Il pourrait être nécessaire de mettre en place un chargement direct des données (c'est à dire sans passer par les étapes d'intégration). Cela pourrait, par exemple, permettre de reprendre manuellement une étape automatique du processus d'intégration, comme l'affectation d'un type aux limites séparatives de parcelles ou gérer du versionnement.

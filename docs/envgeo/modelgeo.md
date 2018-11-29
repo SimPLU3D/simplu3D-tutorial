@@ -6,7 +6,7 @@ date: 2018-10-26
 
 ---
 
-# Introduction
+# Modèle géographique détaillé
 
 Le modèle géographique a pour objet de décrire les objets à partir desquels il est possible de définir des contraintes morphologiques et notamment de décrire une réglementation urbaine. Le modèle proposé dans SimPLU3D a été établi pour modéliser les contraintes spécifiquement issues des [Plans Locaux d'Urbanisme](https://fr.wikipedia.org/wiki/Plan_local_d%27urbanisme). Ainsi, le modèle contient les concepts que l'on retrouve dans ces documents. Ce modèle a été produit à partir de la lecture de plusieurs PLU et des [fiches méthodologiques d'écriture des PLU du GRIDAUH](http://www.gridauh.fr/comptes-rendus-de-travaux/ecriture-des-plu/). Par exemple, si l'on considère la règle suivante :
 

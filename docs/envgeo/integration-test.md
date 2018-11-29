@@ -6,6 +6,8 @@ date: 2018-10-26
 
 ---
 
+# Vérifier l'intégration des données
+
 L'objectif de cette page est de proposer deux méthodes pour vérifier la bonne intégration des données à partir d'un jeu de données complet. Il est possible soit :
 - d'exporter les instances du modèle sous forme de ShapeFiles ;
 - de visualisation en 3D les informations du modèle.

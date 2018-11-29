@@ -6,6 +6,8 @@ date: 2018-10-26
 
 ---
 
+# Implémentation de la vérification de règles dans SimPLU3D
+
 Pour vérifier les règles morphologiques, SimPLU3D utilise le concept de prédicat. Il s'agit d'un objet qui indique si une configuration respecte ou non respecte une règle.
 
 # Interface de predicat
@@ -79,8 +81,8 @@ Ces méthodes permettent d'accéder directement à certaines géométriques JTS 
 | getJtsCurveLimiteFondParcel     | Géométrie des limites de fond de parcelle          |
 | getJtsCurveLimiteFrontParcel    | Géométrie des limites donnant sur la voirie        |
 | getJtsCurveLimiteLatParcel      | Géométrie des limites latérales                    |
-| getJtsCurveLimiteLatParcelLeft  | Géométrie des limites latérales du côté gauche    |
-| getJtsCurveLimiteLatParcelRight | Géométrie des limites latérales du côté droit     |
+| getJtsCurveLimiteLatParcelLeft  | Géométrie des limites latérales du côté gauche     |
+| getJtsCurveLimiteLatParcelRight | Géométrie des limites latérales du côté droit      |
 | getJtsCurveOppositeLimit        | Géométrie des limites du côté opposé à la parcelle |
 | getbPUGeom                      | Géométrie de l'unité foncière                      |
 

@@ -6,6 +6,8 @@ date: 2018-10-26
 
 ---
 
+# Introduction au couplage SimPLU3D - OpenMOLE
+
 OpenMOLE [(https://openmole.org/)](https://openmole.org/) est une plate-forme dédiée à l'exploration de modèles de simulation. Cette plate-forme permet à travers la distribution de calculs de calibrer ou d'explorer de manière efficace l'espace de paramètres de modèles.
 
 Ce couplage a été utilisé pour deux expérimentations : la production des simulations sur de grandes zones et pour la simulation de l'influence de paramètres de règles sur des formes bâties. Ces aspects sont présentés dans l'article suivant :

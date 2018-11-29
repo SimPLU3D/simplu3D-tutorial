@@ -6,7 +6,7 @@ date: 2018-10-26
 
 ---
 
-# Introduction
+# Processus d'intégration
 
 Un processus d'intégration est déjà défini dans SimPLU3D. Il permet de créer un objet de la classe *Environnement* en renseignant un certain nombre d'attributs.
 
@@ -27,9 +27,9 @@ La classe permettant de charger les données provenant de ShapeFiles et contenan
 
 | Source de données         | Nom de la variable           | Valeur par défaut     | Type de géométrie                        |
 |:--------------------------|:-----------------------------|:----------------------|:-----------------------------------------|
-| Document d'Urbanisme      | NOM_FICHIER_PLU              | doc_urba.shp          | Non utilisée                            |
+| Document d'Urbanisme      | NOM_FICHIER_PLU              | doc_urba.shp          | Non utilisée                             |
 | Zonage réglementaire      | NOM_FICHIER_ZONAGE           | zone_urba.shp         | (Multi-) Polygone 2D (sans intersection) |
-| Parcelles                 | NOM_FICHIER_PARCELLE         | parcelle.shp          | Polygone 2D (sans intersection)         |
+| Parcelles                 | NOM_FICHIER_PARCELLE         | parcelle.shp          | Polygone 2D (sans intersection)          |
 | Bâtiments                 | NOM_FICHIER_BATIMENTS        | batiment.shp          | Multi-Polygone 3D                        |
 | Route                     | NOM_FICHIER_VOIRIE           | route.shp             | (Multi-) Linéaire 2D ou 3D               |
 | MNT                       | NOM_FICHIER_TERRAIN          | mnt.asc               | MNT grille maillé                        |

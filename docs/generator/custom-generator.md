@@ -6,6 +6,8 @@ date: 2018-10-26
 
 ---
 
+# Paramétrer les boîtes d'une configuration
+
 Dans cette partie, nous décrivons comment le système définit la création de nouveaux objets paramétriques et les modifications qui leur seront apportées durant l'optimisation. Il s'agit de l'étape 1 du code décrit dans la section [principe de simulation](principe.md). Cet exemple s'appuie sur la génération de boîtes, mais il est possible de définir d'autres types de géométries (cela sera décrit dans la section [Générer d'autres types de formes](custom-shape.md)).
 
 Les parties suivantes reprennent les principales étapes de création du sampler dont le code est repris dans [la dernière partie de la page sur l'implémentation](#implementation) (étape 1) , c'est à dire le code suivant :
