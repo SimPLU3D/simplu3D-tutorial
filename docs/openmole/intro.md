@@ -65,8 +65,8 @@ object DistribTask {
 ```
 
 Ce qui est utile pour la suite est :
-* 1/ de bien se rappeler du package scala (mot clef *package*) et de l'objet (mot clef *object*) ;
-* 2/ qu'il faut définir une méthode apply qui prend en entrée les paramètres nécessaires au fonctionnement de la tâche et qui indique les sorties (il est possible d'avoir plusieurs objets en sortie avec scala, il suffit de définir les types en les séparant par des , comme ici  *(Boolean, File)* et la sortie est indiquée à la fin  (*res, folderOut)*'.
+* 1/ de bien se rappeler du package Scala (mot clef *package*) et de l'objet (mot clef *object*) ;
+* 2/ qu'il faut définir une méthode apply qui prend en entrée les paramètres nécessaires au fonctionnement de la tâche et qui indique les sorties (il est possible d'avoir plusieurs objets en sortie avec Scala, il suffit de définir les types en les séparant par des , comme ici  *(Boolean, File)* et la sortie est indiquée à la fin  (*res, folderOut)*'.
 
 ## 3 Production du bundle OSGI
 
@@ -84,4 +84,4 @@ Un fichier .jar est alors produit dans "''target/scala''"
 
 Pour faire cela, je vous invite à regarder les tutoriels d'OpenMole pour apprendre à bien définir un script.
 
-Une fois le plugin chargé, il est possible de l'utiliser dans la définition du workflow comme cela est expliqué en bas de [cette page]([http://www.openmole.org/current/Documentation_Development_Plugins.html).
+Une fois le plugin chargé, il est possible de l'utiliser dans la définition du workflow comme cela est expliqué en bas de [cette page](http://www.openmole.org/current/Documentation_Development_Plugins.html).

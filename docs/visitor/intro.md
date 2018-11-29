@@ -47,7 +47,7 @@ L'**OutPutStreamVisitor** est le visiteur qui affiche dans la console l'état d'
 
 Le **ShapefileVisitor**  est le visiteur qui permet de sauvegarder des shapefiles toutes les *save* itération. Il est activables par la valeur *shapefilewriter*.
 
-Il est nécessaire également de paramétrer la valeur *result* qui indique le dossier dans lequel les shapefiles seront exportés. Ils portent comme nom le numéro de l'itération et les objets sauvegardés auront comme attributs la valeur d'énergie et de la méthode *toString()*.
+Il est nécessaire également de paramétrer la valeur *result* qui indique le dossier dans lequel les ShapeFiles seront exportés. Ils portent comme nom le numéro de l'itération et les objets sauvegardés auront comme attributs la valeur d'énergie et de la méthode *toString()*.
 
 # Sortie sous forme de graphique : StatsVisitor
 
@@ -104,9 +104,8 @@ Il est totalement possible d'implémenter d'autres visiteurs en étendant l'inte
 
 Sinon, de manière générale les visiteurs sont passés en paramètre de la méthode qui lance l'optimisation *SimulatedAnnealing.optimize* qui prend un objet de la classe *CompositeVisitor* en paramètre. L'instanciation d'un *CompositeVisitor* ne requiert qu'une liste de visiteur comme montré dans le code ci-dessous.
 
-
 ```JAVA
   List<Visitor<GraphConfiguration<C>, BirthDeathModification<C>>> list = new ArrayList<>();
   list.addAll(lSupplementaryVisitors);
 	CompositeVisitor<GraphConfiguration<C>, BirthDeathModification<C>> mVisitor = new CompositeVisitor<>(list);
-  ```
+```

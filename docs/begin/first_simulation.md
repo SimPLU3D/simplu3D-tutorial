@@ -16,7 +16,7 @@ Le code utilisé dans cette page se trouve dans la classe :  *fr.ign.simplu3d.fi
 
 Les données en entrée se trouvent dans le répertoire de ressources *resources/firstSimulation/*. Il s'agit du plus petit ensemble de données nécessaire pour exécuter SimPLU3D. Il contient deux dossiers :
 - **data**: qui contient un fichier ShapeFile de parcelles (parcelle.shp). Chaque parcelle a une géométrie surfacique et un attribut **id**. Ces parcelles définissent l'environnement géographique dans lequel se déroule la simulation, cet environnement géographique peut être enrichi d'autres objets déjà prévus dans SimPLU3D (vous trouverez plus d'informations dans [la section consacré à l'environnement géographique](/../envgeo/intro.md)) ;
-- **scenario** : qui contient un fichier params.json qui contient la description des paramètres de la génération de formes (décrits dans la section dédiée aux [paramètres de la génération de formes](..//generator/custom-generator.md)) et des visiteurs qui indiqueront l'état d'avancement pendant la simulation ([décrits dans la section dédiée aux visiteurs](../Visitor/intro.md)).
+- **scenario** : qui contient un fichier params.json qui contient la description des paramètres de la génération de formes (décrits dans la section dédiée aux [paramètres de la génération de formes](..//generator/custom-generator.md)) et des visiteurs qui indiqueront l'état d'avancement pendant la simulation ([décrits dans la section dédiée aux visiteurs](../visitor/intro.md)).
 
 ![Carte des données en entrée](img/data-in-simu0.png)
 
@@ -28,7 +28,7 @@ Le code commenté à exécuter est repris ci-dessous. On note qu'il y a 4 étape
 1. la création d'un [environnement géographique](/../envgeo/intro.md) ;
 2. la définition de [contraintes morphologiques](/../rules/intro.md), à partir d'une classe de vérification de règles déjà implémentée ;
 3. la définition d'un [générateur de formes](/../generator/intro.md), basé sur des boites ;
-4. l'[export de résultats](export.md).
+4. l'[export de résultats](../export.md).
 
 ```Java
 public static void main(String[] args) throws Exception {

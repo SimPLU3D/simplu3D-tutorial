@@ -29,7 +29,7 @@ Le résultat de la simulation est visible ci dessous, seules 2 parcelles sont si
 
 ## Code de réglementation
 
-Au préalable, une classe de réglementation a été créée (*fr.ign.simplu3d.simulRules.RegulationTuto*). Cette classe implémente l'interface *IZoneRegulation* qui permet de rattacher une réglementation à une zone (classe *UrbaZone*). Cette interface a déjà été vue dans la section présentant le [modèle géographique](./envgeo/modelgeo.md).
+Au préalable, une classe de réglementation a été créée (*fr.ign.simplu3d.simulRules.RegulationTuto*). Cette classe implémente l'interface *IZoneRegulation* qui permet de rattacher une réglementation à une zone (classe *UrbaZone*). Cette interface a déjà été vue dans la section présentant le [modèle géographique](../envgeo/modelgeo.md).
 
 Il s'agit d'une simple classe ayant des accesseurs aux différents paramètres du règlement ainsi qu'à son libellé.
 

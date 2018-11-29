@@ -9,7 +9,7 @@ date: 2018-10-26
 
 # Export général
 
-Les objets produits par le simulateur sont stockés dans une instance de la classe  *GraphConfiguration*. Il est possible d'itérer sur les objets générés via le graphe associé. Le code ci-dessous montrer comment exporter sous forme d'un shapefile les résultats d'une simulation :
+Les objets produits par le simulateur sont stockés dans une instance de la classe  *GraphConfiguration*. Il est possible d'itérer sur les objets générés via le graphe associé. Le code ci-dessous montrer comment exporter sous forme d'un ShapeFile les résultats d'une simulation :
 
 
 ```JAVA
@@ -41,7 +41,7 @@ Chacune des classes mentionnées ci-dessous possède un *main* permettant leur u
 
 ## Export simple des boîtes
 
-La classe *fr.ign.cogit.simplu3d.io.shapefile.SaveGeneratedObjects*  permet d'exporter les boîtes en shapefile (méthode saveShapefile) ou dans une base PostGIS (méthode save) sous forme de MultiPolygon 3D (issus de la méthode *generated3DGeom*). Dans les données en sortie, chaque ligne correspond à une boîte.
+La classe *fr.ign.cogit.simplu3d.io.shapefile.SaveGeneratedObjects*  permet d'exporter les boîtes en ShapeFile (méthode *saveShapefile*) ou dans une base PostGIS (méthode* save*) sous forme de MultiPolygon 3D (issus de la méthode *generated3DGeom*). Dans les données en sortie, chaque ligne correspond à une boîte.
 
 ## Export découpé
 

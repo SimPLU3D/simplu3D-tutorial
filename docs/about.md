@@ -9,12 +9,12 @@ date: 2018-10-26
 
 # Contributeurs
 
-- **Mickaël Brasebin** : chercheur LASTIG - IGN (https://mbrasebin.github.io/) ;
-- **Julien Perret** : chercheur LASTIG - IGN (http://recherche.ign.fr/labos/cogit/cv.php?nom=Perret) ;
-- **Mickaël Borne** : développeur SAI - IGN (https://github.com/mborne) ;
-- **Paul Chapron** : chercheur LASTIG - IGN (http://recherche.ign.fr/labos/cogit/cv.php?nom=Chapron ;
-- **Imran Lokhat** : développeur LASTIG - IGN (http://recherche.ign.fr/labos/cogit/cv.php?nom=Lokhat) ;
-- **Maxime Colomb** : doctorant LASTIG - IGN (http://www.maxime-colomb.eu/).
+- **[Mickaël Brasebin](https://mbrasebin.github.io/)** : chercheur LASTIG - IGN  ;
+- **[Julien Perret](http://recherche.ign.fr/labos/cogit/cv.php?nom=Perret)** : chercheur LASTIG - IGN  ;
+- **[Mickaël Borne](https://github.com/mborne)** : développeur SAI - IGN ;
+- **[Paul Chapron](http://recherche.ign.fr/labos/cogit/cv.php?nom=Chapron)** : chercheur LASTIG - IGN  ;
+- **[Imran Lokhat](http://recherche.ign.fr/labos/cogit/cv.php?nom=Lokhat)** : développeur LASTIG - IGN ;
+- **[Maxime Colomb](http://www.maxime-colomb.eu/)** : doctorant LASTIG - IGN .
 
 
 # Financeurs
