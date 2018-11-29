@@ -39,7 +39,7 @@ Afin de pouvoir échantillonner, il est nécessaire de définir les intervalles 
 
 Les deux premières valeurs sont contraintes par l'enveloppe contenant la géométrie dans laquelle les centres de boîtes seront échantillonnés.
 
-Dans l'exemple de la [première simulation](../begin/first_simulation), **minθ** et **maxθ** sont fixés  à **0** et **π** afin de permettre tout type d'orientation. Les autres paramètres sont fixés dans le fichier de configuration **params.json**.
+Dans l'exemple de la [première simulation](../begin/first_simulation.md), **minθ** et **maxθ** sont fixés  à **0** et **π** afin de permettre tout type d'orientation. Les autres paramètres sont fixés dans le fichier de configuration **params.json**.
 
 Afin que le système puisse générer des formes, il est nécessaire de définir une classe **Builder** qui permet d'instancier les objets à partir d'un tableau contenant les paramètres de la forme. Dans l'exemple, il s'agit de la classe **CuboidBuilder**.
 

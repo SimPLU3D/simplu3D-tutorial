@@ -84,4 +84,4 @@ Un fichier .jar est alors produit dans "''target/scala''"
 
 Pour faire cela, je vous invite à regarder les tutoriels d'OpenMole pour apprendre à bien définir un script.
 
-Une fois le plugin chargé, il est possible de l'utiliser dans la définition du workflow comme cela est expliqué en bas de [cette page](http://www.openmole.org/current/Documentation_Development_Plugins.html).
+Une fois le plugin chargé, il est possible de l'utiliser dans la définition du workflow comme cela est expliqué en bas de [cette page](https://openmole.org/Plugin+Development.html).
