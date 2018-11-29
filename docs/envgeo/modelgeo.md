@@ -12,7 +12,7 @@ Le modèle géographique a pour objet de décrire les objets à partir desquels 
 
 ![Exemple de règle issu du PLU](./img/ex-regle.png)
 
-le modèle permet de représenter les objets géographiques (en rouge), les propriétés (en bleu) et les relations (en vert). Ensuite, ces informations seront utilisées pendant la simulation pour vérifier si une configuration bâtie respecte ou non la règle formée par cette phrase. La prise en cmopte de telles contraintes est décrite dans la section [définition de contraintes morphologiques](../rules/intro.md).
+le modèle permet de représenter les objets géographiques (en rouge), les propriétés (en bleu) et les relations (en vert). Ensuite, ces informations seront utilisées pendant la simulation pour vérifier si une configuration bâtie respecte ou non la règle formée par cette phrase. La prise en compte de telles contraintes est décrite dans la section [définition de contraintes morphologiques](../rules/intro.md).
 
 Pour en savoir plus, le modèle a fait l'objet d'une publication scientifique :
 
@@ -37,7 +37,7 @@ Le modèle géographique est instancié dans le package *fr.ign.cogit.simplu3d.m
 
 
 
-Le modèle est certes complexe dans l'absolu, mais il n'est néanmoins (comme présenté dans l'[exemple de la simulation basique](../begin/first_simulation.md)) pas nécessaire de renseigner toutes les classes pour permettre l'exécution du modèle. Seules les classes relatives aux parcelles doivent absolument être instanciées. Le fait de ne pas instancier une des classes du modèle rend impossible la capacité d'évaluer des contraintes s'appuyant sur les éléments non instanciés. Dans cette page, nous ne décrivons que le logique du modèle. Le processus d'intégration existant est décrit dans une [autre page](integration.md).
+Le modèle est certes complexe dans l'absolu, néanmoins il n'est pas nécessaire (comme présenté dans l'[exemple de la simulation basique](../begin/first_simulation.md)) de renseigner toutes les classes pour permettre l'exécution du modèle. Seules les classes relatives aux parcelles doivent absolument être instanciées. Le fait de ne pas instancier une des classes du modèle rend impossible la capacité d'évaluer des contraintes s'appuyant sur les éléments non instanciés. Dans cette page, nous ne décrivons que le logique du modèle. Le processus d'intégration existant est décrit dans une [autre page](integration.md).
 
 Les diagrammes de classes sont générés avec le plugin [ObjectAID d'Eclipse](http://www.objectaid.com/) et les fichiers sont disponibles dans le dossier [*diagram* de SimPLU3D-rules](https://github.com/SimPLU3D/simplu3D-rules/tree/master/diagram/).
 
