@@ -8,7 +8,7 @@
   
   <meta name="author" content="MBrasebin">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Vérificateurs de règles - Prédicats et vérification des règles - SimPLU3D tutorial</title>
+  <title>Principe de fonctionnement du vérificateur - SimPLU3D tutorial</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "V\u00e9rificateurs de r\u00e8gles - Pr\u00e9dicats et v\u00e9rification des r\u00e8gles";
+    var mkdocs_page_name = "Principe de fonctionnement du v\u00e9rificateur";
     var mkdocs_page_input_path = "rules/predicate.md";
     var mkdocs_page_url = "/simplu3D-tutorial/rules/predicate/";
   </script>
@@ -59,22 +59,22 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../begin/intro">Introduction</a>
+    <a class="" href="../../begin/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../begin/installation">Installation</a>
+    <a class="" href="../../begin/installation/">Installation</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../begin/first_simulation">Première simulation</a>
+    <a class="" href="../../begin/first_simulation/">Première simulation</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../principe/intro">Principe</a>
+    <a class="" href="../../principe/intro/">Principe</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -83,19 +83,19 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../envgeo/intro">Introduction</a>
+    <a class="" href="../../envgeo/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../envgeo/modelgeo">Modèle géographique détaillé</a>
+    <a class="" href="../../envgeo/modelgeo/">Modèle géographique détaillé</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../envgeo/integration">Processus d'intégration</a>
+    <a class="" href="../../envgeo/integration/">Processus d'intégration</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../envgeo/integration-test">Tester l'intégration</a>
+    <a class="" href="../../envgeo/integration-test/">Tester l'intégration</a>
                 </li>
     </ul>
 	    </li>
@@ -106,23 +106,23 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../generator/intro">Introduction</a>
+    <a class="" href="../../generator/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../generator/principe">Principe de fonctionnement du générateur</a>
+    <a class="" href="../../generator/principe/">Principe de fonctionnement du générateur</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../generator/custom-generator">Paramétrer la génération de cuboids</a>
+    <a class="" href="../../generator/custom-generator/">Paramétrer la génération de cuboids</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../custom-optimisation.md">Personnaliser la fonction d'optimisation</a>
+    <a class="" href="../../generator/custom-optimisation/">Personnaliser la fonction d'optimisation</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../generator/custom-shape">Personnaliser les formes utilisées</a>
+    <a class="" href="../../generator/custom-shape/">Personnaliser les formes utilisées</a>
                 </li>
     </ul>
 	    </li>
@@ -133,19 +133,44 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../intro">Introduction</a>
+    <a class="" href="../intro/">Introduction</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Principe de fonctionnement du vérificateur</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#implementation-de-la-verification-de-regles-dans-simplu3d">Implémentation de la vérification de règles dans SimPLU3D</a></li>
+    
+
+    <li class="toctree-l3"><a href="#interface-de-predicat">Interface de predicat</a></li>
+    
+
+    <li class="toctree-l3"><a href="#implementation-a-partir-de-linterface-de-predicat">Implémentation à partir de l'interface de prédicat</a></li>
+    
+
+    <li class="toctree-l3"><a href="#implementation-a-partir-de-la-classe-abstraite-defaultabstractpredicate">Implémentation à partir de la classe abstraite DefaultAbstractPredicate</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#accesseurs">Accesseurs</a></li>
+        
+            <li><a class="toctree-l4" href="#verificateur-portant-sur-lensemble-des-objects">Vérificateur portant sur l'ensemble des objects</a></li>
+        
+            <li><a class="toctree-l4" href="#verificateurs-portant-sur-lensemble-des-nouveaux-objets">Vérificateurs portant sur l'ensemble des nouveaux objets</a></li>
+        
+        </ul>
+    
+
+    </ul>
                 </li>
                 <li class="">
                     
-    <a class="" href="./">Principe de fonctionnement du vérificateur</a>
+    <a class="" href="../formats/">Formats de règles</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../formats">Formats de règles</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../topologique">Définition de contraintes topologiques</a>
+    <a class="" href="../topologique/">Définition de contraintes topologiques</a>
                 </li>
     </ul>
 	    </li>
@@ -157,12 +182,12 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../visitor/intro">Suivre l'évolution d'une simulation</a>
+    <a class="" href="../../visitor/intro/">Suivre l'évolution d'une simulation</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../openmole/intro">Distribuer avec OpenMole</a>
+    <a class="" href="../../openmole/intro/">Distribuer avec OpenMole</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -201,8 +226,12 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Définition des contraintes morphologiques &raquo;</li>
+        
+      
     
-    <li>Vérificateurs de règles - Prédicats et vérification des règles</li>
+    <li>Principe de fonctionnement du vérificateur</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/SimPLU3D/simplu3D-tutorial?query=root/path/docs/rules/predicate.md"
@@ -215,7 +244,8 @@
           <div role="main">
             <div class="section">
               
-                <p>Pour vérifier les règles morphologiques, SimPLU3D utilise le concept de prédicat. Il s'agit d'un objet qui indique si une configuration respecte ou non respecte une règle.</p>
+                <h1 id="implementation-de-la-verification-de-regles-dans-simplu3d">Implémentation de la vérification de règles dans SimPLU3D<a class="headerlink" href="#implementation-de-la-verification-de-regles-dans-simplu3d" title="Permanent link"></a></h1>
+<p>Pour vérifier les règles morphologiques, SimPLU3D utilise le concept de prédicat. Il s'agit d'un objet qui indique si une configuration respecte ou non respecte une règle.</p>
 <h1 id="interface-de-predicat">Interface de predicat<a class="headerlink" href="#interface-de-predicat" title="Permanent link"></a></h1>
 <p>L'interface de la librjmcmc4j <em>fr.ign.rjmcmc.configuration. ConfigurationModificationPredicate<C extends Configuration<C, M>, M extends Modification<C, M>&gt;</em> implémente cette notion de prédicat et permet la définition à elle seule du respect des règles.</p>
 <p>Cette interface ne définit que la méthode <em>boolean check(C c, M m);</em>. Avec :</p>
@@ -398,6 +428,15 @@ if(! checkIfInsideBPU(objects)){
           </div>
           <footer>
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../formats/" class="btn btn-neutral float-right" title="Formats de règles">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../intro/" class="btn btn-neutral" title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
 
   <hr/>
 
@@ -424,6 +463,10 @@ if(! checkIfInsideBPU(objects)){
           <a href="https://github.com/SimPLU3D/simplu3D-tutorial" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
+        <span><a href="../intro/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../formats/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

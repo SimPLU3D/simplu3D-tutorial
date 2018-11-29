@@ -8,7 +8,7 @@
   
   <meta name="author" content="MBrasebin">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Environnement géographique - Modèle géographique - SimPLU3D tutorial</title>
+  <title>Modèle géographique détaillé - SimPLU3D tutorial</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Environnement g\u00e9ographique - Mod\u00e8le g\u00e9ographique";
+    var mkdocs_page_name = "Mod\u00e8le g\u00e9ographique d\u00e9taill\u00e9";
     var mkdocs_page_input_path = "envgeo/modelgeo.md";
     var mkdocs_page_url = "/simplu3D-tutorial/envgeo/modelgeo/";
   </script>
@@ -59,22 +59,22 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../begin/intro">Introduction</a>
+    <a class="" href="../../begin/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../begin/installation">Installation</a>
+    <a class="" href="../../begin/installation/">Installation</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../begin/first_simulation">Première simulation</a>
+    <a class="" href="../../begin/first_simulation/">Première simulation</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../principe/intro">Principe</a>
+    <a class="" href="../../principe/intro/">Principe</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -83,19 +83,43 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../intro">Introduction</a>
+    <a class="" href="../intro/">Introduction</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Modèle géographique détaillé</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#modele-geographique-detaille">Modèle géographique détaillé</a></li>
+    
+
+    <li class="toctree-l3"><a href="#vue-global-du-modele">Vue global du modèle</a></li>
+    
+
+    <li class="toctree-l3"><a href="#classe-environnement">Classe Environnement</a></li>
+    
+
+    <li class="toctree-l3"><a href="#classes-de-reglementation">Classes de réglementation</a></li>
+    
+
+    <li class="toctree-l3"><a href="#classes-du-parcellaire">Classes du parcellaire</a></li>
+    
+
+    <li class="toctree-l3"><a href="#classes-des-batiments">Classes des bâtiments</a></li>
+    
+
+    <li class="toctree-l3"><a href="#classes-de-lespace-publique">Classes de l'espace publique</a></li>
+    
+
+    </ul>
                 </li>
                 <li class="">
                     
-    <a class="" href=".">Modèle géographique détaillé</a>
+    <a class="" href="../integration/">Processus d'intégration</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../integration">Processus d'intégration</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../integration-test">Tester l'intégration</a>
+    <a class="" href="../integration-test/">Tester l'intégration</a>
                 </li>
     </ul>
 	    </li>
@@ -106,23 +130,23 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../generator/intro">Introduction</a>
+    <a class="" href="../../generator/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../generator/principe">Principe de fonctionnement du générateur</a>
+    <a class="" href="../../generator/principe/">Principe de fonctionnement du générateur</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../generator/custom-generator">Paramétrer la génération de cuboids</a>
+    <a class="" href="../../generator/custom-generator/">Paramétrer la génération de cuboids</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../custom-optimisation.md">Personnaliser la fonction d'optimisation</a>
+    <a class="" href="../../generator/custom-optimisation/">Personnaliser la fonction d'optimisation</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../generator/custom-shape">Personnaliser les formes utilisées</a>
+    <a class="" href="../../generator/custom-shape/">Personnaliser les formes utilisées</a>
                 </li>
     </ul>
 	    </li>
@@ -133,7 +157,7 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../rules/intro">Introduction</a>
+    <a class="" href="../../rules/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
@@ -141,11 +165,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../rules/formats">Formats de règles</a>
+    <a class="" href="../../rules/formats/">Formats de règles</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../rules/topologique">Définition de contraintes topologiques</a>
+    <a class="" href="../../rules/topologique/">Définition de contraintes topologiques</a>
                 </li>
     </ul>
 	    </li>
@@ -157,12 +181,12 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../visitor/intro">Suivre l'évolution d'une simulation</a>
+    <a class="" href="../../visitor/intro/">Suivre l'évolution d'une simulation</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../openmole/intro">Distribuer avec OpenMole</a>
+    <a class="" href="../../openmole/intro/">Distribuer avec OpenMole</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -201,8 +225,12 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Environnement géographique &raquo;</li>
+        
+      
     
-    <li>Environnement géographique - Modèle géographique</li>
+    <li>Modèle géographique détaillé</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/SimPLU3D/simplu3D-tutorial?query=root/path/docs/envgeo/modelgeo.md"
@@ -215,7 +243,7 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link"></a></h1>
+                <h1 id="modele-geographique-detaille">Modèle géographique détaillé<a class="headerlink" href="#modele-geographique-detaille" title="Permanent link"></a></h1>
 <p>Le modèle géographique a pour objet de décrire les objets à partir desquels il est possible de définir des contraintes morphologiques et notamment de décrire une réglementation urbaine. Le modèle proposé dans SimPLU3D a été établi pour modéliser les contraintes spécifiquement issues des <a href="https://fr.wikipedia.org/wiki/Plan_local_d%27urbanisme">Plans Locaux d'Urbanisme</a>. Ainsi, le modèle contient les concepts que l'on retrouve dans ces documents. Ce modèle a été produit à partir de la lecture de plusieurs PLU et des <a href="http://www.gridauh.fr/comptes-rendus-de-travaux/ecriture-des-plu/">fiches méthodologiques d'écriture des PLU du GRIDAUH</a>. Par exemple, si l'on considère la règle suivante :</p>
 <p><img alt="Exemple de règle issu du PLU" src="../img/ex-regle.png" /></p>
 <p>le modèle permet de représenter les objets géographiques (en rouge), les propriétés (en bleu) et les relations (en vert). Ensuite, ces informations seront utilisées pendant la simulation pour vérifier si une configuration bâtie respecte ou non la règle formée par cette phrase. La prise en cmopte de telles contraintes est décrite dans la section <a href="../../rules/intro/">définition de contraintes morphologiques</a>.</p>
@@ -317,6 +345,15 @@
           </div>
           <footer>
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../integration/" class="btn btn-neutral float-right" title="Processus d'intégration">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../intro/" class="btn btn-neutral" title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
 
   <hr/>
 
@@ -343,6 +380,10 @@
           <a href="https://github.com/SimPLU3D/simplu3D-tutorial" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
+        <span><a href="../intro/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../integration/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

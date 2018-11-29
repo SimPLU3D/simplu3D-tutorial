@@ -8,7 +8,7 @@
   
   <meta name="author" content="MBrasebin">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Générateur de formes - Générer d'autres types de formes - SimPLU3D tutorial</title>
+  <title>Personnaliser les formes utilisées - SimPLU3D tutorial</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "G\u00e9n\u00e9rateur de formes - G\u00e9n\u00e9rer d'autres types de formes";
+    var mkdocs_page_name = "Personnaliser les formes utilis\u00e9es";
     var mkdocs_page_input_path = "generator/custom-shape.md";
     var mkdocs_page_url = "/simplu3D-tutorial/generator/custom-shape/";
   </script>
@@ -59,22 +59,22 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../begin/intro">Introduction</a>
+    <a class="" href="../../begin/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../begin/installation">Installation</a>
+    <a class="" href="../../begin/installation/">Installation</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../begin/first_simulation">Première simulation</a>
+    <a class="" href="../../begin/first_simulation/">Première simulation</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../principe/intro">Principe</a>
+    <a class="" href="../../principe/intro/">Principe</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -83,19 +83,19 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../envgeo/intro">Introduction</a>
+    <a class="" href="../../envgeo/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../envgeo/modelgeo">Modèle géographique détaillé</a>
+    <a class="" href="../../envgeo/modelgeo/">Modèle géographique détaillé</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../envgeo/integration">Processus d'intégration</a>
+    <a class="" href="../../envgeo/integration/">Processus d'intégration</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../envgeo/integration-test">Tester l'intégration</a>
+    <a class="" href="../../envgeo/integration-test/">Tester l'intégration</a>
                 </li>
     </ul>
 	    </li>
@@ -106,23 +106,44 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../intro">Introduction</a>
+    <a class="" href="../intro/">Introduction</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../principe">Principe de fonctionnement du générateur</a>
+    <a class="" href="../principe/">Principe de fonctionnement du générateur</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../custom-generator">Paramétrer la génération de cuboids</a>
+    <a class="" href="../custom-generator/">Paramétrer la génération de cuboids</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../custom-optimisation.md">Personnaliser la fonction d'optimisation</a>
+    <a class="" href="../custom-optimisation/">Personnaliser la fonction d'optimisation</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href=".">Personnaliser les formes utilisées</a>
+    <a class="current" href="./">Personnaliser les formes utilisées</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#generation-de-batiments-en-l">Génération de bâtiments en L</a></li>
+    
+
+    <li class="toctree-l3"><a href="#code-exemple">Code exemple</a></li>
+    
+
+    <li class="toctree-l3"><a href="#definition-de-la-classe-representant-la-forme">Définition de la classe représentant la forme</a></li>
+    
+
+    <li class="toctree-l3"><a href="#definition-dune-classe-de-constructeur">Définition d'une classe de constructeur</a></li>
+    
+
+    <li class="toctree-l3"><a href="#definition-de-loptimiseur">Définition de l'optimiseur</a></li>
+    
+
+    <li class="toctree-l3"><a href="#implementation-de-lexecution">Implémentation de l'exécution</a></li>
+    
+
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -133,7 +154,7 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../rules/intro">Introduction</a>
+    <a class="" href="../../rules/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
@@ -141,11 +162,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../rules/formats">Formats de règles</a>
+    <a class="" href="../../rules/formats/">Formats de règles</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../rules/topologique">Définition de contraintes topologiques</a>
+    <a class="" href="../../rules/topologique/">Définition de contraintes topologiques</a>
                 </li>
     </ul>
 	    </li>
@@ -157,12 +178,12 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../visitor/intro">Suivre l'évolution d'une simulation</a>
+    <a class="" href="../../visitor/intro/">Suivre l'évolution d'une simulation</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../openmole/intro">Distribuer avec OpenMole</a>
+    <a class="" href="../../openmole/intro/">Distribuer avec OpenMole</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -201,8 +222,12 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Générateur de formes &raquo;</li>
+        
+      
     
-    <li>Générateur de formes - Générer d'autres types de formes</li>
+    <li>Personnaliser les formes utilisées</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/SimPLU3D/simplu3D-tutorial?query=root/path/docs/generator/custom-shape.md"
@@ -215,7 +240,9 @@
           <div role="main">
             <div class="section">
               
-                <p>L'objectif de cette partie est de présenter un code permettant de générer des bâtiments en forme de L avec un toit typifié et de décrire les étapes à suivre pour générer des configurations avec d'autres types de forme à partir du simulateur basique présenté dans la <a href="../../begin/first_simulation/">première expérimentation</a>.</p>
+                <h1 id="generation-de-batiments-en-l">Génération de bâtiments en L<a class="headerlink" href="#generation-de-batiments-en-l" title="Permanent link"></a></h1>
+<p>L'objectif de cette partie est de présenter un code permettant de générer des bâtiments en forme de L avec un toit typifié et de décrire les étapes à suivre pour générer des configurations avec d'autres types de forme à partir du simulateur basique présenté dans la <a href="../../begin/first_simulation/">première expérimentation</a>.</p>
+<h1 id="code-exemple">Code exemple<a class="headerlink" href="#code-exemple" title="Permanent link"></a></h1>
 <p>L'exécution du code présenté ici se trouve dans la classe  <em>fr.ign.simplu3d.shapeGenerator.OptimisedLShapeDirectRejection</em> du projet SimPLU3D-tutorial.</p>
 <p><img alt="Vue du bâtiment en L" src="../img/lshape.png" /></p>
 <p>La classe de géométrie paramétrique utilisée (présentée dans le schéma précédent) comporte 10 dimensions :</p>
@@ -466,6 +493,15 @@ Seule l'implémentation de la dernière interface est nécessaire pour générer
           </div>
           <footer>
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../rules/intro/" class="btn btn-neutral float-right" title="Introduction">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../custom-optimisation/" class="btn btn-neutral" title="Personnaliser la fonction d'optimisation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
 
   <hr/>
 
@@ -492,6 +528,10 @@ Seule l'implémentation de la dernière interface est nécessaire pour générer
           <a href="https://github.com/SimPLU3D/simplu3D-tutorial" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
+        <span><a href="../custom-optimisation/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../rules/intro/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

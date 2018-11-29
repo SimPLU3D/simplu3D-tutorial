@@ -8,7 +8,7 @@
   
   <meta name="author" content="MBrasebin">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Vérificateurs de règles - Définition de règles topologiques - SimPLU3D tutorial</title>
+  <title>Définition de contraintes topologiques - SimPLU3D tutorial</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "V\u00e9rificateurs de r\u00e8gles - D\u00e9finition de r\u00e8gles topologiques";
+    var mkdocs_page_name = "D\u00e9finition de contraintes topologiques";
     var mkdocs_page_input_path = "rules/topologique.md";
     var mkdocs_page_url = "/simplu3D-tutorial/rules/topologique/";
   </script>
@@ -59,22 +59,22 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../begin/intro">Introduction</a>
+    <a class="" href="../../begin/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../begin/installation">Installation</a>
+    <a class="" href="../../begin/installation/">Installation</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../begin/first_simulation">Première simulation</a>
+    <a class="" href="../../begin/first_simulation/">Première simulation</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../principe/intro">Principe</a>
+    <a class="" href="../../principe/intro/">Principe</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -83,19 +83,19 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../envgeo/intro">Introduction</a>
+    <a class="" href="../../envgeo/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../envgeo/modelgeo">Modèle géographique détaillé</a>
+    <a class="" href="../../envgeo/modelgeo/">Modèle géographique détaillé</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../envgeo/integration">Processus d'intégration</a>
+    <a class="" href="../../envgeo/integration/">Processus d'intégration</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../envgeo/integration-test">Tester l'intégration</a>
+    <a class="" href="../../envgeo/integration-test/">Tester l'intégration</a>
                 </li>
     </ul>
 	    </li>
@@ -106,23 +106,23 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../generator/intro">Introduction</a>
+    <a class="" href="../../generator/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../generator/principe">Principe de fonctionnement du générateur</a>
+    <a class="" href="../../generator/principe/">Principe de fonctionnement du générateur</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../generator/custom-generator">Paramétrer la génération de cuboids</a>
+    <a class="" href="../../generator/custom-generator/">Paramétrer la génération de cuboids</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../custom-optimisation.md">Personnaliser la fonction d'optimisation</a>
+    <a class="" href="../../generator/custom-optimisation/">Personnaliser la fonction d'optimisation</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../generator/custom-shape">Personnaliser les formes utilisées</a>
+    <a class="" href="../../generator/custom-shape/">Personnaliser les formes utilisées</a>
                 </li>
     </ul>
 	    </li>
@@ -133,7 +133,7 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../intro">Introduction</a>
+    <a class="" href="../intro/">Introduction</a>
                 </li>
                 <li class="">
                     
@@ -141,11 +141,31 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../formats">Formats de règles</a>
+    <a class="" href="../formats/">Formats de règles</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href=".">Définition de contraintes topologiques</a>
+    <a class="current" href="./">Définition de contraintes topologiques</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#prise-en-compte-de-regles-topologiques">Prise en compte de règles topologiques</a></li>
+    
+
+    <li class="toctree-l3"><a href="#strategie-1-transformation-en-contrainte-geometrique">Stratégie 1 : transformation en contrainte géométrique</a></li>
+    
+
+    <li class="toctree-l3"><a href="#strategie-2-generation-de-boites-alignees">Stratégie 2 :  génération de boîtes alignées</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#executable-pour-la-generation-de-boites-alignees">Exécutable pour la génération de boîtes alignées</a></li>
+        
+            <li><a class="toctree-l4" href="#definition-de-loptimiseur">Définition de l'optimiseur</a></li>
+        
+        </ul>
+    
+
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -157,12 +177,12 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../visitor/intro">Suivre l'évolution d'une simulation</a>
+    <a class="" href="../../visitor/intro/">Suivre l'évolution d'une simulation</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../openmole/intro">Distribuer avec OpenMole</a>
+    <a class="" href="../../openmole/intro/">Distribuer avec OpenMole</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -201,8 +221,12 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Définition des contraintes morphologiques &raquo;</li>
+        
+      
     
-    <li>Vérificateurs de règles - Définition de règles topologiques</li>
+    <li>Définition de contraintes topologiques</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/SimPLU3D/simplu3D-tutorial?query=root/path/docs/rules/topologique.md"
@@ -215,7 +239,8 @@
           <div role="main">
             <div class="section">
               
-                <p>Le fonctionnement de base de SimPLU3D qui consiste à tirer des valeurs aléatoires dans un espace continu rend difficile l'application de contraintes topologiques. Si on prend l'exemple de l'alignement aux limites séparatives donnant sur une route (cf image ci-dessous), il est totalement improbable que SimPLU3D effectue le tirage d'une boîte respectant cet alignement (cela revient à tirer exactement le bonne valeur de x,y,w et θ). Deux stratégies sont possibles pour utiliser de telles règles.</p>
+                <h1 id="prise-en-compte-de-regles-topologiques">Prise en compte de règles topologiques<a class="headerlink" href="#prise-en-compte-de-regles-topologiques" title="Permanent link"></a></h1>
+<p>Le fonctionnement de base de SimPLU3D qui consiste à tirer des valeurs aléatoires dans un espace continu rend difficile l'application de contraintes topologiques. Si on prend l'exemple de l'alignement aux limites séparatives donnant sur une route (cf image ci-dessous), il est totalement improbable que SimPLU3D effectue le tirage d'une boîte respectant cet alignement (cela revient à tirer exactement le bonne valeur de x,y,w et θ). Deux stratégies sont possibles pour utiliser de telles règles.</p>
 <p><img alt="Illustration de la contrainte d'alignement" src="../img/alignement.png" /></p>
 <h1 id="strategie-1-transformation-en-contrainte-geometrique">Stratégie 1 : transformation en contrainte géométrique<a class="headerlink" href="#strategie-1-transformation-en-contrainte-geometrique" title="Permanent link"></a></h1>
 <p>La stratégie naïve consisterait à transformer la contrainte topologique en contrainte géométrique. Par exemple, de vérifier si l'un des côtés de la boîte est inclus dans un buffer de petite taille autour de la limite donnant sur la voirie.</p>
@@ -274,6 +299,15 @@ public Cuboid build(double[] coordinates) {
           </div>
           <footer>
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../export/" class="btn btn-neutral float-right" title="Exporter les résultats d'une simulation">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../formats/" class="btn btn-neutral" title="Formats de règles"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
 
   <hr/>
 
@@ -300,6 +334,10 @@ public Cuboid build(double[] coordinates) {
           <a href="https://github.com/SimPLU3D/simplu3D-tutorial" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
+        <span><a href="../formats/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../export/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

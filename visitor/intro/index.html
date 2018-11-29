@@ -8,7 +8,7 @@
   
   <meta name="author" content="MBrasebin">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Suivre l'évolution d'une simulation - les visiteurs - SimPLU3D tutorial</title>
+  <title>Suivre l'évolution d'une simulation - SimPLU3D tutorial</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Suivre l'\u00e9volution d'une simulation - les visiteurs";
+    var mkdocs_page_name = "Suivre l'\u00e9volution d'une simulation";
     var mkdocs_page_input_path = "visitor/intro.md";
     var mkdocs_page_url = "/simplu3D-tutorial/visitor/intro/";
   </script>
@@ -59,22 +59,22 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../begin/intro">Introduction</a>
+    <a class="" href="../../begin/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../begin/installation">Installation</a>
+    <a class="" href="../../begin/installation/">Installation</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../begin/first_simulation">Première simulation</a>
+    <a class="" href="../../begin/first_simulation/">Première simulation</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../principe/intro">Principe</a>
+    <a class="" href="../../principe/intro/">Principe</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -83,19 +83,19 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../envgeo/intro">Introduction</a>
+    <a class="" href="../../envgeo/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../envgeo/modelgeo">Modèle géographique détaillé</a>
+    <a class="" href="../../envgeo/modelgeo/">Modèle géographique détaillé</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../envgeo/integration">Processus d'intégration</a>
+    <a class="" href="../../envgeo/integration/">Processus d'intégration</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../envgeo/integration-test">Tester l'intégration</a>
+    <a class="" href="../../envgeo/integration-test/">Tester l'intégration</a>
                 </li>
     </ul>
 	    </li>
@@ -106,23 +106,23 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../generator/intro">Introduction</a>
+    <a class="" href="../../generator/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../generator/principe">Principe de fonctionnement du générateur</a>
+    <a class="" href="../../generator/principe/">Principe de fonctionnement du générateur</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../generator/custom-generator">Paramétrer la génération de cuboids</a>
+    <a class="" href="../../generator/custom-generator/">Paramétrer la génération de cuboids</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../custom-optimisation.md">Personnaliser la fonction d'optimisation</a>
+    <a class="" href="../../generator/custom-optimisation/">Personnaliser la fonction d'optimisation</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../generator/custom-shape">Personnaliser les formes utilisées</a>
+    <a class="" href="../../generator/custom-shape/">Personnaliser les formes utilisées</a>
                 </li>
     </ul>
 	    </li>
@@ -133,7 +133,7 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../rules/intro">Introduction</a>
+    <a class="" href="../../rules/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
@@ -141,11 +141,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../rules/formats">Formats de règles</a>
+    <a class="" href="../../rules/formats/">Formats de règles</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../rules/topologique">Définition de contraintes topologiques</a>
+    <a class="" href="../../rules/topologique/">Définition de contraintes topologiques</a>
                 </li>
     </ul>
 	    </li>
@@ -155,14 +155,44 @@
     <a class="" href="../../export/">Exporter les résultats d'une simulation</a>
 	    </li>
           
-            <li class="toctree-l1">
+            <li class="toctree-l1 current">
 		
-    <a class="" href=".">Suivre l'évolution d'une simulation</a>
+    <a class="current" href="./">Suivre l'évolution d'une simulation</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#principe-des-visiteurs">Principe des visiteurs</a></li>
+    
+
+    <li class="toctree-l2"><a href="#visiteurs-de-simplu3d">Visiteurs de SimPLU3D</a></li>
+    
+
+    <li class="toctree-l2"><a href="#sortie-console-outputstreamvisitor">Sortie console : OutPutStreamVisitor</a></li>
+    
+
+    <li class="toctree-l2"><a href="#sortie-shapefile-shapefilevisitor">Sortie shapefile : ShapefileVisitor</a></li>
+    
+
+    <li class="toctree-l2"><a href="#sortie-sous-forme-de-graphique-statsvisitor">Sortie sous forme de graphique : StatsVisitor</a></li>
+    
+
+    <li class="toctree-l2"><a href="#sortie-csv-csvvisitor-et-csvendstats">Sortie CSV : CSVvisitor et CSVendStats</a></li>
+    
+
+    <li class="toctree-l2"><a href="#visualisation-3d-a-la-volee-des-resultats-viewervisitor">Visualisation 3D à la volée des résultats : ViewerVisitor</a></li>
+    
+
+    <li class="toctree-l2"><a href="#export-dimage-a-la-volee-filmvisitor">Export d'image à la volée : FilmVisitor</a></li>
+    
+
+    <li class="toctree-l2"><a href="#utilisation-dautres-visiteurs">Utilisation d'autres visiteurs</a></li>
+    
+
+    </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../openmole/intro">Distribuer avec OpenMole</a>
+    <a class="" href="../../openmole/intro/">Distribuer avec OpenMole</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -202,7 +232,7 @@
     
       
     
-    <li>Suivre l'évolution d'une simulation - les visiteurs</li>
+    <li>Suivre l'évolution d'une simulation</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/SimPLU3D/simplu3D-tutorial?query=root/path/docs/visitor/intro.md"
@@ -284,7 +314,7 @@
 </table>
 <h1 id="sortie-shapefile-shapefilevisitor">Sortie shapefile : ShapefileVisitor<a class="headerlink" href="#sortie-shapefile-shapefilevisitor" title="Permanent link"></a></h1>
 <p>Le <strong>ShapefileVisitor</strong>  est le visiteur qui permet de sauvegarder des shapefiles toutes les <em>save</em> itération. Il est activables par la valeur <em>shapefilewriter</em>.</p>
-<p>Il est nécessaire également de paramétrer la valeur <em>result</em> qui indique le dossier dans lequel les shapefiles seront exportés. Ils portent comme nom le numéro de l'itération et les objets sauvegardés auront comme attributs la valeur d'énergie et de la méthode <em>toString()</em>.</p>
+<p>Il est nécessaire également de paramétrer la valeur <em>result</em> qui indique le dossier dans lequel les ShapeFiles seront exportés. Ils portent comme nom le numéro de l'itération et les objets sauvegardés auront comme attributs la valeur d'énergie et de la méthode <em>toString()</em>.</p>
 <h1 id="sortie-sous-forme-de-graphique-statsvisitor">Sortie sous forme de graphique : StatsVisitor<a class="headerlink" href="#sortie-sous-forme-de-graphique-statsvisitor" title="Permanent link"></a></h1>
 <p>Le <strong>StatsVisitor</strong> permet la représentation de l'évolution de l'énergie au cours de la simulation sous forme d'un graphique. Il est activable par la valeur <em>statsvisitor</em>.</p>
 <p>Plusieurs informations sont représentées comme l'énergie unaire, l'énergie binaire, l'énergie de la meilleure configuration rencontré et l'énergie de la configuration actuel. L'image ci-dessous présente le graphique qui peut être visualisé.</p>
@@ -312,14 +342,23 @@
 <h1 id="utilisation-dautres-visiteurs">Utilisation d'autres visiteurs<a class="headerlink" href="#utilisation-dautres-visiteurs" title="Permanent link"></a></h1>
 <p>Il est totalement possible d'implémenter d'autres visiteurs en étendant l'interface <em>Visitor<C extends Configuration<C, M>, M extends Modification<C, M>&gt;</em>. Pour les optimiseur déjà définis, la classe <em>fr.ign.cogit.simplu3d.rjmcmc.generic.visitor.PrepareVisitors</em> du projet SimPLU3D permet d'initialiser les visiteurs et d'en rajouter d'autres via la liste <em>lSupplementaryVisitors</em>.</p>
 <p>Sinon, de manière générale les visiteurs sont passés en paramètre de la méthode qui lance l'optimisation <em>SimulatedAnnealing.optimize</em> qui prend un objet de la classe <em>CompositeVisitor</em> en paramètre. L'instanciation d'un <em>CompositeVisitor</em> ne requiert qu'une liste de visiteur comme montré dans le code ci-dessous.</p>
-<p><code>JAVA
-  List&lt;Visitor&lt;GraphConfiguration&lt;C&gt;, BirthDeathModification&lt;C&gt;&gt;&gt; list = new ArrayList&lt;&gt;();
+<pre><code class="JAVA">  List&lt;Visitor&lt;GraphConfiguration&lt;C&gt;, BirthDeathModification&lt;C&gt;&gt;&gt; list = new ArrayList&lt;&gt;();
   list.addAll(lSupplementaryVisitors);
-    CompositeVisitor&lt;GraphConfiguration&lt;C&gt;, BirthDeathModification&lt;C&gt;&gt; mVisitor = new CompositeVisitor&lt;&gt;(list);</code></p>
+    CompositeVisitor&lt;GraphConfiguration&lt;C&gt;, BirthDeathModification&lt;C&gt;&gt; mVisitor = new CompositeVisitor&lt;&gt;(list);
+</code></pre>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../openmole/intro/" class="btn btn-neutral float-right" title="Distribuer avec OpenMole">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../export/" class="btn btn-neutral" title="Exporter les résultats d'une simulation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -347,6 +386,10 @@
           <a href="https://github.com/SimPLU3D/simplu3D-tutorial" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
+        <span><a href="../../export/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../openmole/intro/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

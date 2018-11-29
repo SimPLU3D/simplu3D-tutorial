@@ -8,7 +8,7 @@
   
   <meta name="author" content="MBrasebin">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Vérificateurs de règles - Formats de règles - SimPLU3D tutorial</title>
+  <title>Formats de règles - SimPLU3D tutorial</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "V\u00e9rificateurs de r\u00e8gles - Formats de r\u00e8gles";
+    var mkdocs_page_name = "Formats de r\u00e8gles";
     var mkdocs_page_input_path = "rules/formats.md";
     var mkdocs_page_url = "/simplu3D-tutorial/rules/formats/";
   </script>
@@ -59,22 +59,22 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../begin/intro">Introduction</a>
+    <a class="" href="../../begin/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../begin/installation">Installation</a>
+    <a class="" href="../../begin/installation/">Installation</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../begin/first_simulation">Première simulation</a>
+    <a class="" href="../../begin/first_simulation/">Première simulation</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../principe/intro">Principe</a>
+    <a class="" href="../../principe/intro/">Principe</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -83,19 +83,19 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../envgeo/intro">Introduction</a>
+    <a class="" href="../../envgeo/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../envgeo/modelgeo">Modèle géographique détaillé</a>
+    <a class="" href="../../envgeo/modelgeo/">Modèle géographique détaillé</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../envgeo/integration">Processus d'intégration</a>
+    <a class="" href="../../envgeo/integration/">Processus d'intégration</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../envgeo/integration-test">Tester l'intégration</a>
+    <a class="" href="../../envgeo/integration-test/">Tester l'intégration</a>
                 </li>
     </ul>
 	    </li>
@@ -106,23 +106,23 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../generator/intro">Introduction</a>
+    <a class="" href="../../generator/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../generator/principe">Principe de fonctionnement du générateur</a>
+    <a class="" href="../../generator/principe/">Principe de fonctionnement du générateur</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../generator/custom-generator">Paramétrer la génération de cuboids</a>
+    <a class="" href="../../generator/custom-generator/">Paramétrer la génération de cuboids</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../custom-optimisation.md">Personnaliser la fonction d'optimisation</a>
+    <a class="" href="../../generator/custom-optimisation/">Personnaliser la fonction d'optimisation</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../generator/custom-shape">Personnaliser les formes utilisées</a>
+    <a class="" href="../../generator/custom-shape/">Personnaliser les formes utilisées</a>
                 </li>
     </ul>
 	    </li>
@@ -133,19 +133,39 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../intro">Introduction</a>
+    <a class="" href="../intro/">Introduction</a>
                 </li>
                 <li class="">
                     
     <a class="" href="../predicate/">Principe de fonctionnement du vérificateur</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href=".">Formats de règles</a>
+    <a class="current" href="./">Formats de règles</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#formats-de-stockage-des-regles">Formats de stockage des règles</a></li>
+    
+
+    <li class="toctree-l3"><a href="#integration-de-regles-sous-forme-dun-tableau">Intégration de règles sous forme d'un tableau</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#code-de-reglementation">Code de réglementation</a></li>
+        
+            <li><a class="toctree-l4" href="#code-de-simulation">Code de simulation</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#autres-exemples-dutilisation-de-fichier-de-regles">Autres exemples d'utilisation de fichier de règles</a></li>
+    
+
+    </ul>
                 </li>
                 <li class="">
                     
-    <a class="" href="../topologique">Définition de contraintes topologiques</a>
+    <a class="" href="../topologique/">Définition de contraintes topologiques</a>
                 </li>
     </ul>
 	    </li>
@@ -157,12 +177,12 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../visitor/intro">Suivre l'évolution d'une simulation</a>
+    <a class="" href="../../visitor/intro/">Suivre l'évolution d'une simulation</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../openmole/intro">Distribuer avec OpenMole</a>
+    <a class="" href="../../openmole/intro/">Distribuer avec OpenMole</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -201,8 +221,12 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Définition des contraintes morphologiques &raquo;</li>
+        
+      
     
-    <li>Vérificateurs de règles - Formats de règles</li>
+    <li>Formats de règles</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/SimPLU3D/simplu3D-tutorial?query=root/path/docs/rules/formats.md"
@@ -215,7 +239,8 @@
           <div role="main">
             <div class="section">
               
-                <p>SimPLU3D ne possède pas un format pour stocker les règles morphologiques. En effet, les différentes expériences ont montré que suivant les besoins, l'échelle d'étude et les réglementations locales, les règles nécessaires à modéliser pouvaient beaucoup varier. Ainsi, pour rester générique, c'est à l'utilisateur de définir comment stocker ces règles et implémenter l'interface <em>Predicate</em> en fonction de ces règles.</p>
+                <h1 id="formats-de-stockage-des-regles">Formats de stockage des règles<a class="headerlink" href="#formats-de-stockage-des-regles" title="Permanent link"></a></h1>
+<p>SimPLU3D ne possède pas un format pour stocker les règles morphologiques. En effet, les différentes expériences ont montré que suivant les besoins, l'échelle d'étude et les réglementations locales, les règles nécessaires à modéliser pouvaient beaucoup varier. Ainsi, pour rester générique, c'est à l'utilisateur de définir comment stocker ces règles et implémenter l'interface <em>Predicate</em> en fonction de ces règles.</p>
 <p>Cependant, dans cette partie nous présenterons d'abord un exemple de code avec une démarche conseillée pour intégrer des règles à partir d'un tableau. Puis, nous pointerons vers différentes expérimentations utilisant différents formats de règles.</p>
 <h1 id="integration-de-regles-sous-forme-dun-tableau">Intégration de règles sous forme d'un tableau<a class="headerlink" href="#integration-de-regles-sous-forme-dun-tableau" title="Permanent link"></a></h1>
 <p>Ici, nous présenterons un exemple pour charger des règles stockées dans un fichier .csv et pour appliquer ces règles aux différentes zones d'un plan de zonage via le <em>SamplerPredicate</em> . Le code est disponible dans la classe <em>fr.ign.simplu3d.simulRules.SimulWithRules</em> du projet SimPLU3D-tutorial. Les données utilisées sont stockées dans le dossier <em>resources/simulationWithRules</em> qui contient notamment un fichier <em>rules.csv</em> en plus (mis en tableau ci dessous). La jointure entre les zones urbaines et les valeurs de ce tableau s'effectue via le champ <em>libelle</em>.</p>
@@ -252,7 +277,7 @@
 <p>Le résultat de la simulation est visible ci dessous, seules 2 parcelles sont simulées (celles avec 1 comme valeur pour l'attribut SIMUL)</p>
 <p><img alt="Résultat de la simulation" src="../img/resultSimulation.png" /></p>
 <h2 id="code-de-reglementation">Code de réglementation<a class="headerlink" href="#code-de-reglementation" title="Permanent link"></a></h2>
-<p>Au préalable, une classe de réglementation a été créée (<em>fr.ign.simplu3d.simulRules.RegulationTuto</em>). Cette classe implémente l'interface <em>IZoneRegulation</em> qui permet de rattacher une réglementation à une zone (classe <em>UrbaZone</em>). Cette interface a déjà été vue dans la section présentant le <a href="./envgeo/modelgeo.md">modèle géographique</a>.</p>
+<p>Au préalable, une classe de réglementation a été créée (<em>fr.ign.simplu3d.simulRules.RegulationTuto</em>). Cette classe implémente l'interface <em>IZoneRegulation</em> qui permet de rattacher une réglementation à une zone (classe <em>UrbaZone</em>). Cette interface a déjà été vue dans la section présentant le <a href="../../envgeo/modelgeo/">modèle géographique</a>.</p>
 <p>Il s'agit d'une simple classe ayant des accesseurs aux différents paramètres du règlement ainsi qu'à son libellé.</p>
 <h2 id="code-de-simulation">Code de simulation<a class="headerlink" href="#code-de-simulation" title="Permanent link"></a></h2>
 <p>Le code de simulation ressemble à celui présenté dans la simulation de base avec quelques modifications. La plus importante différence concerne la méthode <em>readAndAssociateRules</em> qui parse le fichier rules.csv contenant les règles et créé le lien entre les différentes zones urbaines et les instances des différents règlements.</p>
@@ -309,7 +334,7 @@
 }
 </code></pre>
 
-<p>Dans cet exemple, il n'y a qu'une seule sous-parcelle par parcelle (c'est-à-dire que chaque parcelle est complètement incluse dans une seule zone urbaine). Néanmoins, il est possible de considérer plusieurs règlements au sein d'une parcelle et d'accéder à ces règlements via les sous-parcelles. Cela nécessite dans le prédicat de vérifier pour chacun des objets à quelle(s) sous-parcelle(s) il appartient et à appliquer les vérifications en fonction de ces règlements. Une seconde complexité est de proposer une méthode pour réconcilier ces différents règlements (Par exemple, comme mesure-t-on une contrainte de distance entre 2 objets qui se trouvent dans 2 zones différentes ?). Cet aspect est compliqué à formaliser, mais un exemple est défini dans la classe <a href="https://github.com/ArtiScales/ArtiScales/blob/master/src/main/java/fr/ign/cogit/rules/predicate/MultiplePredicateArtiScales.java">MultiplePredicateArtiScales du projet ArtiScales</a>. </p>
+<p>Dans cet exemple, il n'y a qu'une seule sous-parcelle par parcelle (c'est-à-dire que chaque parcelle est complètement incluse dans une seule zone urbaine). Néanmoins, il est possible de considérer plusieurs règlements au sein d'une parcelle et d'accéder à ces règlements via les sous-parcelles. Cela nécessite dans le prédicat de vérifier pour chacun des objets à quelle(s) sous-parcelle(s) il appartient et à appliquer les vérifications en fonction de ces règlements. Une seconde complexité est de proposer une méthode pour réconcilier ces différents règlements (Par exemple, comme mesure-t-on une contrainte de distance entre 2 objets qui se trouvent dans 2 zones différentes ?). Cet aspect est compliqué à formaliser, mais un exemple est défini dans la classe <a href="https://github.com/ArtiScales/ArtiScales/blob/master/src/main/java/fr/ign/cogit/rules/predicate/MultiplePredicateArtiScales.java">MultiplePredicateArtiScales du projet ArtiScales</a>.</p>
 <h1 id="autres-exemples-dutilisation-de-fichier-de-regles">Autres exemples d'utilisation de fichier de règles<a class="headerlink" href="#autres-exemples-dutilisation-de-fichier-de-regles" title="Permanent link"></a></h1>
 <p>Deux types de formats de règles ont été utilisés :</p>
 <ul>
@@ -324,6 +349,15 @@
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../topologique/" class="btn btn-neutral float-right" title="Définition de contraintes topologiques">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../predicate/" class="btn btn-neutral" title="Principe de fonctionnement du vérificateur"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -351,6 +385,10 @@
           <a href="https://github.com/SimPLU3D/simplu3D-tutorial" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
+        <span><a href="../predicate/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../topologique/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

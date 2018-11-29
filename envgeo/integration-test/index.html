@@ -8,7 +8,7 @@
   
   <meta name="author" content="MBrasebin">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Environnement géographique - Vérifier le processus d'intégration - SimPLU3D tutorial</title>
+  <title>Tester l'intégration - SimPLU3D tutorial</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Environnement g\u00e9ographique - V\u00e9rifier le processus d'int\u00e9gration";
+    var mkdocs_page_name = "Tester l'int\u00e9gration";
     var mkdocs_page_input_path = "envgeo/integration-test.md";
     var mkdocs_page_url = "/simplu3D-tutorial/envgeo/integration-test/";
   </script>
@@ -59,22 +59,22 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../begin/intro">Introduction</a>
+    <a class="" href="../../begin/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../begin/installation">Installation</a>
+    <a class="" href="../../begin/installation/">Installation</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../begin/first_simulation">Première simulation</a>
+    <a class="" href="../../begin/first_simulation/">Première simulation</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../principe/intro">Principe</a>
+    <a class="" href="../../principe/intro/">Principe</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -83,19 +83,34 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../intro">Introduction</a>
+    <a class="" href="../intro/">Introduction</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../modelgeo">Modèle géographique détaillé</a>
+    <a class="" href="../modelgeo/">Modèle géographique détaillé</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../integration">Processus d'intégration</a>
+    <a class="" href="../integration/">Processus d'intégration</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href=".">Tester l'intégration</a>
+    <a class="current" href="./">Tester l'intégration</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#verifier-lintegration-des-donnees">Vérifier l'intégration des données</a></li>
+    
+
+    <li class="toctree-l3"><a href="#jeu-de-donnees">Jeu de données</a></li>
+    
+
+    <li class="toctree-l3"><a href="#export-des-informations-du-modele-sous-forme-de-shapefile">Export des informations du modèle sous forme de Shapefile</a></li>
+    
+
+    <li class="toctree-l3"><a href="#visualisation-3d-des-informations-du-modele">Visualisation 3D des informations du modèle</a></li>
+    
+
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -106,23 +121,23 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../generator/intro">Introduction</a>
+    <a class="" href="../../generator/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../generator/principe">Principe de fonctionnement du générateur</a>
+    <a class="" href="../../generator/principe/">Principe de fonctionnement du générateur</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../generator/custom-generator">Paramétrer la génération de cuboids</a>
+    <a class="" href="../../generator/custom-generator/">Paramétrer la génération de cuboids</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../custom-optimisation.md">Personnaliser la fonction d'optimisation</a>
+    <a class="" href="../../generator/custom-optimisation/">Personnaliser la fonction d'optimisation</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../generator/custom-shape">Personnaliser les formes utilisées</a>
+    <a class="" href="../../generator/custom-shape/">Personnaliser les formes utilisées</a>
                 </li>
     </ul>
 	    </li>
@@ -133,7 +148,7 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../rules/intro">Introduction</a>
+    <a class="" href="../../rules/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
@@ -141,11 +156,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../rules/formats">Formats de règles</a>
+    <a class="" href="../../rules/formats/">Formats de règles</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../rules/topologique">Définition de contraintes topologiques</a>
+    <a class="" href="../../rules/topologique/">Définition de contraintes topologiques</a>
                 </li>
     </ul>
 	    </li>
@@ -157,12 +172,12 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../visitor/intro">Suivre l'évolution d'une simulation</a>
+    <a class="" href="../../visitor/intro/">Suivre l'évolution d'une simulation</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../openmole/intro">Distribuer avec OpenMole</a>
+    <a class="" href="../../openmole/intro/">Distribuer avec OpenMole</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -201,8 +216,12 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Environnement géographique &raquo;</li>
+        
+      
     
-    <li>Environnement géographique - Vérifier le processus d'intégration</li>
+    <li>Tester l'intégration</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/SimPLU3D/simplu3D-tutorial?query=root/path/docs/envgeo/integration-test.md"
@@ -215,7 +234,8 @@
           <div role="main">
             <div class="section">
               
-                <p>L'objectif de cette page est de proposer deux méthodes pour vérifier la bonne intégration des données à partir d'un jeu de données complet. Il est possible soit :
+                <h1 id="verifier-lintegration-des-donnees">Vérifier l'intégration des données<a class="headerlink" href="#verifier-lintegration-des-donnees" title="Permanent link"></a></h1>
+<p>L'objectif de cette page est de proposer deux méthodes pour vérifier la bonne intégration des données à partir d'un jeu de données complet. Il est possible soit :
 - d'exporter les instances du modèle sous forme de ShapeFiles ;
 - de visualisation en 3D les informations du modèle.</p>
 <p>Ces codes sont disponibles dans le projet du tutoriel dans le package <em>fr.ign.simplu3d.testIntegration</em>.</p>
@@ -305,6 +325,15 @@ Pour les valeurs des énumération <strong>SIDE</strong> et <strong>Type</strong
           </div>
           <footer>
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../generator/intro/" class="btn btn-neutral float-right" title="Introduction">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../integration/" class="btn btn-neutral" title="Processus d'intégration"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
 
   <hr/>
 
@@ -331,6 +360,10 @@ Pour les valeurs des énumération <strong>SIDE</strong> et <strong>Type</strong
           <a href="https://github.com/SimPLU3D/simplu3D-tutorial" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
+        <span><a href="../integration/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../generator/intro/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

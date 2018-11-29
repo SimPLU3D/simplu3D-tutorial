@@ -59,22 +59,22 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../begin/intro">Introduction</a>
+    <a class="" href="../begin/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../begin/installation">Installation</a>
+    <a class="" href="../begin/installation/">Installation</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../begin/first_simulation">Première simulation</a>
+    <a class="" href="../begin/first_simulation/">Première simulation</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../principe/intro">Principe</a>
+    <a class="" href="../principe/intro/">Principe</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -83,19 +83,19 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../envgeo/intro">Introduction</a>
+    <a class="" href="../envgeo/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../envgeo/modelgeo">Modèle géographique détaillé</a>
+    <a class="" href="../envgeo/modelgeo/">Modèle géographique détaillé</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../envgeo/integration">Processus d'intégration</a>
+    <a class="" href="../envgeo/integration/">Processus d'intégration</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../envgeo/integration-test">Tester l'intégration</a>
+    <a class="" href="../envgeo/integration-test/">Tester l'intégration</a>
                 </li>
     </ul>
 	    </li>
@@ -106,23 +106,23 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../generator/intro">Introduction</a>
+    <a class="" href="../generator/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../generator/principe">Principe de fonctionnement du générateur</a>
+    <a class="" href="../generator/principe/">Principe de fonctionnement du générateur</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../generator/custom-generator">Paramétrer la génération de cuboids</a>
+    <a class="" href="../generator/custom-generator/">Paramétrer la génération de cuboids</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../custom-optimisation.md">Personnaliser la fonction d'optimisation</a>
+    <a class="" href="../generator/custom-optimisation/">Personnaliser la fonction d'optimisation</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../generator/custom-shape">Personnaliser les formes utilisées</a>
+    <a class="" href="../generator/custom-shape/">Personnaliser les formes utilisées</a>
                 </li>
     </ul>
 	    </li>
@@ -133,7 +133,7 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../rules/intro">Introduction</a>
+    <a class="" href="../rules/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
@@ -141,11 +141,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../rules/formats">Formats de règles</a>
+    <a class="" href="../rules/formats/">Formats de règles</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../rules/topologique">Définition de contraintes topologiques</a>
+    <a class="" href="../rules/topologique/">Définition de contraintes topologiques</a>
                 </li>
     </ul>
 	    </li>
@@ -155,6 +155,9 @@
     <a class="current" href="./">Exporter les résultats d'une simulation</a>
     <ul class="subnav">
             
+    <li class="toctree-l2"><a href="#exporter-des-resultats-de-simulation">Exporter des résultats de simulation</a></li>
+    
+
     <li class="toctree-l2"><a href="#export-general">Export général</a></li>
     
 
@@ -178,12 +181,12 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../visitor/intro">Suivre l'évolution d'une simulation</a>
+    <a class="" href="../visitor/intro/">Suivre l'évolution d'une simulation</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../openmole/intro">Distribuer avec OpenMole</a>
+    <a class="" href="../openmole/intro/">Distribuer avec OpenMole</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -236,8 +239,9 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="export-general">Export général<a class="headerlink" href="#export-general" title="Permanent link"></a></h1>
-<p>Les objets produits par le simulateur sont stockés dans une instance de la classe  <em>GraphConfiguration</em>. Il est possible d'itérer sur les objets générés via le graphe associé. Le code ci-dessous montrer comment exporter sous forme d'un shapefile les résultats d'une simulation :</p>
+                <h1 id="exporter-des-resultats-de-simulation">Exporter des résultats de simulation<a class="headerlink" href="#exporter-des-resultats-de-simulation" title="Permanent link"></a></h1>
+<h1 id="export-general">Export général<a class="headerlink" href="#export-general" title="Permanent link"></a></h1>
+<p>Les objets produits par le simulateur sont stockés dans une instance de la classe  <em>GraphConfiguration</em>. Il est possible d'itérer sur les objets générés via le graphe associé. Le code ci-dessous montrer comment exporter sous forme d'un ShapeFile les résultats d'une simulation :</p>
 <pre><code class="JAVA">// Run of the optimisation on a parcel with the predicate
 GraphConfiguration&lt;Cuboid&gt; cc = oCB.process(bPU, p, env, 1, pred);
 
@@ -261,7 +265,7 @@ ShapefileWriter.write(featC,&quot;tmp/result.shp&quot;);
 <p>Comme les boîtes sont les objets actuellement les plus utilisées comme sorties de SimPLU3D, différentes méthodes pour les exporter avec différentes transformations ont été implémentées dans le projet SimPLU3D.</p>
 <p>Chacune des classes mentionnées ci-dessous possède un <em>main</em> permettant leur utilisation.</p>
 <h2 id="export-simple-des-boites">Export simple des boîtes<a class="headerlink" href="#export-simple-des-boites" title="Permanent link"></a></h2>
-<p>La classe <em>fr.ign.cogit.simplu3d.io.shapefile.SaveGeneratedObjects</em>  permet d'exporter les boîtes en shapefile (méthode saveShapefile) ou dans une base PostGIS (méthode save) sous forme de MultiPolygon 3D (issus de la méthode <em>generated3DGeom</em>). Dans les données en sortie, chaque ligne correspond à une boîte.</p>
+<p>La classe <em>fr.ign.cogit.simplu3d.io.shapefile.SaveGeneratedObjects</em>  permet d'exporter les boîtes en ShapeFile (méthode <em>saveShapefile</em>) ou dans une base PostGIS (méthode<em> save</em>) sous forme de MultiPolygon 3D (issus de la méthode <em>generated3DGeom</em>). Dans les données en sortie, chaque ligne correspond à une boîte.</p>
 <h2 id="export-decoupe">Export découpé<a class="headerlink" href="#export-decoupe" title="Permanent link"></a></h2>
 <p>Comme les boîtes générées peuvent s'intersecter, ces intersections sont potentiellement des sources de problème pour calculer des indicateurs sur les formes résultantes ou pour les visualiser.</p>
 <p>Ainsi, la classe <em>fr.ign.cogit.simplu3d.util.merge.SDPCalc</em> permet d'exporter avec la méthode <em>getGeometryPairByGroup</em> les boîtes sous la forme d'une partition des géométries résultats avec une hauteur affectée à chaque patch. Le résultat contient pour chaque enregistrement un polygone 2D et une hauteur pour regénérer la forme en 3D.</p>
@@ -284,10 +288,10 @@ ShapefileWriter.write(featC,&quot;tmp/result.shp&quot;);
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../development/" class="btn btn-neutral float-right" title="Futurs développements">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../visitor/intro/" class="btn btn-neutral float-right" title="Suivre l'évolution d'une simulation">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href=".." class="btn btn-neutral" title="Accueil"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../rules/topologique/" class="btn btn-neutral" title="Définition de contraintes topologiques"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -317,10 +321,10 @@ ShapefileWriter.write(featC,&quot;tmp/result.shp&quot;);
           <a href="https://github.com/SimPLU3D/simplu3D-tutorial" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../rules/topologique/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../development/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../visitor/intro/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

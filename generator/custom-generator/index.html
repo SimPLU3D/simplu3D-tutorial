@@ -8,7 +8,7 @@
   
   <meta name="author" content="MBrasebin">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Générateur de formes - Définition de la classe de forme - SimPLU3D tutorial</title>
+  <title>Paramétrer la génération de cuboids - SimPLU3D tutorial</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "G\u00e9n\u00e9rateur de formes - D\u00e9finition de la classe de forme";
+    var mkdocs_page_name = "Param\u00e9trer la g\u00e9n\u00e9ration de cuboids";
     var mkdocs_page_input_path = "generator/custom-generator.md";
     var mkdocs_page_url = "/simplu3D-tutorial/generator/custom-generator/";
   </script>
@@ -59,22 +59,22 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../begin/intro">Introduction</a>
+    <a class="" href="../../begin/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../begin/installation">Installation</a>
+    <a class="" href="../../begin/installation/">Installation</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../begin/first_simulation">Première simulation</a>
+    <a class="" href="../../begin/first_simulation/">Première simulation</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../principe/intro">Principe</a>
+    <a class="" href="../../principe/intro/">Principe</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -83,19 +83,19 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../envgeo/intro">Introduction</a>
+    <a class="" href="../../envgeo/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../envgeo/modelgeo">Modèle géographique détaillé</a>
+    <a class="" href="../../envgeo/modelgeo/">Modèle géographique détaillé</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../envgeo/integration">Processus d'intégration</a>
+    <a class="" href="../../envgeo/integration/">Processus d'intégration</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../envgeo/integration-test">Tester l'intégration</a>
+    <a class="" href="../../envgeo/integration-test/">Tester l'intégration</a>
                 </li>
     </ul>
 	    </li>
@@ -106,23 +106,35 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../intro">Introduction</a>
+    <a class="" href="../intro/">Introduction</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../principe">Principe de fonctionnement du générateur</a>
+    <a class="" href="../principe/">Principe de fonctionnement du générateur</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Paramétrer la génération de cuboids</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#parametrer-les-boites-dune-configuration">Paramétrer les boîtes d'une configuration</a></li>
+    
+
+    <li class="toctree-l3"><a href="#definition-des-formes-generables">Définition des formes générables</a></li>
+    
+
+    <li class="toctree-l3"><a href="#definition-des-modifications">Définition des modifications</a></li>
+    
+
+    </ul>
                 </li>
                 <li class="">
                     
-    <a class="" href=".">Paramétrer la génération de cuboids</a>
+    <a class="" href="../custom-optimisation/">Personnaliser la fonction d'optimisation</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../custom-optimisation.md">Personnaliser la fonction d'optimisation</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../custom-shape">Personnaliser les formes utilisées</a>
+    <a class="" href="../custom-shape/">Personnaliser les formes utilisées</a>
                 </li>
     </ul>
 	    </li>
@@ -133,7 +145,7 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../rules/intro">Introduction</a>
+    <a class="" href="../../rules/intro/">Introduction</a>
                 </li>
                 <li class="">
                     
@@ -141,11 +153,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../rules/formats">Formats de règles</a>
+    <a class="" href="../../rules/formats/">Formats de règles</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../rules/topologique">Définition de contraintes topologiques</a>
+    <a class="" href="../../rules/topologique/">Définition de contraintes topologiques</a>
                 </li>
     </ul>
 	    </li>
@@ -157,12 +169,12 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../visitor/intro">Suivre l'évolution d'une simulation</a>
+    <a class="" href="../../visitor/intro/">Suivre l'évolution d'une simulation</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../openmole/intro">Distribuer avec OpenMole</a>
+    <a class="" href="../../openmole/intro/">Distribuer avec OpenMole</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -201,8 +213,12 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Générateur de formes &raquo;</li>
+        
+      
     
-    <li>Générateur de formes - Définition de la classe de forme</li>
+    <li>Paramétrer la génération de cuboids</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/SimPLU3D/simplu3D-tutorial?query=root/path/docs/generator/custom-generator.md"
@@ -215,7 +231,8 @@
           <div role="main">
             <div class="section">
               
-                <p>Dans cette partie, nous décrivons comment le système définit la création de nouveaux objets paramétriques et les modifications qui leur seront apportées durant l'optimisation. Il s'agit de l'étape 1 du code décrit dans la section <a href="../principe/">principe de simulation</a>. Cet exemple s'appuie sur la génération de boîtes, mais il est possible de définir d'autres types de géométries (cela sera décrit dans la section <a href="../custom-shape/">Générer d'autres types de formes</a>).</p>
+                <h1 id="parametrer-les-boites-dune-configuration">Paramétrer les boîtes d'une configuration<a class="headerlink" href="#parametrer-les-boites-dune-configuration" title="Permanent link"></a></h1>
+<p>Dans cette partie, nous décrivons comment le système définit la création de nouveaux objets paramétriques et les modifications qui leur seront apportées durant l'optimisation. Il s'agit de l'étape 1 du code décrit dans la section <a href="../principe/">principe de simulation</a>. Cet exemple s'appuie sur la génération de boîtes, mais il est possible de définir d'autres types de géométries (cela sera décrit dans la section <a href="../custom-shape/">Générer d'autres types de formes</a>).</p>
 <p>Les parties suivantes reprennent les principales étapes de création du sampler dont le code est repris dans <a href="#implementation">la dernière partie de la page sur l'implémentation</a> (étape 1) , c'est à dire le code suivant :</p>
 <pre><code class="JAVA">//Step 1 :
 
@@ -238,7 +255,7 @@ bpu, pred, geom);
 <li><strong>minheight</strong> &lt; <strong>h</strong> &lt; <strong>maxheight</strong></li>
 </ul>
 <p>Les deux premières valeurs sont contraintes par l'enveloppe contenant la géométrie dans laquelle les centres de boîtes seront échantillonnés.</p>
-<p>Dans l'exemple de la <a href="../begin/first_simulation">première simulation</a>, <strong>minθ</strong> et <strong>maxθ</strong> sont fixés e, dir à <strong>0</strong> et <strong>π</strong> afin de permettre tout type d'orientation. Les autres paramètres sont fixés dans le fichier de configuration <strong>params.json</strong>.</p>
+<p>Dans l'exemple de la <a href="../begin/first_simulation">première simulation</a>, <strong>minθ</strong> et <strong>maxθ</strong> sont fixés  à <strong>0</strong> et <strong>π</strong> afin de permettre tout type d'orientation. Les autres paramètres sont fixés dans le fichier de configuration <strong>params.json</strong>.</p>
 <p>Afin que le système puisse générer des formes, il est nécessaire de définir une classe <strong>Builder</strong> qui permet d'instancier les objets à partir d'un tableau contenant les paramètres de la forme. Dans l'exemple, il s'agit de la classe <strong>CuboidBuilder</strong>.</p>
 <h1 id="definition-des-modifications">Définition des modifications<a class="headerlink" href="#definition-des-modifications" title="Permanent link"></a></h1>
 <p>Une modification aléatoire est est déterminée par le choix d’un des noyaux de proposition. Chaque noyau a la même probabilité d'être sélectionné. Dans le cadre de l'exemple, 6 noyaux sont utilisés :</p>
@@ -356,6 +373,15 @@ public Sampler&lt;GraphConfiguration&lt;Cuboid&gt;, BirthDeathModification&lt;Cu
           </div>
           <footer>
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../custom-optimisation/" class="btn btn-neutral float-right" title="Personnaliser la fonction d'optimisation">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../principe/" class="btn btn-neutral" title="Principe de fonctionnement du générateur"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
 
   <hr/>
 
@@ -382,6 +408,10 @@ public Sampler&lt;GraphConfiguration&lt;Cuboid&gt;, BirthDeathModification&lt;Cu
           <a href="https://github.com/SimPLU3D/simplu3D-tutorial" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
+        <span><a href="../principe/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../custom-optimisation/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
