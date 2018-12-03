@@ -21,11 +21,11 @@ Pour en savoir plus, le modèle a fait l'objet d'une publication scientifique :
 
 # Vue global du modèle
 
-Le modèle géographique est instancié dans le package *fr.ign.cogit.simplu3d.model* du projet [SimPLU3D-rules](https://github.com/SimPLU3D/simplu3D-rules). La javadoc est [consultable en ligne](https://simplu3d.github.io/simplu3D-rules/).
+Le modèle géographique est instancié dans le package *fr.ign.cogit.simplu3d.model* du projet [SimPLU3D-rules](https://github.com/SimPLU3D/simplu3D-rules). La javadoc est [consultable en ligne](https://simplu3d.github.io/simplu3D-rules/). Vous pouvez cliquer sur les différents schémas UML présentés dans cette section afin de les consulter en pleine résolution.
 
 
 [![Image présentant le diagramme de classe de SimPLU3D](./img/generaldiagramAnnoted.png)](./img/generaldiagramAnnoted.png)
-*(Vous pouvez cliquer sur l'image pour l'avoir en pleine résolution)*
+
 
  La figure précédente présente l'ensemble des classes (sans leurs attributs) composant le modèle géographique de SimPLU3D. Quatre ensembles de classes seront présentées :
 
@@ -48,7 +48,7 @@ Les diagrammes de classes sont générés avec le plugin [ObjectAID d'Eclipse](h
 La classe *Environnement* est une classe centrale dans le modèle de SimPLU3D car elle est le point d'entrée pour accéder à l'ensemble des objets nécessaires pour vérifier le respect des règles morphologiques.
 
 
-![Image présentant la classe Environnement de SimPLU3D](./img/environnementdiagram.png)
+[![Image présentant la classe Environnement de SimPLU3D](./img/environnementdiagram.png)](./img/environnementdiagram.png)
 
 Elle est composée d'une série d'accesseurs qui permettent d'accéder aux objets présentés dans ce modèle (cf image ci dessus) et s'il est défini au terrain qui servira de référence d'altitudes pour les données n'ayant pas de géométrie 3D.
 
@@ -65,7 +65,7 @@ L'objet Environnement peut également contenir les informations relatives à une
 
 Les classes de réglementation visent à déterminer quelle contraintes réglementaires s'appliquent et à quels endroits. Les différentes classes de cette partie du modèle s'inspirent de la norme CNIG-COVADIS concernant la dématérialisation des documents d'urbanisme. Cette norme vise à modéliser les territoires sur lesquels s'appliquent les réglementations. Le modèle utilise la version 2014 de ce standard ([disponible en ligne](http://cnig.gouv.fr/?page_id=2732)). Un certain nombre d'attributs provenant de ces spécifications et modélisés dans SimPLU3D ne sont pas décrits ici. Cela est le cas pour les attributs purement informatifs et qui n'ont, a priori, pas d'influence sur les simulations effectuées avec SimPLU3D. Cependant, ils pourraient être utilisées dans le cadre d'un système information de gestion réglementaire.
 
-![Image présentant les classes de réglementation de SimPLU3D](./img/regulationdiagram.png)
+[![Image présentant les classes de réglementation de SimPLU3D](./img/regulationdiagram.png)](./img/regulationdiagram.png)
 
 La classe *UrbaDocument* est la classe parent qui décrit le document modélisé. Il possède un type défini parmi les possibilités offertes par l'énumération *UrbaDocumentType* comme les valeurs POS, PLU, etc. . La classe  *UrbaDocument* possède des zones d'urbanisme (UrbaZone) qui possèdent une géométrie surfacique (accessible avec la méthode *getGeom()*). Les contraintes réglementaires sont définies pour chaque *UrbaZone* et accessibles à travers une réglementation de zone (décrite dans l'interface *IZoneRegulation*). L'implémentation de cette interface permet de définir les valeurs des contraintes qui s'appliquent sur la zone (voir[l'exemple sur les formats de règles](https://simplu3d.github.io/simplu3D-tutorial/rules/formats/)). Il est seulement nécessaire de définir la zone réglementaire urbaine sur laquelle cette réglementation est définie (*getUrbaZone()*) et un convertisseur en texte pour consulter les informations contenues (*toText()*).
 
@@ -73,7 +73,7 @@ La classe *Prescription* vise à définir des contraintes qui s'appliquent local
 
 # Classes du parcellaire
 
-![Diagramme schématisant les classes des parcelles dans SimPLU3D](./img/parcelDiagram.png)
+[![Diagramme schématisant les classes des parcelles dans SimPLU3D](./img/parcelDiagram.png)](./img/parcelDiagram.png)
 
 Ces classes visent à organiser les parcelles et le objets reliés au parcellaire. Le schéma ci dessous vise à présenter (dans l'image, on trouve les différentes relations d'inclusion entre *BasicPropertyUnit*, *CadastralParcel* et *SubParcel*) les différentes relations entre les parcelles, leurs limites séparatives (*ParcelBoundary*) et les objets environnants.
 
@@ -105,7 +105,7 @@ La méthode *getOppositeBoundary()* permet d'obtenir pour les limites de type *R
 
 Les classes modélisant les bâtiments sont issues du standard [CityGML V2.0](https://portal.opengeospatial.org/files/?artifact_id=47842).
 
-![Diagramme schématisant les classes de bâtiments dans SimPLU3D](./img/buildingDiagram.png)
+[![Diagramme schématisant les classes de bâtiments dans SimPLU3D](./img/buildingDiagram.png)](./img/buildingDiagram.png)
 
 
 Il y a deux classes de bâtiments : les bâtiments (classe *Building*) et les parties de bâtiments (classe *BuildingPart*) qui instancient toutes les deux la classe abstraite *AbstractBuilding*. Les bâtiments sont des objets bâtiments issues de base de données 3D  et associées à une unité foncière (accessible avec la méthode *getBPU()*). Ces bâtiments sont découpés en parties de bâtiment en fonction des sous-parcelles (accessibles avec la méthode *getSubParcel()*).  
@@ -148,7 +148,7 @@ Ces deux types de surface possèdent des matériaux (classe *Materiau*) qui ont 
 
 # Classes de l'espace publique
 
-![Schéma schématisant l'espace public](./img/publicSpaceDiagram.png)
+[![Schéma schématisant l'espace public](./img/publicSpaceDiagram.png)](./img/publicSpaceDiagram.png)
 
 Ces classes servent à modéliser l'espace en dehors des parcelles qui peuvent imposer des contraintes sur les formes bâties simulées. Ces objets sont accessibles via les limites séparatives (classe *ParcelBoundary*).
 
