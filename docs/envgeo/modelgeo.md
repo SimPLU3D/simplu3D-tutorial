@@ -21,10 +21,11 @@ Pour en savoir plus, le modèle a fait l'objet d'une publication scientifique :
 
 # Vue global du modèle
 
-Le modèle géographique est instancié dans le package *fr.ign.cogit.simplu3d.model* du projet [SimPLU3D-rules](https://github.com/SimPLU3D/simplu3D-rules). La javadoc est [consultable en ligne](https://simplu3d.github.io/simplu3D-rules/)
+Le modèle géographique est instancié dans le package *fr.ign.cogit.simplu3d.model* du projet [SimPLU3D-rules](https://github.com/SimPLU3D/simplu3D-rules). La javadoc est [consultable en ligne](https://simplu3d.github.io/simplu3D-rules/).
 
-![Image présentant le diagramme de classe de SimPLU3D](./img/generaldiagramAnnoted.png)
 
+[![Image présentant le diagramme de classe de SimPLU3D](./img/generaldiagramAnnoted.png)](./img/generaldiagramAnnoted.png)
+*(Vous pouvez cliquer sur l'image pour l'avoir en pleine résolution)*
 
  La figure précédente présente l'ensemble des classes (sans leurs attributs) composant le modèle géographique de SimPLU3D. Quatre ensembles de classes seront présentées :
 
