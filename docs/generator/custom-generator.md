@@ -14,7 +14,7 @@ Les parties suivantes reprennent les principales étapes de création du sampler
 
 
 ```JAVA
-//Step 1 :
+// Step 1 :
 
 // Sampler creation (definition of the class and of the kernel modifications)
 // Création de l'échantilloneeur (définition de la classe et des noyaux de modifications)
@@ -59,11 +59,13 @@ Ainsi, dans la simulation exemple, les coefficients des amplifications (*amplitu
 
 Les modifications sont implémentées à partir de la classe **Kernel** de la librjmcmc4j qui définit comment modifier un objet de la classe paramétrique utilisée à partir d'un tirage aléatoire.
 
- # Création de l'échantillonneur de Green
+# Création de l'échantillonneur de Green
 
 Les dernières étapes visent à définir l'objet qui va effectuer les tirages aléatoires des boîtes qui seront créées (classe **DirectSampler** de librjmcmc4j) et l'échantillonneur de Green qui va définir les modifications à appliquer pendant la simulation et notamment la probabilité d'acception durant le process.
 
- # Implémentation
+# Implémentation
+
+Le code ci-dessous reprend l'implémentation de la création d'un échantilloneur.
 
 
 ```JAVA
@@ -160,4 +162,4 @@ Les dernières étapes visent à définir l'objet qui va effectuer les tirages a
 				ds, new MetropolisAcceptance<SimpleTemperature>(), kernels);
 		return s;
 	}
-  ```
+```
