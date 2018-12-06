@@ -57,6 +57,7 @@ La formule de l'énergie dans l'exemple est la suivante :
 ![Formule ](./img/energieformule.png)
 
 L'énergie unaire contient différents termes :
+
 - **Ecreation** a pour objectif de pénaliser les boîtes ne contribuant pas suffisamment à la configuration. La définition de ce paramètre est indispensable : en effet, rien n’empêche l’intersection de boîtes. Sans ce paramètre, que nous nommons énergie de création, le système pourrait très bien proposer des configurations contenant de très nombreuses boîtes qui ne contribueraient pas à augmenter le volume global de la configuration ;
 - **volume(b)** qui définit le volume de chaque boîte indépendamment ;
 - **volumeDifference(bPU,b)** qui définit une énergie en fonction du dépassement en termes de volume de l'unité foncière simulée (bPU). Cette contrainte est ajoutée comme les règles n'imposent pas dans l'exemple que les boîtes se trouvent strictement à l'intérieur de l'unité foncière. L'objectif de ce terme est d'autoriser le dépassement que si celui-ci contribue significativement à l'amélioration du volume.
