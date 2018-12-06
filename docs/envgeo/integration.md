@@ -155,8 +155,7 @@ Le code d'intégration se trouve ci-dessous, il est composé de 12 étapes.
 4. Chargement des parcelles et créations des bordures
 5. Import des sous parcelles
 6. Création des unités foncirèes
-7. Import des bâtiments
-    7.1 Assignation des batiments aux BpU
+7. Import des bâtiments et Assignation des batiments aux BpU
 8. Chargement des voiries
 9. Affectation des liens entre une bordure et ses objets adjacents (bordure sur route => route + relation entre les limites de parcelles)
 10. Détection des limites séparatives opposées
