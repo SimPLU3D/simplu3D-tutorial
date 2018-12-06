@@ -10,7 +10,7 @@ date: 2018-10-26
 
 Un processus d'intégration est déjà défini dans SimPLU3D. Il permet de créer un objet de la classe *Environnement* en renseignant un certain nombre d'attributs.
 
-Le processus d'intégration peut prendre en entrée des données au format ShapeFile (avec la classe *fr.ign.cogit.simplu3d.io.nonStructDatabase.shp.LoaderSHP*)  ou des données dans une base de données PostGIS (avec la classe *fr.ign.cogit.simplu3d.io.nonStructDatabase.postgis.loadPostGIS*). Quelque soit l'approche choisie, les deux classes ont une méthode *load*, qui va traduire les entités provenant de ces sources de données en collection de *IFeature* de GeOxygene et faire appelle à la méthode *load* de la classe *fr.ign.cogit.simplu3d.io.LoadFromCollection* qui va instancier les entités du modèle.
+Le processus d'intégration peut prendre en entrée des données au format ShapeFile (avec la classe *fr.ign.cogit.simplu3d.io.nonStructDatabase.shp.LoaderSHP* du dépot [SimPLU3D-rules](https://github.com/SimPLU3D/simplu3D-rules))  ou des données dans une base de données PostGIS (avec la classe *fr.ign.cogit.simplu3d.io.nonStructDatabase.postgis.loadPostGIS*, même dépot). Quel que soit l'approche choisie, les deux classes ont une méthode *load*, qui va traduire les entités provenant de ces sources de données en collection de *IFeature* de GeOxygene et faire appelle à la méthode *load* de la classe *fr.ign.cogit.simplu3d.io.LoadFromCollection* qui va instancier les entités du modèle.
 
 Dans cette page, nous allons décrire tout d'abord les pré-requis en [fonction de la source de données utilisée](#sources-de-donnees-utilisees), puis décrire dans le détail [le processus d'intégration](#code-dintegration).
 
@@ -19,7 +19,7 @@ Dans cette page, nous allons décrire tout d'abord les pré-requis en [fonction 
 
 # Sources de données utilisées
 
-La données utilisées pendant le processus d'intégration peuvent provenir de Shapefiles ou de PostGIS. Les classes permettant de lancer le processus et les constantes stockant le nom des sources de données utilisées  dépendent du choix de la source de données  [ShapeFiles](#source-de-donnees-shapefile) ou [PostGIS](#source-de-donnees-postgis). Dans tous les cas, seules les données parcellaires sont obligatoires.  Cependant, [les noms des attributs utilisés](#nom-des-attributs) sont les mêmes quelque soit la source utilisée et sont stockés au même endroit dans le code.
+La données utilisées pendant le processus d'intégration peuvent provenir de Shapefiles ou de PostGIS. Les classes permettant de lancer le processus et les constantes stockant le nom des sources de données utilisées  dépendent du choix de la source de données  [ShapeFiles](#source-de-donnees-shapefile) ou [PostGIS](#source-de-donnees-postgis). Dans tous les cas, seules les données parcellaires sont obligatoires.  Cependant, [les noms des attributs utilisés](#nom-des-attributs) sont les mêmes quelle que soit la source utilisée et sont stockés au même endroit dans le code.
 
 ## Source de données ShapeFile
 
@@ -39,7 +39,7 @@ La classe permettant de charger les données provenant de ShapeFiles et contenan
 
 ## Source de données PostGIS
 
-La classe permettant de charger les données provenant de PostGIS et contenant le nom des tabmes est fr.ign.cogit.simplu3d.io.nonStructDatabase.postgis.LoaderPostGIS. Le MNT est stocké comme un raster dans PostGIS.
+La classe permettant de charger les données provenant de PostGIS et contenant le nom des tables est *fr.ign.cogit.simplu3d.io.nonStructDatabase.postgis.LoaderPostGIS*. Le MNT est stocké comme un raster dans PostGIS.
 
 | Source de données         | Nom de la variable       | Valeur par défaut | Type de géométrie                        |
 |:--------------------------|:-------------------------|:------------------|:-----------------------------------------|
@@ -101,7 +101,7 @@ Les attributs utilisés ont été établis en accord avec la norme CNIG - COVADI
 
 ### Parcelles
 
-Chaque parcelle a un identifiant, il est soit encodé directement avec l'attribut *ATT_CODE_PARC* ou il construit par la concaténation des attributs valeurs des *ATT_BDP_CODE_DEP + ATT_BDP_CODE_COM + ATT_BDP_COM_ABS + ATT_BDP_SECTION + ATT_BDP_NUMERO* et accessible par la méthode *getCode* de la classe *CadastralParcel*.
+Chaque parcelle a un identifiant, il est soit encodé directement avec l'attribut *ATT_CODE_PARC* ou est construit par la concaténation des attributs valeurs des *ATT_BDP_CODE_DEP + ATT_BDP_CODE_COM + ATT_BDP_COM_ABS + ATT_BDP_SECTION + ATT_BDP_NUMERO* et accessible par la méthode *getCode* de la classe * fr.ign.cogit.simplu3d.model.CadastralParcel*.
 
 L'attribut *ATT_HAS_TO_BE_SIMULATED* est facultatif et peut être utilisé pour indiquer s'il faut simuler ou non un parcelle. Il peut être boolean, entier (0 pour false et 1 pour true) ou même une chaîne de caractère (true ou false).
 
@@ -149,11 +149,26 @@ Pas d'attribut utilisé.
 
 Le code d'intégration se trouve ci-dessous, il est composé de 12 étapes.
 
+1. Création de l'objet PLU
+2. Création des zones et assignation des règles aux zones
+3. Assignement des zonages au PLU
+4. Chargement des parcelles et créations des bordures
+5. Import des sous parcelles
+6. Création des unités foncirèes
+7. Import des bâtiments
+    7.1 Assignation des batiments aux BpU
+8. Chargement des voiries
+9. Affectation des liens entre une bordure et ses objets adjacents (bordure sur route => route + relation entre les limites de parcelles)
+10. Détection des limites séparatives opposées
+11. Import des alignements
+12. Affectation de la coordonnées Z à l'ensemble des éléments 
+
+
 Quelques étapes sont paramétrables :
 
 La première étape vise à changer de référentiel les sources de données pour éviter des erreurs numériques dues à la grande taille de coordonnées utilisée. Ainsi, il est possible d'activer la transformation avec le boolean *Environnement.TRANSLATE_TO_ZERO* et en assignant des coordonnées (classe *DirectPosition* de GeOxygene) à l'attribut statique *Environnement.dpTranslate*.
 
-Pendant l'étape d'annotation des limites séparatives en limites de fond, latéral et de voirie (étape
+Pendant l'étape d'annotation des limites séparatives en limites de fond, latérales et de voirie (étape
   4), le processus détermine automatiquement ces types suivant une évaluation du dépassement de la limite séparative par rapport au point d'intersection avec la voirie (cf image suivante). Par défaut, la valeur de dépassement jusqu'à laquelle les limites sont affectées comme latérales est de 3 m, mais elle peut être fixée en modifiant la valeur  *AbstractBoundaryAnalyzer.setThresholdIni(double)*. Pour les parcelles plus petites, le seuil est automatiquement ajusté pour atteindre 1/3 de la largeur de la boîte englobante orientée.
 
   Pour une parcelle n'ayant pas d'accès à la voirie, toutes les limites sont de type "Fond". Le côté (GAUCHE ou DROITE) des limites latérales est déterminée en regardant la parcelle depuis la voirie. Si une parcelle donne sur plusieurs voiries, les côtés DROITE et GAUCHE sont déterminés aléatoirement.
