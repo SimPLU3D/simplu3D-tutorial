@@ -18,7 +18,8 @@ Dans SimPLU3D, une configuration bâtie est composée d'un ensemble de géométr
 
 # Génération de configurations bâties
 
-La génération de formes bâties avec SimPLU3D se base sur la technique du recuit-simulé transdimensionnel. Le recuit simulé est une technique d'optimisation et le fait que l'approche soit transdimensionnel indique que c'est le système qui détermine le nombre d'objets nécessaires pour atteindre l'objectif.
+La génération de formes bâties avec SimPLU3D se base sur la technique du recuit-simulé transdimensionnel. Le recuit simulé est une technique d'optimisation, qui cherche à maximiser ou minimiser une quantité , appellée *objectif*.
+Le fait que l'approche soit transdimensionnelle indique que c'est le système qui détermine le nombre d'objets formant la solution candidate (et donc sa dimension)  pour atteindre l'objectif.
 
 Ainsi, si on considère une fonction d'optimisation **f**, comme le volume, le recuit simulé détermine les **n** boîtes et leurs paramètres qui permettent de produire la configuration bâtie la plus volumineuse possible.
 
@@ -29,7 +30,7 @@ Ainsi, si on considère une fonction d'optimisation **f**, comme le volume, le r
 
 ![Image montrant le principe](img/principe.png)
 
-L'algorithme est un algorithme itératif. À chaque itération, on considère une configuration bâtie courante. Le système choisit une modification parmi les noyaux de proposition de modification disponibles (dans l'exemple, le noyau d'ajout est sélectionné pour ajouter une nouvelle boîte). Ensuite, une probabilité d'acception est déterminée suivant la théorie du recuit simulée. Elle prend en compte les scores des configurations avant et après modification et la température courante (il s'agit d'une valeur qui décroît au fur et à mesure des itérations). Ainsi, il existe une certaine probabilité pour que cette modification soit rejetée (1 - α(t,s,s’)) et une certaine probabilité pour que la modification soit acceptée (α(t,s,s’)). Si la configuration est acceptée, on s'assure qu'elle respecte les règles morphologiques, si c'est le cas elle remplace la configuration courante sinon la modification est rejetée.
+À chaque itération, on considère une configuration bâtie courante. Le système choisit une modification parmi les noyaux de proposition de modification disponibles (dans l'exemple, le noyau d'ajout est sélectionné pour ajouter une nouvelle boîte). Ensuite, une probabilité d'acceptation est déterminée suivant la théorie du recuit simulée. Elle prend en compte les scores des configurations avant et après modification et la température courante (il s'agit d'une valeur qui décroît au fur et à mesure des itérations). Ainsi, il existe une certaine probabilité pour que cette modification soit rejetée (1 - α(t,s,s’)) et une certaine probabilité pour que la modification soit acceptée (α(t,s,s’)). Si la configuration est acceptée, on s'assure qu'elle respecte les règles morphologiques, si c'est le cas elle remplace la configuration courante sinon la modification est rejetée.
 
 # Implémentation de l'algorithme
 
