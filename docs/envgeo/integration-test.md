@@ -9,10 +9,11 @@ date: 2018-10-26
 # Vérifier l'intégration des données
 
 L'objectif de cette page est de proposer deux méthodes pour vérifier la bonne intégration des données à partir d'un jeu de données complet. Il est possible soit :
+
 - d'exporter les instances du modèle sous forme de ShapeFiles ;
 - de visualisation en 3D les informations du modèle.
 
-Ces codes sont disponibles dans le projet du tutoriel dans le package *fr.ign.simplu3d.testIntegration*.
+Ces codes sont disponibles dans le dépôt du tutoriel (simplu3D-tutorial)  dans le package *fr.ign.simplu3d.testIntegration*.
 
 > ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) **Attention**: : pour ces codes, la visualisation 3D et le chargement de MNT nécessitent l'utilisation de bibliothèques natives Java 3D (qui se trouvent dans le projet SimPLU3d-tutorial). Il est nécessaire de passer à la VM l'argument suivant :
 
@@ -38,7 +39,7 @@ L'exécution du code génère une série de ShapeFiles représentés dans la car
 
 ![Carte des données en entrée](./img/SituationAfter.png)
 
-Les géométries en sortie sont triangulées car plaquées sur le MNT (s'il est utilisé). On retrouve les fichiers suivantes :
+Les géométries en sortie sont triangulées car plaquées sur le MNT (s'il est utilisé). On retrouve les fichiers suivants :
 
 | Nom du fichier          | Contenu                                    | Attributs intéressants                                                                                                                                                                   |
 |:------------------------|:-------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
