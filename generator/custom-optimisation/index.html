@@ -8,24 +8,23 @@
   
   <meta name="author" content="MBrasebin">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Personnaliser la fonction d'optimisation - SimPLU3D tutorial</title>
+  <title>Custom optimisation - SimPLU3D tutorial</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link rel="stylesheet" href="../../css/highlight.css">
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Personnaliser la fonction d'optimisation";
+    var mkdocs_page_name = "Custom optimisation";
     var mkdocs_page_input_path = "generator/custom-optimisation.md";
-    var mkdocs_page_url = "/simplu3D-tutorial/generator/custom-optimisation/";
+    var mkdocs_page_url = "/generator/custom-optimisation/";
   </script>
   
-  <script src="../../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script> 
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
   
 </head>
 
@@ -39,7 +38,7 @@
         <a href="../.." class="icon icon-home"> SimPLU3D tutorial</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    <input type="text" name="q" placeholder="Search docs" />
   </form>
 </div>
       </div>
@@ -50,16 +49,36 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../..">Accueil</a>
+    <a class="" href="../..">Home</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">Premiers pas</span>
+    <a class="" href="../../about/">About</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../bibliographie/">Bibliographie</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../development/">Development</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../export/">Export</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Begin</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../begin/intro/">Introduction</a>
+    <a class="" href="../../begin/first_simulation/">First simulation</a>
                 </li>
                 <li class="">
                     
@@ -67,58 +86,45 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../begin/first_simulation/">Première simulation</a>
+    <a class="" href="../../begin/intro/">Intro</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../principe/intro/">Principe</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Environnement géographique</span>
+    <span class="caption-text">Envgeo</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../envgeo/intro/">Introduction</a>
+    <a class="" href="../../envgeo/integration-test/">Integration test</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../envgeo/modelgeo/">Modèle géographique détaillé</a>
+    <a class="" href="../../envgeo/integration/">Integration</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../envgeo/integration/">Processus d'intégration</a>
+    <a class="" href="../../envgeo/intro/">Intro</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../envgeo/integration-test/">Tester l'intégration</a>
+    <a class="" href="../../envgeo/modelgeo/">Modelgeo</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">Générateur de formes</span>
+    <span class="caption-text">Generator</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../intro/">Introduction</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../principe/">Principe de fonctionnement du générateur</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../custom-generator/">Paramétrer la génération de cuboids</a>
+    <a class="" href="../custom-generator/">Custom generator</a>
                 </li>
                 <li class=" current">
                     
-    <a class="current" href="./">Personnaliser la fonction d'optimisation</a>
+    <a class="current" href="./">Custom optimisation</a>
     <ul class="subnav">
             
     <li class="toctree-l3"><a href="#parametrer-la-fonction-doptimisation">Paramétrer la fonction d'optimisation</a></li>
@@ -141,62 +147,73 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../custom-shape/">Personnaliser les formes utilisées</a>
+    <a class="" href="../custom-shape/">Custom shape</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../intro/">Intro</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../principe/">Principe</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">Définition des contraintes morphologiques</span>
+    <span class="caption-text">Openmole</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../rules/intro/">Introduction</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../rules/predicate/">Principe de fonctionnement du vérificateur</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../rules/formats/">Formats de règles</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../rules/topologique/">Définition de contraintes topologiques</a>
+    <a class="" href="../../openmole/intro/">Intro</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../export/">Exporter les résultats d'une simulation</a>
+    <span class="caption-text">Principe</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../principe/intro/">Intro</a>
+                </li>
+    </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../visitor/intro/">Suivre l'évolution d'une simulation</a>
+    <span class="caption-text">Rules</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../rules/formats/">Formats</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../rules/intro/">Intro</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../rules/predicate/">Predicate</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../rules/topologique/">Topologique</a>
+                </li>
+    </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../openmole/intro/">Distribuer avec OpenMole</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../development/">Futurs développements</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../about/">À propos</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../bibliographie/">Réalisations et bibliographie</a>
+    <span class="caption-text">Visitor</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../visitor/intro/">Intro</a>
+                </li>
+    </ul>
 	    </li>
           
         </ul>
@@ -221,14 +238,14 @@
     
       
         
-          <li>Générateur de formes &raquo;</li>
+          <li>Generator &raquo;</li>
         
       
     
-    <li>Personnaliser la fonction d'optimisation</li>
+    <li>Custom optimisation</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/SimPLU3D/simplu3D-tutorial?query=root/path/docs/generator/custom-optimisation.md"
+        <a href="https://github.com/SimPLU3D/simplu3D-tutorial/generator/custom-optimisation.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -238,7 +255,8 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="parametrer-la-fonction-doptimisation">Paramétrer la fonction d'optimisation<a class="headerlink" href="#parametrer-la-fonction-doptimisation" title="Permanent link"></a></h1>
+                <hr />
+<h1 id="parametrer-la-fonction-doptimisation">Paramétrer la fonction d'optimisation<a class="headerlink" href="#parametrer-la-fonction-doptimisation" title="Permanent link"></a></h1>
 <p>Dans cette partie, nous présentons comment est configuré l'algorithme d'optimisation à travers les conditions initiales et d'arrêt, ainsi que la définition de la fonction d'optimisation.</p>
 <p>Les parties suivantes reprennent les principales étapes de création du sampler dont le code est repris dans <a href="../custom-generator/#implementation">la dernière partie de la page sur l'implémentation</a> (étape 2) , c'est à dire le code suivant :</p>
 <pre><code class="JAVA">//Step 2 : Preparation of the optimizer
@@ -355,10 +373,10 @@ On peut choisir avec le fichier de configuration entre ces trois types grâce au
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../custom-shape/" class="btn btn-neutral float-right" title="Personnaliser les formes utilisées">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../custom-shape/" class="btn btn-neutral float-right" title="Custom shape">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../custom-generator/" class="btn btn-neutral" title="Paramétrer la génération de cuboids"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../custom-generator/" class="btn btn-neutral" title="Custom generator"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -374,12 +392,12 @@ On peut choisir avec le fichier de configuration entre ces trois types grâce au
 
   Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-      
+	  
         </div>
       </div>
 
     </section>
-
+    
   </div>
 
   <div class="rst-versions" role="note" style="cursor: pointer">
@@ -395,9 +413,7 @@ On peut choisir avec le fichier de configuration entre ces trois types grâce au
       
     </span>
 </div>
-    <script>var base_url = '../..';</script>
-    <script src="../../js/theme.js" defer></script>
-      <script src="../../search/main.js" defer></script>
+    <script src="../../js/theme.js"></script>
 
 </body>
 </html>

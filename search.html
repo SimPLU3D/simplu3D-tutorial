@@ -13,12 +13,14 @@
 
   <link rel="stylesheet" href="./css/theme.css" type="text/css" />
   <link rel="stylesheet" href="./css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link rel="stylesheet" href="./css/highlight.css">
   
-  <script src="./js/jquery-2.1.1.min.js" defer></script>
-  <script src="./js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script> 
+  <script src="./js/jquery-2.1.1.min.js"></script>
+  <script src="./js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="./js/highlight.pack.js"></script>
+  <script>var base_url = '.';</script>
+  <script data-main="./mkdocs/js/search.js" src="./mkdocs/js/require.js"></script>
+
   
 </head>
 
@@ -29,10 +31,10 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="./." class="icon icon-home"> SimPLU3D tutorial</a>
+        <a href="." class="icon icon-home"> SimPLU3D tutorial</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    <input type="text" name="q" placeholder="Search docs" />
   </form>
 </div>
       </div>
@@ -43,134 +45,152 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="./.">Accueil</a>
+    <a class="" href=".">Home</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">Premiers pas</span>
+    <a class="" href="about/">About</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="bibliographie/">Bibliographie</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="development/">Development</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="export/">Export</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Begin</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="./begin/intro/">Introduction</a>
+    <a class="" href="begin/first_simulation/">First simulation</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="./begin/installation/">Installation</a>
+    <a class="" href="begin/installation/">Installation</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="./begin/first_simulation/">Première simulation</a>
+    <a class="" href="begin/intro/">Intro</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="./principe/intro/">Principe</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Environnement géographique</span>
+    <span class="caption-text">Envgeo</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="./envgeo/intro/">Introduction</a>
+    <a class="" href="envgeo/integration-test/">Integration test</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="./envgeo/modelgeo/">Modèle géographique détaillé</a>
+    <a class="" href="envgeo/integration/">Integration</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="./envgeo/integration/">Processus d'intégration</a>
+    <a class="" href="envgeo/intro/">Intro</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="./envgeo/integration-test/">Tester l'intégration</a>
+    <a class="" href="envgeo/modelgeo/">Modelgeo</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">Générateur de formes</span>
+    <span class="caption-text">Generator</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="./generator/intro/">Introduction</a>
+    <a class="" href="generator/custom-generator/">Custom generator</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="./generator/principe/">Principe de fonctionnement du générateur</a>
+    <a class="" href="generator/custom-optimisation/">Custom optimisation</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="./generator/custom-generator/">Paramétrer la génération de cuboids</a>
+    <a class="" href="generator/custom-shape/">Custom shape</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="./generator/custom-optimisation/">Personnaliser la fonction d'optimisation</a>
+    <a class="" href="generator/intro/">Intro</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="./generator/custom-shape/">Personnaliser les formes utilisées</a>
+    <a class="" href="generator/principe/">Principe</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">Définition des contraintes morphologiques</span>
+    <span class="caption-text">Openmole</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="./rules/intro/">Introduction</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="./rules/predicate/">Principe de fonctionnement du vérificateur</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="./rules/formats/">Formats de règles</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="./rules/topologique/">Définition de contraintes topologiques</a>
+    <a class="" href="openmole/intro/">Intro</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="./export/">Exporter les résultats d'une simulation</a>
+    <span class="caption-text">Principe</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="principe/intro/">Intro</a>
+                </li>
+    </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="./visitor/intro/">Suivre l'évolution d'une simulation</a>
+    <span class="caption-text">Rules</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="rules/formats/">Formats</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="rules/intro/">Intro</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="rules/predicate/">Predicate</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="rules/topologique/">Topologique</a>
+                </li>
+    </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="./openmole/intro/">Distribuer avec OpenMole</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="./development/">Futurs développements</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="./about/">À propos</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="./bibliographie/">Réalisations et bibliographie</a>
+    <span class="caption-text">Visitor</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="visitor/intro/">Intro</a>
+                </li>
+    </ul>
 	    </li>
           
         </ul>
@@ -183,7 +203,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="./.">SimPLU3D tutorial</a>
+        <a href=".">SimPLU3D tutorial</a>
       </nav>
 
       
@@ -191,7 +211,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="./.">Docs</a> &raquo;</li>
+    <li><a href=".">Docs</a> &raquo;</li>
     
     
     <li class="wy-breadcrumbs-aside">
@@ -208,7 +228,7 @@
 
   <form id="content_search" action="search.html">
     <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-    <input name="q" id="mkdocs-search-query" type="text" class="search_input search-query ui-autocomplete-input" placeholder="Search the Docs" autocomplete="off" autofocus title="Type search term here">
+    <input name="q" id="mkdocs-search-query" type="text" class="search_input search-query ui-autocomplete-input" placeholder="Search the Docs" autocomplete="off" autofocus>
   </form>
 
   <div id="mkdocs-search-results" class="search-results">
@@ -232,12 +252,12 @@
 
   Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-      
+	  
         </div>
       </div>
 
     </section>
-
+    
   </div>
 
   <div class="rst-versions" role="note" style="cursor: pointer">
@@ -249,9 +269,7 @@
       
     </span>
 </div>
-    <script>var base_url = '.';</script>
-    <script src="./js/theme.js" defer></script>
-      <script src="./search/main.js" defer></script>
+    <script src="./js/theme.js"></script>
 
 </body>
 </html>

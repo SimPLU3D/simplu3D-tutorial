@@ -8,24 +8,23 @@
   
   <meta name="author" content="MBrasebin">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Principe de fonctionnement du générateur - SimPLU3D tutorial</title>
+  <title>Principe - SimPLU3D tutorial</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link rel="stylesheet" href="../../css/highlight.css">
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Principe de fonctionnement du g\u00e9n\u00e9rateur";
+    var mkdocs_page_name = "Principe";
     var mkdocs_page_input_path = "generator/principe.md";
-    var mkdocs_page_url = "/simplu3D-tutorial/generator/principe/";
+    var mkdocs_page_url = "/generator/principe/";
   </script>
   
-  <script src="../../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script> 
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
   
 </head>
 
@@ -39,7 +38,7 @@
         <a href="../.." class="icon icon-home"> SimPLU3D tutorial</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    <input type="text" name="q" placeholder="Search docs" />
   </form>
 </div>
       </div>
@@ -50,16 +49,36 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../..">Accueil</a>
+    <a class="" href="../..">Home</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">Premiers pas</span>
+    <a class="" href="../../about/">About</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../bibliographie/">Bibliographie</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../development/">Development</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../export/">Export</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Begin</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../begin/intro/">Introduction</a>
+    <a class="" href="../../begin/first_simulation/">First simulation</a>
                 </li>
                 <li class="">
                     
@@ -67,50 +86,57 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../begin/first_simulation/">Première simulation</a>
+    <a class="" href="../../begin/intro/">Intro</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../principe/intro/">Principe</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Environnement géographique</span>
+    <span class="caption-text">Envgeo</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../envgeo/intro/">Introduction</a>
+    <a class="" href="../../envgeo/integration-test/">Integration test</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../envgeo/modelgeo/">Modèle géographique détaillé</a>
+    <a class="" href="../../envgeo/integration/">Integration</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../envgeo/integration/">Processus d'intégration</a>
+    <a class="" href="../../envgeo/intro/">Intro</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../envgeo/integration-test/">Tester l'intégration</a>
+    <a class="" href="../../envgeo/modelgeo/">Modelgeo</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">Générateur de formes</span>
+    <span class="caption-text">Generator</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../intro/">Introduction</a>
+    <a class="" href="../custom-generator/">Custom generator</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../custom-optimisation/">Custom optimisation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../custom-shape/">Custom shape</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../intro/">Intro</a>
                 </li>
                 <li class=" current">
                     
-    <a class="current" href="./">Principe de fonctionnement du générateur</a>
+    <a class="current" href="./">Principe</a>
     <ul class="subnav">
             
     <li class="toctree-l3"><a href="#principe-du-fonctionnement-du-generateur-de-formes">Principe du fonctionnement du générateur de formes</a></li>
@@ -130,72 +156,63 @@
 
     </ul>
                 </li>
-                <li class="">
-                    
-    <a class="" href="../custom-generator/">Paramétrer la génération de cuboids</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../custom-optimisation/">Personnaliser la fonction d'optimisation</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../custom-shape/">Personnaliser les formes utilisées</a>
-                </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">Définition des contraintes morphologiques</span>
+    <span class="caption-text">Openmole</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../rules/intro/">Introduction</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../rules/predicate/">Principe de fonctionnement du vérificateur</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../rules/formats/">Formats de règles</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../rules/topologique/">Définition de contraintes topologiques</a>
+    <a class="" href="../../openmole/intro/">Intro</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../export/">Exporter les résultats d'une simulation</a>
+    <span class="caption-text">Principe</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../principe/intro/">Intro</a>
+                </li>
+    </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../visitor/intro/">Suivre l'évolution d'une simulation</a>
+    <span class="caption-text">Rules</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../rules/formats/">Formats</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../rules/intro/">Intro</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../rules/predicate/">Predicate</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../rules/topologique/">Topologique</a>
+                </li>
+    </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../../openmole/intro/">Distribuer avec OpenMole</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../development/">Futurs développements</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../about/">À propos</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../bibliographie/">Réalisations et bibliographie</a>
+    <span class="caption-text">Visitor</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../visitor/intro/">Intro</a>
+                </li>
+    </ul>
 	    </li>
           
         </ul>
@@ -220,14 +237,14 @@
     
       
         
-          <li>Générateur de formes &raquo;</li>
+          <li>Generator &raquo;</li>
         
       
     
-    <li>Principe de fonctionnement du générateur</li>
+    <li>Principe</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/SimPLU3D/simplu3D-tutorial?query=root/path/docs/generator/principe.md"
+        <a href="https://github.com/SimPLU3D/simplu3D-tutorial/generator/principe.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -237,7 +254,8 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="principe-du-fonctionnement-du-generateur-de-formes">Principe du fonctionnement du générateur de formes<a class="headerlink" href="#principe-du-fonctionnement-du-generateur-de-formes" title="Permanent link"></a></h1>
+                <hr />
+<h1 id="principe-du-fonctionnement-du-generateur-de-formes">Principe du fonctionnement du générateur de formes<a class="headerlink" href="#principe-du-fonctionnement-du-generateur-de-formes" title="Permanent link"></a></h1>
 <p>Dans cette partie nous introduirons les différents aspects concernant la génération de formes dans SimPLU3D et la manière avec laquelle l'algorithme du recuit-simulé est utilisé.</p>
 <h1 id="configuration-batie">Configuration bâtie<a class="headerlink" href="#configuration-batie" title="Permanent link"></a></h1>
 <p>Dans SimPLU3D, une configuration bâtie est composée d'un ensemble de géométries paramétriques. Une géométrie est dite paramétrique quand on peut la décrire à travers un vecteur de dimension constante. Dans la plupart des expérimentations de SimPLU3D, comme dans l'exemple de la première simulation, les géométries paramétriques manipulées sont des boîtes. Dans ce cas, s'agit d'une géométrie de 6 dimensions décrite par le vecteur <strong>b</strong> = (<strong>x</strong>, <strong>y</strong>, <strong>l</strong>, <strong>w</strong>, <strong>h</strong>, <strong>θ</strong>). Néanmoins, il est tout à fait possible d'utiliser d'autres types de géométries paramétriques comme nous le verrons dans la section sur la <a href="../custom-generator/">personnalisation des formes générées</a>.</p>
@@ -324,10 +342,10 @@ public GraphConfiguration&lt;Cuboid&gt; process(BasicPropertyUnit bpu, IGeometry
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../custom-generator/" class="btn btn-neutral float-right" title="Paramétrer la génération de cuboids">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../openmole/intro/" class="btn btn-neutral float-right" title="Intro">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../intro/" class="btn btn-neutral" title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../intro/" class="btn btn-neutral" title="Intro"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -343,12 +361,12 @@ public GraphConfiguration&lt;Cuboid&gt; process(BasicPropertyUnit bpu, IGeometry
 
   Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-      
+	  
         </div>
       </div>
 
     </section>
-
+    
   </div>
 
   <div class="rst-versions" role="note" style="cursor: pointer">
@@ -360,13 +378,11 @@ public GraphConfiguration&lt;Cuboid&gt; process(BasicPropertyUnit bpu, IGeometry
         <span><a href="../intro/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../custom-generator/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../../openmole/intro/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
-    <script>var base_url = '../..';</script>
-    <script src="../../js/theme.js" defer></script>
-      <script src="../../search/main.js" defer></script>
+    <script src="../../js/theme.js"></script>
 
 </body>
 </html>
