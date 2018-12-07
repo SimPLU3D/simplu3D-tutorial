@@ -19,7 +19,7 @@ Ce couplage a été utilisé pour deux expérimentations : la production des sim
 
 Pour utiliser conjointement les deux projets, il est conseillé de créer un [plug-in OpenMOLE](https://openmole.org/Plugin+Development.html). Les différents couplages  déjà effectués se trouvent dans le projet [SimPLU3D-OpenMole](https://github.com/SimPLU3D/simplu3D-openmole).
 
-Dans la suite, nous décrivons les étapes nécessaires à la production d'un tel plug-in.
+Dans la suite, nous décrivons les étapes nécessaires à la production d'un tel plug-in. Ce plug-in utilisera un simulateur programmé en Java. Afin que le plugin puisse être fonctionnel, il est recommandé d'initialiser les factories de la bibliothèque GeoTools, en exécutant, par exemple, le code dédié du projet SimPLU3D *fr.ign.cogit.simplu3d.util.distribution.Initialize.init()* au tout début du code Java.
 
 ## 1 Création du projet Scala
 
