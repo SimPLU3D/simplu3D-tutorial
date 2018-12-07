@@ -147,7 +147,7 @@ Pas d'attribut utilisé.
 # Code d'intégration
 
 
-Le code d'intégration se trouve ci-dessous, il est composé de 12 étapes. Pour en savoir plus sur les différentes méthodes d'intégration, vous pouvez vous référer à la thèse de [Mickaël Brasebin (chapitre 2)](https://mbrasebin.github.io/publications/2014-these.pdf).
+Le code d'intégration se trouve ci-dessous, il est composé de 12 étapes. Pour en savoir plus sur les différentes méthodes d'intégration, vous pouvez vous référer à la thèse de [Mickaël Brasebin (chapitre 4)](https://mbrasebin.github.io/publications/2014-these.pdf).
 
 1. Création de l'objet PLU
 2. Création des zones et assignation des règles aux zones
