@@ -13,7 +13,7 @@ nav:
 - 'Générateur de formes':
     - 'Introduction': 'generator/intro.md'
     - 'Principe de fonctionnement du générateur': 'generator/principe.md'
-    - "Paramétrer la génération de cuboids": 'generator/custom-generator.md'
+    - "Paramétrer la génération de boîtes": 'generator/custom-generator.md'
     - "Personnaliser la fonction d'optimisation": 'generator/custom-optimisation.md'
     - 'Personnaliser les formes utilisées': 'generator/custom-shape.md'
 - 'Définition des contraintes morphologiques':

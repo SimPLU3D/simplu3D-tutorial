@@ -16,4 +16,4 @@ Dans cette section, nous présenterons tout d'abord la méthode de [génération
 
 - [Paramétrer l'algorithme](custom-generator.md) pour la génération de formes composées de boîtes ;
 - [Modifier la fonction d'optimisation](custom-generator.md) ;
-- [Générer des formes bâties composées de géométries autres que des cuboïdes](custom-shape.md).
+- [Générer des formes bâties composées de géométries autres que des boîtes](custom-shape.md).
