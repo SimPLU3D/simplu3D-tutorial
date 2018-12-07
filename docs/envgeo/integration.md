@@ -147,20 +147,20 @@ Pas d'attribut utilisé.
 # Code d'intégration
 
 
-Le code d'intégration se trouve ci-dessous, il est composé de 12 étapes.
+Le code d'intégration se trouve ci-dessous, il est composé de 12 étapes. Pour en savoir plus sur les différentes méthodes d'intégration, vous pouvez vous référer à la thèse de [Mickaël Brasebin (chapitre 2)](https://mbrasebin.github.io/publications/2014-these.pdf).
 
 1. Création de l'objet PLU
 2. Création des zones et assignation des règles aux zones
-3. Assignement des zonages au PLU
+3. Affectation des zonages au PLU
 4. Chargement des parcelles et créations des bordures
 5. Import des sous parcelles
-6. Création des unités foncirèes
-7. Import des bâtiments et Assignation des batiments aux BpU
+6. Création des unités foncières
+7. Import des bâtiments et Assignation des bâtiments aux BpU
 8. Chargement des voiries
 9. Affectation des liens entre une bordure et ses objets adjacents (bordure sur route => route + relation entre les limites de parcelles)
 10. Détection des limites séparatives opposées
 11. Import des alignements
-12. Affectation de la coordonnées Z à l'ensemble des éléments 
+12. Affectation de la coordonnées Z à l'ensemble des éléments
 
 
 Quelques étapes sont paramétrables :
@@ -168,9 +168,12 @@ Quelques étapes sont paramétrables :
 La première étape vise à changer de référentiel les sources de données pour éviter des erreurs numériques dues à la grande taille de coordonnées utilisée. Ainsi, il est possible d'activer la transformation avec le boolean *Environnement.TRANSLATE_TO_ZERO* et en assignant des coordonnées (classe *DirectPosition* de GeOxygene) à l'attribut statique *Environnement.dpTranslate*.
 
 Pendant l'étape d'annotation des limites séparatives en limites de fond, latérales et de voirie (étape
-  4), le processus détermine automatiquement ces types suivant une évaluation du dépassement de la limite séparative par rapport au point d'intersection avec la voirie (cf image suivante). Par défaut, la valeur de dépassement jusqu'à laquelle les limites sont affectées comme latérales est de 3 m, mais elle peut être fixée en modifiant la valeur  *AbstractBoundaryAnalyzer.setThresholdIni(double)*. Pour les parcelles plus petites, le seuil est automatiquement ajusté pour atteindre 1/3 de la largeur de la boîte englobante orientée.
+  4), le processus détermine automatiquement ces types. L'algorithme détermine tout d'abord les limites **donnant sur la voirie** en détectant celles qui se trouvent à l'extérieur de l'îlot formé par les parcelles connexes. Puis, les **limites latérales** sont détectées suivant une évaluation du dépassement de la limite séparative par rapport au point d'intersection avec la voirie (cf image suivante). Pour cette étape, il s'agit d'une méthode itérative, on sélectionne les limites donnant sur la voirie et non affectées comme étant des limites de voirie. Pour chacune de ces limites, on parcourt de proche en proche les limites adjacentes non étiquetées. Tant que ces limites sont incluses dans une boîte englobante orientée de largeur inférieure à la valeur du dépassement, on les étiquette comme latérales, sinon on arrête le parcours de proche en proche. Après avoir appliqué cette méthode, les limites restantes sont étiquetées comme de **fond de parcelle**.
+
+  Par défaut, la valeur de dépassement jusqu'à laquelle les limites sont affectées comme latérales est de 3 m, mais elle peut être fixée en modifiant la valeur  *AbstractBoundaryAnalyzer.setThresholdIni(double)*. Pour les parcelles plus petites, le seuil est automatiquement ajusté pour atteindre 1/3 de la largeur de la boîte englobante orientée.
 
   Pour une parcelle n'ayant pas d'accès à la voirie, toutes les limites sont de type "Fond". Le côté (GAUCHE ou DROITE) des limites latérales est déterminée en regardant la parcelle depuis la voirie. Si une parcelle donne sur plusieurs voiries, les côtés DROITE et GAUCHE sont déterminés aléatoirement.
+
 
 ![Image montrant le processus d'annotation des parcelles](./img/parcelborderannotation.png)
 
