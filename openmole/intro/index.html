@@ -244,7 +244,7 @@
 </blockquote>
 <h1 id="creation-dun-plug-in-openmole">Création d'un plug-in OpenMOLE.<a class="headerlink" href="#creation-dun-plug-in-openmole" title="Permanent link"></a></h1>
 <p>Pour utiliser conjointement les deux projets, il est conseillé de créer un <a href="https://openmole.org/Plugin+Development.html">plug-in OpenMOLE</a>. Les différents couplages  déjà effectués se trouvent dans le projet <a href="https://github.com/SimPLU3D/simplu3D-openmole">SimPLU3D-OpenMole</a>.</p>
-<p>Dans la suite, nous décrivons les étapes nécessaires à la production d'un tel plug-in.</p>
+<p>Dans la suite, nous décrivons les étapes nécessaires à la production d'un tel plug-in. Ce plug-in utilisera un simulateur programmé en Java. Afin que le plugin puisse être fonctionnel, il est recommandé d'initialiser les factories de la bibliothèque GeoTools, en exécutant, par exemple, le code dédié du projet SimPLU3D <em>fr.ign.cogit.simplu3d.util.distribution.Initialize.init()</em> au tout début du code Java.</p>
 <h2 id="1-creation-du-projet-scala">1 Création du projet Scala<a class="headerlink" href="#1-creation-du-projet-scala" title="Permanent link"></a></h2>
 <p>Le plus simple pour créer le projet Scala est de re-partir d'un exemple existant, en téléchargeant par exemple, le projet <a href="https://github.com/SimPLU3D/simplu3D-openmole">SimPLU3D-OpenMole</a>.</p>
 <p>L'organisation du projet est classique, il y a un fichier build.sbt qui décrit la manière avec laquelle le projet est construit. Dans celui-là, il est déjà spécifié que l'on cherche à compiler un projet OSGI (manière de compiler un plugin OpenMOLE).</p>
