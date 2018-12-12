@@ -12,4 +12,4 @@ This branch contains the documentation as markdown files that will be used to ge
 The following commands are necessary to run :
 
 - ```mkdocs serve``` (to run a local instance of the doc)
-- ```mkdocs gh-pages``` (to deploy the website on Github)
+- ```mkdocs gh-deploy``` (to deploy the website on Github)
