@@ -8,13 +8,13 @@ date: 2018-10-26
 
 # Formats de stockage des règles
 
-SimPLU3D ne possède pas un format pour stocker les règles morphologiques. En effet, les différentes expériences ont montré que suivant les besoins, l'échelle d'étude et les réglementations locales, les règles nécessaires à modéliser pouvaient beaucoup varier. Ainsi, pour rester générique, c'est à l'utilisateur de définir comment stocker ces règles et implémenter l'interface *Predicate* en fonction de ces règles.
+SimPLU3D ne possède pas de format pour stocker les règles morphologiques. En effet, les différentes expériences ont montré que suivant les besoins, l'échelle d'étude et les réglementations locales, les règles nécessaires à modéliser pouvaient beaucoup varier. Ainsi, pour rester générique, c'est à l'utilisateur de définir comment stocker ces règles et implémenter l'interface *Predicate* en fonction de ces règles.
 
 Cependant, dans cette partie nous présenterons d'abord un exemple de code avec une démarche conseillée pour intégrer des règles à partir d'un tableau. Puis, nous pointerons vers différentes expérimentations utilisant différents formats de règles.
 
 # Intégration de règles sous forme d'un tableau
 
-Ici, nous présenterons un exemple pour charger des règles stockées dans un fichier .csv et pour appliquer ces règles aux différentes zones d'un plan de zonage via le *SamplerPredicate* . Le code est disponible dans la classe *fr.ign.simplu3d.simulRules.SimulWithRules* du projet SimPLU3D-tutorial. Les données utilisées sont stockées dans le dossier *resources/simulationWithRules* qui contient notamment un fichier *rules.csv* en plus (mis en tableau ci dessous). La jointure entre les zones urbaines et les valeurs de ce tableau s'effectue via le champ *libelle*.
+Ici, nous présenterons un exemple pour charger des règles stockées dans un fichier .csv et pour appliquer ces règles aux différentes zones d'un plan de zonage via le *SamplerPredicate* . Le code est disponible dans la classe *fr.ign.simplu3d.simulRules.SimulWithRules* du projet [SimPLU3D-tutorial](https://github.com/SimPLU3D/simplu3D-tutorial). Les données utilisées sont stockées dans le dossier *resources/simulationWithRules* qui contient notamment un fichier *rules.csv* en plus (mis en tableau ci dessous). La jointure entre les zones urbaines et les valeurs de ce tableau s'effectue via le champ *libelle*.
 
 
 | libelle | distReculVoirie | distReculFond | distReculLat | distanceInterBati | maximalCES |
