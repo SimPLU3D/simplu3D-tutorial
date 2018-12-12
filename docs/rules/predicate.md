@@ -8,17 +8,17 @@ date: 2018-10-26
 
 # Implémentation de la vérification de règles dans SimPLU3D
 
-Pour vérifier les règles morphologiques, SimPLU3D utilise le concept de prédicat. Il s'agit d'un objet qui indique si une configuration respecte ou non respecte une règle.
+Pour vérifier les règles morphologiques, SimPLU3D utilise le concept de prédicat. Il s'agit d'un objet qui indique si une configuration respecte une règle ou non.
 
 # Interface de predicat
 
- L'interface de la librjmcmc4j *fr.ign.rjmcmc.configuration. ConfigurationModificationPredicate<C extends Configuration<C, M>, M extends Modification<C, M>>* implémente cette notion de prédicat et permet la définition à elle seule du respect des règles.
+ L'interface de la librjmcmc4j *fr.ign.rjmcmc.configuration.ConfigurationModificationPredicate<C extends Configuration<C, M>, M extends Modification<C, M>>* implémente cette notion de prédicat et permet la définition à elle seule du respect des règles.
 
  Cette interface ne définit que la méthode *boolean check(C c, M m);*. Avec :
 
 - **c**, une instance de configuration, qui contient la liste des objets de la configuration courante  (c'est à dire avant application de la modification) ;
 - **m**, la modification qui serait appliquée à la configuration **c** ;
-- la méthode renvoie un *boolean* qui indique si les règles sont respectées suite à l'application de la modification **m** sur la méthode **c**.
+- la méthode renvoie un *boolean* qui indique si les règles sont respectées suite à l'application de la modification **m** sur la configuration **c**.
 
 
 # Implémentation à partir de l'interface de prédicat
@@ -50,15 +50,15 @@ List<O> listOfObjects = new ArrayList<>();
 
 
 
-> ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) **Attention**: comme l'évaluation de la méthode *check()* s'effectue à chaque itération et qu'une simulation peut compter des millions de simulation, optimiser le temps d'exécution de cette méthode permet de diminuer de beaucoup le temps de calcul, d'autant plus que cette méthode fait généralement à des opérateurs géométriques qui peuvent être coûteux en termes de temps. Voici quelques astuces pour diminuer ce temps de calcul :
+> ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) **Attention**: comme l'évaluation de la méthode *check()* s'effectue à chaque itération et qu'une simulation peut compter des millions d'itérations, optimiser le temps d'exécution de cette méthode permet de diminuer de beaucoup le temps de calcul, d'autant plus que cette méthode fait généralement appel à des opérateurs géométriques qui peuvent être coûteux en termes de temps. Voici quelques astuces pour diminuer ce temps de calcul :
 
-> 1/ Essayer de renvoyer false chaque fois dès qu'une règle n'est pas respectée ;
+> 1/ Essayer de renvoyer *false* chaque fois dès qu'une règle n'est pas respectée ;
 
 > 2/ Privilégier les géométries JTS aux géométries GeOxygene (les opérateurs géométriques appliquées aux géométries GeOxygene nécessitent une conversion JTS qui augmente le temps de calcul) ;
 
 > 3/ Conserver des objets en cache lorsqu'ils sont fixes pour éviter de les re-générer à chaque étape ;
 
-> 4/ Ne vérifier les règles que pour les objets nécessaires. En effet, les géométries dans la configuration avant modification vérifient déjà un certain nombre de règles, il n'est ainsi pas nécessaire de devoir les réévaluer pour ceux-ci. Cela est par exemple vrai pour les règles de hauteur ou de distance 2D avec les limites séparatives.
+> 4/ Ne vérifier les règles que pour les objets nécessaires. En effet, les géométries dans la configuration avant modification vérifient déjà un certain nombre de règles, il n'est ainsi pas nécessaire de devoir les réévaluer pour celles-ci. Cela est par exemple vrai pour les règles de hauteur ou de distance 2D avec les limites séparatives.
 
 
 # Implémentation à partir de la classe abstraite DefaultAbstractPredicate
