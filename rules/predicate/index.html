@@ -245,14 +245,14 @@
             <div class="section">
               
                 <h1 id="implementation-de-la-verification-de-regles-dans-simplu3d">Implémentation de la vérification de règles dans SimPLU3D<a class="headerlink" href="#implementation-de-la-verification-de-regles-dans-simplu3d" title="Permanent link"></a></h1>
-<p>Pour vérifier les règles morphologiques, SimPLU3D utilise le concept de prédicat. Il s'agit d'un objet qui indique si une configuration respecte ou non respecte une règle.</p>
+<p>Pour vérifier les règles morphologiques, SimPLU3D utilise le concept de prédicat. Il s'agit d'un objet qui indique si une configuration respecte une règle ou non.</p>
 <h1 id="interface-de-predicat">Interface de predicat<a class="headerlink" href="#interface-de-predicat" title="Permanent link"></a></h1>
-<p>L'interface de la librjmcmc4j <em>fr.ign.rjmcmc.configuration. ConfigurationModificationPredicate<C extends Configuration<C, M>, M extends Modification<C, M>&gt;</em> implémente cette notion de prédicat et permet la définition à elle seule du respect des règles.</p>
+<p>L'interface de la librjmcmc4j <em>fr.ign.rjmcmc.configuration.ConfigurationModificationPredicate<C extends Configuration<C, M>, M extends Modification<C, M>&gt;</em> implémente cette notion de prédicat et permet la définition à elle seule du respect des règles.</p>
 <p>Cette interface ne définit que la méthode <em>boolean check(C c, M m);</em>. Avec :</p>
 <ul>
 <li><strong>c</strong>, une instance de configuration, qui contient la liste des objets de la configuration courante  (c'est à dire avant application de la modification) ;</li>
 <li><strong>m</strong>, la modification qui serait appliquée à la configuration <strong>c</strong> ;</li>
-<li>la méthode renvoie un <em>boolean</em> qui indique si les règles sont respectées suite à l'application de la modification <strong>m</strong> sur la méthode <strong>c</strong>.</li>
+<li>la méthode renvoie un <em>boolean</em> qui indique si les règles sont respectées suite à l'application de la modification <strong>m</strong> sur la configuration <strong>c</strong>.</li>
 </ul>
 <h1 id="implementation-a-partir-de-linterface-de-predicat">Implémentation à partir de l'interface de prédicat<a class="headerlink" href="#implementation-a-partir-de-linterface-de-predicat" title="Permanent link"></a></h1>
 <p>Dans SimPLU3D, nous conseillons l'implémentation de cette interface à travers la définition suivante (et de regarder la-dite classe qui donne une idée de comment implémenter la méthode) :</p>
@@ -276,11 +276,11 @@ Une modification est vue comme l'ajout et la suppression d'objet. Dans les modif
 </code></pre>
 
 <blockquote>
-<p><img alt="#f03c15" src="https://placehold.it/15/f03c15/000000?text=+" /> <strong>Attention</strong>: comme l'évaluation de la méthode <em>check()</em> s'effectue à chaque itération et qu'une simulation peut compter des millions de simulation, optimiser le temps d'exécution de cette méthode permet de diminuer de beaucoup le temps de calcul, d'autant plus que cette méthode fait généralement à des opérateurs géométriques qui peuvent être coûteux en termes de temps. Voici quelques astuces pour diminuer ce temps de calcul :</p>
-<p>1/ Essayer de renvoyer false chaque fois dès qu'une règle n'est pas respectée ;</p>
+<p><img alt="#f03c15" src="https://placehold.it/15/f03c15/000000?text=+" /> <strong>Attention</strong>: comme l'évaluation de la méthode <em>check()</em> s'effectue à chaque itération et qu'une simulation peut compter des millions d'itérations, optimiser le temps d'exécution de cette méthode permet de diminuer de beaucoup le temps de calcul, d'autant plus que cette méthode fait généralement appel à des opérateurs géométriques qui peuvent être coûteux en termes de temps. Voici quelques astuces pour diminuer ce temps de calcul :</p>
+<p>1/ Essayer de renvoyer <em>false</em> chaque fois dès qu'une règle n'est pas respectée ;</p>
 <p>2/ Privilégier les géométries JTS aux géométries GeOxygene (les opérateurs géométriques appliquées aux géométries GeOxygene nécessitent une conversion JTS qui augmente le temps de calcul) ;</p>
 <p>3/ Conserver des objets en cache lorsqu'ils sont fixes pour éviter de les re-générer à chaque étape ;</p>
-<p>4/ Ne vérifier les règles que pour les objets nécessaires. En effet, les géométries dans la configuration avant modification vérifient déjà un certain nombre de règles, il n'est ainsi pas nécessaire de devoir les réévaluer pour ceux-ci. Cela est par exemple vrai pour les règles de hauteur ou de distance 2D avec les limites séparatives.</p>
+<p>4/ Ne vérifier les règles que pour les objets nécessaires. En effet, les géométries dans la configuration avant modification vérifient déjà un certain nombre de règles, il n'est ainsi pas nécessaire de devoir les réévaluer pour celles-ci. Cela est par exemple vrai pour les règles de hauteur ou de distance 2D avec les limites séparatives.</p>
 </blockquote>
 <h1 id="implementation-a-partir-de-la-classe-abstraite-defaultabstractpredicate">Implémentation à partir de la classe abstraite DefaultAbstractPredicate<a class="headerlink" href="#implementation-a-partir-de-la-classe-abstraite-defaultabstractpredicate" title="Permanent link"></a></h1>
 <p>La classe <em>fr.ign.cogit.simplu3d.util.regulation.DefaultAbstractPredicate</em> contient un certain nombre de fonctions de base qui sont issues de règles souvent utilisées dans SimPLU3D. Les méthodes de cette classe suivent les principes évoqués précédemment et permettent de diminuer le temps de calcul. En étendant cette classe abstraite et en utilisant son constructeur, il est possible de définir plus facilement la méthode <em>check()</em> d'un prédicat en utilisant les fonctions prédéfinies.</p>
