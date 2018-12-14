@@ -21,7 +21,7 @@ L'interface impose l'implémentation de 4 méthodes :
 - **end(C config, Sampler<C,M> sampler, Temperature t);** : cette méthode est appliquée lors de la toute dernière itération de la simulation.
 
 
-Dans le cadre de l'utilisation de SimPLU3D, plusieurs visiteurs ont été implémentés et sont activables et paramétrables via le fichier *params.json*. Les valeurs **save** et **dump** peuvent notamment y être définis pour tous les visiteurs. Vous pouvez tester ces visiteurs avec la simulation de base et pour toutes les autres. Les paramètres ont été correctement fixés, il suffit seulement de les activer et de mettre à jour le paramètre *save* et *background_img*.
+Dans le cadre de l'utilisation de SimPLU3D, plusieurs visiteurs ont été implémentés et sont activables et paramétrables via le fichier *params.json*. Les valeurs **save** et **dump** peuvent notamment y être définies pour tous les visiteurs. Vous pouvez tester ces visiteurs avec la simulation de base et pour toutes les autres. Les paramètres ont été correctement fixés, il suffit seulement de les activer et de mettre à jour le paramètre *save* et *background_img*.
 
 # Visiteurs de SimPLU3D
 
@@ -58,7 +58,7 @@ Plusieurs informations sont représentées comme l'énergie unaire, l'énergie b
 
 ![Illustration du graphc de simulation](./img/Graphic.png)
 
-**Petite astuce** : comme le résultat d'une simulation est la dernière configuration rencontrée, ce graphique est utile pour visualiser si le meilleur candidat rencontré est bien cette dernière configuration. Normalement, si le processus d'optimisation s'est bien déroulé, les courbes "Meilleur candidat" et "Énergie de la configuration actuelle" doivent être confondus en fin de simulation. Sinon, il peut s'avérer nécessaire  d'augmenter le nombre d'itérations, la température et le coefficient de décroissance.
+**Petite astuce** : comme le résultat d'une simulation est la dernière configuration rencontrée, ce graphique est utile pour visualiser si le meilleur candidat rencontré est bien cette dernière configuration. Normalement, si le processus d'optimisation s'est bien déroulé, les courbes "Meilleur candidat" et "Énergie de la configuration actuelle" doivent être confondues en fin de simulation. Sinon, il peut s'avérer nécessaire  d'augmenter le nombre d'itérations, la température et le coefficient de décroissance.
 
 # Sortie CSV : CSVvisitor et CSVendStats
 

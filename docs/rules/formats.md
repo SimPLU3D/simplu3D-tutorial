@@ -14,7 +14,7 @@ Cependant, dans cette partie nous présenterons d'abord un exemple de code avec 
 
 # Intégration de règles sous forme d'un tableau
 
-Ici, nous présenterons un exemple pour charger des règles stockées dans un fichier .csv et pour appliquer ces règles aux différentes zones d'un plan de zonage via le *SamplerPredicate* . Le code est disponible dans la classe *fr.ign.simplu3d.simulRules.SimulWithRules* du projet [SimPLU3D-tutorial](https://github.com/SimPLU3D/simplu3D-tutorial). Les données utilisées sont stockées dans le dossier *resources/simulationWithRules* qui contient notamment un fichier *rules.csv* en plus (mis en tableau ci dessous). La jointure entre les zones urbaines et les valeurs de ce tableau s'effectue via le champ *libelle*.
+Ici, nous présenterons un exemple pour charger des règles stockées dans un fichier .csv et pour appliquer ces règles aux différentes zones d'un plan de zonage via le *SamplerPredicate* . Le code est disponible dans la classe *fr.ign.simplu3d.simulRules.SimulWithRules* du projet [SimPLU3D-tutorial](https://github.com/SimPLU3D/simplu3D-tutorial). Les données utilisées sont stockées dans le dossier *resources/simulationWithRules/data* qui contient notamment un fichier *rules.csv* en plus (mis en tableau ci dessous). La jointure entre les zones urbaines et les valeurs de ce tableau s'effectue via le champ *libelle*.
 
 
 | libelle | distReculVoirie | distReculFond | distReculLat | distanceInterBati | maximalCES |
@@ -22,7 +22,7 @@ Ici, nous présenterons un exemple pour charger des règles stockées dans un fi
 | ub1     | 2               | 3             | 4            | 8                 | 0.5        |
 | ub2     | 4               | 5             | 4            | 8                 | 1          |
 
-Le résultat de la simulation est visible ci dessous, seules 2 parcelles sont simulées (celles avec 1 comme valeur pour l'attribut SIMUL)
+Le résultat de la simulation est visible ci-dessous, seules 2 parcelles sont simulées (celles avec 1 comme valeur pour l'attribut SIMUL)
 
 ![Résultat de la simulation](./img/resultSimulation.png)
 
@@ -100,7 +100,7 @@ Dans cet exemple, il n'y a qu'une seule sous-parcelle par parcelle (c'est-à-dir
 
 Deux types de formats de règles ont été utilisés :
 
-- **Format OCL**(Object Constraint Language) : le format OCL permet de modéliser des contraintes à partir d'instances d'un modèle. Ainsi, l'utilisation de règles au format OCL permet une grande expressivité comme il peut utiliser et combiner tous les concepts du modèle géographique de SimPLU3D. Cependant, cette expressivité a un coût car le temps d'évaluation d'une contrainte formulée en OCL est beaucoup plus longue que son équivalent programmée en Java. Pour en savoir plus, vous pouvez consulter la page Github de [SimPLU3D-OCL](https://github.com/SimPLU3D/simplu3D-ocl/blob/master/README.md) ;
+- **Format OCL**(Object Constraint Language) : le format OCL permet de modéliser des contraintes à partir d'instances d'un modèle. Ainsi, l'utilisation de règles au format OCL permet une grande expressivité puisqu'il peut utiliser et combiner tous les concepts du modèle géographique de SimPLU3D. Cependant, cette expressivité a un coût car le temps d'évaluation d'une contrainte formulée en OCL est beaucoup plus longue que son équivalent programmée en Java. Pour en savoir plus, vous pouvez consulter la page Github de [SimPLU3D-OCL](https://github.com/SimPLU3D/simplu3D-ocl/blob/master/README.md) ;
 
 
 - **Format CartoPLU+** : le format CartoPLU+ stocke les règles sous format d'un tableau CSV à partir d'une sélection de contraintes effectuée par l'[IAUIDF](https://www.iau-idf.fr/) et la [DRIEA](http://www.driea.ile-de-france.developpement-durable.gouv.fr/). Pour en savoir plus, vous pouvez consulter la page Github du projet [SimPLU3D-IAUIDF](https://github.com/SimPLU3D/simplu3D-iauidf).
