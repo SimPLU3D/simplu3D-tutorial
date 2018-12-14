@@ -243,7 +243,7 @@
 <p>SimPLU3D ne possède pas de format pour stocker les règles morphologiques. En effet, les différentes expériences ont montré que suivant les besoins, l'échelle d'étude et les réglementations locales, les règles nécessaires à modéliser pouvaient beaucoup varier. Ainsi, pour rester générique, c'est à l'utilisateur de définir comment stocker ces règles et implémenter l'interface <em>Predicate</em> en fonction de ces règles.</p>
 <p>Cependant, dans cette partie nous présenterons d'abord un exemple de code avec une démarche conseillée pour intégrer des règles à partir d'un tableau. Puis, nous pointerons vers différentes expérimentations utilisant différents formats de règles.</p>
 <h1 id="integration-de-regles-sous-forme-dun-tableau">Intégration de règles sous forme d'un tableau<a class="headerlink" href="#integration-de-regles-sous-forme-dun-tableau" title="Permanent link"></a></h1>
-<p>Ici, nous présenterons un exemple pour charger des règles stockées dans un fichier .csv et pour appliquer ces règles aux différentes zones d'un plan de zonage via le <em>SamplerPredicate</em> . Le code est disponible dans la classe <em>fr.ign.simplu3d.simulRules.SimulWithRules</em> du projet <a href="https://github.com/SimPLU3D/simplu3D-tutorial">SimPLU3D-tutorial</a>. Les données utilisées sont stockées dans le dossier <em>resources/simulationWithRules</em> qui contient notamment un fichier <em>rules.csv</em> en plus (mis en tableau ci dessous). La jointure entre les zones urbaines et les valeurs de ce tableau s'effectue via le champ <em>libelle</em>.</p>
+<p>Ici, nous présenterons un exemple pour charger des règles stockées dans un fichier .csv et pour appliquer ces règles aux différentes zones d'un plan de zonage via le <em>SamplerPredicate</em> . Le code est disponible dans la classe <em>fr.ign.simplu3d.simulRules.SimulWithRules</em> du projet <a href="https://github.com/SimPLU3D/simplu3D-tutorial">SimPLU3D-tutorial</a>. Les données utilisées sont stockées dans le dossier <em>resources/simulationWithRules/data</em> qui contient notamment un fichier <em>rules.csv</em> en plus (mis en tableau ci dessous). La jointure entre les zones urbaines et les valeurs de ce tableau s'effectue via le champ <em>libelle</em>.</p>
 <table>
 <thead>
 <tr>
@@ -274,7 +274,7 @@
 </tr>
 </tbody>
 </table>
-<p>Le résultat de la simulation est visible ci dessous, seules 2 parcelles sont simulées (celles avec 1 comme valeur pour l'attribut SIMUL)</p>
+<p>Le résultat de la simulation est visible ci-dessous, seules 2 parcelles sont simulées (celles avec 1 comme valeur pour l'attribut SIMUL)</p>
 <p><img alt="Résultat de la simulation" src="../img/resultSimulation.png" /></p>
 <h2 id="code-de-reglementation">Code de réglementation<a class="headerlink" href="#code-de-reglementation" title="Permanent link"></a></h2>
 <p>Au préalable, une classe de réglementation a été créée (<em>fr.ign.simplu3d.simulRules.RegulationTuto</em>). Cette classe implémente l'interface <em>IZoneRegulation</em> qui permet de rattacher une réglementation à une zone (classe <em>UrbaZone</em>). Cette interface a déjà été vue dans la section présentant le <a href="../../envgeo/modelgeo/">modèle géographique</a>.</p>
@@ -339,7 +339,7 @@
 <p>Deux types de formats de règles ont été utilisés :</p>
 <ul>
 <li>
-<p><strong>Format OCL</strong>(Object Constraint Language) : le format OCL permet de modéliser des contraintes à partir d'instances d'un modèle. Ainsi, l'utilisation de règles au format OCL permet une grande expressivité comme il peut utiliser et combiner tous les concepts du modèle géographique de SimPLU3D. Cependant, cette expressivité a un coût car le temps d'évaluation d'une contrainte formulée en OCL est beaucoup plus longue que son équivalent programmée en Java. Pour en savoir plus, vous pouvez consulter la page Github de <a href="https://github.com/SimPLU3D/simplu3D-ocl/blob/master/README.md">SimPLU3D-OCL</a> ;</p>
+<p><strong>Format OCL</strong>(Object Constraint Language) : le format OCL permet de modéliser des contraintes à partir d'instances d'un modèle. Ainsi, l'utilisation de règles au format OCL permet une grande expressivité puisqu'il peut utiliser et combiner tous les concepts du modèle géographique de SimPLU3D. Cependant, cette expressivité a un coût car le temps d'évaluation d'une contrainte formulée en OCL est beaucoup plus longue que son équivalent programmée en Java. Pour en savoir plus, vous pouvez consulter la page Github de <a href="https://github.com/SimPLU3D/simplu3D-ocl/blob/master/README.md">SimPLU3D-OCL</a> ;</p>
 </li>
 <li>
 <p><strong>Format CartoPLU+</strong> : le format CartoPLU+ stocke les règles sous format d'un tableau CSV à partir d'une sélection de contraintes effectuée par l'<a href="https://www.iau-idf.fr/">IAUIDF</a> et la <a href="http://www.driea.ile-de-france.developpement-durable.gouv.fr/">DRIEA</a>. Pour en savoir plus, vous pouvez consulter la page Github du projet <a href="https://github.com/SimPLU3D/simplu3D-iauidf">SimPLU3D-IAUIDF</a>.</p>
