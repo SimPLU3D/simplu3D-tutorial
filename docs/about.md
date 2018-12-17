@@ -25,6 +25,6 @@ Le projet a également été financé par le fond FUI du projet TerraMagna et la
 
 # Contacts
 
-Vous pouvez contacter Julien Perret ou Mickaël Brasebin ({nom.prénom} (AT) {gmail} (POINT) {com}) pour discuter de l'utilisation de SimPLU3D.
+Vous pouvez contacter Julien Perret ou Mickaël Brasebin ({prénom.nom} (AT) {gmail} (POINT) {com}) pour discuter de l'utilisation de SimPLU3D.
 
 Pour signaler un bug n'hésitez pas à poster une issue sur le ou les projets concernés.
