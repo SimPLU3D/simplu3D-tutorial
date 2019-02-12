@@ -85,17 +85,17 @@ Il s'agit d'une représentation du code qui se situe ci-dessous et qui est utili
  */
 
 public GraphConfiguration<Cuboid> create_configuration(SimpluParameters p, Geometry geom, BasicPropertyUnit bpu) {
-  // Énergie constante : à la création d'un nouvel objet
+  // Énergie constante : à la création d'un nouvel objet cuboide
   ConstantEnergy<Cuboid, Cuboid> energyCreation = new ConstantEnergy<Cuboid, Cuboid>(p.getDouble("energy"));
-  // Énergie constante : pondération de l'intersection
+  // Énergie constante : pondération appliquée au volume  d'un cuboide
   ConstantEnergy<Cuboid, Cuboid> ponderationVolume = new ConstantEnergy<Cuboid, Cuboid>(
       p.getDouble("ponderation_volume"));
-  // Énergie unaire : aire dans la parcelle
+  //  Energie dynamique  correspondant au volume du Cube
   UnaryEnergy<Cuboid> energyVolume = new VolumeUnaryEnergy<Cuboid>();
-  // Multiplication de l'énergie d'intersection et de l'aire
+  // Energie pondérée du cuboide  : ponderation du volume du cube par ponderationVolume
   UnaryEnergy<Cuboid> energyVolumePondere = new MultipliesUnaryEnergy<Cuboid>(ponderationVolume, energyVolume);
 
-  // On retire de l'énergie de création, l'énergie de l'aire
+  // On retire de l'énergie de création l'énergie  pondérée du cuboide
   UnaryEnergy<Cuboid> u3 = new MinusUnaryEnergy<Cuboid>(energyCreation, energyVolumePondere);
 
   double ponderationExt = p.getDouble("ponderation_difference_ext");
@@ -114,10 +114,16 @@ public GraphConfiguration<Cuboid> create_configuration(SimpluParameters p, Geome
     unaryEnergy = u3;
   }
 
-  // Énergie binaire : intersection entre deux rectangles
+  // Constitution de l' Énergie binaire qui gère l'intersection entre deux cuboides
+
+  // pondération du volume de l'intersection 
   ConstantEnergy<Cuboid, Cuboid> c3 = new ConstantEnergy<Cuboid, Cuboid>(p.getDouble("ponderation_volume_inter"));
+  // Energie correspondant au volmume de l'intersection de deux cuboides
   BinaryEnergy<Cuboid, Cuboid> b1 = new IntersectionVolumeBinaryEnergy<Cuboid>();
+  
+  // Energie pondérée du volume de l'intersection
   BinaryEnergy<Cuboid, Cuboid> binaryEnergy = new MultipliesBinaryEnergy<Cuboid, Cuboid>(c3, b1);
+  
   // empty initial configuration*/
   GraphConfiguration<Cuboid> conf = new GraphConfiguration<>(unaryEnergy, binaryEnergy);
   return conf;
