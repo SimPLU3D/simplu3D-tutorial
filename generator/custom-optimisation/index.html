@@ -301,17 +301,17 @@ Les deux derniers termes sont pondérés par les <strong>ponderationVolume</stro
  */
 
 public GraphConfiguration&lt;Cuboid&gt; create_configuration(SimpluParameters p, Geometry geom, BasicPropertyUnit bpu) {
-  // Énergie constante : à la création d'un nouvel objet
+  // Énergie constante : à la création d'un nouvel objet cuboide
   ConstantEnergy&lt;Cuboid, Cuboid&gt; energyCreation = new ConstantEnergy&lt;Cuboid, Cuboid&gt;(p.getDouble(&quot;energy&quot;));
-  // Énergie constante : pondération de l'intersection
+  // Énergie constante : pondération appliquée au volume  d'un cuboide
   ConstantEnergy&lt;Cuboid, Cuboid&gt; ponderationVolume = new ConstantEnergy&lt;Cuboid, Cuboid&gt;(
       p.getDouble(&quot;ponderation_volume&quot;));
-  // Énergie unaire : aire dans la parcelle
+  //  Energie dynamique  correspondant au volume du Cube
   UnaryEnergy&lt;Cuboid&gt; energyVolume = new VolumeUnaryEnergy&lt;Cuboid&gt;();
-  // Multiplication de l'énergie d'intersection et de l'aire
+  // Energie pondérée du cuboide  : ponderation du volume du cube par ponderationVolume
   UnaryEnergy&lt;Cuboid&gt; energyVolumePondere = new MultipliesUnaryEnergy&lt;Cuboid&gt;(ponderationVolume, energyVolume);
 
-  // On retire de l'énergie de création, l'énergie de l'aire
+  // On retire de l'énergie de création l'énergie  pondérée du cuboide
   UnaryEnergy&lt;Cuboid&gt; u3 = new MinusUnaryEnergy&lt;Cuboid&gt;(energyCreation, energyVolumePondere);
 
   double ponderationExt = p.getDouble(&quot;ponderation_difference_ext&quot;);
@@ -330,10 +330,16 @@ public GraphConfiguration&lt;Cuboid&gt; create_configuration(SimpluParameters p,
     unaryEnergy = u3;
   }
 
-  // Énergie binaire : intersection entre deux rectangles
+  // Constitution de l' Énergie binaire qui gère l'intersection entre deux cuboides
+
+  // pondération du volume de l'intersection 
   ConstantEnergy&lt;Cuboid, Cuboid&gt; c3 = new ConstantEnergy&lt;Cuboid, Cuboid&gt;(p.getDouble(&quot;ponderation_volume_inter&quot;));
+  // Energie correspondant au volmume de l'intersection de deux cuboides
   BinaryEnergy&lt;Cuboid, Cuboid&gt; b1 = new IntersectionVolumeBinaryEnergy&lt;Cuboid&gt;();
+
+  // Energie pondérée du volume de l'intersection
   BinaryEnergy&lt;Cuboid, Cuboid&gt; binaryEnergy = new MultipliesBinaryEnergy&lt;Cuboid, Cuboid&gt;(c3, b1);
+
   // empty initial configuration*/
   GraphConfiguration&lt;Cuboid&gt; conf = new GraphConfiguration&lt;&gt;(unaryEnergy, binaryEnergy);
   return conf;
