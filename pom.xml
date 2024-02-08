@@ -20,7 +20,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<simplu3d.version>1.2-SNAPSHOT</simplu3d.version>
+		<simplu3d.version>1.3</simplu3d.version>
 	</properties>
 
 	<developers>
@@ -207,26 +207,24 @@
 
 	<repositories>
 		<repository>
-			<id>ign-snapshots</id>
-			<name>Cogit Snapshots Repository</name>
-			<url>https://forge-cogit.ign.fr/nexus/content/repositories/snapshots/</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
+			<id>geoxygene</id>
+			<name>GitHub IGNF geoxygene Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/IGNF/geoxygene</url>
 		</repository>
 		<repository>
-			<id>ign-releases</id>
-			<name>Cogit Releases Repository</name>
-			<url>https://forge-cogit.ign.fr/nexus/content/repositories/releases/</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
+			<id>librjmcmc4j</id>
+			<name>GitHub IGNF librjmcmc4j Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/IGNF/librjmcmc4j</url>
+		</repository>
+		<repository>
+			<id>simplu3D-rules</id>
+			<name>GitHub IGNF simplu3D-rules Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/SimPLU3D/simplu3D-rules</url>
+		</repository>
+		<repository>
+			<id>simplu3D</id>
+			<name>GitHub IGNF simplu3D Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/SimPLU3D/simplu3D</url>
 		</repository>
 	</repositories>
 
